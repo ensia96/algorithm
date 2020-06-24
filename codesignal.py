@@ -1,57 +1,47 @@
-def minesweeper(matrix):
-    h = len(matrix)
-    w = len(matrix[0])
-    answer = [[0] * w for _ in range(h)]
-    # answer = [[0]*w]*h <= this just copy the address to object
-    for i in range(h):
-        for j in range(w):
-            if matrix[i][j]:
-                print(i)
-                print(j)
-                answer[i][j] = 1
-                print(answer)
-    return answer
+def arrayReplace(inputArray, elemToReplace, substitutionElem):
+    for id, _ in enumerate(inputArray):
+        if inputArray[id] == elemToReplace:
+            inputArray[id] = substitutionElem
+    return inputArray
+
+
 
 #================================================#
 #     ^ my answer      ||  most voted answer v   #
 #================================================#
 
-
+def arrayReplace(i, e, s):
+    return [x if x!=e else s for x in i]
 
 #================================================#
 #                 question v                     #
 #================================================#
 
-# In the popular Minesweeper game you have a board with some mines and those cells that don't contain a mine have a number in it that indicates the total number of mines in the neighboring cells. Starting off with some arrangement of mines we want to create a Minesweeper game setup.
+# Given an array of integers, replace all the occurrences of elemToReplace with substitutionElem.
 
 # Example
 
-# For
-
-# matrix = [[true, false, false],
-#           [false, true, false],
-#           [false, false, false]]
-# the output should be
-
-# minesweeper(matrix) = [[1, 2, 1],
-#                        [2, 1, 1],
-#                        [1, 1, 1]]
-# Check out the image below for better understanding:
-
-
+# For inputArray = [1, 2, 1], elemToReplace = 1, and substitutionElem = 3, the output should be
+# arrayReplace(inputArray, elemToReplace, substitutionElem) = [3, 2, 3].
 
 # Input/Output
 
 # [execution time limit] 4 seconds (py3)
 
-# [input] array.array.boolean matrix
-
-# A non-empty rectangular matrix consisting of boolean values - true if the corresponding cell contains a mine, false otherwise.
+# [input] array.integer inputArray
 
 # Guaranteed constraints:
-# 2 ≤ matrix.length ≤ 100,
-# 2 ≤ matrix[0].length ≤ 100.
+# 0 ≤ inputArray.length ≤ 104,
+# 0 ≤ inputArray[i] ≤ 109.
 
-# [output] array.array.integer
+# [input] integer elemToReplace
 
-# Rectangular matrix of the same size as matrix each cell of which contains an integer equal to the number of mines in the neighboring cells. Two cells are called neighboring if they share at least one corner.
+# Guaranteed constraints:
+# 0 ≤ elemToReplace ≤ 109.
+
+# [input] integer substitutionElem
+
+# Guaranteed constraints:
+# 0 ≤ substitutionElem ≤ 109.
+
+# [output] array.integer
