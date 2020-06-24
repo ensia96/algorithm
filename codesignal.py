@@ -1,47 +1,37 @@
-def arrayReplace(inputArray, elemToReplace, substitutionElem):
-    for id, _ in enumerate(inputArray):
-        if inputArray[id] == elemToReplace:
-            inputArray[id] = substitutionElem
-    return inputArray
-
-
+def evenDigitsOnly(n):
+    for i in str(n):
+        if int(i) % 2 == 1:
+            return False
+    return True
 
 #================================================#
 #     ^ my answer      ||  most voted answer v   #
 #================================================#
 
-def arrayReplace(i, e, s):
-    return [x if x!=e else s for x in i]
+def evenDigitsOnly(n):
+    return all([int(i)%2==0 for i in str(n)])
 
 #================================================#
 #                 question v                     #
 #================================================#
 
-# Given an array of integers, replace all the occurrences of elemToReplace with substitutionElem.
+# Check if all digits of the given integer are even.
 
 # Example
 
-# For inputArray = [1, 2, 1], elemToReplace = 1, and substitutionElem = 3, the output should be
-# arrayReplace(inputArray, elemToReplace, substitutionElem) = [3, 2, 3].
-
+# For n = 248622, the output should be
+# evenDigitsOnly(n) = true;
+# For n = 642386, the output should be
+# evenDigitsOnly(n) = false.
 # Input/Output
 
 # [execution time limit] 4 seconds (py3)
 
-# [input] array.integer inputArray
+# [input] integer n
 
 # Guaranteed constraints:
-# 0 ≤ inputArray.length ≤ 104,
-# 0 ≤ inputArray[i] ≤ 109.
+# 1 ≤ n ≤ 109.
 
-# [input] integer elemToReplace
+# [output] boolean
 
-# Guaranteed constraints:
-# 0 ≤ elemToReplace ≤ 109.
-
-# [input] integer substitutionElem
-
-# Guaranteed constraints:
-# 0 ≤ substitutionElem ≤ 109.
-
-# [output] array.integer
+# true if all digits of n are even, false otherwise.
