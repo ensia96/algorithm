@@ -1,37 +1,45 @@
-def evenDigitsOnly(n):
-    for i in str(n):
-        if int(i) % 2 == 1:
+def variableName(name):
+    from string import digits, ascii_letters
+    if name[0] in digits:
+        return False
+    for spell in name:
+        if spell not in list(ascii_letters)+list(digits)+['_']:
             return False
     return True
+
 
 #================================================#
 #     ^ my answer      ||  most voted answer v   #
 #================================================#
 
-def evenDigitsOnly(n):
-    return all([int(i)%2==0 for i in str(n)])
+def variableName(name):
+    return name.isidentifier()
 
 #================================================#
 #                 question v                     #
 #================================================#
 
-# Check if all digits of the given integer are even.
+# Correct variable names consist only of English letters, digits and underscores and they can't start with a digit.
+
+# Check if the given string is a correct variable name.
 
 # Example
 
-# For n = 248622, the output should be
-# evenDigitsOnly(n) = true;
-# For n = 642386, the output should be
-# evenDigitsOnly(n) = false.
+# For name = "var_1__Int", the output should be
+# variableName(name) = true;
+# For name = "qq-q", the output should be
+# variableName(name) = false;
+# For name = "2w2", the output should be
+# variableName(name) = false.
 # Input/Output
 
 # [execution time limit] 4 seconds (py3)
 
-# [input] integer n
+# [input] string name
 
 # Guaranteed constraints:
-# 1 ≤ n ≤ 109.
+# 1 ≤ name.length ≤ 10.
 
 # [output] boolean
 
-# true if all digits of n are even, false otherwise.
+# true if name is a correct variable name, false otherwise.
