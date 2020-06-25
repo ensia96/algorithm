@@ -1,45 +1,35 @@
-def variableName(name):
-    from string import digits, ascii_letters
-    if name[0] in digits:
-        return False
-    for spell in name:
-        if spell not in list(ascii_letters)+list(digits)+['_']:
-            return False
-    return True
-
-
+def alphabeticShift(inputString):
+    from string import ascii_letters
+    spells = list(ascii_letters)
+    return ''.join([spells[spells.index(spell)+1].lower() for spell in list(inputString)])
 #================================================#
 #     ^ my answer      ||  most voted answer v   #
 #================================================#
 
-def variableName(name):
-    return name.isidentifier()
+def alphabeticShift(s):
+    return "".join(chr((ord(i)-96)%26+97) for i in s)
 
 #================================================#
 #                 question v                     #
 #================================================#
 
-# Correct variable names consist only of English letters, digits and underscores and they can't start with a digit.
-
-# Check if the given string is a correct variable name.
+# Given a string, your task is to replace each of its characters by the next one in the English alphabet; i.e. replace a with b, replace b with c, etc (z would be replaced by a).
 
 # Example
 
-# For name = "var_1__Int", the output should be
-# variableName(name) = true;
-# For name = "qq-q", the output should be
-# variableName(name) = false;
-# For name = "2w2", the output should be
-# variableName(name) = false.
+# For inputString = "crazy", the output should be alphabeticShift(inputString) = "dsbaz".
+
 # Input/Output
 
 # [execution time limit] 4 seconds (py3)
 
-# [input] string name
+# [input] string inputString
+
+# A non-empty string consisting of lowercase English characters.
 
 # Guaranteed constraints:
-# 1 ≤ name.length ≤ 10.
+# 1 ≤ inputString.length ≤ 1000.
 
-# [output] boolean
+# [output] string
 
-# true if name is a correct variable name, false otherwise.
+# The resulting string after repl
