@@ -1,35 +1,53 @@
-def alphabeticShift(inputString):
-    from string import ascii_letters
-    spells = list(ascii_letters)
-    return ''.join([spells[spells.index(spell)+1].lower() for spell in list(inputString)])
-#================================================#
+def chessBoardCellColor(cell1, cell2):
+    x = lambda x: True if x[0] in ["A", "C", "E", "G"] else False
+    y = lambda x: True if int(x[1]) % 2 == 1 else False
+    return (x(cell1) == y(cell1)) == (x(cell2) == y(cell2))
+
+
+# ================================================#
 #     ^ my answer      ||  most voted answer v   #
-#================================================#
+# ================================================#
 
-def alphabeticShift(s):
-    return "".join(chr((ord(i)-96)%26+97) for i in s)
 
-#================================================#
+def chessBoardCellColor(cell1, cell2):
+
+    return (ord(cell1[0]) + int(cell1[1]) + ord(cell2[0]) + int(cell2[1])) % 2 == 0
+
+
+# ================================================#
 #                 question v                     #
-#================================================#
+# ================================================#
 
-# Given a string, your task is to replace each of its characters by the next one in the English alphabet; i.e. replace a with b, replace b with c, etc (z would be replaced by a).
+# Given two cells on the standard chess board, determine whether they have the same color or not.
 
 # Example
 
-# For inputString = "crazy", the output should be alphabeticShift(inputString) = "dsbaz".
+# For cell1 = "A1" and cell2 = "C3", the output should be
+# chessBoardCellColor(cell1, cell2) = true.
+
+
+# For cell1 = "A1" and cell2 = "H3", the output should be
+# chessBoardCellColor(cell1, cell2) = false.
+
 
 # Input/Output
 
 # [execution time limit] 4 seconds (py3)
 
-# [input] string inputString
-
-# A non-empty string consisting of lowercase English characters.
+# [input] string cell1
 
 # Guaranteed constraints:
-# 1 ≤ inputString.length ≤ 1000.
+# cell1.length = 2,
+# 'A' ≤ cell1[0] ≤ 'H',
+# 1 ≤ cell1[1] ≤ 8.
 
-# [output] string
+# [input] string cell2
 
-# The resulting string after repl
+# Guaranteed constraints:
+# cell2.length = 2,
+# 'A' ≤ cell2[0] ≤ 'H',
+# 1 ≤ cell2[1] ≤ 8.
+
+# [output] boolean
+
+# true if both cells have the same color, false otherwise.
