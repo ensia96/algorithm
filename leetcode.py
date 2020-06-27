@@ -1,9 +1,15 @@
 class Solution:
-    def search(self, nums: List[int], target: int) -> int:
-        if target in nums:
-            return nums.index(target)
-        return -1
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        standard = {_: [] for _ in set(["".join(sorted(str)) for str in strs])}
+        for str in strs:
+            standard["".join(sorted(str))].append(str)
+        return list(standard.values())
 
+
+# Success
+# Details
+# Runtime: 108 ms, faster than 51.36% of Python3 online submissions for Group Anagrams.
+# Memory Usage: 17 MB, less than 62.06% of Python3 online submissions for Group Anagrams.
 
 # ================================================#
 #     ^ my answer      ||  most voted answer v   #
@@ -11,46 +17,33 @@ class Solution:
 
 
 class Solution:
-    def search(self, nums, target):
-        self.__getitem__ = (
-            lambda i: (nums[0] <= target) ^ (nums[0] > nums[i]) ^ (target > nums[i])
-        )
-        i = bisect.bisect_left(self, True, 0, len(nums))
-        return i if target in nums[i : i + 1] else -1
+    def groupAnagrams(self, strs):
+        d = {}
+        for w in sorted(strs):
+            key = tuple(sorted(w))
+            d[key] = d.get(key, []) + [w]
+        return d.values()
 
-
-# def search(self, nums, target):
-#     lo, hi = 0, len(nums) - 1
-#     while lo < hi:
-#         mid = (lo + hi) / 2
-#         if (nums[0] > target) ^ (nums[0] > nums[mid]) ^ (target > nums[mid]):
-#             lo = mid + 1
-#         else:
-#             hi = mid
-#     return lo if target in nums[lo:lo+1] else -1
 
 # ================================================#
 #                 question v                     #
 # ================================================#
 
-# 33. Search in Rotated Sorted Array
+# 49. Group Anagrams
 # Medium
 
-# Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
+# Given an array of strings, group anagrams together.
 
-# (i.e., [0,1,2,4,5,6,7] might become [4,5,6,7,0,1,2]).
+# Example:
 
-# You are given a target value to search. If found in the array return its index, otherwise return -1.
+# Input: ["eat", "tea", "tan", "ate", "nat", "bat"],
+# Output:
+# [
+#   ["ate","eat","tea"],
+#   ["nat","tan"],
+#   ["bat"]
+# ]
+# Note:
 
-# You may assume no duplicate exists in the array.
-
-# Your algorithm's runtime complexity must be in the order of O(log n).
-
-# Example 1:
-
-# Input: nums = [4,5,6,7,0,1,2], target = 0
-# Output: 4
-# Example 2:
-
-# Input: nums = [4,5,6,7,0,1,2], target = 3
-# Output: -1
+# All inputs will be in lowercase.
+# The order of your output does not matter.
