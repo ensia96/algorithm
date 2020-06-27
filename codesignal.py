@@ -1,7 +1,7 @@
-def chessBoardCellColor(cell1, cell2):
-    x = lambda x: True if x[0] in ["A", "C", "E", "G"] else False
-    y = lambda x: True if int(x[1]) % 2 == 1 else False
-    return (x(cell1) == y(cell1)) == (x(cell2) == y(cell2))
+def circleOfNumbers(n, firstNumber):
+    if firstNumber < n / 2:
+        return n / 2 + firstNumber
+    return firstNumber - n / 2
 
 
 # ================================================#
@@ -9,45 +9,39 @@ def chessBoardCellColor(cell1, cell2):
 # ================================================#
 
 
-def chessBoardCellColor(cell1, cell2):
+def circleOfNumbers(n, firstNumber):
 
-    return (ord(cell1[0]) + int(cell1[1]) + ord(cell2[0]) + int(cell2[1])) % 2 == 0
+    return (firstNumber + n / 2) % n
 
 
 # ================================================#
 #                 question v                     #
 # ================================================#
 
-# Given two cells on the standard chess board, determine whether they have the same color or not.
+# Consider integer numbers from 0 to n - 1 written down along the circle in such a way that the distance between any two neighboring numbers is equal (note that 0 and n - 1 are neighboring, too).
+
+# Given n and firstNumber, find the number which is written in the radially opposite position to firstNumber.
 
 # Example
 
-# For cell1 = "A1" and cell2 = "C3", the output should be
-# chessBoardCellColor(cell1, cell2) = true.
-
-
-# For cell1 = "A1" and cell2 = "H3", the output should be
-# chessBoardCellColor(cell1, cell2) = false.
+# For n = 10 and firstNumber = 2, the output should be
+# circleOfNumbers(n, firstNumber) = 7.
 
 
 # Input/Output
 
 # [execution time limit] 4 seconds (py3)
 
-# [input] string cell1
+# [input] integer n
+
+# A positive even integer.
 
 # Guaranteed constraints:
-# cell1.length = 2,
-# 'A' ≤ cell1[0] ≤ 'H',
-# 1 ≤ cell1[1] ≤ 8.
+# 4 ≤ n ≤ 20.
 
-# [input] string cell2
+# [input] integer firstNumber
 
 # Guaranteed constraints:
-# cell2.length = 2,
-# 'A' ≤ cell2[0] ≤ 'H',
-# 1 ≤ cell2[1] ≤ 8.
+# 0 ≤ firstNumber ≤ n - 1.
 
-# [output] boolean
-
-# true if both cells have the same color, false otherwise.
+# [output] integer
