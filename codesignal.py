@@ -1,8 +1,21 @@
 def depositProfit(deposit, rate, threshold):
+    year = 0
+    while True:
+        deposit += deposit * rate / 100
+        year += 1
+        if deposit >= threshold:
+            break
+    return year
+
 
 # ================================================#
 #     ^ my answer      ||  most voted answer v   #
 # ================================================#
+
+
+def depositProfit(deposit, rate, threshold):
+
+    return math.ceil(math.log(threshold / deposit, 1 + rate / 100))
 
 
 # ================================================#
