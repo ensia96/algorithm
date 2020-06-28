@@ -1,12 +1,7 @@
-def depositProfit(deposit, rate, threshold):
-    year = 0
-    while True:
-        deposit += deposit * rate / 100
-        year += 1
-        if deposit >= threshold:
-            break
-    return year
+def absoluteValuesSumMinimization(a):
+    alist = [sum(map(lambda x: abs(x - num), a)) for num in a]
+    return a[alist.index(min(alist))]
 
 
-print(depositProfit(100, 20, 170))
-# => should return 3
+print(absoluteValuesSumMinimization([2, 4, 7]))
+# => should return 4

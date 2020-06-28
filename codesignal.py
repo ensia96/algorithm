@@ -1,11 +1,6 @@
-def depositProfit(deposit, rate, threshold):
-    year = 0
-    while True:
-        deposit += deposit * rate / 100
-        year += 1
-        if deposit >= threshold:
-            break
-    return year
+def absoluteValuesSumMinimization(a):
+    alist = [sum(map(lambda x: abs(x - num), a)) for num in a]
+    return a[alist.index(min(alist))]
 
 
 # ================================================#
@@ -13,55 +8,48 @@ def depositProfit(deposit, rate, threshold):
 # ================================================#
 
 
-def depositProfit(deposit, rate, threshold):
-
-    return math.ceil(math.log(threshold / deposit, 1 + rate / 100))
+def absoluteValuesSumMinimization(A):
+    return A[(len(A) - 1) // 2]
 
 
 # ================================================#
 #                 question v                     #
 # ================================================#
 
-# You have deposited a specific amount of money into your bank account. Each year your balance increases at the same growth rate. With the assumption that you don't make any additional deposits, find out how long it would take for your balance to pass a specific threshold.
+# Given a sorted array of integers a, your task is to determine which element of a is closest to all other values of a. In other words, find the element x in a, which minimizes the following sum:
+
+# abs(a[0] - x) + abs(a[1] - x) + ... + abs(a[a.length - 1] - x)
+# (where abs denotes the absolute value)
+
+# If there are several possible answers, output the smallest one.
 
 # Example
 
-# For deposit = 100, rate = 20, and threshold = 170, the output should be
-# depositProfit(deposit, rate, threshold) = 3.
+# For a = [2, 4, 7], the output should be absoluteValuesSumMinimization(a) = 4.
 
-# Each year the amount of money in your account increases by 20%. So throughout the years, your balance would be:
+# for x = 2, the value will be abs(2 - 2) + abs(4 - 2) + abs(7 - 2) = 7.
+# for x = 4, the value will be abs(2 - 4) + abs(4 - 4) + abs(7 - 4) = 5.
+# for x = 7, the value will be abs(2 - 7) + abs(4 - 7) + abs(7 - 7) = 8.
+# The lowest possible value is when x = 4, so the answer is 4.
 
-# year 0: 100;
-# year 1: 120;
-# year 2: 144;
-# year 3: 172.8.
-# Thus, it will take 3 years for your balance to pass the threshold, so the answer is 3.
+# For a = [2, 3], the output should be absoluteValuesSumMinimization(a) = 2.
+
+# for x = 2, the value will be abs(2 - 2) + abs(3 - 2) = 1.
+# for x = 3, the value will be abs(2 - 3) + abs(3 - 3) = 1.
+# Because there is a tie, the smallest x between x = 2 and x = 3 is the answer.
 
 # Input/Output
 
 # [execution time limit] 4 seconds (py3)
 
-# [input] integer deposit
+# [input] array.integer a
 
-# The initial deposit, guaranteed to be a positive integer.
-
-# Guaranteed constraints:
-# 1 ≤ deposit ≤ 100.
-
-# [input] integer rate
-
-# The rate of increase. Each year the balance increases by the rate percent of the current sum.
+# A non-empty array of integers, sorted in ascending order.
 
 # Guaranteed constraints:
-# 1 ≤ rate ≤ 100.
-
-# [input] integer threshold
-
-# The target balance.
-
-# Guaranteed constraints:
-# deposit < threshold ≤ 200.
+# 1 ≤ a.length ≤ 1000,
+# -106 ≤ a[i] ≤ 106.
 
 # [output] integer
 
-# The number of years it would take to hit the threshold.
+# An integer representing the element from a that minimizes the sum of its absolute differences with all other elements.
