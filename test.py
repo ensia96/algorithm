@@ -1,7 +1,12 @@
-def absoluteValuesSumMinimization(a):
-    alist = [sum(map(lambda x: abs(x - num), a)) for num in a]
-    return a[alist.index(min(alist))]
+def stringsRearrangement(inputArray):
+    import difflib
+
+    for i, j in [(i, j) for i in inputArray for j in inputArray if i != j]:
+        print([s for s in list(difflib.ndiff(i, j)) if s[0] != " "])
 
 
-print(absoluteValuesSumMinimization([2, 4, 7]))
-# => should return 4
+# print(stringsRearrangement(["ab", "bb", "aa"]))
+# => should return True
+
+print(stringsRearrangement(["aba", "bbb", "bab"]))
+# => should return False

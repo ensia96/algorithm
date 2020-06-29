@@ -1,55 +1,84 @@
-def absoluteValuesSumMinimization(a):
-    alist = [sum(map(lambda x: abs(x - num), a)) for num in a]
-    return a[alist.index(min(alist))]
+def stringsRearrangement(inputArray):
+    return False
+
+
+# from google import answer
+
+# def stringsRearrangement(inputArray):
+#     from itertools import permutations
+
+#     def oneLetterDiff(first_string, second_string):
+#         letter_pairs = zip(first_string, second_string)
+#         misses = (a != b for (a, b) in letter_pairs)
+#         return True if sum(misses) == 1 else False
+
+#     arrangements = permutations(inputArray)
+#     for current_arrangement in arrangements:
+#         string_comparisons = zip(current_arrangement, current_arrangement[1:])
+#         comparison_results = (oneLetterDiff(a, b) for (a, b) in string_comparisons)
+#         if all(comparison_results):
+#             return True
+#     return False
 
 
 # ================================================#
 #     ^ my answer      ||  most voted answer v   #
 # ================================================#
 
+from itertools import permutations
 
-def absoluteValuesSumMinimization(A):
-    return A[(len(A) - 1) // 2]
+
+def diff(w1, w2):
+    return sum([a[0] != a[1] for a in zip(w1, w2)]) == 1
+
+
+def stringsRearrangement(inputArray):
+    for z in permutations(inputArray):
+        if sum([diff(*x) for x in zip(z, z[1:])]) == len(inputArray) - 1:
+            return True
+    return False
 
 
 # ================================================#
 #                 question v                     #
 # ================================================#
 
-# Given a sorted array of integers a, your task is to determine which element of a is closest to all other values of a. In other words, find the element x in a, which minimizes the following sum:
+# Given an array of equal-length strings, you'd like to know if it's possible to rearrange the order of the elements in such a way that each consecutive pair of strings differ by exactly one character. Return true if it's possible, and false if not.
 
-# abs(a[0] - x) + abs(a[1] - x) + ... + abs(a[a.length - 1] - x)
-# (where abs denotes the absolute value)
-
-# If there are several possible answers, output the smallest one.
+# Note: You're only rearranging the order of the strings, not the order of the letters within the strings!
 
 # Example
 
-# For a = [2, 4, 7], the output should be absoluteValuesSumMinimization(a) = 4.
+# For inputArray = ["aba", "bbb", "bab"], the output should be
+# stringsRearrangement(inputArray) = false.
 
-# for x = 2, the value will be abs(2 - 2) + abs(4 - 2) + abs(7 - 2) = 7.
-# for x = 4, the value will be abs(2 - 4) + abs(4 - 4) + abs(7 - 4) = 5.
-# for x = 7, the value will be abs(2 - 7) + abs(4 - 7) + abs(7 - 7) = 8.
-# The lowest possible value is when x = 4, so the answer is 4.
+# There are 6 possible arrangements for these strings:
 
-# For a = [2, 3], the output should be absoluteValuesSumMinimization(a) = 2.
+# ["aba", "bbb", "bab"]
+# ["aba", "bab", "bbb"]
+# ["bbb", "aba", "bab"]
+# ["bbb", "bab", "aba"]
+# ["bab", "bbb", "aba"]
+# ["bab", "aba", "bbb"]
+# None of these satisfy the condition of consecutive strings differing by 1 character, so the answer is false.
 
-# for x = 2, the value will be abs(2 - 2) + abs(3 - 2) = 1.
-# for x = 3, the value will be abs(2 - 3) + abs(3 - 3) = 1.
-# Because there is a tie, the smallest x between x = 2 and x = 3 is the answer.
+# For inputArray = ["ab", "bb", "aa"], the output should be
+# stringsRearrangement(inputArray) = true.
+
+# It's possible to arrange these strings in a way that each consecutive pair of strings differ by 1 character (eg: "aa", "ab", "bb" or "bb", "ab", "aa"), so return true.
 
 # Input/Output
 
 # [execution time limit] 4 seconds (py3)
 
-# [input] array.integer a
+# [input] array.string inputArray
 
-# A non-empty array of integers, sorted in ascending order.
+# A non-empty array of strings of lowercase letters.
 
 # Guaranteed constraints:
-# 1 ≤ a.length ≤ 1000,
-# -106 ≤ a[i] ≤ 106.
+# 2 ≤ inputArray.length ≤ 10,
+# 1 ≤ inputArray[i].length ≤ 15.
 
-# [output] integer
+# [output] boolean
 
-# An integer representing the element from a that minimizes the sum of its absolute differences with all other elements.
+# Return true if the strings can be reordered in such a way that each neighbouring pair of strings differ by exactly one character (false otherwise).
