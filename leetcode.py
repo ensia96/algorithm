@@ -1,15 +1,15 @@
 class Solution:
-    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        standard = {_: [] for _ in set(["".join(sorted(str)) for str in strs])}
-        for str in strs:
-            standard["".join(sorted(str))].append(str)
-        return list(standard.values())
+    def maxSubArray(self, nums: List[int]) -> int:
+        for i in range(1, len(nums)):
+            if nums[i - 1] > 0:
+                nums[i] += nums[i - 1]
+        return max(nums)
 
 
 # Success
 # Details
-# Runtime: 108 ms, faster than 51.36% of Python3 online submissions for Group Anagrams.
-# Memory Usage: 17 MB, less than 62.06% of Python3 online submissions for Group Anagrams.
+# Runtime: 72 ms, faster than 46.50% of Python3 online submissions for Maximum Subarray.
+# Memory Usage: 14.8 MB, less than 10.99% of Python3 online submissions for Maximum Subarray.
 
 # ================================================#
 #     ^ my answer      ||  most voted answer v   #
@@ -17,33 +17,29 @@ class Solution:
 
 
 class Solution:
-    def groupAnagrams(self, strs):
-        d = {}
-        for w in sorted(strs):
-            key = tuple(sorted(w))
-            d[key] = d.get(key, []) + [w]
-        return d.values()
+    def maxSubArray(self, nums: List[int]) -> int:
+        from itertools import accumulate
+
+        return max(accumulate(nums, lambda x, y: x + y if x > 0 else y))
 
 
 # ================================================#
-#                 question v                     #
+#                  question v                     #
 # ================================================#
 
-# 49. Group Anagrams
-# Medium
+# 53. Maximum Subarray
+# Easy
 
-# Given an array of strings, group anagrams together.
+# Add to List
+
+# Share
+# Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
 
 # Example:
 
-# Input: ["eat", "tea", "tan", "ate", "nat", "bat"],
-# Output:
-# [
-#   ["ate","eat","tea"],
-#   ["nat","tan"],
-#   ["bat"]
-# ]
-# Note:
+# Input: [-2,1,-3,4,-1,2,1,-5,4],
+# Output: 6
+# Explanation: [4,-1,2,1] has the largest sum = 6.
+# Follow up:
 
-# All inputs will be in lowercase.
-# The order of your output does not matter.
+# If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
