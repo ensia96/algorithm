@@ -1,15 +1,8 @@
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
-        for i in range(1, len(nums)):
-            if nums[i - 1] > 0:
-                nums[i] += nums[i - 1]
-        return max(nums)
+        return False
 
 
-# Success
-# Details
-# Runtime: 72 ms, faster than 46.50% of Python3 online submissions for Maximum Subarray.
-# Memory Usage: 14.8 MB, less than 10.99% of Python3 online submissions for Maximum Subarray.
 
 # ================================================#
 #     ^ my answer      ||  most voted answer v   #
@@ -17,29 +10,46 @@ class Solution:
 
 
 class Solution:
-    def maxSubArray(self, nums: List[int]) -> int:
-        from itertools import accumulate
+    def canJump(self, nums):
+        return reduce(lambda m, (i, n): max(m, i+n) * (i <= m), enumerate(nums, 1), 1) > 0
 
-        return max(accumulate(nums, lambda x, y: x + y if x > 0 else y))
+
+# def canJump(self, nums):
+#     m = 0
+#     for i, n in enumerate(nums):
+#         if i > m:
+#             return False
+#         m = max(m, i+n)
+#     return True
 
 
 # ================================================#
 #                  question v                     #
 # ================================================#
 
-# 53. Maximum Subarray
-# Easy
+# 55. Jump Game
+# Medium
 
-# Add to List
+# Given an array of non-negative integers, you are initially positioned at the first index of the array.
 
-# Share
-# Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
+# Each element in the array represents your maximum jump length at that position.
 
-# Example:
+# Determine if you are able to reach the last index.
 
-# Input: [-2,1,-3,4,-1,2,1,-5,4],
-# Output: 6
-# Explanation: [4,-1,2,1] has the largest sum = 6.
-# Follow up:
 
-# If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
+# Example 1:
+
+# Input: nums = [2,3,1,1,4]
+# Output: true
+# Explanation: Jump 1 step from index 0 to 1, then 3 steps to the last index.
+# Example 2:
+
+# Input: nums = [3,2,1,0,4]
+# Output: false
+# Explanation: You will always arrive at index 3 no matter what. Its maximum jump length is 0, which makes it impossible to reach the last index.
+
+
+# Constraints:
+
+# 1 <= nums.length <= 3 * 10^4
+# 0 <= nums[i][j] <= 10^5

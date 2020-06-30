@@ -1,12 +1,9 @@
-def stringsRearrangement(inputArray):
-    import difflib
-
-    for i, j in [(i, j) for i in inputArray for j in inputArray if i != j]:
-        print([s for s in list(difflib.ndiff(i, j)) if s[0] != " "])
+def canJump(nums):
+    
 
 
-# print(stringsRearrangement(["ab", "bb", "aa"]))
+# print(canJump([2, 3, 1, 1, 4]))
 # => should return True
 
-print(stringsRearrangement(["aba", "bbb", "bab"]))
+print(canJump([3, 2, 1, 0, 4]))
 # => should return False
