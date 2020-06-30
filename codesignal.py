@@ -1,84 +1,43 @@
-def stringsRearrangement(inputArray):
-    return False
-
-
-# from google import answer
-
-# def stringsRearrangement(inputArray):
-#     from itertools import permutations
-
-#     def oneLetterDiff(first_string, second_string):
-#         letter_pairs = zip(first_string, second_string)
-#         misses = (a != b for (a, b) in letter_pairs)
-#         return True if sum(misses) == 1 else False
-
-#     arrangements = permutations(inputArray)
-#     for current_arrangement in arrangements:
-#         string_comparisons = zip(current_arrangement, current_arrangement[1:])
-#         comparison_results = (oneLetterDiff(a, b) for (a, b) in string_comparisons)
-#         if all(comparison_results):
-#             return True
-#     return False
+def extractEachKth(inputArray, k):
+    return [_ for id, _ in enumerate(inputArray) if (id + 1) % k != 0]
 
 
 # ================================================#
 #     ^ my answer      ||  most voted answer v   #
 # ================================================#
 
-from itertools import permutations
 
-
-def diff(w1, w2):
-    return sum([a[0] != a[1] for a in zip(w1, w2)]) == 1
-
-
-def stringsRearrangement(inputArray):
-    for z in permutations(inputArray):
-        if sum([diff(*x) for x in zip(z, z[1:])]) == len(inputArray) - 1:
-            return True
-    return False
+def extractEachKth(inputArray, k):
+    del inputArray[k - 1 :: k]
+    return inputArray
 
 
 # ================================================#
 #                 question v                     #
 # ================================================#
 
-# Given an array of equal-length strings, you'd like to know if it's possible to rearrange the order of the elements in such a way that each consecutive pair of strings differ by exactly one character. Return true if it's possible, and false if not.
-
-# Note: You're only rearranging the order of the strings, not the order of the letters within the strings!
+# Given array of integers, remove each kth element from it.
 
 # Example
 
-# For inputArray = ["aba", "bbb", "bab"], the output should be
-# stringsRearrangement(inputArray) = false.
-
-# There are 6 possible arrangements for these strings:
-
-# ["aba", "bbb", "bab"]
-# ["aba", "bab", "bbb"]
-# ["bbb", "aba", "bab"]
-# ["bbb", "bab", "aba"]
-# ["bab", "bbb", "aba"]
-# ["bab", "aba", "bbb"]
-# None of these satisfy the condition of consecutive strings differing by 1 character, so the answer is false.
-
-# For inputArray = ["ab", "bb", "aa"], the output should be
-# stringsRearrangement(inputArray) = true.
-
-# It's possible to arrange these strings in a way that each consecutive pair of strings differ by 1 character (eg: "aa", "ab", "bb" or "bb", "ab", "aa"), so return true.
+# For inputArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] and k = 3, the output should be
+# extractEachKth(inputArray, k) = [1, 2, 4, 5, 7, 8, 10].
 
 # Input/Output
 
 # [execution time limit] 4 seconds (py3)
 
-# [input] array.string inputArray
-
-# A non-empty array of strings of lowercase letters.
+# [input] array.integer inputArray
 
 # Guaranteed constraints:
-# 2 ≤ inputArray.length ≤ 10,
-# 1 ≤ inputArray[i].length ≤ 15.
+# 5 ≤ inputArray.length ≤ 15,
+# -20 ≤ inputArray[i] ≤ 20.
 
-# [output] boolean
+# [input] integer k
 
-# Return true if the strings can be reordered in such a way that each neighbouring pair of strings differ by exactly one character (false otherwise).
+# Guaranteed constraints:
+# 1 ≤ k ≤ 10.
+
+# [output] array.integer
+
+# inputArray without elements k - 1, 2k - 1, 3k - 1 etc.
