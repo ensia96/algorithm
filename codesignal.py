@@ -1,5 +1,7 @@
-def extractEachKth(inputArray, k):
-    return [_ for id, _ in enumerate(inputArray) if (id + 1) % k != 0]
+def firstDigit(inputString):
+    from string import digits
+
+    return [i for i in inputString if i in digits][0]
 
 
 # ================================================#
@@ -7,37 +9,39 @@ def extractEachKth(inputArray, k):
 # ================================================#
 
 
-def extractEachKth(inputArray, k):
-    del inputArray[k - 1 :: k]
-    return inputArray
+def firstDigit(inputString):
+    for i in inputString:
+        if i.isdigit():
+            return i
+
+
+# def firstDigit(inputString):
+#     return re.findall('\d', inputString)[0]
 
 
 # ================================================#
 #                 question v                     #
 # ================================================#
 
-# Given array of integers, remove each kth element from it.
+# Find the leftmost digit that occurs in a given string.
 
 # Example
 
-# For inputArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] and k = 3, the output should be
-# extractEachKth(inputArray, k) = [1, 2, 4, 5, 7, 8, 10].
-
+# For inputString = "var_1__Int", the output should be
+# firstDigit(inputString) = '1';
+# For inputString = "q2q-q", the output should be
+# firstDigit(inputString) = '2';
+# For inputString = "0ss", the output should be
+# firstDigit(inputString) = '0'.
 # Input/Output
 
 # [execution time limit] 4 seconds (py3)
 
-# [input] array.integer inputArray
+# [input] string inputString
+
+# A string containing at least one digit.
 
 # Guaranteed constraints:
-# 5 ≤ inputArray.length ≤ 15,
-# -20 ≤ inputArray[i] ≤ 20.
+# 3 ≤ inputString.length ≤ 10.
 
-# [input] integer k
-
-# Guaranteed constraints:
-# 1 ≤ k ≤ 10.
-
-# [output] array.integer
-
-# inputArray without elements k - 1, 2k - 1, 3k - 1 etc.
+# [output] char
