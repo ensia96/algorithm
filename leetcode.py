@@ -1,55 +1,68 @@
 class Solution:
-    def maxSubArray(self, nums: List[int]) -> int:
-        return False
+    def minPathSum(self, grid: List[List[int]]) -> int:
+        row = len(grid) - 1
+        column = len(grid[0]) - 1
+        i = row - 1
+        j = column - 1
+
+        while j >= 0:
+            grid[row][j] += grid[row][j + 1]
+            j -= 1
+
+        while i >= 0:
+            grid[i][column] += grid[i + 1][column]
+            i -= 1
+
+        j = column - 1
+        i = row - 1
+
+        while i >= 0:
+            while j >= 0:
+                grid[i][j] += min(grid[i][j + 1], grid[i + 1][j])
+                j -= 1
+            j = column - 1
+            i -= 1
+        return grid[0][0]
 
 
-
+# Success
+# Details
+# Runtime: 92 ms, faster than 97.66% of Python3 online submissions for Minimum Path Sum.
+# Memory Usage: 15.3 MB, less than 54.27% of Python3 online submissions for Minimum Path Sum.
 # ================================================#
 #     ^ my answer      ||  most voted answer v   #
 # ================================================#
 
 
 class Solution:
-    def canJump(self, nums):
-        return reduce(lambda m, (i, n): max(m, i+n) * (i <= m), enumerate(nums, 1), 1) > 0
-
-
-# def canJump(self, nums):
-#     m = 0
-#     for i, n in enumerate(nums):
-#         if i > m:
-#             return False
-#         m = max(m, i+n)
-#     return True
+    def minPathSum(self, grid):
+        M, N = len(grid), len(grid[0])
+        dp = [0] + [sys.maxint] * (N - 1)
+        for i in range(M):
+            dp[0] = dp[0] + grid[i][0]
+            for j in range(1, N):
+                dp[j] = min(dp[j - 1], dp[j]) + grid[i][j]
+        return dp[-1]
 
 
 # ================================================#
 #                  question v                     #
 # ================================================#
 
-# 55. Jump Game
+# 64. Minimum Path Sum
 # Medium
 
-# Given an array of non-negative integers, you are initially positioned at the first index of the array.
+# Given a m x n grid filled with non-negative numbers, find a path from top left to bottom right which minimizes the sum of all numbers along its path.
 
-# Each element in the array represents your maximum jump length at that position.
+# Note: You can only move either down or right at any point in time.
 
-# Determine if you are able to reach the last index.
+# Example:
 
-
-# Example 1:
-
-# Input: nums = [2,3,1,1,4]
-# Output: true
-# Explanation: Jump 1 step from index 0 to 1, then 3 steps to the last index.
-# Example 2:
-
-# Input: nums = [3,2,1,0,4]
-# Output: false
-# Explanation: You will always arrive at index 3 no matter what. Its maximum jump length is 0, which makes it impossible to reach the last index.
-
-
-# Constraints:
-
-# 1 <= nums.length <= 3 * 10^4
-# 0 <= nums[i][j] <= 10^5
+# Input:
+# [
+#   [1,3,1],
+#   [1,5,1],
+#   [4,2,1]
+# ]
+# Output: 7
+# Explanation: Because the path 1→3→1→1→1 minimizes the sum.
