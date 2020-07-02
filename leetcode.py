@@ -1,81 +1,64 @@
 class Solution:
-    def maxProfit(self, prices: List[int]) -> int:
-        return sum(
-            [
-                prices[i] - prices[i - 1]
-                for i in range(1, len(prices))
-                if prices[i - 1] < prices[i]
-            ]
-        )
+    def maxPathSum(self, root: TreeNode) -> int:
+        return False
 
 
-# Success
-# Details
-# Runtime: 60 ms, faster than 82.92% of Python3 online submissions for Best Time to Buy and Sell Stock II.
-# Memory Usage: 15.1 MB, less than 56.80% of Python3 online submissions for Best Time to Buy and Sell Stock II.
 # ================================================#
 #     ^ my answer      ||  most voted answer v   #
 # ================================================#
 
 
-class Solution(object):
-    def maxProfit(self, prices):
-        return sum(max(prices[i + 1] - prices[i], 0) for i in range(len(prices) - 1))
+class Solution:
+    def maxPathSum(self, root: TreeNode) -> int:
+        max_path = float("-inf")
 
-    # with zip
-    # return sum([b-a for a,b in zip(prices,prices[1:]) if b-a > 0])
+        def get_max_gain(node):
+            nonlocal max_path
+            if node is None:
+                return 0
 
-    # with itertools
-    # from itertools import tee
+            gain_on_left = max(get_max_gain(node.left), 0)
+            gain_on_right = max(get_max_gain(node.right), 0)
 
-    # def pairwise(iterable):
-    #     a,b = tee(iterable)
-    #     next(b, None)
-    #     return zip(a,b)
+            current_max_path = node.val + gain_on_left + gain_on_right
+            max_path = max(max_path, current_max_path)
 
-    # class Solution(object):
-    #     def maxProfit(self, prices):
-    #         """
-    #         :type prices: List[int]
-    #         :rtype: int
-    #         """
-    #         return sum(y-x if y>x else 0 for x,y in pairwise(prices))
+            return node.val + max(gain_on_left, gain_on_right)
+
+        get_max_gain(root)
+        return max_path
 
 
 # ================================================#
 #                  question v                     #
 # ================================================#
 
-# 122. Best Time to Buy and Sell Stock II
-# Easy
+# 124. Binary Tree Maximum Path Sum
+# Hard
 
-# Say you have an array prices for which the ith element is the price of a given stock on day i.
+# Given a non-empty binary tree, find the maximum path sum.
 
-# Design an algorithm to find the maximum profit. You may complete as many transactions as you like (i.e., buy one and sell one share of the stock multiple times).
-
-# Note: You may not engage in multiple transactions at the same time (i.e., you must sell the stock before you buy again).
+# For this problem, a path is defined as any sequence of nodes from some starting node to any node in the tree along the parent-child connections. The path must contain at least one node and does not need to go through the root.
 
 # Example 1:
 
-# Input: [7,1,5,3,6,4]
-# Output: 7
-# Explanation: Buy on day 2 (price = 1) and sell on day 3 (price = 5), profit = 5-1 = 4.
-#              Then buy on day 4 (price = 3) and sell on day 5 (price = 6), profit = 6-3 = 3.
+# Input: [1,2,3]
+
+#        1
+#       / \
+#      2   3
+
+# Output: 6
 # Example 2:
 
-# Input: [1,2,3,4,5]
-# Output: 4
-# Explanation: Buy on day 1 (price = 1) and sell on day 5 (price = 5), profit = 5-1 = 4.
-#              Note that you cannot buy on day 1, buy on day 2 and sell them later, as you are
-#              engaging multiple transactions at the same time. You must sell before buying again.
-# Example 3:
+# Input: [-10,9,20,null,null,15,7]
 
-# Input: [7,6,4,3,1]
-# Output: 0
-# Explanation: In this case, no transaction is done, i.e. max profit = 0.
+#    -10
+#    / \
+#   9  20
+#     /  \
+#    15   7
 
+# Output: 42
 
-# Constraints:
-
-# 1 <= prices.length <= 3 * 10 ^ 4
-# 0 <= prices[i] <= 10 ^ 4
+# TreeNode{val: 1, left: TreeNode{val: 2, left: None, right: None}, right: TreeNode{val: 3, left: None, right: None}}
