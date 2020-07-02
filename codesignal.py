@@ -1,7 +1,5 @@
-def firstDigit(inputString):
-    from string import digits
-
-    return [i for i in inputString if i in digits][0]
+def differentSymbolsNaive(s):
+    return len(set([_ for _ in s]))
 
 
 # ================================================#
@@ -9,39 +7,32 @@ def firstDigit(inputString):
 # ================================================#
 
 
-def firstDigit(inputString):
-    for i in inputString:
-        if i.isdigit():
-            return i
-
-
-# def firstDigit(inputString):
-#     return re.findall('\d', inputString)[0]
+def differentSymbolsNaive(s):
+    return len(set(s))
 
 
 # ================================================#
 #                 question v                     #
 # ================================================#
 
-# Find the leftmost digit that occurs in a given string.
+# Given a string, find the number of different characters in it.
 
 # Example
 
-# For inputString = "var_1__Int", the output should be
-# firstDigit(inputString) = '1';
-# For inputString = "q2q-q", the output should be
-# firstDigit(inputString) = '2';
-# For inputString = "0ss", the output should be
-# firstDigit(inputString) = '0'.
+# For s = "cabca", the output should be
+# differentSymbolsNaive(s) = 3.
+
+# There are 3 different characters a, b and c.
+
 # Input/Output
 
 # [execution time limit] 4 seconds (py3)
 
-# [input] string inputString
+# [input] string s
 
-# A string containing at least one digit.
+# A string of lowercase English letters.
 
 # Guaranteed constraints:
-# 3 ≤ inputString.length ≤ 10.
+# 3 ≤ s.length ≤ 1000.
 
-# [output] char
+# [output] integer
