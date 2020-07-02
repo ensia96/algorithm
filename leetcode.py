@@ -1,68 +1,81 @@
 class Solution:
-    def minPathSum(self, grid: List[List[int]]) -> int:
-        row = len(grid) - 1
-        column = len(grid[0]) - 1
-        i = row - 1
-        j = column - 1
-
-        while j >= 0:
-            grid[row][j] += grid[row][j + 1]
-            j -= 1
-
-        while i >= 0:
-            grid[i][column] += grid[i + 1][column]
-            i -= 1
-
-        j = column - 1
-        i = row - 1
-
-        while i >= 0:
-            while j >= 0:
-                grid[i][j] += min(grid[i][j + 1], grid[i + 1][j])
-                j -= 1
-            j = column - 1
-            i -= 1
-        return grid[0][0]
+    def maxProfit(self, prices: List[int]) -> int:
+        return sum(
+            [
+                prices[i] - prices[i - 1]
+                for i in range(1, len(prices))
+                if prices[i - 1] < prices[i]
+            ]
+        )
 
 
 # Success
 # Details
-# Runtime: 92 ms, faster than 97.66% of Python3 online submissions for Minimum Path Sum.
-# Memory Usage: 15.3 MB, less than 54.27% of Python3 online submissions for Minimum Path Sum.
+# Runtime: 60 ms, faster than 82.92% of Python3 online submissions for Best Time to Buy and Sell Stock II.
+# Memory Usage: 15.1 MB, less than 56.80% of Python3 online submissions for Best Time to Buy and Sell Stock II.
 # ================================================#
 #     ^ my answer      ||  most voted answer v   #
 # ================================================#
 
 
-class Solution:
-    def minPathSum(self, grid):
-        M, N = len(grid), len(grid[0])
-        dp = [0] + [sys.maxint] * (N - 1)
-        for i in range(M):
-            dp[0] = dp[0] + grid[i][0]
-            for j in range(1, N):
-                dp[j] = min(dp[j - 1], dp[j]) + grid[i][j]
-        return dp[-1]
+class Solution(object):
+    def maxProfit(self, prices):
+        return sum(max(prices[i + 1] - prices[i], 0) for i in range(len(prices) - 1))
+
+    # with zip
+    # return sum([b-a for a,b in zip(prices,prices[1:]) if b-a > 0])
+
+    # with itertools
+    # from itertools import tee
+
+    # def pairwise(iterable):
+    #     a,b = tee(iterable)
+    #     next(b, None)
+    #     return zip(a,b)
+
+    # class Solution(object):
+    #     def maxProfit(self, prices):
+    #         """
+    #         :type prices: List[int]
+    #         :rtype: int
+    #         """
+    #         return sum(y-x if y>x else 0 for x,y in pairwise(prices))
 
 
 # ================================================#
 #                  question v                     #
 # ================================================#
 
-# 64. Minimum Path Sum
-# Medium
+# 122. Best Time to Buy and Sell Stock II
+# Easy
 
-# Given a m x n grid filled with non-negative numbers, find a path from top left to bottom right which minimizes the sum of all numbers along its path.
+# Say you have an array prices for which the ith element is the price of a given stock on day i.
 
-# Note: You can only move either down or right at any point in time.
+# Design an algorithm to find the maximum profit. You may complete as many transactions as you like (i.e., buy one and sell one share of the stock multiple times).
 
-# Example:
+# Note: You may not engage in multiple transactions at the same time (i.e., you must sell the stock before you buy again).
 
-# Input:
-# [
-#   [1,3,1],
-#   [1,5,1],
-#   [4,2,1]
-# ]
+# Example 1:
+
+# Input: [7,1,5,3,6,4]
 # Output: 7
-# Explanation: Because the path 1→3→1→1→1 minimizes the sum.
+# Explanation: Buy on day 2 (price = 1) and sell on day 3 (price = 5), profit = 5-1 = 4.
+#              Then buy on day 4 (price = 3) and sell on day 5 (price = 6), profit = 6-3 = 3.
+# Example 2:
+
+# Input: [1,2,3,4,5]
+# Output: 4
+# Explanation: Buy on day 1 (price = 1) and sell on day 5 (price = 5), profit = 5-1 = 4.
+#              Note that you cannot buy on day 1, buy on day 2 and sell them later, as you are
+#              engaging multiple transactions at the same time. You must sell before buying again.
+# Example 3:
+
+# Input: [7,6,4,3,1]
+# Output: 0
+# Explanation: In this case, no transaction is done, i.e. max profit = 0.
+
+
+# Constraints:
+
+# 1 <= prices.length <= 3 * 10 ^ 4
+# 0 <= prices[i] <= 10 ^ 4
