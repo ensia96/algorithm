@@ -1,5 +1,15 @@
-def differentSymbolsNaive(s):
-    return len(set([_ for _ in s]))
+def arrayMaxConsecutiveSum(inputArray, k):
+    max_v = sum(inputArray[0:k])
+    l = len(inputArray)
+    last_v = max_v
+    for i in range(k, l):
+        last_v = last_v + inputArray[i] - inputArray[i - k]
+        if max_v < last_v:
+            max_v = last_v
+    return max_v
+
+    # return max(sum(inputArray[i:i+k]) for i in range(len(inputArray)-k))
+    # too slow...
 
 
 # ================================================#
@@ -7,32 +17,58 @@ def differentSymbolsNaive(s):
 # ================================================#
 
 
-def differentSymbolsNaive(s):
-    return len(set(s))
+def arrayMaxConsecutiveSum(a, k):
+    c = m = sum(a[:k])
+
+    for i in range(len(a) - k):
+        c = c + a[i + k] - a[i]
+        m = max(c, m)
+
+    return m
+
+    # s = m = sum(inputArray[:k])
+    # for i in range(k, len(inputArray)):
+    #     s += inputArray[i] - inputArray[i-k]
+    #     if s > m: m = s
+    # return m
 
 
 # ================================================#
 #                 question v                     #
 # ================================================#
 
-# Given a string, find the number of different characters in it.
+# Given array of integers, find the maximal possible sum of some of its k consecutive elements.
 
 # Example
 
-# For s = "cabca", the output should be
-# differentSymbolsNaive(s) = 3.
+# For inputArray = [2, 3, 5, 1, 6] and k = 2, the output should be
+# arrayMaxConsecutiveSum(inputArray, k) = 8.
+# All possible sums of 2 consecutive elements are:
 
-# There are 3 different characters a, b and c.
-
+# 2 + 3 = 5;
+# 3 + 5 = 8;
+# 5 + 1 = 6;
+# 1 + 6 = 7.
+# Thus, the answer is 8.
 # Input/Output
 
 # [execution time limit] 4 seconds (py3)
 
-# [input] string s
+# [input] array.integer inputArray
 
-# A string of lowercase English letters.
+# Array of positive integers.
 
 # Guaranteed constraints:
-# 3 ≤ s.length ≤ 1000.
+# 3 ≤ inputArray.length ≤ 105,
+# 1 ≤ inputArray[i] ≤ 1000.
+
+# [input] integer k
+
+# An integer (not greater than the length of inputArray).
+
+# Guaranteed constraints:
+# 1 ≤ k ≤ inputArray.length.
 
 # [output] integer
+
+# The maximal possible sum.
