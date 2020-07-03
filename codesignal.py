@@ -1,15 +1,11 @@
-def arrayMaxConsecutiveSum(inputArray, k):
-    max_v = sum(inputArray[0:k])
-    l = len(inputArray)
-    last_v = max_v
-    for i in range(k, l):
-        last_v = last_v + inputArray[i] - inputArray[i - k]
-        if max_v < last_v:
-            max_v = last_v
-    return max_v
-
-    # return max(sum(inputArray[i:i+k]) for i in range(len(inputArray)-k))
-    # too slow...
+def growingPlant(upSpeed, downSpeed, desiredHeight):
+    height = upSpeed
+    answer = 1
+    while True:
+        if height >= desiredHeight:
+            return answer
+        height += upSpeed - downSpeed
+        answer += 1
 
 
 # ================================================#
@@ -17,58 +13,63 @@ def arrayMaxConsecutiveSum(inputArray, k):
 # ================================================#
 
 
-def arrayMaxConsecutiveSum(a, k):
-    c = m = sum(a[:k])
-
-    for i in range(len(a) - k):
-        c = c + a[i + k] - a[i]
-        m = max(c, m)
-
-    return m
-
-    # s = m = sum(inputArray[:k])
-    # for i in range(k, len(inputArray)):
-    #     s += inputArray[i] - inputArray[i-k]
-    #     if s > m: m = s
-    # return m
+def growingPlant(upSpeed, downSpeed, desiredHeight):
+    if desiredHeight <= upSpeed:
+        return 1
+    return math.ceil((desiredHeight - upSpeed) / (upSpeed - downSpeed) + 1)
 
 
 # ================================================#
 #                 question v                     #
 # ================================================#
 
-# Given array of integers, find the maximal possible sum of some of its k consecutive elements.
+# Caring for a plant can be hard work, but since you tend to it regularly, you have a plant that grows consistently. Each day, its height increases by a fixed amount represented by the integer upSpeed. But due to lack of sunlight, the plant decreases in height every night, by an amount represented by downSpeed.
+
+# Since you grew the plant from a seed, it started at height 0 initially. Given an integer desiredHeight, your task is to find how many days it'll take for the plant to reach this height.
 
 # Example
 
-# For inputArray = [2, 3, 5, 1, 6] and k = 2, the output should be
-# arrayMaxConsecutiveSum(inputArray, k) = 8.
-# All possible sums of 2 consecutive elements are:
+# For upSpeed = 100, downSpeed = 10, and desiredHeight = 910, the output should be
+# growingPlant(upSpeed, downSpeed, desiredHeight) = 10.
 
-# 2 + 3 = 5;
-# 3 + 5 = 8;
-# 5 + 1 = 6;
-# 1 + 6 = 7.
-# Thus, the answer is 8.
+# #	Day	Night
+# 1	100	90
+# 2	190	180
+# 3	280	270
+# 4	370	360
+# 5	460	450
+# 6	550	540
+# 7	640	630
+# 8	730	720
+# 9	820	810
+# 10	910	900
+# The plant first reaches a height of 910 on day 10.
+
 # Input/Output
 
 # [execution time limit] 4 seconds (py3)
 
-# [input] array.integer inputArray
+# [input] integer upSpeed
 
-# Array of positive integers.
-
-# Guaranteed constraints:
-# 3 ≤ inputArray.length ≤ 105,
-# 1 ≤ inputArray[i] ≤ 1000.
-
-# [input] integer k
-
-# An integer (not greater than the length of inputArray).
+# A positive integer representing the daily growth of the plant.
 
 # Guaranteed constraints:
-# 1 ≤ k ≤ inputArray.length.
+# 3 ≤ upSpeed ≤ 100.
+
+# [input] integer downSpeed
+
+# A positive integer representing the nightly decline of the plant.
+
+# Guaranteed constraints:
+# 2 ≤ downSpeed < upSpeed.
+
+# [input] integer desiredHeight
+
+# A positive integer representing the goal height.
+
+# Guaranteed constraints:
+# 4 ≤ desiredHeight ≤ 1000.
 
 # [output] integer
 
-# The maximal possible sum.
+# The number of days that it will take for the plant to reach / pass desiredHeight.
