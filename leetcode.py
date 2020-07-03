@@ -1,72 +1,83 @@
-class Solution:
-    def singleNumber(self, nums: List[int]) -> int:
-        return [_ for _ in set(nums) if nums.count(_) == 1][0]
+class LRUCache:
+    def __init__(self, capacity: int):
+        self.cache = {}
+        self.capacity = capacity
+        self.history = []
+
+    def get(self, key: int) -> int:
+        print("<get>", self.cache)
+        print("{history}", self.history)
+        if key in self.cache:
+            return self.cache[key]
+        return -1
+
+    def put(self, key: int, value: int) -> None:
+        print("<put before>", self.cache)
+        print("{history}", self.history)
+        self.history.append(key)
+        if len(self.cache) == self.capacity:
+            del self.cache[self.history.pop(0)]
+        self.cache[key] = value
+        print("<put after>", self.cache)
+        print("{history}", self.history)
+
+    return False
 
 
-# Success
-# Details
-# Runtime: 5408 ms, faster than 6.85% of Python3 online submissions for Single Number.
-# Memory Usage: 16.2 MB, less than 73.89% of Python3 online submissions for Single Number.
 # ================================================#
 #     ^ my answer      ||  most voted answer v   #
 # ================================================#
 
 
-class Solution:
-    def singleNumber1(self, nums):
-        dic = {}
-        for num in nums:
-            dic[num] = dic.get(num, 0) + 1
-        for key, val in dic.items():
-            if val == 1:
-                return key
+class LRUCache:
+    from collections import OrderedDict
 
-    # def singleNumber2(self, nums):
-    #     res = 0
-    #     for num in nums:
-    #         res ^= num
-    #     return res
+    def __init__(self, Capacity):
+        self.size = Capacity
+        self.cache = OrderedDict()
 
-    # def singleNumber3(self, nums):
-    #     return 2*sum(set(nums))-sum(nums)
+    def get(self, key):
+        if key not in self.cache:
+            return -1
+        val = self.cache[key]
+        self.cache.move_to_end(key)
+        return val
 
-    # def singleNumber4(self, nums):
-    #     return reduce(lambda x, y: x ^ y, nums)
-
-    # def singleNumber(self, nums):
-    #     return reduce(operator.xor, nums)
+    def put(self, key, val):
+        if key in self.cache:
+            del self.cache[key]
+        self.cache[key] = val
+        if len(self.cache) > self.size:
+            self.cache.popitem(last=False)
 
 
 # ================================================#
 #                  question v                     #
 # ================================================#
 
-# 124. Binary Tree Maximum Path Sum
-# Hard
+# 146. LRU Cache
+# Medium
 
-# Given a non-empty binary tree, find the maximum path sum.
+# Design and implement a data structure for Least Recently Used (LRU) cache. It should support the following operations: get and put.
 
-# For this problem, a path is defined as any sequence of nodes from some starting node to any node in the tree along the parent-child connections. The path must contain at least one node and does not need to go through the root.
+# get(key) - Get the value (will always be positive) of the key if the key exists in the cache, otherwise return -1.
+# put(key, value) - Set or insert the value if the key is not already present. When the cache reached its capacity, it should invalidate the least recently used item before inserting a new item.
 
-# Example 1:
+# The cache is initialized with a positive capacity.
 
-# Input: [1,2,3]
+# Follow up:
+# Could you do both operations in O(1) time complexity?
 
-#        1
-#       / \
-#      2   3
+# Example:
 
-# Output: 6
-# Example 2:
+# LRUCache cache = new LRUCache( 2 /* capacity */ );
 
-# Input: [-10,9,20,null,null,15,7]
-
-#    -10
-#    / \
-#   9  20
-#     /  \
-#    15   7
-
-# Output: 42
-
-# TreeNode{val: 1, left: TreeNode{val: 2, left: None, right: None}, right: TreeNode{val: 3, left: None, right: None}}
+# cache.put(1, 1);
+# cache.put(2, 2);
+# cache.get(1);       // returns 1
+# cache.put(3, 3);    // evicts key 2
+# cache.get(2);       // returns -1 (not found)
+# cache.put(4, 4);    // evicts key 1
+# cache.get(1);       // returns -1 (not found)
+# cache.get(3);       // returns 3
+# cache.get(4);       // returns 4
