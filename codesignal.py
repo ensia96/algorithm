@@ -18,6 +18,8 @@ def growingPlant(upSpeed, downSpeed, desiredHeight):
         return 1
     return math.ceil((desiredHeight - upSpeed) / (upSpeed - downSpeed) + 1)
 
+    # return 1 if desiredHeight<=upSpeed else (desiredHeight-upSpeed-1)//(upSpeed-downSpeed)+2
+
 
 # ================================================#
 #                 question v                     #
