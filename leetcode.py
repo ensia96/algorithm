@@ -1,83 +1,87 @@
-class LRUCache:
-    def __init__(self, capacity: int):
-        self.cache = {}
-        self.capacity = capacity
-        self.history = []
+class MinStack:
+    def __init__(self):
+        """
+        initialize your data structure here.
+        """
+        self.stack = []
 
-    def get(self, key: int) -> int:
-        print("<get>", self.cache)
-        print("{history}", self.history)
-        if key in self.cache:
-            return self.cache[key]
-        return -1
+    def push(self, x: int) -> None:
+        self.stack.append(x)
 
-    def put(self, key: int, value: int) -> None:
-        print("<put before>", self.cache)
-        print("{history}", self.history)
-        self.history.append(key)
-        if len(self.cache) == self.capacity:
-            del self.cache[self.history.pop(0)]
-        self.cache[key] = value
-        print("<put after>", self.cache)
-        print("{history}", self.history)
+    def pop(self) -> None:
+        self.stack.pop()
 
-    return False
+    def top(self) -> int:
+        return self.stack[-1]
+
+    def getMin(self) -> int:
+        return sorted(self.stack)[0]
 
 
+# Success
+# Details
+# Runtime: 604 ms, faster than 23.64% of Python3 online submissions for Min Stack.
+# Memory Usage: 17.6 MB, less than 42.52% of Python3 online submissions for Min Stack.
 # ================================================#
 #     ^ my answer      ||  most voted answer v   #
 # ================================================#
 
 
-class LRUCache:
-    from collections import OrderedDict
+class MinStack:
+    def __init__(self):
+        self.stack = [(-1, float("inf"))]
 
-    def __init__(self, Capacity):
-        self.size = Capacity
-        self.cache = OrderedDict()
+    def push(self, x):
+        self.stack.append([x, min(x, self.stack[-1][1])])
 
-    def get(self, key):
-        if key not in self.cache:
-            return -1
-        val = self.cache[key]
-        self.cache.move_to_end(key)
-        return val
+    def pop(self):
+        if len(self.stack) > 1:
+            self.stack.pop()
 
-    def put(self, key, val):
-        if key in self.cache:
-            del self.cache[key]
-        self.cache[key] = val
-        if len(self.cache) > self.size:
-            self.cache.popitem(last=False)
+    def top(self):
+        if len(self.stack) == 1:
+            return None
+        return self.stack[-1][0]
+
+    def getMin(self):
+        return self.stack[-1][1]
 
 
 # ================================================#
 #                  question v                     #
 # ================================================#
 
-# 146. LRU Cache
-# Medium
+# 155. Min Stack
+# Easy
 
-# Design and implement a data structure for Least Recently Used (LRU) cache. It should support the following operations: get and put.
+# Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
 
-# get(key) - Get the value (will always be positive) of the key if the key exists in the cache, otherwise return -1.
-# put(key, value) - Set or insert the value if the key is not already present. When the cache reached its capacity, it should invalidate the least recently used item before inserting a new item.
+# push(x) -- Push element x onto stack.
+# pop() -- Removes the element on top of the stack.
+# top() -- Get the top element.
+# getMin() -- Retrieve the minimum element in the stack.
 
-# The cache is initialized with a positive capacity.
 
-# Follow up:
-# Could you do both operations in O(1) time complexity?
+# Example 1:
 
-# Example:
+# Input
+# ["MinStack","push","push","push","getMin","pop","top","getMin"]
+# [[],[-2],[0],[-3],[],[],[],[]]
 
-# LRUCache cache = new LRUCache( 2 /* capacity */ );
+# Output
+# [null,null,null,null,-3,null,0,-2]
 
-# cache.put(1, 1);
-# cache.put(2, 2);
-# cache.get(1);       // returns 1
-# cache.put(3, 3);    // evicts key 2
-# cache.get(2);       // returns -1 (not found)
-# cache.put(4, 4);    // evicts key 1
-# cache.get(1);       // returns -1 (not found)
-# cache.get(3);       // returns 3
-# cache.get(4);       // returns 4
+# Explanation
+# MinStack minStack = new MinStack();
+# minStack.push(-2);
+# minStack.push(0);
+# minStack.push(-3);
+# minStack.getMin(); // return -3
+# minStack.pop();
+# minStack.top();    // return 0
+# minStack.getMin(); // return -2
+
+
+# Constraints:
+
+# Methods pop, top and getMin operations will always be called on non-empty stacks.
