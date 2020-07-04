@@ -1,28 +1,58 @@
-def maxProfit(prices):
-    answer = []
-    for i in range(1, len(prices)):
-        if prices[i - 1] < prices[i]:
-            print(prices[i] - prices[i - 1])
-            answer.append(prices[i] - prices[i - 1])
-    print(answer)
+def numIslands(grid):
+    if not grid:
+        return 0
+    max_m = len(grid[0])
+    max_n = len(grid)
 
-    print(
-        sum(
-            [
-                prices[i] - prices[i - 1]
-                for i in range(1, len(prices))
-                if prices[i - 1] < prices[i]
-            ]
-        )
+    def land_check(m, n):
+        grid[n][m] = 0
+        if m + 1 < max_m:
+            if int(grid[n][m + 1]):
+                land_check(m + 1, n)
+                grid[n][m + 1] = 0
+        if n + 1 < max_n:
+            if int(grid[n + 1][m]):
+                land_check(m, n + 1)
+                grid[n + 1][m] = 0
+        if m - 1 >= 0:
+            if int(grid[n][m - 1]):
+                land_check(m - 1, n)
+                grid[n][m - 1] = 0
+        if n - 1 >= 0:
+            if int(grid[n - 1][m]):
+                land_check(m, n - 1)
+                grid[n - 1][m] = 0
+        return 1
+
+    return sum(
+        land_check(m, n) for n in range(max_n) for m in range(max_m) if int(grid[n][m])
     )
 
 
-# maxProfit([7, 1, 5, 3, 6, 4])
-maxProfit([1, 2, 3, 4, 5])
-# maxProfit([7, 6, 4, 3, 1])
+# numIslands(
+#     [
+#         ["1", "1", "1", "1", "0"],
+#         ["1", "1", "0", "1", "0"],
+#         ["1", "1", "0", "0", "0"],
+#         ["0", "0", "0", "0", "0"],
+#     ]
+# )
+numIslands(
+    [
+        ["1", "1", "0", "0", "0"],
+        ["1", "1", "0", "0", "0"],
+        ["0", "0", "1", "0", "0"],
+        ["0", "0", "0", "1", "1"],
+    ]
+)
 
-# print(canJump([2, 3, 1, 1, 4]))
-# => should return True
+print(
+    numIslands(
+        [
+            ["1", "0", "1", "1", "1"],
+            ["1", "0", "1", "0", "1"],
+            ["1", "1", "1", "0", "1"],
+        ]
+    )
+)
 
-# print(canJump([3, 2, 1, 0, 4]))
-# => should return False
