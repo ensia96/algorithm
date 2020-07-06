@@ -1,15 +1,14 @@
-def digitDegree(n):
-    i = 0
-    if len(str(n)) == 1:
-        return 0
-    while True:
-        a = 0
-        for _ in str(n):
-            a += int(_)
-        n = a
-        i += 1
-        if len(str(a)) == 1:
-            return i
+def bishopAndPawn(bishop, pawn):
+    from string import ascii_lowercase
+
+    x = list(ascii_lowercase)
+    a = x.index(bishop[0])
+    aa = int(bishop[1])
+    b = x.index(pawn[0])
+    bb = int(pawn[1])
+    if abs(a - b) == abs(aa - bb):
+        return True
+    return False
 
 
 # ================================================#
@@ -17,45 +16,51 @@ def digitDegree(n):
 # ================================================#
 
 
-def digitDegree(n):
-    if n < 10:
-        return 0
-    sumOfDigits = sum([int(i) for i in str(n)])
-    return digitDegree(sumOfDigits) + 1
+def bishopAndPawn(bishop, pawn):
+    return abs(ord(bishop[0]) - ord(pawn[0])) == abs(int(pawn[1]) - int(bishop[1]))
 
-
-# def digitDegree(n):
-#     d=0
-#     while n>=10:
-#         n=sum([int(i) for i in str(n)])
-#         d+=1
-#     return d
 
 # ================================================#
 #                 question v                     #
 # ================================================#
 
-# Let's define digit degree of some positive integer as the number of times we need to replace this number with the sum of its digits until we get to a one digit number.
+# Given the positions of a white bishop and a black pawn on the standard chess board, determine whether the bishop can capture the pawn in one move.
 
-# Given an integer, find its digit degree.
+# The bishop has no restrictions in distance for each move, but is limited to diagonal movement. Check out the example below to see how it can move:
+
 
 # Example
 
-# For n = 5, the output should be
-# digitDegree(n) = 0;
-# For n = 100, the output should be
-# digitDegree(n) = 1.
-# 1 + 0 + 0 = 1.
-# For n = 91, the output should be
-# digitDegree(n) = 2.
-# 9 + 1 = 10 -> 1 + 0 = 1.
+# For bishop = "a1" and pawn = "c3", the output should be
+# bishopAndPawn(bishop, pawn) = true.
+
+
+# For bishop = "h1" and pawn = "h3", the output should be
+# bishopAndPawn(bishop, pawn) = false.
+
+
 # Input/Output
 
 # [execution time limit] 4 seconds (py3)
 
-# [input] integer n
+# [input] string bishop
+
+# Coordinates of the white bishop in the chess notation.
 
 # Guaranteed constraints:
-# 5 ≤ n ≤ 109.
+# bishop.length = 2,
+# 'a' ≤ bishop[0] ≤ 'h',
+# 1 ≤ bishop[1] ≤ 8.
 
-# [output] integer
+# [input] string pawn
+
+# Coordinates of the black pawn in the same notation.
+
+# Guaranteed constraints:
+# pawn.length = 2,
+# 'a' ≤ pawn[0] ≤ 'h',
+# 1 ≤ pawn[1] ≤ 8.
+
+# [output] boolean
+
+# true if the bishop can capture the pawn, false otherwise.
