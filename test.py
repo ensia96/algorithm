@@ -1,58 +1,41 @@
-def numIslands(grid):
-    if not grid:
-        return 0
-    max_m = len(grid[0])
-    max_n = len(grid)
+class Solution:
+    def maximalSquare(self, matrix):  #: List[List[str]]) -> int:
+        if not matrix:
+            return 0
+        from math import sqrt
 
-    def land_check(m, n):
-        grid[n][m] = 0
-        if m + 1 < max_m:
-            if int(grid[n][m + 1]):
-                land_check(m + 1, n)
-                grid[n][m + 1] = 0
-        if n + 1 < max_n:
-            if int(grid[n + 1][m]):
-                land_check(m, n + 1)
-                grid[n + 1][m] = 0
-        if m - 1 >= 0:
-            if int(grid[n][m - 1]):
-                land_check(m - 1, n)
-                grid[n][m - 1] = 0
-        if n - 1 >= 0:
-            if int(grid[n - 1][m]):
-                land_check(m, n - 1)
-                grid[n - 1][m] = 0
-        return 1
+        squares = [0]
+        self.matrix, self.max_m, self.max_n = (
+            matrix,
+            len(matrix[0]),
+            len(matrix),
+        )
+        max_m, max_n = self.max_m, self.max_n
+        for m in range(max_m):
+            for n in range(max_n):
+                if int(matrix[n][m]):
+                    size = self.isSquare(m, n)
+                    print(m, n, size)
+                    if sqrt(size) == int(sqrt(size)):
+                        squares.append(size)
+        return max(squares)
 
-    return sum(
-        land_check(m, n) for n in range(max_n) for m in range(max_m) if int(grid[n][m])
-    )
+    def isSquare(self, m, n):
+        matrix, max_m, max_n = self.matrix, self.max_m, self.max_n
+        size = 1
+        if m + 1 < max_m and n + 1 < max_n:
+            if (
+                int(matrix[n + 1][m])
+                and int(matrix[n][m + 1])
+                and int(matrix[n + 1][m + 1])
+            ):
+                size += self.isSquare(n + 1, m)
+                size += self.isSquare(n, m + 1)
+                size += self.isSquare(m + 1, n + 1)
+        return size
 
 
-# numIslands(
-#     [
-#         ["1", "1", "1", "1", "0"],
-#         ["1", "1", "0", "1", "0"],
-#         ["1", "1", "0", "0", "0"],
-#         ["0", "0", "0", "0", "0"],
-#     ]
-# )
-numIslands(
-    [
-        ["1", "1", "0", "0", "0"],
-        ["1", "1", "0", "0", "0"],
-        ["0", "0", "1", "0", "0"],
-        ["0", "0", "0", "1", "1"],
-    ]
-)
-
+a = Solution()
 print(
-    numIslands(
-        [
-            ["1", "0", "1", "1", "1"],
-            ["1", "0", "1", "0", "1"],
-            ["1", "1", "1", "0", "1"],
-        ]
-    )
+    a.maximalSquare([["1", "1", "1", "1"], ["1", "1", "1", "1"], ["1", "1", "1", "1"]])
 )
-
