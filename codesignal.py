@@ -1,5 +1,13 @@
-def findEmailDomain(address):
-    return address.split("@")[-1]
+def buildPalindrome(st):
+    _st = st[::-1]
+    answer = ""
+    while True:
+        palindrome = st + _st
+        if palindrome == palindrome[::-1]:
+            answer = palindrome
+        if len(_st) == 0:
+            return answer
+        _st = _st[1:]
 
 
 # ================================================#
@@ -7,33 +15,32 @@ def findEmailDomain(address):
 # ================================================#
 
 
-def findEmailDomain(a):
-    return a[a.rfind("@") + 1 :]
+def buildPalindrome(st):
+    for i in range(0, len(st)):
+        if st[i : len(st)] == st[i : len(st)][::-1]:
+            return st[0:i] + st[i : len(st)] + st[0:i][::-1]
 
 
 # ================================================#
 #                 question v                     #
 # ================================================#
 
-# An email address such as "John.Smith@example.com" is made up of a local part ("John.Smith"), an "@" symbol, then a domain part ("example.com").
-
-# The domain name part of an email address may only consist of letters, digits, hyphens and dots. The local part, however, also allows a lot of different special characters. Here you can look at several examples of correct and incorrect email addresses.
-
-# Given a valid email address, find its domain part.
+# Given a string, find the shortest possible string which can be achieved by adding characters to the end of initial string to make it a palindrome.
 
 # Example
 
-# For address = "prettyandsimple@example.com", the output should be
-# findEmailDomain(address) = "example.com";
-# For address = "fully-qualified-domain@codesignal.com", the output should be
-# findEmailDomain(address) = "codesignal.com".
+# For st = "abcdc", the output should be
+# buildPalindrome(st) = "abcdcba".
+
 # Input/Output
 
 # [execution time limit] 4 seconds (py3)
 
-# [input] string address
+# [input] string st
+
+# A string consisting of lowercase English letters.
 
 # Guaranteed constraints:
-# 10 ≤ address.length ≤ 50.
+# 3 ≤ st.length ≤ 10.
 
 # [output] string
