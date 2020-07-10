@@ -1,38 +1,11 @@
 class Solution:
-    def maximalSquare(self, matrix: List[List[str]]) -> int:
-        if not matrix:
-            return 0
-        from math import sqrt
-
-        squares = [0]
-        self.matrix, self.max_m, self.max_n = (
-            matrix,
-            len(matrix[0]),
-            len(matrix),
-        )
-        max_m, max_n = self.max_m, self.max_n
-        for m in range(max_m):
-            for n in range(max_n):
-                if int(matrix[n][m]):
-                    size = self.isSquare(m, n)
-                    print(m, n, size)
-                    if sqrt(size) == int(sqrt(size)):
-                        squares.append(size)
-        return max(squares)
-
-    def isSquare(self, m, n):
-        matrix, max_m, max_n = self.matrix, self.max_m, self.max_n
-        size = 1
-        if m + 1 < max_m and n + 1 < max_n:
-            if (
-                int(matrix[n + 1][m])
-                and int(matrix[n][m + 1])
-                and int(matrix[n + 1][m + 1])
-            ):
-                size += self.isSquare(n + 1, m)
-                size += self.isSquare(n, m + 1)
-                size += self.isSquare(m + 1, n + 1)
-        return size
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        return [
+            functools.reduce(lambda x, y: x * y, [_ for _ in nums if _ != num])
+            if [_ for _ in nums if _ != num]
+            else num
+            for num in nums
+        ]
 
 
 #
@@ -45,41 +18,36 @@ class Solution:
 
 
 class Solution:
-    def maximalSquare(self, matrix: List[List[str]]) -> int:
-        if not matrix:
-            return 0
-
-        dp = [0] * (len(matrix[0]) + 1)
-        maxLen = prev = 0
-
-        for i in range(len(matrix)):
-            for j in range(len(matrix[0])):
-                temp = dp[j + 1]
-                if matrix[i][j] == "1":
-                    dp[j + 1] = min(prev, dp[j], dp[j + 1]) + 1
-                    maxLen = max(maxLen, dp[j + 1])
-                else:
-                    dp[j + 1] = 0
-                prev = temp
-        return maxLen * maxLen
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        p = 1
+        n = len(nums)
+        output = []
+        for i in range(0, n):
+            output.append(p)
+            p = p * nums[i]
+        p = 1
+        for i in range(n - 1, -1, -1):
+            output[i] = output[i] * p
+            p = p * nums[i]
+        return output
 
 
 # ================================================#
 #                  question v                     #
 # ================================================#
 
-# 221. Maximal Square
+# 238. Product of Array Except Self
 # Medium
 
-# Given a 2D binary matrix filled with 0's and 1's, find the largest square containing only 1's and return its area.
+# Given an array nums of n integers where n > 1,  return an array output such that output[i] is equal to the product of all the elements of nums except nums[i].
 
 # Example:
 
-# Input:
+# Input:  [1,2,3,4]
+# Output: [24,12,8,6]
+# Constraint: It's guaranteed that the product of the elements of any prefix or suffix of the array (including the whole array) fits in a 32 bit integer.
 
-# 1 0 1 0 0
-# 1 0 1 1 1
-# 1 1 1 1 1
-# 1 0 0 1 0
+# Note: Please solve it without division and in O(n).
 
-# Output: 4
+# Follow up:
+# Could you solve it with constant space complexity? (The output array does not count as extra space for the purpose of space complexity analysis.)
