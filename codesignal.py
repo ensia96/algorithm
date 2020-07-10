@@ -1,13 +1,9 @@
-def buildPalindrome(st):
-    _st = st[::-1]
-    answer = ""
-    while True:
-        palindrome = st + _st
-        if palindrome == palindrome[::-1]:
-            answer = palindrome
-        if len(_st) == 0:
-            return answer
-        _st = _st[1:]
+def electionsWinners(votes, k):
+
+    lead = max(votes)
+    if not k:
+        return int(votes.count(lead) == 1)
+    return sum([v + k > lead for v in votes])
 
 
 # ================================================#
@@ -15,32 +11,50 @@ def buildPalindrome(st):
 # ================================================#
 
 
-def buildPalindrome(st):
-    for i in range(0, len(st)):
-        if st[i : len(st)] == st[i : len(st)][::-1]:
-            return st[0:i] + st[i : len(st)] + st[0:i][::-1]
+def electionsWinners(v, k):
+    m = max(v)
+
+    return int(v.count(m) == 1) if k == 0 else len([n for n in v if m < n + k])
 
 
 # ================================================#
 #                 question v                     #
 # ================================================#
 
-# Given a string, find the shortest possible string which can be achieved by adding characters to the end of initial string to make it a palindrome.
+# Elections are in progress!
+
+# Given an array of the numbers of votes given to each of the candidates so far, and an integer k equal to the number of voters who haven't cast their vote yet, find the number of candidates who still have a chance to win the election.
+
+# The winner of the election must secure strictly more votes than any other candidate. If two or more candidates receive the same (maximum) number of votes, assume there is no winner at all.
 
 # Example
 
-# For st = "abcdc", the output should be
-# buildPalindrome(st) = "abcdcba".
+# For votes = [2, 3, 5, 2] and k = 3, the output should be
+# electionsWinners(votes, k) = 2.
+
+# The first candidate got 2 votes. Even if all of the remaining 3 candidates vote for him, he will still have only 5 votes, i.e. the same number as the third candidate, so there will be no winner.
+# The second candidate can win if all the remaining candidates vote for him (3 + 3 = 6 > 5).
+# The third candidate can win even if none of the remaining candidates vote for him. For example, if each of the remaining voters cast their votes for each of his opponents, he will still be the winner (the votes array will thus be [3, 4, 5, 3]).
+# The last candidate can't win no matter what (for the same reason as the first candidate).
+# Thus, only 2 candidates can win (the second and the third), which is the answer.
 
 # Input/Output
 
 # [execution time limit] 4 seconds (py3)
 
-# [input] string st
+# [input] array.integer votes
 
-# A string consisting of lowercase English letters.
+# A non-empty array of non-negative integers. Its ith element denotes the number of votes cast for the ith candidate.
 
 # Guaranteed constraints:
-# 3 ≤ st.length ≤ 10.
+# 4 ≤ votes.length ≤ 105,
+# 0 ≤ votes[i] ≤ 104.
 
-# [output] string
+# [input] integer k
+
+# The number of voters who haven't cast their vote yet.
+
+# Guaranteed constraints:
+# 0 ≤ k ≤ 105.
+
+# [output] integer
