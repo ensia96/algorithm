@@ -1,53 +1,46 @@
 class Solution:
-    def productExceptSelf(self, nums: List[int]) -> List[int]:
-        return [
-            functools.reduce(lambda x, y: x * y, [_ for _ in nums if _ != num])
-            if [_ for _ in nums if _ != num]
-            else num
-            for num in nums
-        ]
+    def moveZeroes(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        zeros = nums.count(0)
+        while 0 in nums:
+            nums.remove(0)
+        for i in range(zeros):
+            nums.append(0)
 
 
-#
-#
-#
-#
+# Success
+# Details
+# Runtime: 188 ms, faster than 15.92% of Python3 online submissions for Move Zeroes.
+# Memory Usage: 15.1 MB, less than 16.48% of Python3 online submissions for Move Zeroes.
 # ================================================#
 #     ^ my answer      ||  most voted answer v   #
 # ================================================#
 
 
 class Solution:
-    def productExceptSelf(self, nums: List[int]) -> List[int]:
-        p = 1
-        n = len(nums)
-        output = []
-        for i in range(0, n):
-            output.append(p)
-            p = p * nums[i]
-        p = 1
-        for i in range(n - 1, -1, -1):
-            output[i] = output[i] * p
-            p = p * nums[i]
-        return output
+    def moveZeroes(self, nums):
+        for i in range(len(nums))[::-1]:
+            if nums[i] == 0:
+                nums.pop(i)
+                nums.append(0)
 
 
 # ================================================#
 #                  question v                     #
 # ================================================#
 
-# 238. Product of Array Except Self
-# Medium
+# 283. Move Zeroes
+# Easy
 
-# Given an array nums of n integers where n > 1,  return an array output such that output[i] is equal to the product of all the elements of nums except nums[i].
+# Given an array nums, write a function to move all 0's to the end of it while maintaining the relative order of the non-zero elements.
 
 # Example:
 
-# Input:  [1,2,3,4]
-# Output: [24,12,8,6]
-# Constraint: It's guaranteed that the product of the elements of any prefix or suffix of the array (including the whole array) fits in a 32 bit integer.
+# Input: [0,1,0,3,12]
+# Output: [1,3,12,0,0]
+# Note:
 
-# Note: Please solve it without division and in O(n).
-
-# Follow up:
-# Could you solve it with constant space complexity? (The output array does not count as extra space for the purpose of space complexity analysis.)
+# You must do this in-place without making a copy of the array.
+# Minimize the total number of operations.
