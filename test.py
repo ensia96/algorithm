@@ -1,41 +1,129 @@
 class Solution:
-    def maximalSquare(self, matrix):  #: List[List[str]]) -> int:
-        if not matrix:
+    def findMaxLength(self, nums):
+        if not nums:
             return 0
-        from math import sqrt
-
-        squares = [0]
-        self.matrix, self.max_m, self.max_n = (
-            matrix,
-            len(matrix[0]),
-            len(matrix),
-        )
-        max_m, max_n = self.max_m, self.max_n
-        for m in range(max_m):
-            for n in range(max_n):
-                if int(matrix[n][m]):
-                    size = self.isSquare(m, n)
-                    print(m, n, size)
-                    if sqrt(size) == int(sqrt(size)):
-                        squares.append(size)
-        return max(squares)
-
-    def isSquare(self, m, n):
-        matrix, max_m, max_n = self.matrix, self.max_m, self.max_n
-        size = 1
-        if m + 1 < max_m and n + 1 < max_n:
-            if (
-                int(matrix[n + 1][m])
-                and int(matrix[n][m + 1])
-                and int(matrix[n + 1][m + 1])
-            ):
-                size += self.isSquare(n + 1, m)
-                size += self.isSquare(n, m + 1)
-                size += self.isSquare(m + 1, n + 1)
-        return size
+        while True:
+            print(nums.count(0))
+            print(nums.count(1))
+            print("===================")
+            if nums.count(0) == nums.count(1):
+                return len(nums)
+            if nums.count(0) > nums.count(1):
+                if nums[0] == 0:
+                    nums.pop(0)
+                else:
+                    nums.pop()
+            elif nums.count(0) < nums.count(1):
+                if nums[0] == 1:
+                    nums.pop(0)
+                else:
+                    nums.pop()
 
 
 a = Solution()
 print(
-    a.maximalSquare([["1", "1", "1", "1"], ["1", "1", "1", "1"], ["1", "1", "1", "1"]])
+    a.findMaxLength(
+        [
+            0,
+            1,
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1,
+            0,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            0,
+            1,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            0,
+            1,
+            0,
+            0,
+            1,
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1,
+            0,
+            1,
+            1,
+            1,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1,
+        ]
+    )
 )
