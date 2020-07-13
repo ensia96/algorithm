@@ -1,20 +1,16 @@
 class Solution:
-    def findMaxLength(self, nums: List[int]) -> int:
-        if not nums:
-            return 0
-        while True:
-            if nums.count(0) == nums.count(1):
-                return len(nums)
-            if nums.count(0) > nums.count(1):
-                if nums[0] == 0:
-                    nums.pop(0)
-                else:
-                    nums.pop()
-            else:
-                if nums[0] == 1:
-                    nums.pop(0)
-                else:
-                    nums.pop()
+    def diameterOfBinaryTree(self, root: TreeNode) -> int:
+        node_path = {}
+
+        def end_checker(node, i, j):
+            if node.left:
+                end_checker(node.left, i + 1, j)
+            if node.right:
+                end_checker(node.right, i, j + 1)
+            if not node.left and not node.right:
+                print(node.val, i, j)
+
+        end_checker(root, 0, 0)
 
 
 #
@@ -26,34 +22,37 @@ class Solution:
 # ================================================#
 
 
-class Solution:
-    def findMaxLength(self, nums):
-        d = {0: 0}
-        key, maxL = 0, 0
-        for i in range(len(nums)):
-            key += nums[i] or -1
-            if key not in d:
-                d[key] = i + 1
-            else:
-                maxL = max(maxL, i + 1 - d[key])
-        return maxL
+class Solution(object):
+    def diameterOfBinaryTree(self, root):
+        self.ans = 0
+
+        def depth(p):
+            if not p:
+                return 0
+            left, right = depth(p.left), depth(p.right)
+            self.ans = max(self.ans, left + right)
+            return 1 + max(left, right)
+
+        depth(root)
+        return self.ans
 
 
 # ================================================#
 #                  question v                     #
 # ================================================#
 
-# 525. Contiguous Array
-# Medium
+# 543. Diameter of Binary Tree
+# Easy
 
-# Given a binary array, find the maximum length of a contiguous subarray with equal number of 0 and 1.
+# Given a binary tree, you need to compute the length of the diameter of the tree. The diameter of a binary tree is the length of the longest path between any two nodes in a tree. This path may or may not pass through the root.
 
-# Example 1:
-# Input: [0,1]
-# Output: 2
-# Explanation: [0, 1] is the longest contiguous subarray with equal number of 0 and 1.
-# Example 2:
-# Input: [0,1,0]
-# Output: 2
-# Explanation: [0, 1] (or [1, 0]) is a longest contiguous subarray with equal number of 0 and 1.
-# Note: The length of the given binary array will not exceed 50,000.
+# Example:
+# Given a binary tree
+#           1
+#          / \
+#         2   3
+#        / \
+#       4   5
+# Return 3, which is the length of the path [4,2,1,3] or [5,2,1,3].
+
+# Note: The length of path between two nodes is represented by the number of edges between them.
