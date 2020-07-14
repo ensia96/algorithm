@@ -1,13 +1,34 @@
-def lineEncoding(s):
-    s_list = [""]
-    for _ in s:
-        if _ not in s_list[-1]:
-            s_list.append(_)
-        else:
-            s_list[-1] += _
-    s_list.pop(0)
-    return "".join(
-        [str(_.count(_[0])) + _[0] if _.count(_[0]) != 1 else _ for _ in s_list]
+def chessKnight(cell):
+    from string import ascii_lowercase
+
+    x = list(ascii_lowercase[:8])
+    y = list(range(1, 9))
+    cell_x = x.index(cell[0]) + 1
+    cell_y = int(cell[1])
+
+    def check_y1(x):
+        answer = 0
+        if x in y:
+            if cell_y + 1 in y:
+                answer += 1
+            if cell_y - 1 in y:
+                answer += 1
+        return answer
+
+    def check_y2(x):
+        answer = 0
+        if x in y:
+            if cell_y + 2 in y:
+                answer += 1
+            if cell_y - 2 in y:
+                answer += 1
+        return answer
+
+    return (
+        check_y1(cell_x - 2)
+        + check_y1(cell_x + 2)
+        + check_y2(cell_x - 1)
+        + check_y2(cell_x + 1)
     )
 
 
@@ -16,22 +37,30 @@ def lineEncoding(s):
 # ================================================#
 
 
-def lineEncoding(s):
-    return re.sub(r"(.)\1+", lambda m: str(len(m.group(0))) + m.group(1), s)
+def chessKnight(c):
+    x, y = ord(c[0]) - 96, int(c[1])
+    return (
+        sum(
+            [
+                1 <= (x + i) <= 8 and 1 <= (y + j) <= 8
+                for i in [-2, -1, 1, 2]
+                for j in [-2, -1, 1, 2]
+            ]
+        )
+        // 2
+    )
 
 
-# def lineEncoding(s):
-#     from itertools import groupby
+# def chessKnight(cell):
+#     r = 0
+#     c = [ord(cell[0])-96,int(cell[1])]
 
-#     x = ""
-#     for k, g in groupby(s):
-#         y = len((list(g)))
-#         if y == 1:
-#             x += k
-#         else:
-#             x += str(y) + k
-#     return x
+#     m = [[1,2],[2,1],[1,-2],[-2,1],[-1,2],[2,-1],[-1,-2],[-2,-1]]
 
+#     for i in m:
+#         if 0<c[0]+i[0]<9 and 0<c[1]+i[1]<9:
+#             r +=1
+#     return r
 
 # ================================================#
 #                 question v                     #
