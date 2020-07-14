@@ -1,16 +1,11 @@
 class Solution:
-    def diameterOfBinaryTree(self, root: TreeNode) -> int:
-        node_path = {}
-
-        def end_checker(node, i, j):
-            if node.left:
-                end_checker(node.left, i + 1, j)
-            if node.right:
-                end_checker(node.right, i, j + 1)
-            if not node.left and not node.right:
-                print(node.val, i, j)
-
-        end_checker(root, 0, 0)
+    def subarraySum(self, nums: List[int], k: int) -> int:
+        return sum(
+            1
+            for i in range(len(nums))
+            for j in range(1, len(nums) + 1)
+            if i < j and sum(nums[i:j]) == k
+        )
 
 
 #
@@ -22,19 +17,19 @@ class Solution:
 # ================================================#
 
 
-class Solution(object):
-    def diameterOfBinaryTree(self, root):
-        self.ans = 0
+class Solution:
+    def subarraySum(self, nums: List[int], k: int) -> int:
+        count = 0
+        sums = 0
+        d = dict()
+        d[0] = 1
 
-        def depth(p):
-            if not p:
-                return 0
-            left, right = depth(p.left), depth(p.right)
-            self.ans = max(self.ans, left + right)
-            return 1 + max(left, right)
+        for i in range(len(nums)):
+            sums += nums[i]
+            count += d.get(sums - k, 0)
+            d[sums] = d.get(sums, 0) + 1
 
-        depth(root)
-        return self.ans
+        return count
 
 
 # ================================================#
