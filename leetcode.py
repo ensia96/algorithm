@@ -1,11 +1,23 @@
 class Solution:
-    def subarraySum(self, nums: List[int], k: int) -> int:
-        return sum(
-            1
-            for i in range(len(nums))
-            for j in range(1, len(nums) + 1)
-            if i < j and sum(nums[i:j]) == k
-        )
+    def checkValidString(self, s: str) -> bool:
+        if s == "":
+            return True
+        i = 0
+        for _ in s:
+            if _ == "(":
+                i += 1
+            if _ == ")":
+                i -= 1
+            if _ == "*":
+                if s.count("(") > s.count(")"):
+                    i += 1
+                if s.count("(") < s.count(")"):
+                    i -= 1
+            if i < 0:
+                return False
+        if i == 0:
+            return True
+        return False
 
 
 #
@@ -18,36 +30,56 @@ class Solution:
 
 
 class Solution:
-    def subarraySum(self, nums: List[int], k: int) -> int:
-        count = 0
-        sums = 0
-        d = dict()
-        d[0] = 1
+    def checkValidString(self, s: str) -> bool:
+        cmin = cmax = 0
+        for i in s:
+            if i == "(":
+                cmax += 1
+                cmin += 1
+            if i == ")":
+                cmax -= 1
+                cmin = max(cmin - 1, 0)
+            if i == "*":
+                cmax += 1
+                cmin = max(cmin - 1, 0)
+            if cmax < 0:
+                return False
+        return cmin == 0
 
-        for i in range(len(nums)):
-            sums += nums[i]
-            count += d.get(sums - k, 0)
-            d[sums] = d.get(sums, 0) + 1
 
-        return count
+class Solution:
+    def checkValidString(self, s: str) -> bool:
+        cmin = cmax = 0
+        for i in s:
+            cmax = cmax - 1 if i == ")" else cmax + 1
+            cmin = cmin + 1 if i == "(" else max(cmin - 1, 0)
+            if cmax < 0:
+                return False
+        return cmin == 0
 
 
 # ================================================#
 #                  question v                     #
 # ================================================#
 
-# 560. Subarray Sum Equals K
+# 678. Valid Parenthesis String
 # Medium
 
-# Given an array of integers and an integer k, you need to find the total number of continuous subarrays whose sum equals to k.
+# Given a string containing only three types of characters: '(', ')' and '*', write a function to check whether this string is valid. We define the validity of a string by these rules:
 
+# Any left parenthesis '(' must have a corresponding right parenthesis ')'.
+# Any right parenthesis ')' must have a corresponding left parenthesis '('.
+# Left parenthesis '(' must go before the corresponding right parenthesis ')'.
+# '*' could be treated as a single right parenthesis ')' or a single left parenthesis '(' or an empty string.
+# An empty string is also valid.
 # Example 1:
-
-# Input:nums = [1,1,1], k = 2
-# Output: 2
- 
-
-# Constraints:
-
-# The length of the array is in range [1, 20,000].
-# The range of numbers in the array is [-1000, 1000] and the range of the integer k is [-1e7, 1e7].
+# Input: "()"
+# Output: True
+# Example 2:
+# Input: "(*)"
+# Output: True
+# Example 3:
+# Input: "(*))"
+# Output: True
+# Note:
+# The string size will be in the range [1, 100].
