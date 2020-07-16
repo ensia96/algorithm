@@ -1,8 +1,8 @@
-def deleteDigit(n):
-    return max(
-        int("".join(v for j, v in enumerate(str(n)) if i != j))
-        for i, _ in enumerate(str(n))
-    )
+def longestWord(text):
+    from string import ascii_letters
+
+    words = "".join([_ if _ in list(ascii_letters) else " " for _ in text]).split(" ")
+    return max(words, key=len)
 
 
 # ================================================#
@@ -10,30 +10,36 @@ def deleteDigit(n):
 # ================================================#
 
 
-def deleteDigit(n):
-    n = str(n)
-    return max(int("".join(n[:i] + n[i + 1 :])) for i in range(len(n)))
+def longestWord(text):
+    return max(re.split("[^a-zA-Z]", text), key=len)
+
+
+# def longestWord(t):
+#     return max(
+#         "".join([i if i in string.ascii_letters else " " for i in t]).split(), key=len
+#     )
 
 
 # ================================================#
 #                 question v                     #
 # ================================================#
 
-# Given some integer, find the maximal number you can obtain by deleting exactly one digit of the given number.
+# Define a word as a sequence of consecutive English letters. Find the longest word from the given string.
 
 # Example
 
-# For n = 152, the output should be
-# deleteDigit(n) = 52;
-# For n = 1001, the output should be
-# deleteDigit(n) = 101.
+# For text = "Ready, steady, go!", the output should be
+# longestWord(text) = "steady".
+
 # Input/Output
 
 # [execution time limit] 4 seconds (py3)
 
-# [input] integer n
+# [input] string text
 
 # Guaranteed constraints:
-# 10 ≤ n ≤ 106.
+# 4 ≤ text.length ≤ 50.
 
-# [output] integer
+# [output] string
+
+# The longest word from text. It's guaranteed that there is a unique output.
