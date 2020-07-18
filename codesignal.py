@@ -1,8 +1,11 @@
-def validTime(time):
-    if time.count(":"):
-        hour, minute = time.split(":")
-        return int(hour) < 24 and int(minute) < 60
-    return False
+def sumUpNumbers(inputString):
+    numbers = ["0", ""]
+    for i in inputString:
+        if i in string.digits:
+            numbers[-1] += i
+        else:
+            numbers.append("")
+    return sum(int(number) for number in numbers if number)
 
 
 # ================================================#
@@ -10,33 +13,31 @@ def validTime(time):
 # ================================================#
 
 
-def validTime(time):
-    h, m = map(int, time.split(":"))
-    return 0 <= h < 24 and 0 <= m < 60
+def sumUpNumbers(inputString):
+    l = re.findall(r"\d+", inputString)
+    return sum([int(i) for i in l])
 
 
 # ================================================#
 #                 question v                     #
 # ================================================#
 
-# Check if the given string is a correct time representation of the 24-hour clock.
+# CodeMaster has just returned from shopping. He scanned the check of the items he bought and gave the resulting string to Ratiorg to figure out the total number of purchased items. Since Ratiorg is a bot he is definitely going to automate it, so he needs a program that sums up all the numbers which appear in the given input.
+
+# Help Ratiorg by writing a function that returns the sum of numbers that appear in the given inputString.
 
 # Example
 
-# For time = "13:58", the output should be
-# validTime(time) = true;
-# For time = "25:51", the output should be
-# validTime(time) = false;
-# For time = "02:76", the output should be
-# validTime(time) = false.
+# For inputString = "2 apples, 12 oranges", the output should be
+# sumUpNumbers(inputString) = 14.
+
 # Input/Output
 
 # [execution time limit] 4 seconds (py3)
 
-# [input] string time
+# [input] string inputString
 
-# A string representing time in HH:MM format. It is guaranteed that the first two characters, as well as the last two characters, are digits.
+# Guaranteed constraints:
+# 0 ≤ inputString.length ≤ 105.
 
-# [output] boolean
-
-# true if the given representation is correct, false otherwise.
+# [output] integer
