@@ -1,11 +1,15 @@
-def sumUpNumbers(inputString):
-    numbers = ["0", ""]
-    for i in inputString:
-        if i in string.digits:
-            numbers[-1] += i
-        else:
-            numbers.append("")
-    return sum(int(number) for number in numbers if number)
+def differentSquares(matrix):
+    max_m, max_n = len(matrix[0]), len(matrix)
+    return len(
+        set(
+            [
+                (matrix[n][m], matrix[n + 1][m], matrix[n][m + 1], matrix[n + 1][m + 1])
+                for m in range(max_m)
+                for n in range(max_n)
+                if m + 1 < max_m and n + 1 < max_n
+            ]
+        )
+    )
 
 
 # ================================================#
@@ -13,31 +17,59 @@ def sumUpNumbers(inputString):
 # ================================================#
 
 
-def sumUpNumbers(inputString):
-    l = re.findall(r"\d+", inputString)
-    return sum([int(i) for i in l])
+def differentSquares(matrix):
+    s = set()
+    for i in range(len(matrix) - 1):
+        for j in range(len(matrix[i]) - 1):
+            s.add(
+                (matrix[i][j], matrix[i][j + 1], matrix[i + 1][j], matrix[i + 1][j + 1])
+            )
+    return len(s)
 
 
 # ================================================#
 #                 question v                     #
 # ================================================#
 
-# CodeMaster has just returned from shopping. He scanned the check of the items he bought and gave the resulting string to Ratiorg to figure out the total number of purchased items. Since Ratiorg is a bot he is definitely going to automate it, so he needs a program that sums up all the numbers which appear in the given input.
-
-# Help Ratiorg by writing a function that returns the sum of numbers that appear in the given inputString.
+# Given a rectangular matrix containing only digits, calculate the number of different 2 × 2 squares in it.
 
 # Example
 
-# For inputString = "2 apples, 12 oranges", the output should be
-# sumUpNumbers(inputString) = 14.
+# For
 
+# matrix = [[1, 2, 1],
+#           [2, 2, 2],
+#           [2, 2, 2],
+#           [1, 2, 3],
+#           [2, 2, 1]]
+# the output should be
+# differentSquares(matrix) = 6.
+
+# Here are all 6 different 2 × 2 squares:
+
+# 1 2
+# 2 2
+# 2 1
+# 2 2
+# 2 2
+# 2 2
+# 2 2
+# 1 2
+# 2 2
+# 2 3
+# 2 3
+# 2 1
 # Input/Output
 
 # [execution time limit] 4 seconds (py3)
 
-# [input] string inputString
+# [input] array.array.integer matrix
 
 # Guaranteed constraints:
-# 0 ≤ inputString.length ≤ 105.
+# 1 ≤ matrix.length ≤ 100,
+# 1 ≤ matrix[i].length ≤ 100,
+# 0 ≤ matrix[i][j] ≤ 9.
 
 # [output] integer
+
+# The number of different 2 × 2 squares in matrix.
