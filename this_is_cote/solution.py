@@ -1,20 +1,14 @@
-import time
+n = int(input())
+data = list(map(int, input().split()))
+data.sort()
 
-data = input()
+result = 0 # 총 그룹의 수
+count = 0 # 현재 그룹에 포함된 모험가의 수
 
-# 첫 번째 문자를 숫자로 변경하여 대입
-result = int(data[0])
+for i in data: # 공포도를 낮은 것부터 하나씩 확인하며
+		count += 1 # 현재 그룹에 해당 모험가를 포함시키기
+		if count >= i: # 모험가의 수가 현재의 공포도 이상이라면,
+				result += 1 # 그룹을 결성 (총 그룹의 수 증가시키기)
+				count = 0 # 현재 그룹에 포함된 모험가의 수 초기화
 
-start = time.time()
-
-for i in range(1, len(data)):
-    # 두 수 중에서 하나라도 '0' 혹은 '1' 인 경우, 곱하기보다는 더하기 수행
-    num = int(data[i])
-    if num <= 1 or result <= 1:
-        result += num
-    else:
-        result *= num
-
-print(f"수행 시간 : {time.time() - start} ms")
-
-print(result)
+print(result) # 총 그룹의 수 출력
