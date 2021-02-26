@@ -6,6 +6,7 @@ def solution(participant, completion):
     output
         - answer      : 완주하지 못한 사람
     '''
+    print({name: False for name in participant})
     answer = ''
     return answer
 
