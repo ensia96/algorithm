@@ -9,6 +9,8 @@ def solution(participant, completion):
     marathon_result = {name: False for name in completion}
 
     for person in participant:
+        if person not in marathon_result:
+            return person
         marathon_result[person] = not marathon_result[person]
 
     print(marathon_result)
