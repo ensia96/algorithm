@@ -6,13 +6,12 @@ def solution(participant, completion):
     output
         - answer      : 완주하지 못한 사람
     '''
-    marathon_result = {name: False for name in participant}
+    marathon_result = {name: False for name in completion}
 
-    for person in completion:
-        print(f'{person} : {marathon_result[person]}')
+    for person in participant:
         marathon_result[person] = not marathon_result[person]
-        print(f'{person} : {marathon_result[person]}')
-        print('===========================')
+
+    print(marathon_result)
 
     answer = ''
     return answer
