@@ -10,15 +10,7 @@ def solution(participant, completion):
         - 효율성 : 80/100 (5 x)
     '''
     marathon_result = {name: False for name in completion}
-
-    for person in participant:
-        if person not in marathon_result:
-            return person
-        marathon_result[person] = not marathon_result[person]
-
-    for name, result in marathon_result.items():
-        if result is not True:
-            return name
+    print(marathon_result)
 
 print(solution(
     ['leo', 'kiki', 'eden'],
