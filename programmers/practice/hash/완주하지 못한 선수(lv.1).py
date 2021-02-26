@@ -5,6 +5,9 @@ def solution(participant, completion):
         - completion  : [완주자] (len(participant) - 1)
     output
         - answer      : 완주하지 못한 사람
+    result
+        - 정확성 : 80/100 (5 x)
+        - 효율성 : 80/100 (5 x)
     '''
     marathon_result = {name: False for name in completion}
 
