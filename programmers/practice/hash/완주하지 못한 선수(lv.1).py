@@ -9,9 +9,10 @@ def solution(participant, completion):
     marathon_result = {name: False for name in participant}
 
     for person in completion:
+        print(f'{person} : {marathon_result[person]}')
         marathon_result[person] = not marathon_result[person]
-
-    print(marathon_result)
+        print(f'{person} : {marathon_result[person]}')
+        print('===========================')
 
     answer = ''
     return answer
