@@ -9,18 +9,18 @@ def solution(participant, completion):
         - 정확성 : 100/100
         - 효율성 : 100/100
     '''
-    marathon_result = dict()
+    result = dict()
 
     for name in participant:
-        if name not in marathon_result:
-            marathon_result[name] = 0
-        marathon_result[name] += 1
+        if name not in result:
+            result[name] = 0
+        result[name] += 1
 
     for name in completion:
-        marathon_result[name] -= 1
+        result[name] -= 1
 
     for name in participant:
-        if marathon_result[name] == 1:
+        if result[name] == 1:
             return name
 
 print(solution(
