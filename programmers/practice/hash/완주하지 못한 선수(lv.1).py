@@ -13,10 +13,9 @@ def solution(participant, completion):
             return person
         marathon_result[person] = not marathon_result[person]
 
-    print(marathon_result)
-
-    answer = ''
-    return answer
+    for name, result in marathon_result.items():
+        if result is not True:
+            return name
 
 print(solution(
     ['leo', 'kiki', 'eden'],
