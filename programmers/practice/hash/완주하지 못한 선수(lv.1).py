@@ -9,8 +9,15 @@ def solution(participant, completion):
         - 정확성 : 80/100 (5 x)
         - 효율성 : 80/100 (5 x)
     '''
-    marathon_result = {name: False for name in completion}
+    marathon_result = dict()
+
+    for name in participant:
+        hashed = hash(name)
+        if hashed not in marathon_result:
+            marathon_result[hashed] = 0
+        marathon_result[hashed] += 1
     print(marathon_result)
+
 
 print(solution(
     ['leo', 'kiki', 'eden'],
