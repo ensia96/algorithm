@@ -12,18 +12,15 @@ def solution(participant, completion):
     marathon_result = dict()
 
     for name in participant:
-        hashed = hash(name)
-        if hashed not in marathon_result:
-            marathon_result[hashed] = 0
-        marathon_result[hashed] += 1
+        if name not in marathon_result:
+            marathon_result[name] = 0
+        marathon_result[name] += 1
 
     for name in completion:
-        hashed = hash(name)
-        marathon_result[hashed] -= 1
+        marathon_result[name] -= 1
 
     for name in participant:
-        hashed = hash(name)
-        if marathon_result[hashed] == 1:
+        if marathon_result[name] == 1:
             return name
 
 print(solution(
