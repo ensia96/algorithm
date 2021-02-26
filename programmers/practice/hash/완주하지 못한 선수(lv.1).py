@@ -21,7 +21,10 @@ def solution(participant, completion):
         hashed = hash(name)
         marathon_result[hashed] -= 1
 
-    print(marathon_result)
+    for name in participant:
+        hashed = hash(name)
+        if marathon_result[hashed] == 1:
+            return name
 
 print(solution(
     ['leo', 'kiki', 'eden'],
