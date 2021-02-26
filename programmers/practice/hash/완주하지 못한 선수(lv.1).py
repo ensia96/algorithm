@@ -6,8 +6,8 @@ def solution(participant, completion):
     output
         - answer      : 완주하지 못한 사람
     result
-        - 정확성 : 80/100 (5 x)
-        - 효율성 : 80/100 (5 x)
+        - 정확성 : 100/100
+        - 효율성 : 100/100
     '''
     marathon_result = dict()
 
