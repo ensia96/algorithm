@@ -16,8 +16,12 @@ def solution(participant, completion):
         if hashed not in marathon_result:
             marathon_result[hashed] = 0
         marathon_result[hashed] += 1
-    print(marathon_result)
 
+    for name in completion:
+        hashed = hash(name)
+        marathon_result[hashed] -= 1
+
+    print(marathon_result)
 
 print(solution(
     ['leo', 'kiki', 'eden'],
