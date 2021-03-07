@@ -13,6 +13,20 @@ def solution(phone_book):
     for i in range(len(phone_book[-1])):
         table[i] = dict()
 
+    while index < len(phone_book[-1]):
+        for number in phone_book:
+            if len(number) - 1 < index:
+                continue
+
+            digit = number[index]
+            cell  = table[index]
+
+            if digit not in cell:
+                cell[digit] = 0
+            cell[digit] += 1
+
+        index += 1
+
     return table
 
 print(solution(["119", "97674223", "1195524421"])) # False
