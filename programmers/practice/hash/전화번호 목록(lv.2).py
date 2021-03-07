@@ -5,8 +5,8 @@ def solution(phone_book):
     output
         - answer     : 임의의 번호가 다른 번호의 접두어인 경우의 진리값
     '''
-    answer = True
-    return answer
+    phone_book.sort(key = lambda x: len(x))
+    return phone_book
 
 print(solution(["119", "97674223", "1195524421"])) # False
 print(solution(["123", "456", "789"])) # True
