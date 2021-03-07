@@ -5,15 +5,16 @@ def solution(phone_book):
     output
         - answer     : 임의의 번호가 다른 번호의 접두어인 경우의 진리값
     '''
-    table = dict()
-    index = 0
-
     phone_book.sort(key=len)
 
-    for i in range(len(phone_book[-1])):
+    table   = dict()
+    index   = 0
+    maximum = len(phone_book[-1])
+
+    for i in range(maximum):
         table[i] = dict()
 
-    while index < len(phone_book[-1]):
+    while index < maximum:
         for number in phone_book:
             if len(number) - 1 < index:
                 continue
