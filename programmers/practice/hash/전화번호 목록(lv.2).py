@@ -6,8 +6,9 @@ def solution(phone_book):
         - answer     : 임의의 번호가 다른 번호의 접두어인 경우의 진리값
     '''
     table = dict()
+    index = 0
 
-    phone_book.sort(key = lambda x: len(x))
+    phone_book.sort(key=len)
 
     for i in range(len(phone_book[-1])):
         table[i] = dict()
