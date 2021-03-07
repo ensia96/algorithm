@@ -12,6 +12,11 @@ def solution(phone_book):
     for number in phone_book:
         table[number] = True
 
+    while index < maximum:
+        count = dict()
+
+        index += 1
+
 
 print(solution(["119", "97674223", "1195524421"])) # False
 print(solution(["123", "456", "789"])) # True
