@@ -5,21 +5,19 @@ def solution(phone_book):
     output
         - answer     : 임의의 번호가 다른 번호의 접두어인 경우의 진리값
     result
-        - 정확성 : 54.2/100
+        - 정확성 : 62.5/100
         - 효율성 : 12.5/100
     '''
     table   = dict()
     index   = 0
     maximum = len(max(phone_book, key=len))
 
-    for number in phone_book:
-        table[number] = False
 
     while index < maximum:
         count = dict()
 
         for number in phone_book:
-            if table[number]:
+            if number in table:
                 continue
             digit = number[index]
 
@@ -31,14 +29,12 @@ def solution(phone_book):
             return True
 
         for number in phone_book:
-            if table[number]:
+            if number in table:
                 continue
-
-            if count[number[index]] >= 1:
-                if len(number) - 1 == index:
-                    return False
-            else:
-                table[number] = False
+            if count[number[index]] >= 1 and len(number) - 1 == index:
+                return False
+            if count[number[index]] <= 1 or len(number) - 1 <= index:
+                table[number] = 0
 
         index += 1
 
