@@ -1,4 +1,10 @@
 def solution(clothes):
+    '''
+    input
+        - clothes : [[의상 이름, 의상 종류]] (1 <= [] <= 30, 1 <= i <= 20)
+    output
+        - answer  : 서로 다른 옷의 조합의 수
+    '''
     answer = 0
     return answer
 
