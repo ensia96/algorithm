@@ -8,16 +8,15 @@ def solution(clothes):
         - 정확성 : 100/100
     '''
     closet = {}
-
-    for name, kind in clothes:
-        if kind not in closet:
-            closet[kind] = []
-        closet[kind].append(name)
-
     answer = 1
 
+    for _, kind in clothes:
+        if kind not in closet:
+            closet[kind] = 1
+        closet[kind] += 1
+
     for key in closet:
-        answer *= len(closet[key]) + 1
+        answer *= closet[key]
 
     return answer - 1
 
