@@ -11,6 +11,7 @@ def solution(clothes):
 
     for name, kind in clothes:
         closet[name] = kind
+        box[kind] = 0
 
     answer = 0
     return answer
