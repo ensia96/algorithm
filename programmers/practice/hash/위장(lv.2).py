@@ -5,7 +5,8 @@ def solution(clothes):
     output
         - answer  : 서로 다른 옷의 조합의 수
     '''
-    closet = {}
+    closet      = {}
+    combination = {}
 
     for name, kind in clothes:
         closet[name] = kind
