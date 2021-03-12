@@ -7,6 +7,9 @@ def solution(clothes):
     '''
     closet = {}
 
+    for name, kind in clothes:
+        closet[name] = kind
+
     answer = 0
     return answer
 
