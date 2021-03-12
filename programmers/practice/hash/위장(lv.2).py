@@ -5,6 +5,8 @@ def solution(clothes):
     output
         - answer  : 서로 다른 옷의 조합의 수
     '''
+    closet = {}
+
     answer = 0
     return answer
 
