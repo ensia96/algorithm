@@ -4,18 +4,22 @@ def solution(clothes):
         - clothes : [[의상 이름, 의상 종류]] (1 <= [] <= 30, 1 <= i <= 20)
     output
         - answer  : 서로 다른 옷의 조합의 수
+    result
+        - 정확성 : 100/100
     '''
-    closet      = {}
-    combination = {}
-    box         = {}
-
-    answer = len(clothes)
+    test = {}
 
     for name, kind in clothes:
-        closet[name] = kind
-        box[kind] = 0
+        if kind not in test:
+            test[kind] = []
+        test[kind].append(name)
 
-    return answer
+    _test = 1
+
+    for key in test:
+        _test *= len(test[key]) + 1
+
+    return _test - 1
 
 print(solution([
     ["yellowhat", "headgear"],
