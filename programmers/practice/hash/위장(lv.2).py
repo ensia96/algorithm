@@ -7,19 +7,19 @@ def solution(clothes):
     result
         - 정확성 : 100/100
     '''
-    test = {}
+    closet = {}
 
     for name, kind in clothes:
-        if kind not in test:
-            test[kind] = []
-        test[kind].append(name)
+        if kind not in closet:
+            closet[kind] = []
+        closet[kind].append(name)
 
-    _test = 1
+    answer = 1
 
-    for key in test:
-        _test *= len(test[key]) + 1
+    for key in closet:
+        answer *= len(closet[key]) + 1
 
-    return _test - 1
+    return answer - 1
 
 print(solution([
     ["yellowhat", "headgear"],
