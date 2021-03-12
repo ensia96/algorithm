@@ -7,6 +7,7 @@ def solution(clothes):
     '''
     closet      = {}
     combination = {}
+    box         = {}
 
     for name, kind in clothes:
         closet[name] = kind
