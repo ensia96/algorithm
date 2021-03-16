@@ -5,6 +5,8 @@ def solution(genres, plays):
         - plays  : [재생된 횟수] (len(genres))
     output
         - answer : [곡 고유번호]
+    result
+        - 정확성 : 46.7/100
     '''
     answer      = []
     genre_table = {}
