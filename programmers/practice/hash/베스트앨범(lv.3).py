@@ -1,4 +1,11 @@
 def solution(genres, plays):
+    '''
+    input
+        - genres : [노래의 장르] (1 <= [] <= 10,000, 종류 < 100)
+        - plays  : [재생된 횟수] (len(genres))
+    output
+        - answer : [곡 고유번호]
+    '''
     answer = []
     return answer
 
