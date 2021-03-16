@@ -6,7 +6,9 @@ def solution(genres, plays):
     output
         - answer : [곡 고유번호]
     '''
-    answer = []
+    answer      = []
+    genre_table = {}
+
     return answer
 
 print(solution(
