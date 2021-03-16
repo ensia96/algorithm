@@ -26,6 +26,8 @@ def solution(genres, plays):
         else:
             genre_table[genre]['songs'].insert(1, song)
 
+    sorted_list = sorted(genre_table.values(), key=lambda x: x['plays'], reverse=True)
+
     return answer
 
 print(solution(
