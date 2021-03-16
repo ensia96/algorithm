@@ -18,6 +18,14 @@ def solution(genres, plays):
 
         genre_table[genre]['plays'] += play
 
+        songs = genre_table[genre]['songs']
+        current = songs[0] if songs else 0
+
+        if play > plays[current]:
+            genre_table[genre]['songs'].insert(0, song)
+        else:
+            genre_table[genre]['songs'].insert(1, song)
+
     return answer
 
 print(solution(
