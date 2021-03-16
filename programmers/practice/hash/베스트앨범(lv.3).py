@@ -19,19 +19,12 @@ def solution(genres, plays):
             genre_table[genre]['songs'] = []
 
         genre_table[genre]['plays'] += play
-
-        songs = genre_table[genre]['songs']
-        current = songs[0] if songs else 0
-
-        if play > plays[current]:
-            genre_table[genre]['songs'].insert(0, song)
-        else:
-            genre_table[genre]['songs'].insert(1, song)
+        genre_table[genre]['songs'].append(song)
 
     sorted_list = sorted(genre_table.values(), key=lambda x: x['plays'], reverse=True)
 
     for genre in sorted_list:
-        answer.extend(genre['songs'][:2])
+        answer.extend(sorted(genre['songs'], key=lambda x: plays[x], reverse=True)[:2])
 
     return answer
 
