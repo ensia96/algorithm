@@ -6,7 +6,7 @@ def solution(genres, plays):
     output
         - answer : [곡 고유번호]
     result
-        - 정확성 : 46.7/100
+        - 정확성 : 100/100
     '''
     answer      = []
     genre_table = {}
