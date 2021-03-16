@@ -16,6 +16,8 @@ def solution(genres, plays):
             genre_table[genre]['plays'] = 0
             genre_table[genre]['songs'] = []
 
+        genre_table[genre]['plays'] += play
+
     return answer
 
 print(solution(
