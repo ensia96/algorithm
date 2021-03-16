@@ -28,6 +28,9 @@ def solution(genres, plays):
 
     sorted_list = sorted(genre_table.values(), key=lambda x: x['plays'], reverse=True)
 
+    for genre in sorted_list:
+        answer.extend(genre['songs'][:2])
+
     return answer
 
 print(solution(
