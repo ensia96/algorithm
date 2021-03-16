@@ -14,9 +14,7 @@ def solution(genres, plays):
     for song, play in enumerate(plays):
         genre = genres[song]
         if genre not in genre_table:
-            genre_table[genre] = {}
-            genre_table[genre]['plays'] = 0
-            genre_table[genre]['songs'] = []
+            genre_table[genre] = {'plays': 0, 'songs': []}
 
         genre_table[genre]['plays'] += play
         genre_table[genre]['songs'].append(song)
