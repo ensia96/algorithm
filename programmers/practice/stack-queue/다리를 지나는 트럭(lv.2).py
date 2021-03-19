@@ -9,15 +9,16 @@ def solution(bridge_length, weight, truck_weights):
     result
         - 정확성 : 100/100
     '''
-    time = 0
-    bridge = []
-    arrival = []
-    on_bridge = 0
+    time = 1
+    truck = truck_weights.pop(0)
+    bridge = [truck]
+    arrival = [bridge_length]
+    on_bridge = truck
 
     while truck_weights:
         truck = truck_weights[0]
 
-        if arrival and time == arrival[0]:
+        if time == arrival[0]:
             on_bridge -= bridge.pop(0)
             arrival.pop(0)
 
