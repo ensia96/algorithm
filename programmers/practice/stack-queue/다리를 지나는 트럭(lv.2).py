@@ -12,15 +12,17 @@ def solution(bridge_length, weight, truck_weights):
     time = 0
     bridge = []
     arrival = []
+    on_bridge = 0
 
     while truck_weights:
         truck = truck_weights[0]
 
         if arrival and time == arrival[0]:
-            bridge.pop(0)
+            on_bridge -= bridge.pop(0)
             arrival.pop(0)
 
-        if sum(bridge) + truck <= weight:
+        if on_bridge + truck <= weight:
+            on_bridge += truck
             bridge.append(truck_weights.pop(0))
             arrival.append(time + bridge_length)
 
