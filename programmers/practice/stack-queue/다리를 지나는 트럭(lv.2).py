@@ -7,8 +7,9 @@ def solution(bridge_length, weight, truck_weights):
     output
         - answer        : 모든 트럭이 다리를 건너는데 걸리는 최소 시간
     '''
-    answer = 0
-    return answer
+    time = 0
+    bridge = []
+    arrival = []
 
 print(solution(2, 10, [7, 4, 5, 6])) # 8
 print(solution(100, 100, [10])) # 101
