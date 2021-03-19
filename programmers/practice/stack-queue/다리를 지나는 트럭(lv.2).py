@@ -6,6 +6,8 @@ def solution(bridge_length, weight, truck_weights):
         - truck_weights : [트럭의 무게] (1 <= [] <= 10000, 1 <= truck <= weight)
     output
         - answer        : 모든 트럭이 다리를 건너는데 걸리는 최소 시간
+    result
+        - 정확성 : 100/100
     '''
     time = 0
     bridge = []
