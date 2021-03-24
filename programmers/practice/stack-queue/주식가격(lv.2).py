@@ -12,6 +12,8 @@ def solution(prices):
     for current, price in enumerate(prices):
         for _price in islice(prices, current + 1, None):
             time += 1
+            if price > _price:
+                break
 
     return answer
 
