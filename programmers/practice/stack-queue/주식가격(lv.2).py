@@ -11,7 +11,7 @@ def solution(prices):
 
     for current, price in enumerate(prices):
         for _price in islice(prices, current + 1, None):
-            pass
+            time += 1
 
     return answer
 
