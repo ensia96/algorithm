@@ -1,4 +1,10 @@
 def solution(prices):
+    '''
+    input
+        - prices : [주식가격] (2 <= [] <= 100000, 1 <= i <= 10000)
+    output
+        - answer : 각 시점마다 주식이 떨어지지 않은 기간
+    '''
     answer = []
     return answer
 
