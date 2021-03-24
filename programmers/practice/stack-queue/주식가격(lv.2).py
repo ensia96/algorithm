@@ -8,8 +8,11 @@ def solution(prices):
     answer = [0]
     time   = 0
 
-    for price in list(reversed(prices))[:-1]:
-        pass
+    for current, price in enumerate(list(reversed(prices))[:-1]):
+        if price > prices[current - 1]:
+            time = 0
+        time += 1
+        answer.append(time)
 
     return answer
 
