@@ -8,6 +8,9 @@ def solution(prices):
     answer = [0]
     time   = 0
 
+    for price in list(reversed(prices))[:-1]:
+        pass
+
     return answer
 
 print(solution([1, 2, 3, 2, 3])) # [4, 3, 1, 1, 0]
