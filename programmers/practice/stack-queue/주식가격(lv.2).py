@@ -15,6 +15,7 @@ def solution(prices):
             if price > _price:
                 break
         answer.append(time)
+        time = 0
 
     return answer
 
