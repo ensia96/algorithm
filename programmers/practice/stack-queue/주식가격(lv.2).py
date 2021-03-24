@@ -5,6 +5,7 @@ def solution(prices):
     output
         - answer : 각 시점마다 주식이 떨어지지 않은 기간
     '''
+    from itertools import islice
     answer = []
     time   = 0
 
