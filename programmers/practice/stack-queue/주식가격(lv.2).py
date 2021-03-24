@@ -8,6 +8,9 @@ def solution(prices):
     answer = []
     time   = 0
 
+    for current, price in enumerate(prices):
+        pass
+
     return answer
 
 print(solution([1, 2, 3, 2, 3])) # [4, 3, 1, 1, 0]
