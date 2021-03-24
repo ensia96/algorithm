@@ -6,19 +6,20 @@ def solution(prices):
         - answer : 각 시점마다 주식이 떨어지지 않은 기간
     result
         - 정확성 : 100/100
-        - 효율성 : 0/100
+        - 효율성 : 100/100
     '''
-    from itertools import islice
     answer = []
-    time   = 0
+    maximum = len(prices) - 1
 
-    for current, price in enumerate(prices):
-        for _price in islice(prices, current + 1, None):
+    for current in range(maximum):
+        price = prices[current]
+        time  = 0
+        while current + time < maximum:
             time += 1
-            if price > _price:
+            if price > prices[current + time]:
                 break
         answer.append(time)
-        time = 0
+    answer.append(0)
 
     return answer
 
