@@ -10,7 +10,8 @@ def solution(prices):
     time   = 0
 
     for current, price in enumerate(prices):
-        pass
+        for _price in islice(prices, current + 1, None):
+            pass
 
     return answer
 
