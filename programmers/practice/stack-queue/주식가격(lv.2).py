@@ -5,14 +5,8 @@ def solution(prices):
     output
         - answer : 각 시점마다 주식이 떨어지지 않은 기간
     '''
-    answer = [0]
+    answer = []
     time   = 0
-
-    for current, price in enumerate(list(reversed(prices))[:-1]):
-        if price > prices[current - 1]:
-            time = 0
-        time += 1
-        answer.append(time)
 
     return answer
 
