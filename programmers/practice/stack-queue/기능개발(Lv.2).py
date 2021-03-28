@@ -8,21 +8,20 @@ def solution(progresses, speeds):
     result
         - 정확성 : 100/100
     '''
+    from math import ceil
     answer = []
     time   = 0
 
     while progresses:
-        if progresses[0] + (speeds[0] * time) >= 100:
-            progresses.pop(0)
-            speeds.pop(0)
+        progress = progresses.pop(0)
+        speed    = speeds.pop(0)
+
+        if progress + (speed * time) >= 100:
             answer[-1] += 1
             continue
 
-        time = (100 - progresses.pop(0)) / speeds.pop(0)
+        time = ceil((100 - progress) / speed)
         answer.append(1)
-
-        if time != int(time):
-            time = int(time) + 1
 
     return answer
 
