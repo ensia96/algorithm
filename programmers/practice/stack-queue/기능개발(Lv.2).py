@@ -21,6 +21,9 @@ def solution(progresses, speeds):
         time = (100 - progresses.pop(0)) / speeds.pop(0)
         answer.append(1)
 
+        if time != int(time):
+            time = int(time) + 1
+
     return answer
 
 print(solution(
