@@ -9,6 +9,10 @@ def solution(progresses, speeds):
     answer = []
     time   = 0
 
+    while progresses:
+        time = (100 - progresses.pop(0)) / speeds.pop(0)
+        answer.append(1)
+
     return answer
 
 print(solution(
