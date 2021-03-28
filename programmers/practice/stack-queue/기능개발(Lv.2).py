@@ -5,6 +5,8 @@ def solution(progresses, speeds):
         - speeds     : [작업 속도] ([] <= 100, 1 <= i <= 100)
     output
         - answer     : [한 번에 배포된 작업의 수]
+    result
+        - 정확성 : 90.9/100
     '''
     answer = []
     time   = 0
