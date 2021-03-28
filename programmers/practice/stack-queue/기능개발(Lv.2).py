@@ -10,6 +10,12 @@ def solution(progresses, speeds):
     time   = 0
 
     while progresses:
+        if progresses[0] + (speeds[0] * time) >= 100:
+            progresses.pop(0)
+            speeds.pop(0)
+            answer[-1] += 1
+            continue
+
         time = (100 - progresses.pop(0)) / speeds.pop(0)
         answer.append(1)
 
