@@ -6,7 +6,7 @@ def solution(progresses, speeds):
     output
         - answer     : [한 번에 배포된 작업의 수]
     result
-        - 정확성 : 90.9/100
+        - 정확성 : 100/100
     '''
     answer = []
     time   = 0
