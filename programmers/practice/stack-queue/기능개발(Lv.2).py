@@ -7,6 +7,8 @@ def solution(progresses, speeds):
         - answer     : [한 번에 배포된 작업의 수]
     '''
     answer = []
+    time   = 0
+
     return answer
 
 print(solution(
