@@ -15,17 +15,20 @@ def solution(priorities, location):
     urgent     = task_stack.pop()
     answer     = 0
 
-    while task_queue:
+    while True:
         priority, is_target = task_queue.popleft()
 
         if priority == urgent:
             answer += 1
 
+            if is_target:
+                return answer
+
             urgent = task_stack.pop()
 
             continue
 
-    return answer
+        task_queue.append((priority, is_target))
 
 print(solution([2, 1, 3, 2], 2)) # 1
 print(solution([1, 1, 9, 1, 1, 1], 0)) # 5
