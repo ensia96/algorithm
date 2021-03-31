@@ -15,6 +15,9 @@ def solution(priorities, location):
     urgent     = task_stack.pop()
     answer     = 0
 
+    while task_queue:
+        priority, is_target = task_queue.popleft()
+
     return answer
 
 print(solution([2, 1, 3, 2], 2)) # 1
