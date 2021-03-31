@@ -6,7 +6,15 @@ def solution(priorities, location):
     output
         - answer : 요청된 문서가 출력되는 순서
     '''
-    answer = 0
+    from collections import deque
+
+    task_queue = deque(map(
+        lambda _: (priorities[_], _ == location),
+        range(len(priorities))))
+    task_stack = sorted(priorities)
+    urgent     = task_stack.pop()
+    answer     = 0
+
     return answer
 
 print(solution([2, 1, 3, 2], 2)) # 1
