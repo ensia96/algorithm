@@ -1,7 +1,3 @@
 a, b, c = map(int, input().split())
-x = a // (c - b) + 1
 
-if b > c:
-    x = -1
-
-print(x)
+print(-1 if b >= c else a // (c - b) + 1)
