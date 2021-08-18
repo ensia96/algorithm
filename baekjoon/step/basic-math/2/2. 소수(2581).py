@@ -8,5 +8,8 @@ a = list(
     )
 )
 
-print(sum(a))
-print(a[0])
+if a:
+    print(sum(a))
+    print(a[0])
+else:
+    print(-1)
