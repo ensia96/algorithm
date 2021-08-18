@@ -10,6 +10,6 @@ a = list(
 
 if a:
     print(sum(a))
-    print(a[0])
+    print(min(a))
 else:
     print(-1)
