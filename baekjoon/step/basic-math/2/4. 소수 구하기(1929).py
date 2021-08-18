@@ -1,5 +1,10 @@
 m, n = map(int, input().split())
 
 for i in range(m, n + 1):
-    if all(i % j for j in range(2, i)):
+    a = 1
+    for j in range(2, i):
+        if not i % j:
+            a = 0
+            break
+    if a:
         print(i)
