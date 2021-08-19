@@ -9,7 +9,9 @@ for i in range(2, m):
             a[j] = 0
 
 for n in l:
-    for i in range(2, n // 2 + 1):
+    if n == 4:
+        x = y = 2
+    for i in range(2, n // 2):
         if a[i]:
             b = n - i
             if a[b]:
