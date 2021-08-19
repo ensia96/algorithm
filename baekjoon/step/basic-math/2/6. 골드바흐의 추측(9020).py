@@ -1,19 +1,18 @@
-l = map(int, [*open(0)][1:])
+check = [False, False] + [True] * 10000
 
-m = max(l) + 1
-a = [0, 0] + [1 for _ in range(m)]
+for i in range(2, 101):
+    if check[i] == True:
+        for j in range(i + i, 10001, i):
+            check[j] = False
 
-for i in range(2, m):
-    if a[i]:
-        for j in range(2 * i, m + 1, i):
-            a[j] = 0
-
-for n in l:
-    x = n // 2
-    y = x
-    for i in range(n):
-        if a[x] and a[y]:
-            print(x, y)
+for _ in range(int(input())):
+    A = int(input()) // 2
+    B = A
+    for _ in range(10000):
+        if check[A] and check[B]:
+            print(A, B)
             break
-        x -= 1
-        y += 1
+        A -= 1
+        B += 1
+
+# 틀린 부분을 모르겠어서 참고한 글 : https://yoonsang-it.tistory.com/31
