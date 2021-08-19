@@ -1,4 +1,4 @@
-l = [*open(0)][:-1]
+l = map(int, [*open(0)][:-1])
 a = 2 * max(l) + 2
 b = [1 for _ in range(a)]
 
