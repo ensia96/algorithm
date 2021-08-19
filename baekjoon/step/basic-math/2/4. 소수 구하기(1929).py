@@ -8,7 +8,6 @@ for i in range(m, n + 1):
         if not i % y:
             x.add(i)
             a = 0
-            print(x)
             break
 
     if not a:
