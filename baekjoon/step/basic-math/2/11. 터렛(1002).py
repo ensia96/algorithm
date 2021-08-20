@@ -8,7 +8,7 @@ for _ in range(int(input())):
         print(0)
         break
 
-    l = (x1 - x2) ** 2 + (y1 - y2) ** 2
-    r = (r1 + r2) ** 2
+    l = ((x1 - x2) ** 2 + (y1 - y2) ** 2) ** 0.5
+    r = r1 + r2
 
     print(0 if l > r else 2 if l < r else 1)
