@@ -6,7 +6,7 @@ for a in l:
             continue
         h, i = a
         j, k = b
-        if h < j and i < k:
+        if h <= j and i <= k:
             l[a] += 1
 
 print(*l.values())
