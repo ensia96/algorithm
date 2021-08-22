@@ -1,13 +1,14 @@
-l = {tuple(map(int, input().split())): 1 for _ in range(int(input()))}
+l = [tuple(map(int, input().split())) for _ in range(int(input()))]
 r = len(l)
+v = {k: 1 for k in l}
 
 for i in range(r):
     for j in range(r):
         if i == j:
             continue
-        a, b = r[i]
-        c, d = r[j]
+        a, b = l[i]
+        c, d = l[j]
         if a < c and b < d:
-            l[r[i]] += 1
+            v[l[i]] += 1
 
-print(*l.values())
+print(*v.values())
