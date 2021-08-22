@@ -1,12 +1,13 @@
 l = {tuple(map(int, input().split())): 1 for _ in range(int(input()))}
+r = len(l)
 
-for a in l:
-    for b in l:
-        if a == b:
+for i in range(r):
+    for j in range(r):
+        if i == j:
             continue
-        h, i = a
-        j, k = b
-        if h <= j and i <= k:
-            l[a] += 1
+        a, b = r[i]
+        c, d = r[j]
+        if a < c and b < d:
+            l[r[i]] += 1
 
 print(*l.values())
