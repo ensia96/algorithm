@@ -1,6 +1,5 @@
 l = [tuple(map(int, input().split())) for _ in range(int(input()))]
-r = len(l)
-v = {k: 1 for k in l}
+r, v = len(l), [1 for _ in l]
 
 for i in range(r):
     for j in range(r):
@@ -9,6 +8,6 @@ for i in range(r):
         a, b = l[i]
         c, d = l[j]
         if a < c and b < d:
-            v[l[i]] += 1
+            v[i] += 1
 
-print(*v.values())
+print(*v)
