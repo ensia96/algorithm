@@ -10,4 +10,4 @@ for _ in range(int(input())):
                 p.pop()
         if n and c == ">":
             p.append(n.pop())
-    print("".join(p + n))
+    print("".join(p + n[::-1]))
