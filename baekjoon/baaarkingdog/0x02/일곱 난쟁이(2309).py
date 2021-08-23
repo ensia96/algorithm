@@ -7,4 +7,4 @@ for i in range(r):
             l[i] = l[j] = 0
             break
 
-print("\n".join(map(str, filter(None, l))))
+print("\n".join(map(str, sorted(filter(None, l)))))
