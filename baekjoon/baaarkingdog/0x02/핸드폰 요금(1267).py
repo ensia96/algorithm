@@ -2,8 +2,8 @@ input()
 y = m = 0
 
 for t in map(int, input().split()):
-    y += (t // 30 + bool(t % 30)) * 10
-    m += (t // 60 + bool(t % 60)) * 15
+    y += (t // 30 + 1) * 10
+    m += (t // 60 + 1) * 15
 
 a = min(y, m)
 
