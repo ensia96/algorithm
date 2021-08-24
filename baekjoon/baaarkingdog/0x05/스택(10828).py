@@ -7,7 +7,7 @@ for _ in range(int(input())):
     if c == "pop":
         r.append(s.pop() if s else "-1")
     if c == "size":
-        r.append(len(s))
+        r.append(str(len(s)))
     if c == "empty":
         r.append("0" if s else "1")
     if c == "top":
