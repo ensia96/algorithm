@@ -1,7 +1,9 @@
+import sys
+
 s = []
 
 for _ in range(int(input())):
-    c = input()
+    c = sys.stdin.readline()
     if c == "pop":
         print(s.pop() if s else "-1")
     elif c == "size":
