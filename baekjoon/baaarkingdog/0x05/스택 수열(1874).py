@@ -1,6 +1,6 @@
 import sys
 
-n, s, a, c, f = int(input()), [1], ["+"], 1, 1
+n, s, a, c, f = int(input()), [], [], 1, 1
 
 for _ in range(n):
     i = int(sys.stdin.readline().strip())
