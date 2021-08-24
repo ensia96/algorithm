@@ -11,7 +11,7 @@ for _ in range(n):
     while l and s[-1] < i:
         s.append(l.pop())
         a.append("+")
-    if s and s[-1] == i:
+    while s and s[-1] >= i:
         s.pop()
         a.append("-")
 
