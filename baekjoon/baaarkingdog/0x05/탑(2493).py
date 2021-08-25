@@ -1,5 +1,7 @@
+import sys
+
 n = int(input())
-t, a = [*map(int, input().split())], [0 for _ in range(n)]
+t, a = [*map(int, sys.stdin.readline().split())], [0 for _ in range(n)]
 
 for i in range(n - 1, -1, -1):
     h = t[i]
