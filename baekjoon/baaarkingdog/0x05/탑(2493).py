@@ -1,13 +1,19 @@
-import sys
+N = int(input())
+top_list = list(map(int, input().split()))
+stack = []
+answer = []
 
-n, t = int(input()), [*map(int, sys.stdin.readline().split()[::-1])]
-a, i, m, r = [], 0, 10e8, 0
+for i in range(N):
+    while stack:
+        if stack[-1][1] > top_list[i]:
+            answer.append(stack[-1][0] + 1)
+            break
+        else:
+            stack.pop()
+    if not stack:
+        answer.append(0)
+    stack.append([i, top_list[i]])
 
-while t:
-    c = t.pop()
-    if c < m:
-        m, r = c, i
-    a.append(r)
-    i += 1
+print(" ".join(map(str, answer)))
 
-print(*map(str, a))
+# 풀이 참고 : https://jjangsungwon.tistory.com/44
