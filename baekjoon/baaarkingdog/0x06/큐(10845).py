@@ -1,10 +1,10 @@
-import collections as c
+import sys as s, collections as c
 
-p, i = print, input
-n, q = int(i()), c.deque()
+p, i = print, s.stdin.readline
+n, q = int(i().strip()), c.deque()
 
 for _ in range(n):
-    c = i()
+    c = i().strip()
     if c == "pop":
         p(q.popleft() if q else -1)
     elif c == "size":
