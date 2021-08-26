@@ -1,22 +1,19 @@
-n = int(input())
-q, h, t, p = [0 for _ in range(n)], 0, 0, print
+import collections as c
+
+p, i = print, input
+n, q = int(i()), c.deque()
 
 for _ in range(n):
-    c = input()
+    c = i()
     if c == "pop":
-        if h == t:
-            p(-1)
-        else:
-            p(q[h])
-            h += 1
+        p(q.popleft() if q else -1)
     elif c == "size":
-        p(t - h)
+        p(len(q))
     elif c == "empty":
-        p(int(h == t))
+        p(int(not bool(q)))
     elif c == "front":
-        p(q[h])
+        p(q[0] if q else -1)
     elif c == "back":
-        p(q[t - 1])
+        p(q[-1] if q else -1)
     else:
-        q[t] = c.split().pop()
-        t += 1
+        q.append(c.split().pop())
