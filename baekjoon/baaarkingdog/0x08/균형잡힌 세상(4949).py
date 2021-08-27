@@ -17,4 +17,4 @@ while 1:
                 f = 0
                 break
             s.pop()
-    print('no' if not f or s 'yes')
+    print('no' if not f or s else 'yes')
