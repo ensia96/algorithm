@@ -4,8 +4,8 @@ i, b = sys.stdin.readline, {'(': ')', '[': ']'}
 o, c = b.keys(), b.values()
 
 while 1:
-    t = i().rstrip()
-    a, s = 'yes', []
+    t, f, s = i().rstrip(), 1, []
+
     if t == '.':
         break
 
@@ -14,7 +14,7 @@ while 1:
             s.append(l)
         if l in c:
             if not s or l != b[s[-1]]:
-                a = 'no'
+                f = 0
                 break
             s.pop()
-    print(a)
+    print('no' if not f or s 'yes')
