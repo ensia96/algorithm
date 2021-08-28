@@ -13,10 +13,10 @@ for i in r(l):
             b[i][j], c = 0, 1
             q.append((i, j))
             while q:
-                n, m = q.popleft()
+                u, v = q.popleft()
                 for x, y in d:
-                    n += y
-                    m += x
+                    n = u + y
+                    m = v + x
                     if 0 <= n < l and 0 <= m < w and b[n][m]:
                         b[n][m] = 0
                         c += 1
