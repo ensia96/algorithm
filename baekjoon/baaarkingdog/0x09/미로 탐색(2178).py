@@ -1,17 +1,16 @@
 import collections as c
 
-i, r = input, range
+i = input
 n, m = map(int, i().split())
-q, d = c.deque([(0, 0, 1)]), [(1, 0), (0, 1), (-1, 0), (0, -1)]
-v, b = [[1] * m for _ in r(n)], [[*map(int, [*i()])] for _ in r(n)]
+q, d = c.deque([(0, 0)]), [(1, 0), (0, 1), (-1, 0), (0, -1)]
+b = [[*map(int, [*i()])] for _ in range(n)]
 
 while q:
-    u, w, l = q.popleft()
-    v[u][w] = 0
-    b[u][w] = l
+    u, w = q.popleft()
     for x, y in d:
         g, h = u + x, w + y
-        if 0 <= g < n and 0 <= h < m and b[g][h] and v[g][h]:
-            q.append((g, h, l + 1))
+        if 0 <= g < n and 0 <= h < m and b[g][h] == 1:
+            b[g][h] = b[u][w] + 1
+            q.append((g, h))
 
 print(b[n - 1][m - 1])
