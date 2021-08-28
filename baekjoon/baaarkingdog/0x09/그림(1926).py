@@ -26,4 +26,4 @@ for i in r(l):
             t.append(f(i, j))
 
 print(len(t))
-print(max(t))
+print(max(*t, 0))
