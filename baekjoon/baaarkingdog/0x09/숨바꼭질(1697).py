@@ -8,6 +8,8 @@ while 1:
         print(v)
         break
     c, v = q.popleft()
+    if c + 1 > k:
+        continue
     q.append((c * 2, v + 1))
     q.append((c - 1, v + 1))
     q.append((c + 1, v + 1))
