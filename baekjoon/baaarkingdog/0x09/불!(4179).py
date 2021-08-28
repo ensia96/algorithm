@@ -36,9 +36,10 @@ while q:
         v, w = n + y, m + x
         if 0 <= v < r and 0 <= w < c:
             e = b[v][w]
-            if e != '#' and f + 1 < e:
-                b[v][w] = f + 1
-                q.append((v, w))
+            if e != '#':
+                if f == '.' or f + 1 < e:
+                    b[v][w] = f + 1
+                    q.append((v, w))
         else:
             a = f + 1
             break
