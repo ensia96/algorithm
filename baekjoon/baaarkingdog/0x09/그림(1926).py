@@ -1,29 +1,27 @@
 import sys
 import collections as c
 
-i, r = lambda: map(int, sys.stdin.readline().split()), range
-
-
+i, r, p = lambda: map(int, sys.stdin.readline().split()), range, print
 l, w = i()
 v, b = [[0] * l for _ in range(l)], [[*i()] for _ in range(l)]
 q, d, t = c.deque([]), [(1, 0), (0, 1), (-1, 0), (0, -1)], []
 
 
-def f(i, j, c=1):
-    for x, y in d:
-        n, m = i + y, j + x
-        if 0 <= n < l and 0 <= m < w and b[n][m]:
-            b[n][m] = 0
-            c += 1
-            q.append((n, m))
-    return f(*q.popleft(), c) if q else c
-
-
 for i in r(l):
     for j in r(w):
         if b[i][j]:
-            b[i][j] = 0
-            t.append(f(i, j))
+            b[i][j], c = 0, 1
+            q.append((i, j))
+            while q:
+                n, m = q.popleft()
+                for x, y in d:
+                    n += y
+                    m += x
+                    if 0 <= n < l and 0 <= m < w and b[n][m]:
+                        b[n][m] = 0
+                        c += 1
+                        q.append((n, m))
+            t.append(c)
 
-print(len(t))
-print(max(t) if t else 0)
+p(len(t))
+p(max(t) if t else 0)
