@@ -37,7 +37,7 @@ while q:
         if 0 <= v < r and 0 <= w < c:
             e = b[v][w]
             if e != '#':
-                if f == '.' or f + 1 < e:
+                if e == '.' or f + 1 < e:
                     b[v][w] = f + 1
                     q.append((v, w))
         else:
