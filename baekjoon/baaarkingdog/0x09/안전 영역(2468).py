@@ -3,9 +3,9 @@ import sys
 i, r = sys.stdin.readline, range
 n, e = int(i()), 0
 m = [[*map(int, i().split())] for _ in r(n)]
-s, q = set([b for a in m for b in a]), [(0, 0)]
+s, q = max([b for a in m for b in a]), [(0, 0)]
 
-for h in s:
+for h in r(s):
     w, v = 0, [[0] * n for _ in r(n)]
     for i in r(n):
         for j in r(n):
@@ -21,3 +21,5 @@ for h in s:
     e = max(w, e)
 
 print(e)
+
+# 풀이 참고 : https://dojinkimm.github.io/problem_solving/2019/11/15/boj-2468-safezone.html
