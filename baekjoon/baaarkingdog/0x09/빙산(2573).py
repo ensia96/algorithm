@@ -3,10 +3,9 @@ import sys
 i = sys.stdin.readline
 l, r = lambda: map(int, i().split()), range
 n, m = l()
-a, b, c = 0, [[*l()] for _ in r(n)], 1
+a, b = 0, [[*l()] for _ in r(n)]
 
-
-def s():
+while 1:
     v, o = [[0] * m for _ in r(n)], 0
     for i in r(1, n - 1):
         for j in r(1, m - 1):
@@ -18,29 +17,13 @@ def s():
                         if b[x][y] and not v[x][y]:
                             v[x][y] = 1
                             q += [(x, y)]
-    return o
-
-
-def f():
-    q = []
+    if o != 1:
+        print(a if o else 0)
+        break
     for i in r(n):
         for j in r(m):
-            if not b[i][j]:
-                q += [(i, j)]
-    for i, j in q:
-        for x, y in [(i+1, j), (i-1, j), (i, j+1), (i, j-1)]:
-            if 0 <= x < n and 0 <= y < n and b[x][y]:
-                b[x][y] -= 1
-
-
-while 1:
-    c = s()
-    if c > 1:
-        break
-    if not c:
-        a = 0
-        break
-    f()
+            if not v[i][j] and not b[i][j]:
+                for x, y in [(i+1, j), (i-1, j), (i, j+1), (i, j-1)]:
+                    if 0 <= x < n and 0 <= y < n and b[x][y] > 0:
+                        b[x][y] -= 1
     a += 1
-
-print(a)
