@@ -22,7 +22,12 @@ def s():
 
 
 def f():
-    for i, j in [(i, j) for i in r(n) for j in r(m) if not b[i][j]]:
+    q = []
+    for i in r(n):
+        for j in r(m):
+            if not b[i][j]:
+                q += [(i, j)]
+    for i, j in q:
         for x, y in [(i+1, j), (i-1, j), (i, j+1), (i, j-1)]:
             if 0 <= x < n and 0 <= y < n and b[x][y]:
                 b[x][y] -= 1
