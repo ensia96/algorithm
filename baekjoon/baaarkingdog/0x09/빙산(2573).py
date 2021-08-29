@@ -9,7 +9,7 @@ while 1:
     v, o = [[0] * m for _ in r(n)], 0
     for i in r(1, n - 1):
         for j in r(1, m - 1):
-            if b[i][j] and not v[i][j]:
+            if not o > 1 and b[i][j] and not v[i][j]:
                 o += 1
                 v[i][j], q = 1, [(i, j)]
                 for u, w in q:
@@ -20,10 +20,10 @@ while 1:
     if o != 1:
         print(a if o else 0)
         break
+    a += 1
     for i in r(n):
         for j in r(m):
             if not v[i][j] and not b[i][j]:
                 for x, y in [(i+1, j), (i-1, j), (i, j+1), (i, j-1)]:
-                    if 0 <= x < n and 0 <= y < n and b[x][y] > 0:
+                    if 0 <= x < n and 0 <= y < m and b[x][y] > 0:
                         b[x][y] -= 1
-    a += 1
