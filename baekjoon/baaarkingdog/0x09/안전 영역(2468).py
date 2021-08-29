@@ -11,6 +11,7 @@ for h in s:
         for j in r(n):
             if m[i][j] > h and not v[i][j]:
                 w += 1
+                v[i][j] = 1
                 q = [(i, j)]
                 for a, b in q:
                     for x, y in [(a+1, b), (a-1, b), (a, b+1), (a, b-1)]:
