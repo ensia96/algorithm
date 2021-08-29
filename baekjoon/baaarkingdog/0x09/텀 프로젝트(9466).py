@@ -1,14 +1,36 @@
-i, t, r = input, int, range
+import sys
+i, t, r = sys.stdin.readline, int, range
 
 for _ in r(t(i())):
-    n = t(i())
-    s = [int(a) - 1 for a in i().split()]
-    m = [[0] * n for _ in r(n)]
-    for a in r(n):
-        m[a][s[a]] = 1
-        m[a][s[s[a]]] = 1
-    for a in r(n):
-        for b in r(n):
-            if m[a][b] != m[b][a]:
-                m[a][b] = m[b][a] = 0
-    print(sum(not any(l) for l in m))
+    n, z = t(i()), 0
+    s, v = [0] + [*map(t, i().split())], [0] * (n + 1)
+    for p in r(1, n + 1):
+        if not v[p]:
+            a = p
+            while 1:
+                v[a] = 1
+                a = s[a]
+                if v[a]:
+                    if v[a] == 1:
+                        if a != p:
+                            while v[a] != 2:
+                                v[a] = 2
+                                a = s[a]
+                            a = p
+                            while v[a] != 2:
+                                v[a] = 3
+                                a = s[a]
+                            break
+                        else:
+                            while v[a] != 2:
+                                v[a] = 2
+                                a = s[a]
+                            break
+                    else:
+                        a = p
+                        while v[a] == 1:
+                            v[a] = 3
+                            a = s[a]
+                        break
+
+    print(v.count(3))
