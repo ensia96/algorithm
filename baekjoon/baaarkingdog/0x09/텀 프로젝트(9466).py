@@ -7,8 +7,6 @@ for _ in r(t(i())):
     for a in r(n):
         m[a][s[a]] = 1
         m[a][s[s[a]]] = 1
-    for z in m:
-        print(z)
     for a in r(n):
         for b in r(n):
             if m[a][b] != m[b][a]:
