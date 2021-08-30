@@ -6,10 +6,6 @@ m, r, q = [l() for _ in range(h)], -1, [(0, 0, 0)]
 v = [[[0] * (k+1) for __ in range(w)] for _ in range(h)]
 
 for a, b, t in q:
-    print()
-    for z in v:
-        print(z)
-    print()
     if r != -1:
         break
     for c, d in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
