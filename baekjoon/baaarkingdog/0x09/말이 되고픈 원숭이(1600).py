@@ -1,11 +1,13 @@
 import sys
+import collections as c
 i, r = sys.stdin.readline, range
 k, l = int(i()), lambda: [*map(int, i().split())]
 w, h = l()
-m, q = [l() for _ in r(h)], [(0, 0, k)]
-e, v = -1, [[[0 for ___ in r(k+1)] for __ in r(w)] for _ in r(h)]
+m, q = [l() for _ in r(h)], c.deque([(0, 0, k)])
+e, v = -1, [[[0] * (k + 1) for __ in r(w)] for _ in r(h)]
 
-for a, b, t in q:
+while q:
+    a, b, t = q.popleft()
     if (a, b) == (h-1, w-1):
         e = v[a][b][t]
         break
