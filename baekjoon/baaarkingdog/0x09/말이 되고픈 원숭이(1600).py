@@ -6,8 +6,8 @@ m, r, q = [l() for _ in range(h)], -1, [(0, 0, 0)]
 v = [[[0] * (k+1) for __ in range(w)] for _ in range(h)]
 
 for a, b, t in q:
-    if (a, b) == (h - 1, w - 1):
-        r = v[a][b][t]
+    if any(v[h - 1][w - 1]):
+        r = min(filter(None, (v[h - 1][w - 1])))
         break
     for c, d in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
         x, y = a + c, b + d
