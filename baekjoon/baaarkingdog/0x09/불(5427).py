@@ -25,7 +25,7 @@ for _ in r(int(i())):
         for x, y in [(p+1, q), (p-1, q), (p, q+1), (p, q-1)]:
             if 0 <= x < h and 0 <= y < w:
                 u, v = m[p][q], m[x][y]
-                if v == '.' or (v != '#' and u < v):
+                if v == '.' or (v != '#' and u + 1 < v):
                     m[x][y] = u + 1
                     s += [(x, y)]
             else:
