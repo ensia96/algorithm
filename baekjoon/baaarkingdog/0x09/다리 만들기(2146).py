@@ -21,11 +21,11 @@ for c in r(n):
 for c, d, p in q:
     if f:
         break
-    s[c][d] = p
     for x, y in [(c+1, d), (c-1, d), (c, d+1), (c, d-1)]:
         if 0 <= x < n and 0 <= y < n and p != s[x][y]:
             if b[x][y]:
                 f = b[c][d] + b[x][y] - 2
+                break
             else:
                 b[x][y], s[x][y] = b[c][d] + 1, p
                 q += [(x, y, p)]
