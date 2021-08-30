@@ -7,6 +7,8 @@ while q:
     if p == g:
         a = c
         break
+    if b[p]:
+        continue
     b[p] = 1
     for m in [p + u, p - d]:
         if 0 < m <= f and not b[m]:
