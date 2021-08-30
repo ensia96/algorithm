@@ -1,15 +1,12 @@
 n, k = map(int, input().split())
 q, l = [n], [0] * 100002
-l[n], w = 1, []
+l[n] = 1
 
 for p in q:
-    for a, t in [(p-1, 1), (p+1, 1), (p*2, 0)]:
+    if l[k]:
+        print(l[k] - 1)
+        break
+    for a, t in [(p*2, 0), (p-1, 1), (p+1, 1)]:
         if 0 <= a < 100002 and not l[a]:
-            v = l[p] + t
-            if a == k:
-                w += [v]
-            else:
-                l[a] = v
-                q += [a]
-
-print(min(w) - 1)
+            l[a] = l[p] + t
+            q += [a]
