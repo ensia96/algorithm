@@ -1,7 +1,7 @@
 import sys
 
 i, r = sys.stdin.readline, range
-n, p, q, f = int(i()), 0, [], 0
+n, p, q, f = int(i()), 0, [], []
 b, s = [[*map(int, i().split())] for _ in r(n)], [[0] * n for _ in r(n)]
 
 for c in r(n):
@@ -19,14 +19,11 @@ for c in r(n):
                             q += [(u, v, p)]
 
 for c, d, p in q:
-    if f:
-        break
     for x, y in [(c+1, d), (c-1, d), (c, d+1), (c, d-1)]:
         if 0 <= x < n and 0 <= y < n and p != s[x][y]:
             if b[x][y]:
-                f = b[c][d] + b[x][y] - 2
-                break
+                f += [b[c][d] + b[x][y] - 2]
             else:
                 b[x][y], s[x][y] = b[c][d] + 1, p
                 q += [(x, y, p)]
-print(f)
+print(min(f))
