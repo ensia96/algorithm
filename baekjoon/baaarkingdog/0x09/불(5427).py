@@ -4,7 +4,7 @@ i, r = sys.stdin.readline, range
 for _ in r(int(i())):
     w, h = map(int, i().split())
     m, v, f = [[*i().strip()] for _ in r(h)], [[0]*w for _ in r(h)], []
-    o = 'IMPOSSIBLE'
+    c = d = 'IMPOSSIBLE'
 
     for a in r(h):
         for b in r(w):
@@ -26,6 +26,8 @@ for _ in r(int(i())):
                 f += [(x, y)]
 
     for p, q in s:
+        if c != d:
+            break
         for x, y in [(p+1, q), (p-1, q), (p, q+1), (p, q-1)]:
             if 0 <= x < h and 0 <= y < w:
                 e, g = m[p][q], m[x][y]
@@ -33,7 +35,7 @@ for _ in r(int(i())):
                     v[x][y], m[x][y] = 1, e + 1
                     s += [(x, y)]
                 continue
-            o, s = m[p][q] + 1, []
+            c, s = m[p][q] + 1, []
             break
 
-    print(o)
+    print(c)
