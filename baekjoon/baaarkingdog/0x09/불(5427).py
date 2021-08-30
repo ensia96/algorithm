@@ -15,8 +15,9 @@ def g(s, f):
                 return m[p][q] + 1
 
 
-def e(a):
-    for p, q in a:
+def e(f):
+    a = []
+    for p, q in f:
         for x, y in [(p+1, q), (p-1, q), (p, q+1), (p, q-1)]:
             if 0 <= x < h and 0 <= y < w and m[x][y] == '.':
                 m[x][y] = m[p][q] + 1
