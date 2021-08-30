@@ -31,4 +31,5 @@ for _ in r(int(i())):
             else:
                 o = m[p][q] + 1
                 s = []
+                break
     print(o)
