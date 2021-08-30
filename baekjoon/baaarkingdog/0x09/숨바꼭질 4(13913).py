@@ -18,4 +18,4 @@ while 1:
     l = [c] + l
 
 print(m[k][2])
-print(l + [k])
+print(*(l + [k]))
