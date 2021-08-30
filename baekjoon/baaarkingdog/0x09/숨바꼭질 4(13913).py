@@ -1,7 +1,6 @@
-import collections as c
 n, k = map(int, input().split())
 q, m = [(n, k, 0)], [0] * 100001
-m[n], l = (n, k, 0), c.deque([k])
+m[n], l = (n, k, 0), [k]
 
 for c, p, t in q:
     if m[k]:
@@ -15,7 +14,7 @@ while 1:
     _, c, __ = m[c]
     if c == k:
         break
-    l.appendleft(c)
+    l += [c]
 
 print(m[k][2])
-print(*l)
+print(*reversed(l))
