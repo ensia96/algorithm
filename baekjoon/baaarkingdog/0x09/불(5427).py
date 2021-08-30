@@ -3,16 +3,19 @@ i, r = sys.stdin.readline, range
 
 
 def g(s, f):
+    a = []
+    f = e(f)
     for p, q in s:
-        f = e(f)
         for x, y in [(p+1, q), (p-1, q), (p, q+1), (p, q-1)]:
             if 0 <= x < h and 0 <= y < w:
-                u, v = m[p][q], m[x][y]
-                if v == '.' or (v != '#' and u + 1 < v):
-                    m[x][y] = u + 1
-                    s += [(x, y)]
+                if not v[x][y]:
+                    v[x][y] = 1
+                    m[x][y] = m[p][q] + 1
+                    a += [(x, y)]
             else:
                 return m[p][q] + 1
+    if a:
+        return g(a, f)
 
 
 def e(f):
@@ -20,14 +23,14 @@ def e(f):
     for p, q in f:
         for x, y in [(p+1, q), (p-1, q), (p, q+1), (p, q-1)]:
             if 0 <= x < h and 0 <= y < w and m[x][y] == '.':
-                m[x][y] = m[p][q] + 1
+                v[x][y] = 1
                 a += [(x, y)]
     return a
 
 
 for _ in r(int(i())):
     w, h = map(int, i().split())
-    m = [[*i().strip()] for _ in r(h)]
+    m, v = [[*i().strip()] for _ in r(h)], [[0] * w for _ in r(h)]
     f = []
 
     for a in r(h):
@@ -36,8 +39,10 @@ for _ in r(int(i())):
                 s = [(a, b)]
                 m[a][b] = 0
             if m[a][b] == '*':
-                m[a][b] = 0
+                v[a][b] = 1
                 f += [(a, b)]
+            if m[a][b] == '#':
+                v[a][b] = 1
 
     o = g(s, f)
     print(o if o else 'IMPOSSIBLE')
