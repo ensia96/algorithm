@@ -1,9 +1,38 @@
 import sys
 i, r = sys.stdin.readline, range
 
+
+def j(f):
+    n = []
+    for p, q in f:
+        for x, y in [(p+1, q), (p-1, q), (p, q+1), (p, q-1)]:
+            if 0 <= x < h and 0 <= y < w and m[x][y] == '.':
+                m[x][y] = m[p][q] + 1
+                n += [(x, y)]
+    f = []
+    return n
+
+
+def k(n, f):
+    while n:
+        f = j(f)
+        s = n
+        n = []
+        for p, q in s:
+            for x, y in [(p+1, q), (p-1, q), (p, q+1), (p, q-1)]:
+                e = m[p][q]
+                if 0 <= x < h and 0 <= y < w:
+                    g = m[x][y]
+                    if g != '#' and (g == '.' or e + 1 < g):
+                        m[x][y] = e + 1
+                        n += [(x, y)]
+                else:
+                    return e + 1
+
+
 for _ in r(int(i())):
     w, h = map(int, i().split())
-    m, v, f = [[*i().strip()] for _ in r(h)], [[0]*w for _ in r(h)], []
+    m, f = [[*i().strip()] for _ in r(h)], []
     c = d = 'IMPOSSIBLE'
 
     for a in r(h):
@@ -12,30 +41,8 @@ for _ in r(int(i())):
             if p == '@':
                 s = [(a, b)]
                 m[a][b] = 0
-            if p in '#*':
+            if p == '*':
+                f += [(a, b)]
                 m[a][b] = 0
-                v[a][b] = 1
-                if p == '*':
-                    f += [(a, b)]
-
-    for p, q in f:
-        for x, y in [(p+1, q), (p-1, q), (p, q+1), (p, q-1)]:
-            if 0 <= x < h and 0 <= y < w and m[x][y] == '.':
-                m[x][y] = m[p][q] + 1
-                v[x][y] = 1
-                f += [(x, y)]
-
-    for p, q in s:
-        if c != d:
-            break
-        for x, y in [(p+1, q), (p-1, q), (p, q+1), (p, q-1)]:
-            if 0 <= x < h and 0 <= y < w:
-                e, g = m[p][q], m[x][y]
-                if not v[x][y] and g == '.' or e + 1 < g:
-                    v[x][y], m[x][y] = 1, e + 1
-                    s += [(x, y)]
-                continue
-            c, s = m[p][q] + 1, []
-            break
-
-    print(c)
+    c = k(s, f)
+    print(c if c else d)
