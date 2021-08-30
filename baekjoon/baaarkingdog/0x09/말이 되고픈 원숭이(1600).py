@@ -1,26 +1,39 @@
+from collections import deque
 import sys
-import collections as c
-i, r = sys.stdin.readline, range
-k, l = int(i()), lambda: [*map(int, i().split())]
-w, h = l()
-m, q = [l() for _ in r(h)], c.deque([(0, 0, k)])
-e, v = -1, [[[0] * (k + 1) for __ in r(w)] for _ in r(h)]
+input = sys.stdin.readline
+dx = [1, -1, 0, 0]
+dy = [0, 0, -1, 1]
+d1 = [-2, -1, 1, 2, 2, 1, -1, -2]
+d2 = [1, 2, 2, 1, -1, -2, -2, -1]
 
-while q:
-    a, b, t = q.popleft()
-    if (a, b) == (h-1, w-1):
-        e = v[a][b][t]
-        break
-    for c, d in [(0, 1), (0, -1), (1, 0), (-1, 0)]:
-        x, y = a+c, b+d
-        if 0 <= x < h and 0 <= y < w and not m[x][y] and not v[x][y][t]:
-            v[x][y][t] = v[a][b][t] + 1
-            q += [(x, y, t)]
-    if t > 0:
-        for c, d in [(-2, -1), (-2, 1), (-1, -2), (-1, 2), (1, 2), (1, -2), (2, 1), (2, -1)]:
-            x, y = a+c, b+d
-            if 0 <= x < h and 0 <= y < w and not m[x][y] and not v[x][y][t-1]:
-                v[x][y][t-1] = v[a][b][t] + 1
-                q += [(x, y, t-1)]
 
-print(e)
+def bfs():
+    q = deque()
+    q.append((0, 0, k))
+    visit = [[[0 for i in range(31)] for i in range(w)] for i in range(h)]
+    while q:
+        x, y, z = q.popleft()
+        if x == h - 1 and y == w - 1:
+            return visit[x][y][z]
+        for i in range(4):
+            nx = x + dx[i]
+            ny = y + dy[i]
+            if 0 <= nx < h and 0 <= ny < w and s[nx][ny] != 1 and visit[nx][ny][z] == 0:
+                visit[nx][ny][z] = visit[x][y][z] + 1
+                q.append((nx, ny, z))
+        if z > 0:
+            for i in range(8):
+                nx = x + d1[i]
+                ny = y + d2[i]
+                if 0 <= nx < h and 0 <= ny < w and s[nx][ny] != 1 and visit[nx][ny][z - 1] == 0:
+                    visit[nx][ny][z - 1] = visit[x][y][z] + 1
+                    q.append((nx, ny, z - 1))
+    return -1
+
+
+k = int(input())
+w, h = map(int, input().split())
+s = [list(map(int, input().split())) for i in range(h)]
+print(bfs())
+
+# 출처 : https://pacific-ocean.tistory.com/393
