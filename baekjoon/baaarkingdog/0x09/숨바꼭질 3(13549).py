@@ -7,9 +7,9 @@ for p in q:
         if 0 <= a < 100002 and not l[a]:
             v = l[p] + t
             if a == k:
-                print(v - 1)
                 w += [v]
             else:
                 l[a] = v
                 q += [a]
+
 print(min(w) - 1)
