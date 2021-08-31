@@ -26,18 +26,18 @@ def f(p):
 
 
 def s(p, w, t):
-    v = [[0] * c for _ in g(r)]
+    l = []
     for a, b, k in p:
         for x, y in [(a + 1, b), (a-1, b), (a, b+1), (a, b-1)]:
-            if 0 <= x < r and 0 <= y < c and not v[x][y]:
+            if 0 <= x < r and 0 <= y < c and m[x][y] != k:
                 u = m[x][y]
-                if u != k and u in d:
+                if u in d:
                     return t
                 if u == '.':
                     p += [(x, y, k)]
                     m[x][y] = k
                 if u == 'X':
-                    w += [(a, b)]
+                    l += [(a, b, k)]
     return s(l, f(w), t + 1)
 
 
