@@ -3,7 +3,7 @@ sys.setrecursionlimit(10**6)
 i, r = sys.stdin.readline, range
 l, d = lambda: map(int, i().split()), {}
 n, m = l()
-g = [[0] * (n+1) for _ in r(n+1)]
+g, v = [[0] * (n+1) for _ in r(n+1)], [[0] * (n+1) for _ in r(n+1)]
 g[1][1] = 1
 
 for _ in r(m):
@@ -15,7 +15,7 @@ for _ in r(m):
 
 
 def c(s, f):
-    q, v = [s], []
+    q = [s]
     for m in q:
         if m in d:
             for x, y in d.pop(m):
@@ -23,11 +23,11 @@ def c(s, f):
                 c((x, y), (1, 1))
         a, b = m
         for x, y in [(a+1, b), (a-1, b), (a, b+1), (a, b-1)]:
-            if 0 < x <= n and 0 < y <= n and g[x][y] and (x, y) not in v:
+            if 0 < x <= n and 0 < y <= n and g[x][y] and not v[x][y]:
                 if (x, y) == f:
                     return
                 q += [(x, y)]
-                v += [(x, y)]
+                v[x][y] = 1
 
 
 c((1, 1), None)
