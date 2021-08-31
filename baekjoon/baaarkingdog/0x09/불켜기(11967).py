@@ -1,4 +1,5 @@
 import sys
+sys.setrecursionlimit(10**6)
 i, r = sys.stdin.readline, range
 l, d = lambda: map(int, i().split()), {}
 n, m = l()
