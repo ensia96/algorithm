@@ -1,3 +1,4 @@
+import collections as o
 import sys
 i, g = sys.stdin.readline, range
 r, c = map(int, i().split())
@@ -13,14 +14,22 @@ for i in g(r):
         if m[i][j] == '.':
             w += [(i, j, '.')]
 d = 'AB'
-e = [*filter(lambda x: x[2] == 'A', l)]
-l = [*filter(lambda x: x[2] == 'B', l)]
+e = o.deque([*filter(lambda x: x[2] == 'A', l)])
+l = o.deque([*filter(lambda x: x[2] == 'B', l)])
+w = o.deque(w)
 
 
 def s(e, l, w, t, f):
-    p, e, l, w = [e, l, w][f], [[], e, e][f], [l, [], l][f], [w, w, []][f]
+    p = [e, l, w][f]
+    if p == e:
+        e = o.deque([])
+    if p == w:
+        w = o.deque([])
+    if p == l:
+        l = o.deque([])
     v = [[0] * c for _ in g(r)]
-    for a, b, k in p:
+    while p:
+        a, b, k = p.popleft()
         for x, y in [(a + 1, b), (a-1, b), (a, b+1), (a, b-1)]:
             if 0 <= x < r and 0 <= y < c and not v[x][y]:
                 u = m[x][y]
@@ -28,15 +37,15 @@ def s(e, l, w, t, f):
                     return t
                 if u == 'X':
                     if f == 0:
-                        e += [(a, b, k)]
+                        e.append((a, b, k))
                     if f == 1:
-                        l += [(a, b, k)]
+                        l.append((a, b, k))
                     if f == 2:
                         m[x][y] = '.'
                 else:
-                    w += [(x, y, '.')]
+                    w.append((x, y, '.'))
                 if k in d and u == '.':
-                    p += [(x, y, k)]
+                    p.append((x, y, k))
                     v[x][y] = 1
                     m[x][y] = k
     if f == 2:
