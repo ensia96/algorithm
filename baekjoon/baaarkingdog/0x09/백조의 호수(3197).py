@@ -2,47 +2,43 @@ import sys
 i, g = sys.stdin.readline, range
 r, c = map(int, i().split())
 m = [[*i().strip()] for _ in g(r)]
-w, l, p, d = [], [], ['A', 'B'], 'AB'
+w, l, k = [], [], 1
 
 for i in g(r):
     for j in g(c):
-        if m[i][j] == 'L':
-            u = p.pop()
-            l += [(i, j, u)]
-            w += [(i, j)]
-            m[i][j] = u
-        if m[i][j] == '.':
-            w += [(i, j)]
+        u = m[i][j]
+        if u == 'L':
+            l += [(i, j, k)]
+            m[i][j] = [1, k]
+            k += 1
+        else:
+            m[i][j] = [1 if u == 'X' else 0, 0]
 
 
 def f(p):
-    v = [[0] * c for _ in g(r)]
-    n = []
     for a, b in p:
-        if v[a][b]:
-            continue
-        for x, y in [(a + 1, b), (a-1, b), (a, b+1), (a, b-1)]:
-            if 0 <= x < r and 0 <= y < c and m[x][y] == 'X':
-                m[x][y] = '.'
-                v[x][y] = 1
-                n += [(x, y)]
-    return n
+        for x, y in [(a+1, b), (a-1, b), (a, b+1), (a, b-1)]:
+            if 0 <= x < r and 0 <= y < c and m[x][y][0]:
+                m[x][y][0] = 0
+    return []
 
 
 def s(p, w, t):
-    v = [[0] * c for _ in g(r)]
+    l = []
     for a, b, k in p:
-        for x, y in [(a + 1, b), (a-1, b), (a, b+1), (a, b-1)]:
-            if 0 <= x < r and 0 <= y < c and not v[x][y]:
-                u = m[x][y]
-                if u != k and u in d:
-                    return t
-                if u == '.':
-                    p += [(x, y, k)]
-                    m[x][y] = k
-                if u == 'X':
+        for x, y in [(a+1, b), (a-1, b), (a, b+1), (a, b-1)]:
+            if 0 <= x < r and 0 <= y < c:
+                d, q = m[x][y]
+                if d:
                     w += [(a, b)]
+                    l += [(a, b, k)]
+                    continue
+                if q != k:
+                    if q:
+                        return t
+                    m[x][y][1] = k
+                    p += [(x, y, k)]
     return s(l, f(w), t + 1)
 
 
-print(s(l, w, 0))
+print(s(l, [], 0))
