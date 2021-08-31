@@ -12,8 +12,6 @@ while q:
     if x > m:
         break
     for a in [p-1, p+1, p*2]:
-        if a == x + t + 1:
-            exit(print(t + 1))
         if 0 < a <= m:
             q.append((a, t+1))
 
