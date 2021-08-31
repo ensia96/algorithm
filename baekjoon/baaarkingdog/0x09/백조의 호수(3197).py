@@ -1,56 +1,44 @@
-import collections as o
 import sys
 i, g = sys.stdin.readline, range
 r, c = map(int, i().split())
 m = [[*i().strip()] for _ in g(r)]
-w, l, p = [], [], ['A', 'B']
+w, l, p, d = [], [], ['A', 'B'], 'AB'
 
 for i in g(r):
     for j in g(c):
         if m[i][j] == 'L':
             u = p.pop()
             l += [(i, j, u)]
+            w += [(i, j)]
             m[i][j] = u
         if m[i][j] == '.':
-            w += [(i, j, '.')]
-d = 'AB'
-e = o.deque([*filter(lambda x: x[2] == 'A', l)])
-l = o.deque([*filter(lambda x: x[2] == 'B', l)])
-w = o.deque(w)
+            w += [(i, j)]
 
 
-def s(e, l, w, t, f):
-    p = [e, l, w][f]
-    if p == e:
-        e = o.deque([])
-    if p == w:
-        w = o.deque([])
-    if p == l:
-        l = o.deque([])
+def f(p):
+    n = []
+    for a, b in p:
+        for x, y in [(a + 1, b), (a-1, b), (a, b+1), (a, b-1)]:
+            if 0 <= x < r and 0 <= y < c and m[x][y] == 'X':
+                m[x][y] = '.'
+                n += [(x, y)]
+    return n
+
+
+def s(p, w, t):
     v = [[0] * c for _ in g(r)]
-    while p:
-        a, b, k = p.popleft()
+    for a, b, k in p:
         for x, y in [(a + 1, b), (a-1, b), (a, b+1), (a, b-1)]:
             if 0 <= x < r and 0 <= y < c and not v[x][y]:
                 u = m[x][y]
-                if u in d and k in d and u != k:
+                if u != k and u in d:
                     return t
-                if u == 'X':
-                    if f == 0:
-                        e.append((a, b, k))
-                    if f == 1:
-                        l.append((a, b, k))
-                    if f == 2:
-                        m[x][y] = '.'
-                else:
-                    w.append((x, y, '.'))
-                if k in d and u == '.':
-                    p.append((x, y, k))
-                    v[x][y] = 1
+                if u == '.':
+                    p += [(x, y, k)]
                     m[x][y] = k
-    if f == 2:
-        t += 1
-    return s(e, l, w, t, (f + 1) % 3)
+                if u == 'X':
+                    w += [(a, b)]
+    return s(l, f(w), t + 1)
 
 
-print(s(e, l, w, 0, 0))
+print(s(l, w, 0))
