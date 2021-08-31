@@ -9,10 +9,10 @@ while q:
     x = k + (t*(1+t)//2)
     if p == x:
         exit(print(t))
-    if x > m:
-        break
     for a in [p-1, p+1, p*2]:
-        if 0 < a <= m:
+        if a == x + t + 1:
+            exit(print(t + 1))
+        if 0 < a <= m and x + t + 1 <= m:
             q.append((a, t+1))
 
 print(r)
