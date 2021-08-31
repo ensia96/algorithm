@@ -2,40 +2,46 @@ import sys
 i, g = sys.stdin.readline, range
 r, c = map(int, i().split())
 m = [[*i().strip()] for _ in g(r)]
-l, p = [], ['A', 'B']
+w, l, p = [], [], ['A', 'B']
 
 for i in g(r):
     for j in g(c):
         if m[i][j] == 'L':
-            w = p.pop()
-            l += [(i, j, w)]
-            m[i][j] = w
+            u = p.pop()
+            l += [(i, j, u)]
+            m[i][j] = u
+        if m[i][j] == '.':
+            w += [(i, j, '.')]
 d = 'AB'
 e = [*filter(lambda x: x[2] == 'A', l)]
 l = [*filter(lambda x: x[2] == 'B', l)]
 
 
-def s(e, l, t, f):
-    p = l if f else e
-    l = [] if f else l
-    e = e if f else []
-
+def s(e, l, w, t, f):
+    p, e, l, w = [e, l, w][f], [[], e, e][f], [l, [], l][f], [w, w, []][f]
+    v = [[0] * c for _ in g(r)]
     for a, b, k in p:
         for x, y in [(a + 1, b), (a-1, b), (a, b+1), (a, b-1)]:
-            if 0 <= x < r and 0 <= y < c:
+            if 0 <= x < r and 0 <= y < c and not v[x][y]:
                 u = m[x][y]
-                if u == d[not f]:
-                    return (t // 2) + (t % 2)
+                if u in d and k in d and u != k:
+                    return t
                 if u == 'X':
-                    if f:
-                        l += [(x, y, k)]
-                    else:
-                        e += [(x, y, k)]
-                    m[x][y] = k
-                if u == '.':
+                    if f == 0:
+                        e += [(a, b, k)]
+                    if f == 1:
+                        l += [(a, b, k)]
+                    if f == 2:
+                        m[x][y] = '.'
+                else:
+                    w += [(x, y, '.')]
+                if k in d and u == '.':
                     p += [(x, y, k)]
+                    v[x][y] = 1
                     m[x][y] = k
-    return s(e, l, t + 1, not f)
+    if f == 2:
+        t += 1
+    return s(e, l, w, t, (f + 1) % 3)
 
 
-print(s(e, l, 0, 0))
+print(s(e, l, w, 0, 0))
