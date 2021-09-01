@@ -1,7 +1,8 @@
 def r(n, p=3, q=['*', '* *', '*****']):
     if n == 3:
         for i in range(p):
-            q[p-i-1] = (' ' * i) + q[p-i-1]
+            a = (' ' * i)
+            q[p-i-1] = a + q[p-i-1] + a
         return q
     d = [*reversed(q)]
     for i in range(len(q)):
