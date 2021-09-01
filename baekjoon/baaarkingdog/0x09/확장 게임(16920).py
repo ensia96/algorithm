@@ -14,14 +14,14 @@ while l and a:
     q, w = l.popleft(), t.popleft()
     e = w
     while w:
-        v, w = [], w - 1
+        v, w = d(), w - 1
         while q:
             p, i, j = q.popleft()
             for x, y in [(i+1, j), (i-1, j), (i, j+1), (i, j-1)]:
                 if 0 <= x < n and 0 <= y < m and b[x][y] == '.':
                     c[p], b[x][y], a = c[p] + 1, p, a-1
-                    v += [(p, x, y)]
-        q = d(v)
+                    v.append((p, x, y))
+        q = v
     if q:
         l.append(q)
         t.append(e)
