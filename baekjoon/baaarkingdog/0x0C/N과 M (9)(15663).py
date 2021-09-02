@@ -3,19 +3,15 @@ n, m = l()
 l = [*sorted(l())]
 
 
-def b(n, m, s=[], v=[0]*n):
+def b(n, m, s=[], v=[]):
     global l, r
-    if len(s) == m:
-        t = [*map(str, s)]
-        if t not in r:
-            r += [t]
-            print(*t)
+    if len(s) == m and s not in r:
+        r += [s]
+        print(*map(str, s))
         return
     for i in range(n):
-        if not v[i]:
-            v[i] = 1
-            b(n, m, s + [l[i]], v)
-            v[i] = 0
+        if i not in v:
+            b(n, m, s + [l[i]], v+[i])
 
 
 b(n, m)
