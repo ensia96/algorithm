@@ -5,9 +5,10 @@ l = [*sorted(l())]
 
 def b(n, m, s=[], v=[]):
     global l, r
-    if len(s) == m and s not in r:
-        r += [s]
-        print(*map(str, s))
+    if len(s) == m:
+        if s not in r:
+            r += [s]
+            print(*map(str, s))
         return
     for i in range(n):
         if i not in v:
