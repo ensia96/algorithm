@@ -1,18 +1,23 @@
-l, r = lambda: map(int, input().split()), []
+l, c = lambda: map(int, input().split()), 0
 n, m = l()
-l = [*sorted(l())]
+l = [*map(str, sorted(l()))]
+s, v, d = [0] * m, [0] * n, {}
 
 
-def b(n, m, s=[], v=[]):
-    global l, r
-    if len(s) == m:
-        if s not in r:
-            r += [s]
-            print(*map(str, s))
+def b(c):
+    if c == m:
+        t = ' '.join(s)
+        if t not in d:
+            d[t] = 0
         return
     for i in range(n):
-        if i not in v:
-            b(n, m, s + [l[i]], v+[i])
+        if not v[i]:
+            s[c], v[i] = l[i], 1
+            b(c+1)
+            v[i] = 0
 
 
-b(n, m)
+b(c)
+print('\n'.join(d))
+
+# 딕셔너리(해시 테이블) 자료형에 대한 아이디어를 얻은 글 : https://jinho-study.tistory.com/1042
