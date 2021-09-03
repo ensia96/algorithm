@@ -9,12 +9,11 @@ def u(n, p, d, f, h):
         return
     for i in range(p, c):
         if not v[i]:
-            if s[i] in 'aeiou':
-                f += 1
-            else:
-                h += 1
             v[i] = 1
-            u(n+s[i], i, d+1, f, h)
+            if s[i] in 'aeiou':
+                u(n+s[i], i, d+1, f+1, h)
+            else:
+                u(n+s[i], i, d+1, f, h+1)
             v[i] = 0
 
 
