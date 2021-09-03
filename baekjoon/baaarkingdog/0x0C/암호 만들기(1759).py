@@ -1,9 +1,21 @@
-from itertools import combinations as t
-i, m = input, 'aeiou'
+i = input
 l, c = map(int, i().split())
-s = i().split()
-m, s = [*filter(lambda x: x in m, s)], [*filter(lambda x: x not in m, s)]
+s, v = sorted(i().split()), [0] * c
 
-print('\n'.join(sorted(
-    [''.join(sorted(''.join(x) + ''.join(y)))
-     for i in range(2, l) for x in [*t(m, l-i)] for y in [*t(s, i)]])))
+
+def u(n, p, d, f, h):
+    if f and h > 1 and d == l:
+        print(n)
+        return
+    for i in range(p, c):
+        if not v[i]:
+            if s[i] in 'aeiou':
+                f += 1
+            else:
+                h += 1
+            v[i] = 1
+            u(n+s[i], i, d+1, f, h)
+            v[i] = 0
+
+
+u('', 0, 0, 0, 0)
