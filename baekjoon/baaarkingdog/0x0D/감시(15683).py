@@ -15,7 +15,7 @@ for f in d:
                 a[j] += [u]
                 for g in w:
                     y, x = g//m+t[j][0], g % m+t[j][1]
-                    if 0 <= y < n and 0 <= x < m and b[y][x] == 0:
+                    if 0 <= y < n and 0 <= x < m and b[y][x] != 6:
                         w += [y*m+x]
                         a[j] += [y*m+x]
             d[f][i] = a
