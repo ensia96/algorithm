@@ -21,7 +21,7 @@ for f in d:
             d[f][i] = a
         for i in r(l):
             h, o, s, z = d[f][i]
-            d[f][i] = [d[f][i], [h+o, s+z], [h+o, o+s, s+z, z+h],
+            d[f][i] = [d[f][i], [h+o, s+z], [h+s, s+o, o+z, z+h],
                        [h+o+s, o+s+z, s+z+h, z+h+o], [h+o+s+z]][f-1]
 
 
