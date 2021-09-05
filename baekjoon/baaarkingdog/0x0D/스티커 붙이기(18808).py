@@ -23,8 +23,7 @@ def e(x, y):
         return 1
 
 
-while k:
-    k -= 1
+for _ in g(k):
     r, c = l()
     p = [[*l()] for __ in g(r)]
     for _ in g(4):
