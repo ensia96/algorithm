@@ -31,4 +31,4 @@ for _ in g(k):
             break
         r, c, p = t(r, c)
 
-print(sum(sum(l) for l in b))
+print(sum(map(sum, b)))
