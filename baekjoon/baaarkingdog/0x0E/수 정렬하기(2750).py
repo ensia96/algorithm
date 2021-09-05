@@ -1,1 +1,1 @@
-print('\n'.join(sorted(map(int, [*open(0)][1:]))))
+print('\n'.join(map(str, sorted(int(input())for _ in range(int(input()))))))
