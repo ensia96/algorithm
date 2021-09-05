@@ -10,4 +10,4 @@ while i < n and j < m:
         c += [b[j]]
         j += 1
 
-print(c+a[i:]+b[j:])
+print(*(c+a[i:]+b[j:]))
