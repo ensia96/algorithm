@@ -1,9 +1,7 @@
-import sys
-import collections as c
-
-i, d = sys.stdin.readline, c.defaultdict(int)
+i, d = input, {}
 
 for _ in range(int(i())):
-    d[int(i())] += 1
+    n = int(i())
+    d[n] = d.get(n, 0)+1
 
-print(sorted(d.items(), key=lambda x: (-x[1], x[0]))[0][0])
+print(min((-d[k], k) for k in d)[1])
