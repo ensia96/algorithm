@@ -1,4 +1,5 @@
-i = input
+import sys
+i = sys.stdin.readline
 l, _ = lambda: [*map(int, i().split())], 0
 
 for _ in range(int(i())):
