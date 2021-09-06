@@ -7,4 +7,4 @@ while 1:
     except:
         break
 
-print(*sorted(map(int, map(reversed, l))))
+print(*map(str, sorted(map(int, map(reversed, l)))))
