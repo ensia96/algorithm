@@ -1,4 +1,3 @@
-import sys
 _, *l = input().split()
 
 while 1:
@@ -7,4 +6,4 @@ while 1:
     except:
         break
 
-print(*map(str, sorted(map(int, map(reversed, l)))))
+print(*sorted(map(int, [i[::-1] for i in l])))
