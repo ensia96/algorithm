@@ -1,7 +1,7 @@
 n = int(input())
 s = [int(input()) for _ in range(n)]
-if n == 1:
-    exit(print(s.pop()))
-d = [(s[0], 0), (s[1], s[0]+s[1])]
-_ = [d.append((max(d[i-2])+s[i], d[i-1][0]+s[i])) for i in range(2, n)]
-print(max(d[n-1]))
+if n < 3:
+    exit(print(sum(s)))
+d = [*s[1:4]]
+_ = [d.append(min(d[i-2], d[i-3])+s[i]) for i in range(4, n-1)]
+print(sum(s)-min(d[-1], d[-2]))
