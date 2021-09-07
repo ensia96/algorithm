@@ -1,7 +1,6 @@
 import sys
-d, _ = lambda: [*map(int, sys.stdin.readline().split())], 0
-n, m, *l = d()+d()
-
+d, l, a = lambda: [*map(int, sys.stdin.readline().split())], [0], 0
+n, m, *_ = d() + [l.append(a := a+i) for i in d()]
 for _ in range(m):
     i, j = d()
-    print(sum(l[i-1:j]))
+    print(l[j]-l[i-1])
