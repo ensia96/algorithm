@@ -1,7 +1,5 @@
-l, i = lambda x: (x[1], x[0]), input
-m = sorted([[*map(int, i().split())] for _ in range(int(i()))], key=l)
-t, c = m[0][1], 1
-for s, e in m[1:]:
+t = c = 0
+for e, s in sorted([[*map(int, input().split())][::-1] for _ in '.'*int(input())]):
     if s >= t:
         t, c = e, c+1
 print(c)
