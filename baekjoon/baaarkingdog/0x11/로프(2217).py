@@ -1,9 +1,3 @@
-import sys
-i, l, p = sys.stdin.readline, [0]*(10**4+1), 0
-k = n = int(i())
-_ = [exec('l[int(i())]+=1') for _ in ' '*n]
-for w in range(10**4+1):
-    if l[w]:
-        p = max(p, w*k)
-        k -= l[w]
-print(p)
+n, *l = map(int, open(0))
+l = sorted(l)
+print(max(l[i]+l[i]*(n-i-1)for i in range(n)[::-1]))
