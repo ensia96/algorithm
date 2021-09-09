@@ -33,9 +33,6 @@ while f:
         for j in range(6):
             if m[i][j] != '.' and ppuyo(i, j, m[i][j]):
                 swipe()
-                print()
-                for _ in m:
-                    print(_)
                 c += 1
                 f = 1
 
