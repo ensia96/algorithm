@@ -27,13 +27,16 @@ def swipe():
                         q += [h+1]
 
 
-while f:
+while 1:
     f = 0
     for i in range(12):
         for j in range(6):
             if m[i][j] != '.' and ppuyo(i, j, m[i][j]):
-                c += 1
                 f = 1
+    if f:
+        c += 1
+    else:
+        break
     swipe()
 
 print(c)
