@@ -29,7 +29,7 @@ def swipe():
 
 while f:
     f = 0
-    for i in range(12)[::-1]:
+    for i in range(12):
         for j in range(6):
             if m[i][j] != '.' and ppuyo(i, j, m[i][j]):
                 swipe()
