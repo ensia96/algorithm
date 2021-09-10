@@ -1,9 +1,10 @@
 n = int(input())
 a = [*map(int, input().split())]
-d = [[0]*n for _ in range(n)]
+d = [1]*n
 for i in range(n):
-    d[i][i], v = 1, a[i]
-    for j in range(i+1, n):
-        b = v < a[j]
-        v, d[i][j] = [v, a[j]][b], d[i][j-1]+b
-print(max(map(max, d)))
+    for j in range(i):
+        if a[j] < a[i]:
+            d[i] = max(d[i], d[j]+1)
+print(max(d))
+
+# 도움 받은 글 : https://www.acmicpc.net/board/view/58867
