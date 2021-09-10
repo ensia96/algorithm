@@ -40,3 +40,174 @@ def f(i, m, x, y):
 
 
 print(max(s(*i, m)for i in c))
+
+# (시간 초과 때문에 아래 블로그에 올라온 C++ 코드 다듬어서 제출...)
+# https://geniusjo-story.tistory.com/399
+
+# #include <iostream>
+# #include <algorithm>
+# #include <vector>
+# #include <utility>
+# using namespace std;
+
+# int n;
+# pair<int, char> board[5][5];
+# pair<int, char> material[10][4][4];
+# int result = -987654321;
+
+# void setup() {
+# for (int i = 0; i < 5; i++)
+# for (int j = 0; j < 5; j++) {
+# board[i][j].first = 0;
+# board[i][j].second = 'W';
+# }
+# }
+
+# int cal() {
+# int r = 0;
+# int b = 0;
+# int g = 0;
+# int y = 0;
+# for (int i = 0; i < 5; i++)
+# for (int j = 0; j < 5; j++) {
+# if (board[i][j].second == 'R')
+# r += board[i][j].first;
+# else if (board[i][j].second == 'B')
+# b += board[i][j].first;
+# else if (board[i][j].second == 'G')
+# g += board[i][j].first;
+# else if (board[i][j].second == 'Y')
+# y += board[i][j].first;
+# }
+# return (7 * r) + (5 * b) + (3 * g) + (2 * y);
+# }
+
+# void fill(pair<int, int> position, int number) {
+# for (int i = position.first; i < position.first + 4; i++)
+# for (int j = position.second; j < position.second + 4; j++) {
+# pair<int, char> current_location = board[i][j];
+
+# current_location.first += material[number][i - position.first][j - position.second].first;
+
+# if (current_location.first < 0)
+# current_location.first = 0;
+# else if (current_location.first > 9)
+# current_location.first = 9;
+
+# if (material[number][i - position.first][j - position.second].second != 'W')
+# current_location.second = material[number][i - position.first][j - position.second].second;
+
+# board[i][j] = current_location;
+# }
+# }
+
+# void rotate(int number) {
+# pair<int, char> dummy[4][4];
+
+# for (int i = 0; i < 4; i++)
+# for (int j = 0; j < 4; j++) {
+# dummy[i][j] = material[number][3 - j][i];
+# }
+
+# for (int i = 0; i < 4; i++)
+# for (int j = 0; j < 4; j++) {
+# material[number][i][j] = dummy[i][j];
+# }
+# }
+
+# void subs(vector<int> select, int index) {
+# if (index == 3) {
+# result = max(result, cal());
+# return;
+# }
+
+# pair<int, char> copied[5][5];
+
+# for (int i = 0; i < 5; i++)
+# for (int j = 0; j < 5; j++)
+# copied[i][j] = board[i][j];
+
+# for (int t = 0; t < 4; t++) {
+# fill(make_pair(0, 0), select[index]);
+# subs(select, index + 1);
+# for (int i = 0; i < 5; i++)
+# for (int j = 0; j < 5; j++)
+# board[i][j] = copied[i][j];
+
+# fill(make_pair(0, 1), select[index]);
+# subs(select, index + 1);
+# for (int i = 0; i < 5; i++)
+# for (int j = 0; j < 5; j++)
+# board[i][j] = copied[i][j];
+
+# fill(make_pair(1, 0), select[index]);
+# subs(select, index + 1);
+# for (int i = 0; i < 5; i++)
+# for (int j = 0; j < 5; j++)
+# board[i][j] = copied[i][j];
+
+# fill(make_pair(1, 1), select[index]);
+# subs(select, index + 1);
+# for (int i = 0; i < 5; i++)
+# for (int j = 0; j < 5; j++)
+# board[i][j] = copied[i][j];
+
+# rotate(select[index]);
+# }
+# }
+
+# void solve() {
+# vector<int> perm;
+
+# for (int i = 0; i < n; i++)
+# perm.push_back(0);
+
+# perm[0] = 1;
+# perm[1] = 1;
+# perm[2] = 1;
+
+# sort(perm.begin(), perm.end());
+
+# do {
+# vector<int> select;
+# for (int i = 0; i < perm.size(); i++) {
+# if (perm[i] == 1)
+# select.push_back(i);
+# }
+# sort(select.begin(), select.end());
+# do {
+# subs(select, 0);
+# } while (next_permutation(select.begin(), select.end()));
+# } while (next_permutation(perm.begin(), perm.end()));
+# }
+
+# int main() {
+# cin.tie(NULL);
+# ios_base::sync_with_stdio(false);
+
+# setup();
+# cin >> n;
+
+# for (int i = 0; i < n; i++) {
+# for (int j = 0; j < 4; j++)
+# for (int k = 0; k < 4; k++) {
+# int input;
+# cin >> input;
+
+# material[i][j][k].first = input;
+# }
+
+# for (int j = 0; j < 4; j++)
+# for (int k = 0; k < 4; k++) {
+# char input;
+# cin >> input;
+
+# material[i][j][k].second = input;
+# }
+# }
+
+# solve();
+# cout << result;
+
+# return 0;
+# }
