@@ -33,10 +33,9 @@ def f(i, m, x, y):
     for a in g(4):
         for b in g(4):
             u, v = i[a][b]
-            h = m[a+x][b+y][0]+u
-            m[a+x][b+y][0] = [[h, 9][h > 9], 0][h < 0]
-            if v:
-                m[a+x][b+y][1] = v
+            h, k = m[a+x][b+y]
+            w = h+u
+            m[a+x][b+y] = ([[w, 9][w > 9], 0][w < 0], [v, k][not v])
     return m
 
 
