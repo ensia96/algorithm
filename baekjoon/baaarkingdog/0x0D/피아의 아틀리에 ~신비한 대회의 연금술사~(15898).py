@@ -1,5 +1,6 @@
+import sys
 import itertools as t
-i, g = input, range
+i, g = sys.stdin.readline, range
 n, m = int(i()), [[[0, 0] for _ in g(5)] for _ in g(5)]
 a, c = lambda: [i().split() for _ in g(4)], t.permutations(g(n), 3)
 l = [[[[int(a[i][j]), {'R': 7, 'G': 3, 'B': 5, 'Y': 2, 'W': 0}[b[i][j]]] for i in range(4)]
@@ -39,4 +40,4 @@ def f(i, m, x, y):
     return m
 
 
-print(max(s(*i, [[[0, 0] for _ in g(5)] for _ in g(5)])for i in c))
+print(max(s(*i, m)for i in c))
