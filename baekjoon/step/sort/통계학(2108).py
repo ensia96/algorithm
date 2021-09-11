@@ -1,11 +1,14 @@
 n = int(input())
 d = [int(input()) for _ in range(n)]
-t = {i: d.count(i) for i in set(d)}
-a = {i: [] for i in set(t.values())}
-_ = [a[t[i]].append(i) for i in t]
-b = a[max(a)]
+t, m = {}, 0
+
+for i in set(d):
+    a = d.count(i)
+    t[a] = t.get(a, [])
+    t[a] += [i]
+    m = max(a, m)
 
 print(sum(d)//n)
 print(sorted(d)[n//2])
-print(sorted(b)[1] if len(b) > 1 else b[0])
+print(sorted(t[m])[len(t[m]) > 1])
 print(max(d)-min(d))
