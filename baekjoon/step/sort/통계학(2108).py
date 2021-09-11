@@ -1,14 +1,9 @@
+from collections as c
 n = int(input())
-d = [int(input()) for _ in range(n)]
-t, m = {}, 0
+b = sorted([int(input()) for _ in range(n)])
+a = c.Counter(b).most_common()
 
-for i in set(d):
-    a = d.count(i)
-    t[a] = t.get(a, [])
-    t[a] += [i]
-    m = max(a, m)
-
-print(sum(d)//n)
-print(sorted(d)[n//2])
-print(sorted(t[m])[len(t[m]) > 1])
-print(max(d)-min(d))
+print(sum(b)//n)
+print(b[n//2])
+print(a[a[0][1] == a[1][1]][0] if len(a) > 1 else a[0][0])
+print(max(b)-min(b))
