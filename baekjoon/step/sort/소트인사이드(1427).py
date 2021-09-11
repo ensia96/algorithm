@@ -1,1 +1,1 @@
-print(''.join(sorted(input(), reverse=1))))
+print(''.join(sorted(input(), reverse=1)))
