@@ -1,4 +1,4 @@
-from collections as c
+import collections as c
 n = int(input())
 b = sorted([int(input()) for _ in range(n)])
 a = c.Counter(b).most_common()
