@@ -1,6 +1,5 @@
 import itertools as t
-import sys
-i, g = sys.stdin.readline, range
+i, g = input, range
 n = [[*map(int, i().split())]for _ in g(int(i()))]
 a, u = 0, [*t.permutations(g(1, 9))]
 for m in u:
