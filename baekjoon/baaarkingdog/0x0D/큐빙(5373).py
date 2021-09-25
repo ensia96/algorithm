@@ -9,7 +9,7 @@ for _ in range(int(input())):
                 t[0], t[1], t[2], t[5], t[8], t[7], t[6], t[3]
             x[8], x[7], x[6], y[6], y[3], y[0], z[2], z[5], z[8], w[0], w[1], w[2] = \
                 y[6], y[3], y[0], z[2], z[5], z[8], w[0], w[1], w[2], x[8], x[7], x[6]
-    for p in c[0]:
-        print(''.join(p))
+    for i in range(3):
+        print(''.join(c[0][i*3:(i+1)*3]))
 
 # 풀이 참고 : https://conak-diary.tistory.com/99
