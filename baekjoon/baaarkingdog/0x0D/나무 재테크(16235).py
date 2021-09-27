@@ -1,24 +1,28 @@
-l, r = lambda: map(int, input().split()), range
+import sys
+import collections as c
+l, r = lambda: map(int, sys.stdin.readline().split()), range
 n, m, k = l()
-i, g, t = [[*l()]for _ in r(n)], [[5]*n for _ in r(n)], {}
-for _ in r(m):
-    x, y, z = l()
-    t[(y-1, x-1)] = t.get((y-1, x-1), [])+[z]
+i, g = [[*l()]for _ in r(n)], [[5]*n for _ in r(n)]
+t = {(p, q): c.deque()for p in r(n) for q in r(n)}
+for z, y, x in sorted([[*l()][::-1] for _ in r(m)]):
+    t[(y-1, x-1)].append(z)
 while k:
     for y, x in t:
-        at, dt = [], 0
-        for a in sorted(t[(y, x)]):
-            f = g[y][x] >= a
-            g[y][x], at, dt = g[y][x]-a*f, at+[[], [a+1]][f], dt+[a//2, 0][f]
-        t[(y, x)], g[y][x] = at, g[y][x]+dt
-    t = {e: t[e] for e in t if t[e]}
+        dt, u = 0, len(t[(y, x)])
+        while u:
+            a, u = t[(y, x)].popleft(), u-1
+            if g[y][x] >= a:
+                g[y][x] -= a
+                t[(y, x)].append(a+1)
+            else:
+                dt += a//2
+        g[y][x] += dt
     for y, x in [*t]:
         for a in t[(y, x)]:
             if not a % 5:
-                for l in [(y+p-1, x+q-1) for p in r(3) for q in r(3)]:
-                    if 0 <= l[0] < n and 0 <= l[1] < n:
-                        t[l] = t.get(l, [])+[1]
-                t[(y, x)].pop()
+                for p, q in [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]:
+                    if 0 <= y+p < n and 0 <= x+q < n:
+                        t[(y+p, x+q)].appendleft(1)
     for y in r(n):
         for x in r(n):
             g[y][x] += i[y][x]
