@@ -8,17 +8,13 @@ for t in g(101):
         exit(print(t))
     f = v < h
     b = [b, [*zip(*b)]][f]
-    m, l = 0, len(b)
+    l = len(b)
     for j in g(l):
         a, b[j] = C.Counter([*filter(None, b[j])]).most_common(), []
         a.sort(key=lambda x: x[::-1])
         for x, y in a:
             b[j] += [x, y]
-        nl = len(a)
-        m = [m, nl*2][m < nl*2]
-    for j in g(l):
-        for _ in g(m-len(b[j])):
-            b[j] += [0]
-        b[j] = b[j][:100]
+    m = max(map(len, b))
+    b = [(b[j]+[0]*(m-len(b[j])))[:100] for j in g(l)]
     b = [b, [*zip(*b)]][f]
 print(-1)
