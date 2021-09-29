@@ -8,7 +8,7 @@ while t <= 100:
     if v < h:
         for i in g(h):
             m = sorted(C.Counter([*filter(None, [b[j][i] for j in range(v)])]
-                                 ).most_common(), key=lambda x: (x[1], x[0]))
+                                 ).most_common(), key=lambda x: (x[1], x[0]))[:50]
             p = len(m)
             m += [(0, 0)]*(50-len(m))
             for j in g(49):
@@ -18,7 +18,7 @@ while t <= 100:
     else:
         for i in g(v):
             m = sorted(C.Counter([*filter(None, [b[i][j] for j in range(h)])]
-                                 ).most_common(), key=lambda x: (x[1], x[0]))
+                                 ).most_common(), key=lambda x: (x[1], x[0]))[:50]
             p = len(m)
             m += [(0, 0)]*(50-len(m))
             for j in g(49):
