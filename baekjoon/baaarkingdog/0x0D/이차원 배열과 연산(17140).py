@@ -1,29 +1,24 @@
 import collections as C
-l, t, v, h, g = lambda: map(int, input().split()), 0, 3, 3, range
+l, g = lambda: map(int, input().split()), range
 r, c, k = l()
-b, r, c = [[*l(), *[0]*96]for _ in g(3)]+[[0]*99 for _ in g(96)], r-1, c-1
-while t <= 100:
-    if b[r][c] == k:
+b = [[*l()]for _ in g(3)]
+for t in g(101):
+    v, h = len(b), len(b[0])
+    if r <= v and c <= h and b[r-1][c-1] == k:
         exit(print(t))
-    if v < h:
-        for i in g(h):
-            m = C.Counter([*filter(None, [b[j][i]
-                          for j in range(v)])]).most_common()
-            m.sort(key=lambda x: x[::-1])
-            l = len(m)
-            m = [p[a] for p in m for a in g(2)][:99] + [0]*(99-l)
-            for j in g(99):
-                b[j][i] = m[j]
-            v = min(max(v, l*2), 99)
-    else:
-        for i in g(v):
-            m = C.Counter([*filter(None, [b[i][j]
-                          for j in range(h)])]).most_common()
-            m.sort(key=lambda x: x[::-1])
-            l = len(m)
-            m = [p[a] for p in m for a in g(2)][:99] + [0]*(99-l)
-            for j in g(99):
-                b[i][j] = m[j]
-            h = min(max(h, l*2), 99)
-    t += 1
+    f = v < h
+    b = [b, [*zip(*b)]][f]
+    m, l = 0, len(b)
+    for j in g(l):
+        a, b[j] = C.Counter([*filter(None, b[j])]).most_common(), []
+        a.sort(key=lambda x: x[::-1])
+        for x, y in a:
+            b[j] += [x, y]
+        nl = len(a)
+        m = [m, nl*2][m < nl*2]
+    for j in g(l):
+        for _ in g(m-len(b[j])):
+            b[j] += [0]
+        b[j] = b[j][:100]
+    b = [b, [*zip(*b)]][f]
 print(-1)
