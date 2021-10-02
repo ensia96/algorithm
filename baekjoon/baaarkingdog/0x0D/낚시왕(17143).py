@@ -12,14 +12,15 @@ for x in g(c):
     t = []
     for i, j in [(l//c, l % c)for l in g(r*c)if b[l//c][l % c]]:
         z, s, d = b[i][j]
-        b[i][j], m = 0, s
-        while m:
-            ny, nx = [0, (i-1, j), (i+1, j), (i, j+1), (i, j-1)][d]
-            ny, d = [(ny, d), [[(ny, d), (1, 2)][(d % 2)*(ny < 0)],
-                               (r-2, 1)][(not d % 2)*(ny == r)]][d < 3]
-            nx, d = [[[(nx, d), (c-2, 4)][(d % 2)*(nx == c)], (1, 3)]
-                     [(not d % 2)*(nx < 0)], (nx, d)][d < 3]
-            i, j, m = ny, nx, m-1
+        b[i][j] = 0
+        if d < 3:
+            e, l = [s-r+1+i, s-i][d == 1], r-1
+            d = [[1, 2][d == 1], d][e < 0 or e//l % 2]
+            i = [[e % l, l-(e % l)][d == 1], [i+s, i-s][d == 1]][e < 0]
+        else:
+            e, l = [s-c+1+j, s-j][d == 4], c-1
+            d = [[3, 4][d == 3], d][e < 0 or e//l % 2]
+            j = [[e % l, l-(e % l)][d == 4], [j+s, j-s][d == 4]][e < 0]
         t += [(i, j, z, s, d)]
     for i, j, z, s, d in t:
         b[i][j] = max(b[i][j], (z, s, d))if b[i][j]else(z, s, d)
