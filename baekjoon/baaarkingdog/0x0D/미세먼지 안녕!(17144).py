@@ -5,7 +5,7 @@ l = [(i, j)for i in g(r)for j in g(c)if b[i][j] < 0]
 for _ in g(t):
     v = [[0]*c for _ in g(r)]
     for a in g(r*c):
-        i, j = a//r, a % r
+        i, j = a//c, a % c
         if b[i][j] > 0:
             for y, x in [(i+1, j), (i-1, j), (i, j+1), (i, j-1)]:
                 if 0 <= y < r and 0 <= x < c and b[y][x] != -1:
