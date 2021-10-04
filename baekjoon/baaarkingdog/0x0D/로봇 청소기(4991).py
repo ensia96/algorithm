@@ -27,8 +27,11 @@ while 1:
     t = [[0]*s for _ in g(s)]
     _ = [k(p, i)for p, i in ((x, y)for x in g(s)for y in g(x+1, s))]
     for p in e.permutations(g(1, s), s-1):
-        l = r = 0
+        l = r = f = 0
         for i in p:
+            if not t[r][i]:
+                f = 1
+                break
             l, r = l+t[r][i], i
-        a = min(a, l)
-    print(a if a else -1)
+        a = [min(a, l), a][f]
+    print([a, -1][a == 10**9])
