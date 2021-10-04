@@ -7,7 +7,7 @@ while 1:
     a, b = 10**9, [[*u().strip()]for _ in g(h)]
     l = [(p//w, p % w)for p in g(h*w)if b[p//w][p % w] in 'o*']
     s = len(l)
-    t = [[0]*s for _ in g(s)]
+    t = [[-1]*s for _ in g(s)]
     for p in g(s):
         for i in g(p, s):
             q, v, o = [(*l[p], -1)], [0]*w*h, l[i]
@@ -24,4 +24,4 @@ while 1:
         for i in p:
             l, r = l+t[r][i], i
         a = min(a, l)
-    print([a, -1][a == 0])
+    print(a)
