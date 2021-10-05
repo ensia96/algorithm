@@ -19,35 +19,22 @@ def s(n):
     return n
 
 
+def h(i, n):
+    if i == 5:
+        return s(n)
+    for j in f:
+        u = l(m[i])
+        if j*(u == m[i]):
+            continue
+        m[i] = u
+        if (i == 0)*(not u[0][0]) or (i == 4)*(not u[4][4]):
+            continue
+        n = h(i+1, n)
+    return n
+
+
 for p in t.permutations(a, 5):
     m = [[[o[k][j][i]for i in a]for j in a]for k in p]
-    for f0 in f:
-        u = l(m[0])
-        if f0*(u == m[0]):
-            continue
-        m[0] = u
-        if u[0][0]:
-            for f1 in f:
-                u = l(m[1])
-                if f1*(u == m[1]):
-                    continue
-                m[1] = u
-                for f2 in f:
-                    u = l(m[2])
-                    if f2*(u == m[2]):
-                        continue
-                    m[2] = u
-                    for f3 in f:
-                        u = l(m[3])
-                        if f3*(u == m[3]):
-                            continue
-                        m[3] = l(m[3])
-                        for f4 in f:
-                            u = l(m[4])
-                            if f4*(u == m[4]):
-                                continue
-                            m[4] = u
-                            if u[4][4]:
-                                n = s(n)
+    n = h(0, n)
 
 print([n, -1][n == 10**5])
