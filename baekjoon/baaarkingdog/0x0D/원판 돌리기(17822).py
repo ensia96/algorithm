@@ -1,26 +1,17 @@
-import collections as c
 l, r = lambda: map(int, input().split()), range
 n, m, t = l()
-b, c = [c.deque([*l()])for _ in r(n)], n*m
+b, c = [[*l()]for _ in r(n)], n*m
 for _ in r(t):
-    x, d, k, f = *l(), 0
-    _ = [b[i-1].rotate([k, -k][d])for i in r(x, n+1, x)]
-    for p in r(n*m):
-        i, j = p//m, p % m
-        if not b[i][j]:
-            continue
-        q, v = [(i, j)], b[i][j]
+    x, d, k, f = *l(), 1
+    k = [-k, k][d]
+    b = [b[i]if(i+1) % x else b[i][k:]+b[i][:k]for i in r(n)]
+    for q, v in (([(i, j)], b[i][j])for i in r(n)for j in r(m)if b[i][j]):
         for y, x in q:
             for h, w in [(y+1, x % m), (y-1, x % m), (y, (x+1) % m), (y, (x-1) % m)]:
                 if (0 <= h < n) and b[h][w] == v:
-                    b[h][w], f, c = 0, 1, c-1
+                    b[h][w], f, c = 0, 0, c-1
                     q += [(h, w)]
-    if f:
-        continue
-    if not c:
-        break
-    a = sum(map(sum, b))/c
-    for p in r(n*m):
-        u = b[p//m][p % m]
-        b[p//m][p % m] += (-(a < u)+(a > u))*bool(u)
+    if f*c:
+        a = sum(map(sum, b))/c
+        b = [[*map(lambda u:u+(-(a < u)+(a > u))*bool(u), e)]for e in b]
 print(sum(map(sum, b)))
