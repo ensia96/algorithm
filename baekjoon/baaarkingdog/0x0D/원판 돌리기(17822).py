@@ -17,6 +17,8 @@ for _ in r(t):
                     q += [(h, w)]
     if f:
         continue
+    if not c:
+        break
     a = sum(map(sum, b))/c
     for p in r(n*m):
         u = b[p//m][p % m]
