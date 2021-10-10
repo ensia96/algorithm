@@ -23,7 +23,7 @@ def s(i, c):
                 h, w = 2, o
                 break
         if (h, w) in p:
-            return
+            continue
         p[o] = (h, w)
         s(i+1, c+b[h][w])
         p[o] = (y, x)
