@@ -2,7 +2,7 @@ a, r = 0, range
 g, b = [[0]*4 for _ in r(10)], [[0]*4 for _ in r(10)]
 
 
-def action(a, m):
+def f(a, m):
     for p in r(39, 3, -1):
         i, j, t = p//4-1, p % 4, 1
         if m[i+1][j]+(not m[i][j]):
@@ -19,10 +19,10 @@ def action(a, m):
         for i, j in [(all(m[i]), i)for i in r(10)]:
             a, m[j] = a+i, [m[j], [0]*4][i]
             if i:
-                a, m = action(a, m)
+                a, m = f(a, m)
                 break
-        l = sum(any(m[i])for i in r(4, 6))
-        m = [[0]*4 for _ in r(l)]+m[:10-l]
+    l = sum(any(m[i])for i in r(4, 6))
+    m = [[0]*4 for _ in r(l)]+m[:10-l]
     return a, m
 
 
@@ -32,7 +32,7 @@ for _ in r(int(input())):
     if t > 1:
         i, j, k = [(y, x+1, 3-y), (y+1, x, 2-y)][t-2]
         g[i][j] = b[j][k] = _+1
-    a, g = action(a, g)
-    a, b = action(a, b)
+    a, g = f(a, g)
+    a, b = f(a, b)
 print(a)
 print(32-sum(b[i].count(0)+g[i].count(0)for i in r(6, 10)))
