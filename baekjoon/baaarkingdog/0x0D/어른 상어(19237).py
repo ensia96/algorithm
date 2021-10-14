@@ -5,7 +5,7 @@ p = [0]+[[0]+[[*l()]for _ in r(4)]for _ in r(m)]
 for i in r(n*n):
     y, x = i//n, i % n
     b[y][x] = (b[y][x], d[b[y][x]])
-for t in r(1000):
+for t in r(1001):
     c, h = 0, [0]*(m+1)
     for i in r(n*n):
         y, x = i//n, i % n
@@ -14,7 +14,7 @@ for t in r(1000):
             s[y][x], h[v], c = (v, t+k), (y, x, w), c+1
     if c == 1:
         exit(print(t))
-    for i in r(1, m+1):
+    for i in r(m, 0, -1):
         if not h[i]:
             continue
         y, x, d, z = *h[i], []
@@ -26,6 +26,5 @@ for t in r(1000):
                     break
         else:
             ny, nx, j = z[0]
-        f, g = b[ny][nx], (b[y][x][0], j)
-        b[ny][nx], b[y][x] = [sorted([f, g])[0], g][not f[0]], (0, 0)
+        b[ny][nx], b[y][x] = (b[y][x][0], j), (0, 0)
 print(-1)
