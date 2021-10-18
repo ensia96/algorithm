@@ -1,23 +1,26 @@
 n, r = int(input()), range
 b = [[*map(int, input().split())]for _ in r(n)]
 y = x = n//2
-p = [(-2, 0, 2), (-1, -1, 10), (-1, 0, 7), (-1, 1, 1),
-     (0, -2, 5), (1, -1, 10), (1, 0, 7), (1, 1, 1), (2, 0, 2)]
-a = sum(map(sum, b))
+p = [[0, 0, 2, 0, 0], [0, 10, 7, 1, 0],
+     [5, 0, 0, 0, 0], [0, 10, 7, 1, 0], [0, 0, 2, 0, 0]]
+a, k, l = sum(map(sum, b)), [(0, -1), (1, 0), (0, 1), (-1, 0)], 0
 
 
 def f(d):
-    global y, x, b
+    global y, x, p, l
     for _ in r(d):
-        x -= 1
+        e, g = k[l]
+        y, x = y+e, x+g
         a, b[y][x], t = b[y][x], 0, 0
-        for v, h, c in p:
-            i, j, u = y+v, x+h, int(a*c/100*10//10)
+        for m in r(5*5):
+            i, j = m//5, m % 5
+            v, h, u = y+i-2, x+j-2, int(a*p[i][j]/100*10//10)
             t += u
-            if (0 <= i < n)*(0 <= j < n):
-                b[i][j] += u
-        b[y][x-1] = b[y][x-1]+(a-t)*(0 < x)
-    y, x, b = x, n-y-1, [*map(list, zip(*b[::-1]))]
+            if (0 <= v < n)*(0 <= h < n):
+                b[v][h] += u
+        if (0 <= y+e < n)*(0 <= x+g < n):
+            b[y+e][x+g] += (a-t)
+    p, l = [*map(list, zip(*p))][::-1], (l+1) % 4
 
 
 _ = [f(i)for i in r(1, n) for _ in r(2+(i == n-1))]
