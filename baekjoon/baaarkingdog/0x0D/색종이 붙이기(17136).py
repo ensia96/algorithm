@@ -20,11 +20,11 @@ def B(p, s):
         if len(a) != l*l:
             continue
         t[l] += 1
-        for y, x in a:
-            b[y][x] = 0
+        for i, j in a:
+            b[i][j] = 0
         B(p+l, s-l*l)
-        for y, x in a:
-            b[y][x] = 1
+        for i, j in a:
+            b[i][j] = 1
         t[l] -= 1
 
 
