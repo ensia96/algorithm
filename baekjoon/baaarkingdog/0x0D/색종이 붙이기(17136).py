@@ -19,9 +19,13 @@ def B(p, s):
              for j in r(l)if c(y, x, i, j) and b[y+i][x+j]]
         if len(a) != l*l:
             continue
-        t[l], _ = t[l]+1, [exec('for y, x in a:b[y][x]=0')]
+        t[l] += 1
+        for y, x in a:
+            b[y][x] = 0
         B(p+l, s-l*l)
-        t[l], _ = t[l]-1, [exec('for y, x in a:b[y][x]=1')]
+        for y, x in a:
+            b[y][x] = 1
+        t[l] -= 1
 
 
 B(0, sum(map(sum, b)))
