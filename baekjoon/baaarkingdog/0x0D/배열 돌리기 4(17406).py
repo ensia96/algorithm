@@ -1,7 +1,7 @@
 from itertools import permutations as P
 L, R = lambda: map(int, input().split()), range
 n, m, k = L()
-A, B, C = 1000, [[*L()]for _ in R(n)], [[*L()]for _ in R(k)]
+A, B, C = 5001, [[*L()]for _ in R(n)], [[*L()]for _ in R(k)]
 for p in P(R(k), k):
     b = [[B[y][x]for x in R(m)]for y in R(n)]
     for K in p:
