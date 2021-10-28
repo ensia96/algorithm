@@ -1,14 +1,10 @@
 I, R = input, range
 T, W = map(int, I().split())
-D = [[[0] * (W + 1) for _ in R(2)] for _ in R(T + 1)]
+D = [[0] * (W + 1) for _ in range(T + 1)]
 for t in R(T):
     p = int(I()) == 1
-    for w in R(W + 1):
-        D[t][0][w] = max(D[t - 1][0][w], w < W and D[t - 1][1][w + 1]) + p
-        D[t][1][w] = max(D[t - 1][1][w], w < W and D[t - 1][0][w + 1]) + (not p)
-
-print()
-for _ in D:
-    print(_)
-print()
-print(max(map(max, D.pop())))
+    D[t][0] = D[t - 1][0] + p
+    for w in R(1, W + 1):
+        a = (p * (not w % 2)) + (not p * (w % 2))
+        D[t][w] = max(D[t - 1][w], D[t - 1][w - 1]) + a
+print(max(D.pop()))
