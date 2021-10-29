@@ -1,13 +1,13 @@
 I, R = input, range
 n, A = int(I()), [*map(int, I().split())]
-D, P = [1]*n, [-1]*n
+D, P = [0]*n, [0]*n
+F, C, S = lambda x: [] if x == -1 else F(P[x]) + [A[x]], 0, 0
 for i in R(n):
+    D[i], P[i] = 1, -1
     for j in R(i):
-        if A[j] < A[i]:
-            C = D[j]+1
-            D[i] = max(D[i], C)
-            if (P[C] == -1)+((j < P[C])*(A[j] < A[C])):
-                P[D[j]] = j
-a = D.index(max(D))
-print(D[a])
-print(*[A[p]for p in P if p > -1], A[a])
+        if (D[i] < D[j]+1)*(A[i] > A[j]):
+            D[i], P[i] = D[j]+1, j
+    if C < D[i]:
+        C, S = D[i], i
+print(C)
+print(*F(S))
