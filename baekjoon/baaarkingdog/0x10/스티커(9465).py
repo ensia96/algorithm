@@ -1,9 +1,9 @@
 import sys
-I, R, T = sys.stdin.readline, range, int
+I, T = sys.stdin.readline, int
+L, R = lambda: [*map(T, I().split())], range
 for _ in R(T(I())):
-    n, s = T(I()), [*zip(*[[*map(T, I().split())]for _ in R(2)])]
-    a = b = c = d = 0
-    for i in R(n):
+    a = b = c = d = 0*T(I())
+    for i, j in [*zip(L(), L())]:
         m, a, b = max(a, b), c, d
-        c, d = max(m, d)+s[i][0], max(m, c)+s[i][1]
+        c, d = max(m, d)+i, max(m, c)+j
     print(max(c, d))
