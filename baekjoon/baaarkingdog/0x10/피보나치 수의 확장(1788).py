@@ -1,9 +1,9 @@
 N = int(input())
 n, f = abs(N), N >= 0
-d = [0, 1][::f or -1]
+a, b, c, d = *[0, 1][::f or -1], 0, 10**9
 for i in range(2, n+2-f):
-    v = [d[i-2]-d[i-1], d[i-1]+d[i-2]][f]
-    d += [[v % 1000000000, -(-v % 1000000000)][v < 0]]
-v = d[n and -1]
-print(int(v > 0 or (v < 0)*-1))
-print(abs(v))
+    c = [a-b, a+b][f]
+    c = [c % d, -(-c % d)][c < 0]
+    a, b = b, c
+print(int(c > 0 or (c < 0)*-1))
+print(abs(c))
