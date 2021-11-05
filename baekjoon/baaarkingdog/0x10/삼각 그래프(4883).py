@@ -3,8 +3,8 @@ while 1:
     n, t = int(input()), t+1
     if not n:
         exit()
-        a, b, c = l()
-        a, c = 10**9, b+c
+    a, b, c = l()
+    a, c = 10**9, b+c
     for _ in ' '*(n-1):
         x, y, z = l()
         x += min(a, b)
