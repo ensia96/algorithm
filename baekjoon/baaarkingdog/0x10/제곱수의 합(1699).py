@@ -1,9 +1,8 @@
 n = int(input())
-c, d = 0, [i**2 for i in range(318)]
-while 1:
-    for i in range(318):
-        if d[i] > n:
-            n, c = n-d[i-1], c+1
+D = [*range(n+1)]
+for i in range(2, n+1):
+    for j in range(i):
+        if j*j > i:
             break
-    if n == 0:
-        exit(print(c))
+        D[i] = min(D[i], D[i-j*j]+1)
+print(D[n])
