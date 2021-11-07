@@ -1,8 +1,4 @@
-n = int(input())
-D = [*range(n+1)]
-for i in range(2, n+1):
-    for j in range(i):
-        if j*j > i:
-            break
-        D[i] = min(D[i], D[i-j*j]+1)
+n, D = int(input()), [0]
+for i in range(1, n+1):
+    D += [min(D[i-j**2]for j in range(1, int(i**.5)+1))+1]
 print(D[n])
