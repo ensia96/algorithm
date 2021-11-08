@@ -1,8 +1,8 @@
-I, T, R = input, int, range
-for _ in R(T(I())):
-    _, C, m = I(), [*map(T, I().split())], T(I())
-    D = [0]*(m+1)
+I = input
+for _ in range(int(I())):
+    _, C, m = I(), map(int, I().split()), int(I())
+    D = [1]+[0]*m
     for c in C:
-        for i in R(c, m+1):
-            D[i] += (i == c)+D[i-c]
+        for i in range(c, m+1):
+            D[i] += D[i-c]
     print(D[m])
