@@ -5,8 +5,8 @@ for _ in R(N()):
     D = [[0]*(n+1) for _ in R(m+1)]
     for j in R(1, n+1):
         if C[j] > m:
-            break
+            D[i][j] = D[i][j-1]
         D[C[j]][j] = 1
         for i in R(1, m+1):
             D[i][j] += D[i][j-1]+D[i-C[j]][j]
-    print(max(D[m]))
+    print(D)
