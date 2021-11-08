@@ -9,4 +9,4 @@ for _ in R(N()):
         D[C[j]][j] = 1
         for i in R(1, m+1):
             D[i][j] += D[i][j-1]+D[i-C[j]][j]
-    print(max(map(max, D)))
+    print(max(D[m]))
