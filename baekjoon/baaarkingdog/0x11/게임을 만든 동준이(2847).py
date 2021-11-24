@@ -1,7 +1,5 @@
-I, R = input, range
-n, a = int(I()), 0
-l = [int(I())for i in R(n)][::-1]
-for i in R(1, n):
-    if l[i-1] <= l[i]:
-        a, l[i] = a+l[i]-l[i-1]+1, l[i-1]-1
+m, a = 2e5, 0
+for s in [int(input())for _ in ' '*int(input())][::-1]:
+    m = min(m-1, s)
+    a += s-m
 print(a)
