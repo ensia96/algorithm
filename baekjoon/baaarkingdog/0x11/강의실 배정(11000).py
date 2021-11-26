@@ -1,12 +1,12 @@
 import sys
 i = sys.stdin.readline
-N, l = int(i()), []
+n, l = int(i()), []
 a = c = 0
-while N:
+while n:
     s, e = map(int, i().split())
     l += [(e, -1), (s, 1)]
-    N -= 1
-for s, e in sorted(l):
-    c += e
+    n -= 1
+for _, f in sorted(l):
+    c += f
     a = max(a, c)
 print(a)
