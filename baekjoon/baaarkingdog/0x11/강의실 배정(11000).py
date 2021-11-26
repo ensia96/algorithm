@@ -1,12 +1,12 @@
 import sys
-import heapq as h
-
-I = sys.stdin.readline
-l = [0]
-i = h.heappush
-p = h.heappop
-
-for s, e in sorted((*map(int, I().split()),)for _ in ' '*int(I())):
-    s < l[0] or p(l)
-    i(l, e)
-print(len(l))
+i = sys.stdin.readline
+N, l = int(i()), []
+a = c = 0
+while N:
+    s, e = map(int, i().split())
+    l += [(e, -1), (s, 1)]
+    N -= 1
+for s, e in sorted(l):
+    c += e
+    a = max(a, c)
+print(a)
