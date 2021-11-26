@@ -1,10 +1,12 @@
 import sys
-i, l, m = sys.stdin.readline, [0], 0
-for s, e in sorted((*map(int, i().split()),)for _ in ' '*int(i())):
-    for j in range(len(l)):
-        if l[j] <= s:
-            l[j] = e
-            break
-    else:
-        l += [e]
+import heapq as h
+
+I = sys.stdin.readline
+l = [0]
+i = h.heappush
+p = h.heappop
+
+for s, e in sorted((*map(int, I().split()),)for _ in ' '*int(I())):
+    s < l[0] or p(l)
+    i(l, e)
 print(len(l))
