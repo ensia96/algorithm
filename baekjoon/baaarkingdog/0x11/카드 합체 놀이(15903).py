@@ -4,5 +4,5 @@ n, m = l()
 a = sorted(l())
 for _ in range(m):
     s = p(a)+p(a)
-    i(a, s)+i(a, s)
+    i(a, s) or i(a, s)
 print(sum(a))
