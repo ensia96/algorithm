@@ -1,8 +1,6 @@
-import heapq as h
-l, i, p = lambda: map(int, input().split()), h.heappush, h.heappop
-n, m = l()
-a = sorted(l())
+l, _ = lambda: map(int, input().split()), 0
+n, m, a = l*(), [*l()]
 for _ in range(m):
-    s = p(a)+p(a)
-    i(a, s) or i(a, s)
+    a.sort()
+    a[0] = a[1] = a[0]+a[1]
 print(sum(a))
