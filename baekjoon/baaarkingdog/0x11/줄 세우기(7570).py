@@ -1,5 +1,8 @@
+import collections as C
 n = int(input())
-D = [0]*(n+1)
-for i in map(int, input().split()):
-    D[i] = D[i-1]+1
-print(n-max(D))
+l = [*map(int, input().split())]
+D = [8**7]*(n+1)
+for i in range(n):
+    c = l[i]
+    D[c] = min(D[c-1], i)
+print(n-C.Counter(D).most_common()[0][1])
