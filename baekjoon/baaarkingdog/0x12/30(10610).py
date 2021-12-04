@@ -1,2 +1,2 @@
-n = [*map(int, input())]
-print([-1, ''.join(sorted(map(str, n))[::-1])][(0 in n)*(not sum(n) % 3)])
+n = ''.join(sorted(input())[::-1])
+print([-1, n][not int(n) % 30])
