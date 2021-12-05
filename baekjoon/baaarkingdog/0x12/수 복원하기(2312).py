@@ -1,13 +1,8 @@
-M = 10**5
-P = [0, 0]+[1]*(M-1)
-for i in range(M):
-    if P[i]:
-        P[i+i::i] = [0]*(M//i-1)
-P = [i for i in range(M+1)if P[i]]
 for _ in ' '*int(input()):
-    n = int(input())
-    for p in P:
+    n, t = int(input()), 2
+    while n > 1:
         c = 0
-        while not n % p:
-            n, c = n//p, c+1
-        c and print(p, c)
+        while not n % t:
+            n, c = n//t, c+1
+        c and print(t, c)
+        t += 1
