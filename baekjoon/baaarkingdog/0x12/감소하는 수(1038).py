@@ -2,7 +2,7 @@ l = []
 
 
 def solve(A):
-    if A//10**9:
+    if A//10**10:
         return
     l.append(A)
     for i in range(A % 10):
