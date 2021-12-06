@@ -1,7 +1,5 @@
 l = []
-s, n = lambda A: A//10**10 or l.append(A) or [s(A*10+i)
-                                              for i in range(A % 10)], int(input())
-for i in range(10):
-    s(i)
+s, n = lambda a, b: l.append(a)*[s(i, b*10+i)for i in range(a)], int(input())
+s(10, 0)
 l.sort()
-print(-(len(l) <= n) or l[n])
+print(-(len(l)-2 < n) or l[n+1])
