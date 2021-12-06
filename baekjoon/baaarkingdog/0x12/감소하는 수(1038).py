@@ -13,4 +13,4 @@ for i in range(10):
     solve(i)
 l.sort()
 n = int(input())
-print(-(len(l) < n) or l[n])
+print(-(len(l) <= n) or l[n])
