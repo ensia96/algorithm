@@ -1,16 +1,7 @@
 l = []
-
-
-def solve(A):
-    if A//10**10:
-        return
-    l.append(A)
-    for i in range(A % 10):
-        solve(A*10+i)
-
-
+s, n = lambda A: A//10**10 or l.append(A) or [s(A*10+i)
+                                              for i in range(A % 10)], int(input())
 for i in range(10):
-    solve(i)
+    s(i)
 l.sort()
-n = int(input())
 print(-(len(l) <= n) or l[n])
