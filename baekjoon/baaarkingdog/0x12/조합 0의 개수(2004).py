@@ -8,5 +8,4 @@ def f(x, f):
     return y
 
 
-print(min(sum(s*f(i, j)
-      for i, s in [(n, 1), (n-m, -1), (m, -1)]) for j in [2, 5]))
+print(min(f(n, i)-f(n-m, i)-f(m, i) for i in [2, 5]))
