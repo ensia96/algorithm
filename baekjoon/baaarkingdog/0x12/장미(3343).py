@@ -1,9 +1,3 @@
 n, a, b, c, d = map(int, input().split())
-
-
-def s(i, j, k):
-    x, y = divmod(i, j)
-    return k * (i < 0 or (x+bool(y)))
-
-
-print(min(s(n, a, b), s(n-c, a, b)+d, s(n, c, d), s(n-a, c, d)+b))
+a, b, c, d = [(a, b, c, d), (c, d, a, b)][b*c > a*d]
+print(min(d*i + ((n-c*i)//a+bool((n-c*i) % a))*b for i in range(a) if c*i < n))
