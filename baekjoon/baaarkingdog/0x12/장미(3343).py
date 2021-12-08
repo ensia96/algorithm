@@ -1,6 +1,4 @@
 n, a, b, c, d = map(int, input().split())
-A = 10**18
-for i in range(a+1):
-    if n > 0:
-        A, n = min(d*i+(n//a+bool(n % a))*b, A), n-c
-print(A)
+if a*d > b*c:
+    a, b, c, d = c, d, a, b
+print(min(d*i+((n-c*i)//a+bool((n-c*i) % a))*b for i in range(min(n//c, a)+1)))
