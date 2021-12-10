@@ -1,4 +1,3 @@
-import itertools as I
 n, m, k = map(int, input().split())
 d = [[1]+[0]*m for _ in ' '*(n+1)]
 for i in range(n+1):
