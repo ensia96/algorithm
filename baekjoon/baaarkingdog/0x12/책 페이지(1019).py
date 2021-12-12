@@ -9,4 +9,4 @@ while n:
     for i in range(r+1, 10):
         A[i] += n*c
     c *= 10
-print(A)
+print(*A)
