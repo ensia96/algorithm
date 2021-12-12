@@ -5,4 +5,4 @@ while n:
     for i in range(10):
         A[i] += (n+(1 <= i < r))*c-(-c-(N % c)-1)*(i == r)
     c *= 10
-print(A)
+print(*A)
