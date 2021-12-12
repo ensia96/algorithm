@@ -6,3 +6,5 @@ while n:
         A[i] += (n+(1 <= i <= r))*c-(c-(N % c)-1)*(i == r)
     c *= 10
 print(*A)
+
+# 풀이 참고 : https://latter2005.tistory.com/54
