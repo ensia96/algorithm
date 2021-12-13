@@ -16,4 +16,4 @@ for a in A:
         L += [a]
 print(len(L))
 if L:
-    print(*L)
+    print(*sorted(L))
