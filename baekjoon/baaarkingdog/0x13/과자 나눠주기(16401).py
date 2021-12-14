@@ -6,5 +6,5 @@ while s <= e:
     if sum(l//m for l in L) >= M:
         s = m+1
     else:
-        e = m-1
+        e = m
 print(e)
