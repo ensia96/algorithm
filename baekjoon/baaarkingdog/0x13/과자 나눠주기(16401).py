@@ -7,4 +7,4 @@ while s < e:
         s = m
     else:
         e = m-1
-print(e)
+print(s)
