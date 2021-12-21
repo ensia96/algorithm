@@ -9,4 +9,4 @@ for i in range(n):
     if j == n:
         break
     a, c = min(a, j-i+1), c-A[i]
-print(a)
+print(0 if a == 2**17 else a)
