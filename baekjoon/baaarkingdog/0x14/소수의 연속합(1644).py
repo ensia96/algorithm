@@ -1,4 +1,6 @@
 n = int(input())
+if n < 2:
+    exit(print(0))
 A = [0, 0]+[1]*(n-1)
 for i in range(2, n+1):
     if A[i]:
