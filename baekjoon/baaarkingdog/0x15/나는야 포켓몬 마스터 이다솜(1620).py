@@ -1,6 +1,6 @@
-n, m = map(int, input().split())
-P = [0]+[input()for _ in ' '*n]
-N = {P[i]: i for i in range(n+1)}
+n, m, P = *map(int, input().split()), {}
+for i in range(n):
+    N = input()
+    P[N], P[str(i+1)] = i+1, N
 for _ in ' '*m:
-    q = input()
-    print(P[int(q)]if q.isdigit()else N[q])
+    print(P[input()])
