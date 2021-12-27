@@ -1,6 +1,6 @@
-import collections as c
+import collections as C
 for _ in ' '*int(input()):
-    a, c, n = 1, c.defaultdict(int), int(input())
+    a, c, n = 1, C.defaultdict(int), int(input())
     for _ in ' '*n:
         c[input().split().pop()] += 1
     for k in c:
