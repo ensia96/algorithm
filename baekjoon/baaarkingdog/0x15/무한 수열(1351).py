@@ -1,5 +1,5 @@
 n, p, q = map(int, input().split())
-A = {}
+A = {0: 1}
 
 
 def r(i):
