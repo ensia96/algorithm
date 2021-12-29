@@ -5,9 +5,8 @@ A = {}
 def r(i):
     if not i:
         return 1
-    A[i//p] = A.get(i//p, r(i//p))
-    A[i//q] = A.get(i//q, r(i//q))
-    return A[i//p]+A[i//q]
+    A[i] = A.get(i//p, r(i//p))+A.get(i//q, r(i//q))
+    return A[i]
 
 
 print(r(n))
