@@ -3,8 +3,8 @@ A = {}
 
 
 def r(i):
-    if not i:
-        return 1
+    if A.get(i):
+        return A[i]
     A[i] = A.get(i//p, r(i//p))+A.get(i//q, r(i//q))
     return A[i]
 
