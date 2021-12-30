@@ -6,6 +6,6 @@ for _ in ' '*int(input()):
         n = int(n)
         if o == 'I':
             h.heappush(Q, n)
-        elif len(Q):
+        elif Q:
             h.heappop(Q) if n < 0 else Q.pop()
-    print(Q and f"{Q[-1]} {Q[0]}" or 'EMPTY')
+    print(Q and f"{max(Q)} {min(Q)}" or 'EMPTY')
