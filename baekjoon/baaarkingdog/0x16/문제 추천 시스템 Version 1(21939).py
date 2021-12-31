@@ -11,11 +11,11 @@ for _ in ' '*int(I()):
     x = (*map(int, x),)
     if c[0] == 'r':
         f = x[0] > 0
-        H = A if f else a
+        H, v = (A, -1) if f else (a, 1)
         l, p = d(H)
-        while H and P.get((p, -p)[f]) != (l, -l)[f]:
+        while H and P.get(p*v) != l*v:
             l, p = d(H)
-        print((p, -p)[f])
+        print(p*v)
         i(H, (l, p))
     elif c[0] == 'a':
         p, l = x
