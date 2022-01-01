@@ -14,7 +14,8 @@ for _ in ' '*q:
         i = y[0]-1
         f = D.get(i)
         D[i] = not f
-        u(H, (i < d)*n+i)
+        if D[i]:
+            u(H, i)
     elif x == 2:
         d = (d+y[0]) % n
     else:
