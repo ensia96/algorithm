@@ -50,7 +50,7 @@ for _ in ' '*int(I()):
         print(G[g].F(x)[1])
     elif c[-1] == '2':
         x = int(a[0])
-        s, r = 0 if x == 1 else float('inf'), -1
+        s, r = 0 if x == 1 else 100001, -1
         for g in G:
             R = G[g].F(x)
             if not R:
