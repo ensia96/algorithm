@@ -23,7 +23,7 @@ class Y():
 
     def F(self, x):
         T = self.h if x > 0 else self.H
-        while T and P.get(x*T[0], (0, -1))[1] != self.p:
+        while T and (P.get(x*T[0]) or -1) != self.p:
             d(T)
         if T:
             return x*T[0]
@@ -58,13 +58,13 @@ for _ in ' '*int(I()):
             if x > 0:
                 if R[0] > s:
                     s, r = R
-                elif R[0] == s:
-                    r = max(r, R[1])
+                elif R[0] == s and r > R[1]:
+                    r = R[1]
             else:
                 if R[0] < s:
                     s, r = R
-                elif R[0] == s:
-                    r = min(r, R[1])
+                elif R[0] == s and r < R[1]:
+                    r = R[1]
         print(r)
     else:
         f, l = map(int, a)
