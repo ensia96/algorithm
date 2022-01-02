@@ -1,70 +1,157 @@
 import sys
-import heapq as h
+import heapq
+
 from collections import defaultdict
-I, i, d = sys.stdin.readline, h.heappush, h.heappop
-G, L, P = {}, {}, {}
+input = sys.stdin.readline
 
 
-class X():
-    def __init__(self, p): self.p, self.h, self.H = p, [], []
-    def P(self, p, l): i(self.h, (l, p)); i(self.H, (-l, -p))
+class Algorithm():
+    def __init__(self, num):
+        self.num = num
+        self.min_heap = []
+        self.max_heap = []
 
-    def F(self, f):
-        T, f = self.H if f > 0 else self.h, 1+(f > 0)*-2
-        while T and P.get(f*T[0][1]) != (self.p, f*T[0][0]):
-            d(T)
-        if T:
-            return f*T[0][0], f*T[0][1]
+    def insert(self, pb_num, diff):
+        heapq.heappush(self.min_heap, (diff, pb_num))
+        heapq.heappush(self.max_heap, (-diff, -pb_num))
+
+    def find_heap(self, flag):
+        result = []
+        if flag > 0:
+            if self.max_heap:
+                while (-self.max_heap[0][1] not in number_set) or number_algo[-self.max_heap[0][1]][0] != self.num or number_algo[-self.max_heap[0][1]][1] != -self.max_heap[0][0]:
+                    heapq.heappop(self.max_heap)
+                    if not self.max_heap:
+                        break
+            if self.max_heap:
+                result = [-self.max_heap[0][0], -self.max_heap[0][1]]
+        else:
+            if self.min_heap:
+                while (self.min_heap[0][1] not in number_set) or number_algo[self.min_heap[0][1]][0] != self.num or number_algo[self.min_heap[0][1]][1] != self.min_heap[0][0]:
+                    heapq.heappop(self.min_heap)
+                    if not self.min_heap:
+                        break
+            if self.min_heap:
+                result = self.min_heap[0]
+        return result
 
 
-class Y():
-    def __init__(self, p): self.p, self.h, self.H = p, [], []
-    def P(self, p): i(self.h, p); i(self.H, -p)
+class Difficulty():
+    def __init__(self, num):
+        self.num = num
+        self.min_heap = []
+        self.max_heap = []
 
-    def F(self, x):
-        T = self.h if x > 0 else self.H
-        while T and P.get(x*T[0], (0, -1))[1] != self.p:
-            d(T)
-        if T:
-            return x*T[0]
+    def insert(self, pb_num):
+        heapq.heappush(self.min_heap, pb_num)
+        heapq.heappush(self.max_heap, -pb_num)
+
+    def find_heap(self, x):
+        result = []
+        if x > 0:
+            if self.min_heap:
+                while self.min_heap[0] not in number_set or (number_algo[self.min_heap[0]][1]) != self.num:
+                    heapq.heappop(self.min_heap)
+                    if not self.min_heap:
+                        break
+            if self.min_heap:
+                result = self.min_heap[0]
+
+        else:
+            if self.max_heap:
+                while -self.max_heap[0] not in number_set or (number_algo[-self.max_heap[0]][1]) != self.num:
+                    heapq.heappop(self.max_heap)
+                    if not self.max_heap:
+                        break
+            if self.max_heap:
+                result = -self.max_heap[0]
+        return result
 
 
-def A(p, l, g):
-    G[g] = G.get(g, X(g))
-    G[g].P(p, l)
-    L[l] = L.get(l, Y(l))
-    L[l].P(p)
-    P[p] = (g, l)
+N = int(input())
+algo_set = set()
+diff_set = set()
+algo_dict = {}
+diff_dict = {}
+number_algo = {}
+number_set = set()
+for _ in range(N):
+    number, dif, algo = map(int, input().split())
+    if algo not in algo_set:
+        algo_dict[algo] = Algorithm(algo)
+        algo_set.add(algo)
+    if dif not in diff_set:
+        diff_dict[dif] = Difficulty(dif)
+        diff_set.add(dif)
+    algo_dict[algo].insert(number, dif)
+    diff_dict[dif].insert(number)
+    number_algo[number] = [algo, dif]
+    number_set.add(number)
 
 
-for _ in ' '*int(I()):
-    A(*map(int, I().split()))
-for _ in ' '*int(I()):
-    c, *a = I().split()
-    if c[0] == 'a':
-        A(*map(int, a))
-    elif c[0] == 's':
-        P.pop(int(a[0]))
-    elif c[-1] == 'd':
-        g, x = map(int, a)
-        print(G[g].F(x)[1])
-    elif c[-1] == '2':
-        x = int(a[0])
-        s, r = 100001*(x < 0), -1
-        for p in G:
-            R = G[p].F(x)
-            if not R:
+M = int(input())
+
+for i in range(M):
+    command, *arg = input().split()
+    if command == 'recommend':
+        G, x = map(int, arg)
+        print(algo_dict[G].find_heap(x)[1])
+    elif command == 'recommend2':
+        x = int(arg[0])
+        diff_check = 0 if x == 1 else float('inf')
+        pb_num_check = -1
+        for algo_num in algo_dict:
+            ch = algo_dict[algo_num].find_heap(x)
+            if not ch:
                 continue
-            R, s = (R[0]*x, R[1]), s*x
-            if R[0] > s:
-                s, r = R
-            elif R[0] == s:
-                r = max(r, R[1])
-        print(r)
+            if x == 1:
+                if ch[0] > diff_check:
+                    diff_check = ch[0]
+                    pb_num_check = ch[1]
+                elif ch[0] == diff_check:
+                    if pb_num_check < ch[1]:
+                        pb_num_check = ch[1]
+            else:
+                if ch[0] < diff_check:
+                    diff_check = ch[0]
+                    pb_num_check = ch[1]
+                elif ch[0] == diff_check:
+                    if pb_num_check > ch[1]:
+                        pb_num_check = ch[1]
+        print(pb_num_check)
+    elif command == 'recommend3':
+        flag, L_num = map(int, arg)
+        result = -1
+        if flag == -1:
+            L_num = L_num + flag
+        while 0 <= L_num <= 100:
+            if L_num in diff_set:
+                ch = diff_dict[L_num].find_heap(flag)
+                if not ch:
+                    L_num = L_num + flag
+                    continue
+                result = ch
+                print(ch)
+                break
+            L_num = L_num + flag
+        if result == -1:
+            print(-1)
+
+    elif command == 'solved':
+        pb_num = int(arg[0])
+        number_set.remove(pb_num)
+        del number_algo[pb_num]
     else:
-        f, l = map(int, a)
-        l, r = l+f*(f == -1), 0
-        while r <= 0 <= l <= 100:
-            r = L.get(l) and L[l].F(f) or -1
-            l += f
-        print(r)
+        pb_num, diff_num, algo_num = map(int, arg)
+        if algo_num not in algo_set:
+            algo_dict[algo_num] = Algorithm(algo_num)
+            algo_set.add(algo_num)
+        if diff_num not in diff_set:
+            diff_dict[diff_num] = Difficulty(diff_num)
+            diff_set.add(diff_num)
+        algo_dict[algo_num].insert(pb_num, diff_num)
+        diff_dict[diff_num].insert(pb_num)
+        number_algo[pb_num] = [algo_num, diff_num]
+        number_set.add(pb_num)
+
+# 풀이 참고 : https://welog.tistory.com/332
