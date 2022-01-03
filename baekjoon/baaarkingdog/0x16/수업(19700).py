@@ -4,8 +4,9 @@ I, i, d = sys.stdin.readline, h.heappush, h.heappop
 S, T, L = [], {1: []}, []
 for _ in ' '*int(I()):
     h, k = map(int, I().split())
-    i(S, (-h, k))
-for h, k in S:
+    i(S, (h, k))
+while S:
+    h, k = d(S)
     for m in range(k-1, -1, -1):
         if T.get(m):
             d(T[m])
