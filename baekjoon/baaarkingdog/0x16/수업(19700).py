@@ -1,7 +1,7 @@
 import sys
 import heapq as h
 I, i, d = sys.stdin.readline, h.heappush, h.heappop
-S, T, L = [], {1: []}, []
+S, T, A = [], {1: []}, 0
 for _ in ' '*int(I()):
     h, k = map(int, I().split())
     i(S, (h, k))
@@ -14,8 +14,8 @@ while S:
             i(T[m+1], h)
             break
     else:
-        T[1] += [h]
-print(sum(map(lambda x: len(T[x]), T)))
+        T[1], A = T[1]+[h], A+1
+print(A)
 
 # (시간 초과 해결 방법이 안 떠올라서, 아래 블로그에 올라온 C++ 코드 다듬어서 제출...)
 # https://kth990303.tistory.com/154
