@@ -5,7 +5,6 @@ h = []
 for _ in ' '*int(I()):
     a = int(I())
     if a:
-        i(h, (abs(a), (a > 0)))
+        i(h, (abs(a), a))
     else:
-        a, f = d(h or [[0, 0]])
-        print(a*(f-(not f)))
+        print(len(h) and d(h)[1])
