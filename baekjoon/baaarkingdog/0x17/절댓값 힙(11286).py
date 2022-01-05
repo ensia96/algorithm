@@ -1,8 +1,9 @@
+import sys
 import heapq as h
-i, d = h.heappush, h.heappop
+I, i, d = sys.stdin.readline, h.heappush, h.heappop
 h = []
-for _ in ' '*int(input()):
-    a = int(input())
+for _ in ' '*int(I()):
+    a = int(I())
     if a:
         i(h, (abs(a), (a > 0)))
     else:
