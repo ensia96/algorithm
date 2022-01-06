@@ -3,7 +3,8 @@ import heapq as h
 I = sys.stdin.readline
 n, H = int(I()), []
 for _ in ' '*n:
-    for i in map(int, I().split()):
+    t = [*map(int, I().split())]
+    for i in t:
         h.heappush(H, i)
         if len(H) > n:
             h.heappop(H)
