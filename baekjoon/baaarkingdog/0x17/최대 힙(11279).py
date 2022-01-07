@@ -1,7 +1,8 @@
+import sys
 import heapq as h
-H = []
-for _ in ' '*int(input()):
-    x = int(input())
+I, H = sys.stdin.readline, []
+for _ in ' '*int(I()):
+    x = int(I())
     if x:
         h.heappush(H, -x)
     else:
