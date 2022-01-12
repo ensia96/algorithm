@@ -6,7 +6,7 @@ for l in I[:-1]:
     F[a], F[b] = F[a]+[b], F[b]+[a]
 for i in range(n):
     q, v, m = [(i+1, 0)], [0]*(n+1), 0
-    v[i] = 1
+    v[i+1] = 1
     for p, d in q:
         for f in F[p]:
             if not v[f]:
