@@ -1,37 +1,30 @@
-from collections import deque
 import sys
-input = sys.stdin.readline
-k = int(input())
+I = sys.stdin.readline
 
 
-def bfs(start):
-    bi[start] = 1
-    q = deque()
-    q.append(start)
-    while q:
-        a = q.popleft()
-        for i in s[a]:
-            if bi[i] == 0:
-                bi[i] = -bi[a]
-                q.append(i)
-            else:
-                if bi[i] == bi[a]:
-                    return False
-    return True
+def B(i):
+    q, S[i] = [i], 0
+    for p in q:
+        for c in C[p]:
+            if S[c] == S[p]:
+                return 0
+            elif S[c] < 0:
+                q += [c]
+                S[c] = not S[p]
+    return 1
 
 
-for i in range(k):
-    v, e = map(int, input().split())
-    isTrue = True
-    s = [[] for i in range(v + 1)]
-    bi = [0 for i in range(v + 1)]
-    for j in range(e):
-        a, b = map(int, input().split())
-        s[a].append(b)
-        s[b].append(a)
-    for k in range(1, v + 1):
-        if bi[k] == 0:
-            if not bfs(k):
-                isTrue = False
-                break
-    print("YES"if isTrue else "NO")
+for __ in ' '*int(I()):
+    v, e = map(int, I().split())
+    v += 1
+    C, S, A = [[]for _ in ' '*v], [-1]*v, 0
+    for _ in ' '*e:
+        a, b = map(int, I().split())
+        C[a], C[b] = C[a]+[b], C[b]+[a]
+    for i in range(1, v):
+        if S[i] >= 0:
+            continue
+        A = B(i)
+        if not A:
+            break
+    print(['NO', 'YES'][A])
