@@ -4,29 +4,30 @@ I, D = sys.stdin.readline, c.deque
 
 
 def B(i):
-    q, S[i] = D([i]), 0
+    q, S[i] = D([i]), 1
     while q:
-        p = q.popleft()
-        for c in C[p]:
-            if S[c] == S[p]:
+        a = q.popleft()
+        for i in C[a]:
+            if not S[i]:
+                S[i] = -S[a]
+                q.append(i)
+            elif S[i] == S[a]:
                 return 0
-            elif S[c] < 0:
-                q.append(c)
-                S[c] = not S[p]
     return 1
 
 
 for _ in ' '*int(I()):
     v, e = map(int, I().split())
     v += 1
-    C, S, A = [[]for _ in ' '*v], [-1]*v, 0
-    for _ in ' '*e:
+    C, S, A = [[]for i in ' '*v], [0]*v, 0
+    for j in range(e):
         a, b = map(int, I().split())
-        C[a], C[b] = C[a]+[b], C[b]+[a]
-    for i in range(1, v):
-        if S[i] >= 0:
+        C[a].append(b)
+        C[b].append(a)
+    for k in range(1, v):
+        if S[k]:
             continue
-        A = B(i)
+        A = B(k)
         if not A:
             break
-    print(['NO', 'YES'][A])
+    print(["NO", "YES"][A])
