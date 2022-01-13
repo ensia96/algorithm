@@ -9,7 +9,7 @@ def B(i):
             if S[c] == S[p]:
                 return 0
             elif S[c] < 0:
-                q += [c]
+                q.append(c)
                 S[c] = not S[p]
     return 1
 
@@ -20,7 +20,8 @@ for __ in ' '*int(I()):
     C, S, A = [[]for _ in ' '*v], [-1]*v, 0
     for _ in ' '*e:
         a, b = map(int, I().split())
-        C[a], C[b] = C[a]+[b], C[b]+[a]
+        C[a].append(b)
+        C[b].append(a)
     for i in range(1, v):
         if S[i] >= 0:
             continue
