@@ -3,14 +3,14 @@ I = sys.stdin.readline
 
 
 def B(i):
-    q, S[i] = [(i, 0)], 0
-    for p, d in q:
+    q, S[i] = [i], 0
+    for p in q:
         for c in C[p]:
-            if S[c] == d:
+            if S[c] == S[p]:
                 return 0
             elif S[c] < 0:
-                q += [(c, not d)]
-                S[c] = not d
+                q += [(c, not S[p])]
+                S[c] = not S[p]
     return 1
 
 
