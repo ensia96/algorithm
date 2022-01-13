@@ -1,15 +1,17 @@
 import sys
-I = sys.stdin.readline
+import collections as c
+I, D = sys.stdin.readline, c.deque
 
 
 def B(i):
-    q, S[i] = [i], 0
-    for p in q:
+    q, S[i] = D([i]), 0
+    while q:
+        p = q.popleft()
         for c in C[p]:
             if S[c] == S[p]:
                 return 0
             elif S[c] < 0:
-                q += [c]
+                q.append(c)
                 S[c] = not S[p]
     return 1
 
