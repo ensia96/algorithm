@@ -19,7 +19,7 @@ def B(i):
 for _ in ' '*int(I()):
     v, e = map(int, I().split())
     v += 1
-    C, S, A = [[]for i in ' '*v], [0]*v, 0
+    C, S, A = [[]for i in ' '*v], [0]*v, 1
     for j in range(e):
         a, b = map(int, I().split())
         C[a].append(b)
