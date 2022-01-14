@@ -1,22 +1,8 @@
-l, a = lambda: map(int, input().split()), 0
-n, m = l()
-n += 1
-T = [0]*n
-for i in [*l()][1:]:
-    T[i] = 1
-P = [[*l()][1:]for _ in ' '*m]
-for p in P:
-    for i in p:
-        if T[i]:
-            break
-    else:
-        continue
-    for i in p:
-        T[i] = 1
-for p in P:
-    for i in p:
-        if T[i]:
-            break
-    else:
-        a += 1
-print(a)
+l, a = lambda i: map(int, i.split()), 0
+x, y, *z = open(0)
+n, m = l(x)
+T, P = {*[*l(y)][1:]}, [{*[*l(i)][1:]}for i in z]
+for _ in ' '*m:
+    for p in P:
+        T |= p & T and p
+print(sum(not p & T for p in P))
