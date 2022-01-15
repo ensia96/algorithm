@@ -1,7 +1,9 @@
-n, k, m = map(int, input().split())
+import sys
+I = sys.stdin.readline
+n, k, m = map(int, I().split())
 L, A = [[]for _ in ' '*(n+1)], 10**11
 for i in range(m):
-    I = [*map(int, input().split())]
+    I = [*map(int, I().split())]
     L += [I]
     for s in I:
         L[s] += [n+i+1]
