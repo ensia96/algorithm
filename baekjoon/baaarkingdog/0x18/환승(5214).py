@@ -3,9 +3,9 @@ I = sys.stdin.readline
 n, k, m = map(int, I().split())
 L, A = [[]for _ in ' '*(n+1)], 10**11
 for i in range(m):
-    I = [*map(int, I().split())]
-    L.append(I)
-    for s in I:
+    T = [*map(int, I().split())]
+    L.append(T)
+    for s in T:
         L[s].append(n+i+1)
 Q, V = [(1, 1)], [0, 1]+[0]*(n+m-1)
 for i, d in Q:
