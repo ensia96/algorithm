@@ -12,8 +12,9 @@ for _ in ' '*(n-1):
 def D(c):
     T[c] = 1
     for n in C[c]:
-        T[c] += not T[n] and D(n)
-    return T[c]
+        if not T[n]:
+            D(n)
+            T[c] += T[n]
 
 
 D(r)
