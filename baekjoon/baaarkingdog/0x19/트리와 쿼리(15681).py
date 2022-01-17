@@ -9,7 +9,11 @@ for _ in ' '*(n-1):
     C[v].append(u)
 
 
-def D(c): T[c] = 1; T[c] += sum(not T[n] and D(n)for n in C[c]); return T[c]
+def D(c):
+    T[c] = 1
+    for n in C[c]:
+        T[c] += not T[n] and D(n)
+    return T[c]
 
 
 D(r)
