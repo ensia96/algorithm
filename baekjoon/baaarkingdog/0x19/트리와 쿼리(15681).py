@@ -1,5 +1,5 @@
 import sys
-sys.setrecursionlimit(100000)
+sys.setrecursionlimit(10**9)
 I = sys.stdin.readline
 n, r, q = map(int, I().split())
 C, T = [[]for _ in ' '*(n+1)], [0]*(n+1)
@@ -9,9 +9,9 @@ for _ in ' '*(n-1):
     C[v].append(u)
 
 
-def D(c, p): T[c] = sum(n != p and D(n, c)for n in C[c])+1; return T[c]
+def D(c): T[c] = 1; T[c] += sum(not T[n] and D(n)for n in C[c]); return T[c]
 
 
-D(r, 0)
+D(r)
 for _ in ' '*q:
     print(T[int(I())])
