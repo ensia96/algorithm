@@ -12,17 +12,17 @@ while T:
     for i in range(1, n):
         if V[i]:
             continue
-        A, S = A+1, [(i, 0)]
+        A, S, F = A+1, [(i, 0)], 0
         while S:
             c, p = S.pop()
             V[c] = 1
             for j in C[c]:
                 if j == p:
                     continue
-                if V[j]:
-                    A -= 1
-                    break
-                S.append((j, c))
+                F = F or V[j]
+                if not V[j]:
+                    S.append((j, c))
+        A -= F
     if A > 1:
         A = f'A forest of {A} trees.'
     elif A > 0:
