@@ -1,26 +1,17 @@
 import sys
-input = sys.stdin.readline
 sys.setrecursionlimit(10**9)
+I = sys.stdin.readline
+n, r, q = map(int, I().split())
+C, T = [[]for _ in ' '*(n+1)], [0]*(n+1)
+for _ in ' '*(n-1):
+    u, v = map(int, I().split())
+    C[u].append(v)
+    C[v].append(u)
 
 
-def countPoint(x):
-    count[x] = 1
-    for i in tree[x]:
-        if not count[i]:
-            countPoint(i)
-            count[x] += count[i]
+def D(c): T[c] = 1; T[c] += sum(not T[n] and D(n, c)for n in C[c]); return T[c]
 
 
-n, r, q = map(int, input().split())
-tree = [[] for _ in range(n+1)]
-count = [0]*(n+1)
-for i in range(n-1):
-    a, b = map(int, input().split())
-    tree[a].append(b)
-    tree[b].append(a)
-countPoint(r)
-for i in range(q):
-    u = int(input())
-    print(count[u])
-
-# 풀이 참고 : https://jainn.tistory.com/74
+D(r)
+for _ in ' '*q:
+    print(T[int(I())])
