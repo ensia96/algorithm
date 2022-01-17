@@ -18,7 +18,7 @@ for i in range(n-1):
     a, b = map(int, input().split())
     tree[a].append(b)
     tree[b].append(a)
-    countPoint(r)
+countPoint(r)
 for i in range(q):
     u = int(input())
     print(count[u])
