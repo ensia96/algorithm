@@ -1,5 +1,5 @@
 import sys
-sys.setrecursionlimit(100000)
+sys.setrecursionlimit(10**9)
 I = sys.stdin.readline
 n, r, q = map(int, I().split())
 C, T = [[]for _ in ' '*(n+1)], [0]*(n+1)
