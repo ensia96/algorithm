@@ -19,4 +19,5 @@ def D(c):
 
 D(r)
 for _ in ' '*q:
-    print(T[int(I())])
+    s = int(I())
+    print(T[s])
