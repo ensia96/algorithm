@@ -1,6 +1,6 @@
 n, m = map(int, input().split())
 n += 1
-D = [[0]*n for _ in ' '*n]
+D = [{} for i in ' '*n]
 for _ in ' '*(n-2):
     u, v, d = map(int, input().split())
     D[u][v] = D[v][u] = d
@@ -11,8 +11,8 @@ def F(i, d):
         print(d)
         return
     v[i] = 1
-    for j in range(1, n):
-        if D[i][j] and not v[j]:
+    for j in D[i]:
+        if not v[j]:
             F(j, D[i][j]+d)
 
 
