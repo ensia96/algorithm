@@ -7,12 +7,12 @@ for _ in ' '*(n-2):
 
 
 def F(i, d):
+    if i == b:
+        print(d)
+        return
+    v[i] = 1
     for j in range(1, n):
         if D[i][j] and not v[j]:
-            if j == b:
-                print(d + D[i][j])
-                return
-            v[j] = 1
             F(j, D[i][j]+d)
 
 
