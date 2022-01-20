@@ -1,9 +1,12 @@
 n = int(input())
-P, C = [*map(int, input().split())], [[]for _ in ' '*n]
+P = [*map(int, input().split())]
+d = int(input())
+C = [[]for _ in ' '*n]
 for i in range(n):
     if P[i] > -1:
         C[P[i]] += [i]
-q = [int(input())]
+C[P[d]].pop()
+q = [d]
 for d in q:
     q += C[d]
     C[d] = 1
