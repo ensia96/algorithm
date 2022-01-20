@@ -5,8 +5,8 @@ C = [[]for _ in ' '*n]
 for i in range(n):
     if P[i] > -1:
         C[P[i]] += [i]
-if P[i] > -1:
-    C[P[i]].pop()
+if P[d] > -1:
+    C[P[d]].pop()
 q = [d]
 for d in q:
     q += C[d]
