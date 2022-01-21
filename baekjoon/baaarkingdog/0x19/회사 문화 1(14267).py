@@ -1,14 +1,11 @@
 import sys
 L, n = lambda: map(int, sys.stdin.readline().split()), 0
 n, m = L()
-P, C, A = [*L()], [[]for _ in ' '*(n+1)], [0]*n
-for i in range(1, n):
-    C[P[i]] += [i+1]
+n += 1
+P, D = [0]+[*L()], [0]*n
 for _ in ' '*m:
     i, w = L()
-    q = [i]
-    for p in q:
-        A[p-1] += w
-        for c in C[p]:
-            q += [c]
-print(*A)
+    D[i] += w
+for i in range(2, n):
+    D[i] += D[P[i]]
+print(*D[1:])
