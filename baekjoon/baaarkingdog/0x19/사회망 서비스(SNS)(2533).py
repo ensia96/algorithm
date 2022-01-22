@@ -1,10 +1,10 @@
 import sys
 sys.setrecursionlimit(10**9)
-I = sys.stdin.readline
-n = int(I())+1
+n, *E = open(0)
+n = int(n)+1
 C, D, V = [[]for _ in ' '*n], [[0, 1] for _ in ' '*n], [0]*n
-for _ in ' '*(n-2):
-    u, v = map(int, I().split())
+for l in E:
+    u, v = map(int, l.split())
     C[u] += [v]
     C[v] += [u]
 
