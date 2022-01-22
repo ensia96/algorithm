@@ -1,3 +1,5 @@
+import sys
+sys.setrecursionlimit(10**9)
 n, *E = open(0)
 n = int(n)+1
 C, D, V = [[]for _ in ' '*n], [[0, 1] for _ in ' '*n], [0]*n
