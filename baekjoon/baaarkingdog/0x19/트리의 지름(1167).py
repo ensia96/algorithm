@@ -1,12 +1,11 @@
-import sys
-I = sys.stdin.readline
-n = int(I())
-A, C, D = 0, [{}for _ in ' '*-~n], [0]*-~n
-for _ in ' '*n:
-    i, *c = map(int, I().split())
+n, *L = open(0)
+n = int(n)+1
+A, C, D = 0, [{}for _ in ' '*n], [0]*n
+for l in L:
+    i, *c = map(int, l.split())
     for j, w in zip(c[0:-1:2], c[1::2]):
         C[i][j] = w
-q, v = [1], [0, 1]+[0]*~-n
+q, v = [1], [0, 1]+[0]*(n-2)
 for p in q:
     for c in C[p]:
         if not v[c]:
