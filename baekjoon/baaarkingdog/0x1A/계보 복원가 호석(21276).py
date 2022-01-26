@@ -14,4 +14,4 @@ for x in Q:
             Q += [y]
             D[x][2] += [y]
 for k in D:
-    print(k, len(D[k][1]), *sorted(D[k][1]))
+    print(k, len(D[k][2]), *sorted(D[k][2]))
