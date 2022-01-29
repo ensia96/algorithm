@@ -1,6 +1,6 @@
 import sys
 I = sys.stdin.readline
-sys.setrecurtionlimit(10**9)
+sys.setrecursionlimit(10**9)
 L, T = lambda: map(int, I().split()), int(I())
 
 
