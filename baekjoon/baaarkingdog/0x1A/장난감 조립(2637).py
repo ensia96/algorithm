@@ -1,23 +1,17 @@
-import collections as c
+import heapq as h
 n = int(input())+1
-C, D = [[]for _ in ' '*n], [0]*n
-A = [[0]*n for _ in ' '*n]
+C, D, A, Q = [[]for _ in ' '*n], [0]*n, [0]*~-n+[1], [n-1]
 for _ in ' '*int(input()):
     x, y, k = map(int, input().split())
-    C[y] += (x, k),
-    D[x] += 1
-Q = c.deque(i for i in range(1, n)if not D[i])
+    C[x] += (y, k),
+    D[y] += 1
 while Q:
-    c = Q.popleft()
-    for p, x in C[c]:
-        if sum(A[c]):
-            for i in range(1, n):
-                A[p][i] += A[c][i]*x
-        else:
-            A[p][c] += x
-        D[p] -= 1
-        if not D[p]:
-            Q.append(p)
-for i in range(1, n):
-    if A[n-1][i]:
-        print(i, A[n-1][i])
+    p = h.heappop(Q)
+    for c, w in C[p]:
+        D[c] -= 1
+        A[c] += A[p]*w
+        if not D[c]:
+            h.heappush(Q, c)
+for i in range(1, n-1):
+    if not C[i]:
+        print(i, A[i])
