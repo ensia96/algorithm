@@ -1,16 +1,23 @@
 import collections as c
-l, A = lambda: map(int, input().split()), {}
-n = int(input())
-C, Q = [{}for _ in ' '*-~n], c.deque([(n, 1)])
+n = int(input())+1
+C, D = [[]for _ in ' '*n], [0]*n
+A = [[0]*n for _ in ' '*n]
 for _ in ' '*int(input()):
-    x, y, k = l()
-    C[x][y] = k
+    x, y, k = map(int, input().split())
+    C[y] += (x, k),
+    D[x] += 1
+Q = c.deque(i for i in range(1, n)if not D[i])
 while Q:
-    x, y = Q.popleft()
-    if C[x]:
-        for z in C[x]:
-            Q += (z, C[x][z]*y),
-    else:
-        A[x] = A.get(x, 0)+y
-for x in sorted(A):
-    print(x, A[x])
+    c = Q.popleft()
+    for p, x in C[c]:
+        if sum(A[c]):
+            for i in range(1, n):
+                A[p][i] += A[c][i]*x
+        else:
+            A[p][c] += x
+        D[p] -= 1
+        if not D[p]:
+            Q.append(p)
+for i in range(1, n):
+    if A[n-1][i]:
+        print(i, A[n-1][i])
