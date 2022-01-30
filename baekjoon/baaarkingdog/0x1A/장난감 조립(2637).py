@@ -1,6 +1,7 @@
+import collections as c
 l, A = lambda: map(int, input().split()), {}
 n = next(l())
-C, Q = [{}for _ in ' '*-~n], [(n, 1)]
+C, Q = c.defaultdict(dict), [(n, 1)]
 for _ in ' '*next(l()):
     x, y, k = l()
     C[x][y] = k
