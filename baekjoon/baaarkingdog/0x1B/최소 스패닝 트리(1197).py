@@ -1,7 +1,6 @@
 I, *L = open(0)
 v, e = map(int, I.split())
-A = C = 0
-G = [*range(v+1)]
+A, G = 0, [*range(v+1)]
 
 
 def F(x):
