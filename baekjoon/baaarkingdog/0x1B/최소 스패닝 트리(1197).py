@@ -12,7 +12,7 @@ def F(x):
 
 for c, a, b in sorted((*map(int, l.split()[::-1]),)for l in L):
     a, b = F(a), F(b)
-    if f(a) != f(b):
+    if F(a) != F(b):
         G[max(a, b)] = min(a, b)
         A += c
 print(A)
