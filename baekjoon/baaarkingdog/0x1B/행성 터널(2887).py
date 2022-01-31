@@ -1,0 +1,23 @@
+import heapq as h
+n, *a = open(0)
+n = int(n)
+P = [(*map(int, a[i].split()), i)for i in range(n)]
+G = [[]for _ in ' '*n]
+for j in range(3):
+    P.sort(key=lambda x: x[j])
+    for i in range(1, n):
+        w = abs(P[i][j]-P[i-1][j])
+        G[P[i-1][3]] += (w, P[i][3]),
+        G[P[i][3]] += (w, P[i-1][3]),
+Q, V = [(0, 0)], [0]*n
+A = E = 0
+while Q:
+    w, i = h.heappop(Q)
+    if V[i]:
+        continue
+    V[i], A, E = 1, A+w, E+1
+    if E == n:
+        break
+    for D in G[i]:
+        h.heappush(Q, D)
+print(A)
