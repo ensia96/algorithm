@@ -1,16 +1,20 @@
-import heapq as h
-n = int(input())
-C = [0]+[(0, *map(int, input().split()))for _ in ' '*n]
-V, Q = [1]+[0]*n, [(0, 1)]
-A = E = 0
-while Q:
-    w, i = h.heappop(Q)
-    if V[i]:
+I, R = input, range
+
+
+def f(x):
+    if P[x] != x:
+        P[x] = f(P[x])
+    return P[x]
+
+
+n = int(I())
+C = [[*map(int, I().split())]for _ in ' '*n]
+P, A, L = [*R(n)], 0, [0]*n
+for w, i, j in sorted((C[i][j], i, j)for i in R(n)for j in R(i+1, n)):
+    i, j = f(i), f(j)
+    if i == j:
         continue
-    V[i], A, E = 1, A+w, E+1
-    if E == n:
-        break
-    for j in range(1, n+1):
-        if C[i][j]:
-            h.heappush(Q, (C[i][j], j))
+    if L[i] < L[j]:
+        i, j = j, i
+    P[j], L[i], A = i, L[i]+1, A+w
 print(A)
