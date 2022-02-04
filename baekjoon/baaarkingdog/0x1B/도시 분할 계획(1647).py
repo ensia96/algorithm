@@ -6,15 +6,14 @@ for l in L:
     i, j, w = map(int, l.split())
     C[i] += (w, j),
     C[j] += (w, i),
-Q, V = [(0, 1)], [0]*-~n
-A = E = 0
+A, Q, V = [], [(0, 1, 1)], [0]*-~n
 while Q:
-    w, i = h.heappop(Q)
+    w, i, _ = h.heappop(Q)
     if V[i]:
         continue
-    V[i], A, E = 1, A+w, E+1
-    if not E-n+1:
+    V[i], A = 1, A+[w]
+    if len(A) == n-1:
         break
     for w, j in C[i]:
-        h.heappush(Q, (w, j))
-print(A)
+        h.heappush(Q, (w, j, i))
+print(sum(A))
