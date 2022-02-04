@@ -1,22 +1,20 @@
+import heapq as h
 A, *L = open(0)
 n, m = map(int, A.split())
-R, H = [*range(n+1)], [0]*-~n
+C = [[]for _ in ' '*-~n]
+for l in L:
+    i, j, w = map(int, l.split())
+    C[i] += (w, j),
+    C[j] += (w, i),
+Q, V = [(0, 1)], [0]*-~n
 A = E = 0
-
-
-def f(x):
-    if R[x] != x:
-        R[x] = f(R[x])
-    return R[x]
-
-
-for w, i, j in sorted((*map(int, l.split()[::-1]),)for l in L):
-    if not E-n+2:
-        break
-    i, j = f(i), f(j)
-    if i == j:
+while Q:
+    w, i = h.heappop(Q)
+    if V[i]:
         continue
-    if H[i] < H[j]:
-        i, j = j, i
-    R[j], H[i], A, E = R[i], H[i]+1, A+w, E+1
+    V[i], A, E = 1, A+w, E+1
+    if not E-n+1:
+        break
+    for w, j in C[i]:
+        h.heappush(Q, (w, j))
 print(A)
