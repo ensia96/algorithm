@@ -1,6 +1,5 @@
-import sys
-I = sys.stdin.readline
-n, m = map(int, input().split())
+A, *L = open(0)
+n, m = map(int, A.split())
 R, H = [*range(n+1)], [0]*-~n
 A = E = 0
 
@@ -11,7 +10,7 @@ def f(x):
     return R[x]
 
 
-for w, i, j in sorted((*map(int, input().split()[::-1]),)for _ in ' '*m):
+for w, i, j in sorted((*map(int, l.split()[::-1]),)for l in L):
     if not E-n+2:
         break
     i, j = f(i), f(j)
