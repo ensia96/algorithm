@@ -1,6 +1,9 @@
 n, m = map(int, input().split())
 n += 1
-E = [(*map(int, input().split()[::-1]),)for _ in ' '*-~m]
+E = []
+for _ in ' '*-~m:
+    i, j, w = map(int, input().split())
+    E += (not w, i, j),
 
 
 def F(r):
