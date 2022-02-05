@@ -1,28 +1,25 @@
+import heapq as h
 n, m = map(int, input().split())
 n += 1
-E = []
+E = [[] for _ in ' '*n]
 for _ in ' '*-~m:
     i, j, w = map(int, input().split())
-    E += (not w, i, j),
+    E[i] += (not w, j),
+    E[j] += (not w, i),
 
 
-def F(r):
-    def f(x):
-        if x != P[x]:
-            P[x] = f(P[x])
-        return P[x]
-    P, L = [*range(n+1)], [0]*n
+def F(x):
     a = e = 0
-    for w, i, j in sorted(E, reverse=r):
-        i, j = f(i), f(j)
-        if i == j:
+    V, Q = [0]*n, [(0, 0)]
+    while Q:
+        w, i = h.heappop(Q)
+        if V[i]:
             continue
-        a, e = a+w, e+1
-        if e == n-1:
+        V[i], a, e = 1, a+w, e+1
+        if e == n:
             return a**2
-        if L[i] < L[j]:
-            i, j = j, i
-        P[i], L[i] = j, L[i]+1
+        for w, j in E[i]:
+            h.heappush(Q, (w*x, j))
 
 
-print(F(1)-F(0))
+print(F(-1)-F(1))
