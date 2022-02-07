@@ -12,7 +12,7 @@ for _ in ' '*m:
     i, j, w = l()
     C[i] += (w, j),
     C[j] += (w, i),
-Q, V, E = [(0, 1)], [0]*-~n, 0
+Q, V, E = [(0, G[0])], [0]*-~n, 0
 while Q:
     w, i = h.heappop(Q)
     if V[i]:
