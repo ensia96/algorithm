@@ -1,26 +1,25 @@
 import sys
+import heapq as h
 I = sys.stdin.readline
-l, A = lambda x: map(int, input().split()[::x]), 0
-n, m, k = l(1)
-R, L, e = [*range(n+1)], [0]*(n+1), 0
-for i in l(1):
-    R[i] = 0
-
-
-def f(x):
-    if R[x] != x:
-        R[x] = f(R[x])
-    return R[x]
-
-
-for w, i, j in sorted((*l(-1),)for _ in ' '*m):
-    i, j = f(i), f(j)
-    if i == j:
+l, A = lambda: map(int, input().split()), 0
+n, m, k = l()
+C, G = [[]for _ in ' '*-~n], [*l()]
+g = len(G)
+for i in range(g):
+    for j in range(i+1, g):
+        C[G[i]] += (0, G[j]),
+for _ in ' '*m:
+    i, j, w = l()
+    C[i] += (w, j),
+    C[j] += (w, i),
+Q, V, E = [(0, 1)], [0]*-~n, 0
+while Q:
+    w, i = h.heappop(Q)
+    if V[i]:
         continue
-    A, e = A+w, e+1
-    if e == n-1:
+    V[i], A, E = 1, A+w, E+1
+    if E == n:
         break
-    if L[i] < L[j]:
-        i, j = j, i
-    R[j], L[i] = R[i], L[i]+1
+    for D in C[i]:
+        h.heappush(Q, D)
 print(A)
