@@ -9,6 +9,7 @@ for j in range(3):
     for i in range(1, n):
         w = abs(P[i][j]-P[i-1][j])
         G[P[i-1][3]] += (w, P[i][3]),
+        G[P[i][3]] += (w, P[i-1][3]),
 Q, V = [(0, 0)], [0]*n
 A = E = 0
 while Q:
