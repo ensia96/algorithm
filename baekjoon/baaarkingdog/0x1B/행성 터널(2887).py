@@ -1,8 +1,7 @@
-import sys
 import heapq as h
-I = sys.stdin.readline
-n = int(I())
-P = [(*map(int, I().split()), i)for i in range(n)]
+n, *a = open(0)
+n = int(n)
+P = [(*map(int, a[i].split()), i)for i in range(n)]
 G = [[]for _ in ' '*n]
 for j in range(3):
     P.sort(key=lambda x: x[j])
