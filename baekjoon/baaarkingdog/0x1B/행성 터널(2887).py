@@ -9,9 +9,14 @@ while Q:
     w, i = h.heappop(Q)
     if V[i]:
         continue
-    V[i], A, E = 1, A+w, E+1
+    V[i], A, E, T = 1, A+w, E+1, []
     a, b, c = P[i]
+    if E == n:
+        break
     for j in range(1, n):
+        if V[j]:
+            continue
         x, y, z = P[j]
-        h.heappush(Q, (min(abs(a-x), abs(b-y), abs(c-z)), j))
+        T.append((min(abs(a-x), abs(b-y), abs(c-z)), j))
+    T and h.heappush(Q, sorted(T)[0])
 print(A)
