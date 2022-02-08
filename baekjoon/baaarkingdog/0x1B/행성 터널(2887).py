@@ -1,22 +1,27 @@
 import sys
-import heapq as h
 I = sys.stdin.readline
-n = int(I())+1
-P = [0]+[(*map(int, I().split()),)for _ in ' '*~-n]
-Q, V = [(0, 1)], [0]*n
-A = E = 0
-while Q:
-    w, i = h.heappop(Q)
-    if V[i]:
+n = int(I())
+P = [(*map(int, I().split()), i)for i in range(n)]
+R, E = [i for i in range(n)], []
+
+
+def f(x):
+    if R[x] != x:
+        R[x] = f(R[x])
+    return R[x]
+
+
+for j in range(3):
+    P.sort(key=lambda x: x[j])
+    for i in range(1, n):
+        E += (abs(P[i][j]-P[i-1][j]), P[i-1][3], P[i][3]),
+E.sort()
+a = e = 0
+for w, i, j in E:
+    i, j = f(i), f(j)
+    if i == j:
         continue
-    V[i], A, E, T = 1, A+w, E+1, []
-    a, b, c = P[i]
-    if E == n:
+    a, e, R[j] = a+w, e+1, i
+    if e == n-1:
         break
-    for j in range(1, n):
-        if V[j]:
-            continue
-        x, y, z = P[j]
-        T.append((min(abs(a-x), abs(b-y), abs(c-z)), j))
-    T and h.heappush(Q, sorted(T)[0])
-print(A)
+print(a)
