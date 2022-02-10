@@ -12,10 +12,13 @@ for _ in ' '*N:
         a = b = 0
         for x, y in g(i, j):
             if f(x)*f(y):
-                a += D[x][y] in L
-                b += not D[x][y]
+                a += D[x][y] in Lb += not D[x][y]
         A += (-a, -b, i, j),
     a, b, c, d = sorted(A)[0]
     D[c][d] = s
-print(sum(10**~-sum(D[x][y] in F[D[i][j]]
-      for x, y in g(i, j)if f(x)*f(y))for i, j in C))
+A = 0
+for i, j in C:
+    a = sum(D[x][y] in F[D[i][j]]for x, y in g(i, j)if f(x)*f(y))
+    if a:
+        A += 10**~-a
+print(A)
