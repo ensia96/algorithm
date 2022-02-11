@@ -1,6 +1,6 @@
 l, A = lambda: map(int, input().split()), 0
 n, m = l()
-B = [[*l()]for _ in ' '*n]
+F, B = lambda x: 0 <= x < n, [[*l()]for _ in ' '*n]
 C = [(i//n, i % n)for i in range(n**2)]
 
 
@@ -12,7 +12,7 @@ def f():
         V[i][j], Q, R, c = 1, [(i, j)], [], B[i][j]
         for x, y in Q:
             for p, q in [(x+1, y), (x-1, y), (x, y+1), (x, y-1)]:
-                if 0 <= p < n and 0 <= q < n and not V[p][q] and B[p][q] in (0, c):
+                if F(p)*F(q) and not V[p][q] and B[p][q] in (0, c):
                     B[p][q] or R.append((p, q))
                     V[p][q] = 1
                     Q += (p, q),
@@ -38,7 +38,7 @@ def g():
         for x, y in Q:
             if B[x][y] >= 0:
                 break
-            if 0 <= x-1 and B[x-1][y]+1:
+            if F(x-1) and B[x-1][y]+1:
                 Q += (x-1, y),
         B[i][j], B[x][y] = B[x][y], -2
 
