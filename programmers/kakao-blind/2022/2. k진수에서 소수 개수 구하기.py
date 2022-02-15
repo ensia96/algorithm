@@ -13,3 +13,33 @@ def solution(n, k):
         else:
             A += 1
     return A
+
+# 신입 공채 당시에 제출했던 코드
+#
+# from math import sqrt
+#
+#
+# def is_prime(n):
+#     for i in range(2, int(sqrt(n))+1):
+#         if n % i == 0:
+#             return False
+#     return True
+#
+#
+# def solution(n, k):
+#     if k != 10:
+#         converted = ''
+#         while n:
+#             n, mod = divmod(n, k)
+#             converted += str(mod)
+#             converted = converted[::-1]
+#     else:
+#         converted = str(n)
+#
+#     candidates = [*map(int, [*filter(None, converted.split('0'))])]
+#     scope = max(candidates)
+#
+#     need_refine = {a: candidates.count(a)
+#                    for a in set(candidates) if is_prime(a) and a > 1}
+#
+#     return sum(need_refine[num] for num in need_refine)
