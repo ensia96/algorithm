@@ -3,11 +3,11 @@ M = 2**20
 n, m, k = map(int, input().split())
 B = [[*map(int, input())]for _ in ' '*n]
 D = [[[M]*-~k for _ in ' '*m]for _ in ' '*n]
-R, Q = lambda x, y: 0 <= x < n and 0 <= y < m, c.deque([(1, 0, 0, 0)])
+D[0][0][0], Q = 1, c.deque([(1, 0, 0, 0)])
 while Q:
     d, i, j, h = Q.popleft()
     for x, y in [(i+1, j), (i-1, j), (i, j+1), (i, j-1)]:
-        if not R(x, y):
+        if not (0 <= x < n)*(0 <= y < m):
             continue
         z = h+B[x][y]
         if z > k:
