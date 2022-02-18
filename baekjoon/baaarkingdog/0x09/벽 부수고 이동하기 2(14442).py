@@ -1,7 +1,7 @@
 n, m, k = map(int, input().split())
 B = [[*map(int, input())]for _ in ' '*n]
-D, d = [[0]*m for _ in ' '*n], 1
-D[0][0], Q = 1, [(0, 0, k)]
+D, d = [[-1]*m for _ in ' '*n], 1
+Q = [(0, 0, k)]
 while Q:
     q = []
     for i, j, h in Q:
