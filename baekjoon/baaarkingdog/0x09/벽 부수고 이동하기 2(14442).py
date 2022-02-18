@@ -12,7 +12,7 @@ while Q:
         z = h+B[x][y]
         if z > k:
             continue
-        if D[x][y][z] > d+1:
+        if D[x][y][z] == M:
             D[x][y][z] = d+1
             Q.append((d+1, x, y, z))
 A = min(D[-1][-1])
