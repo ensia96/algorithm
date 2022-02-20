@@ -16,7 +16,7 @@ for _ in ' '*int(I()):
                     elif K.get(t.lower()):
                         q += (x, y),
                     elif t.isupper():
-                        T[t] = [(x, y)]
+                        T[t] = T.get(t, [])+[(x, y)]
         for t in [t for t in T if K.get(t.lower())]:
             q += T.pop(t)
         Q = q
