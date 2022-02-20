@@ -13,7 +13,7 @@ for _ in ' '*int(I()):
                     A += (t == '$')
                     if t.islower():
                         K[t] = 1
-                    elif K.get(t.lower()):
+                    if K.get(t.lower()):
                         q += (x, y),
                     elif t.isupper():
                         T[t] = T.get(t, [])+[(x, y)]
