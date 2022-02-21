@@ -1,11 +1,7 @@
 A = 0
 for _ in ' '*int(input()):
-    w, t = [*input()], []
-    while w:
-        if t and t[-1] == w[-1]:
-            t.pop()
-            w.pop()
-        else:
-            t += w.pop(),
+    t = []
+    for i in input():
+        t and t[-1] == i and t.pop() or t.append(i)
     A += not t
 print(A)
