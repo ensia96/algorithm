@@ -18,7 +18,10 @@ for l in C:
     print(*l)
 for i in N:
     for j in N:
+        if i == j:
+            print(0)
+            continue
         r = [i+1]
         while r[-1]-1 != j:
             r += R[r[-1]-1][j]+1,
-        print(len(r), *r)if len(r) > 1 else print(0)
+        print(len(r), *r)
