@@ -17,7 +17,7 @@ for l in C[1:]:
     print(*l[1:])
 for i in N:
     for j in N:
-        if not R[i][j]:
+        if C[i][j] in [0, M]:
             print(0)
             continue
         r = [i]
