@@ -17,19 +17,12 @@ for k in N:
                 C[i][j], R[i][j] = t, k
 for l in C[1:]:
     print(*(0 if i == M else i for i in l[1:]))
-
-
-def f(i, j):
-    if not R[i][j]:
-        return []
-    k = R[i][j]
-    return f(i, k)+[k]+f(k, j)
-
-
 for i in N:
     for j in N:
         if C[i][j] in [0, M]:
             print(0)
             continue
-        r = [i]+f(i, j)+[j]
+        r = [i]
+        while r[-1] != j:
+            r += [R[r[-1]][j]],
         print(len(r), *r)
