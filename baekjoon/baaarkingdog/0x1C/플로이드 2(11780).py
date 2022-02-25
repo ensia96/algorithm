@@ -18,7 +18,7 @@ for l in C:
     print(*l)
 for i in N:
     for j in N:
-        if i == j:
+        if not R[i][j]:
             print(0)
             continue
         r = [i+1]
