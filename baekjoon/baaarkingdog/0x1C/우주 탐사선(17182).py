@@ -10,7 +10,7 @@ V = [0]*N
 V[K] = 1
 
 
-def F(i, s, R):
+def F(i, s):
     global A
     if all(V):
         A = min(A, s)
@@ -19,9 +19,9 @@ def F(i, s, R):
         if V[j]:
             continue
         V[j] = 1
-        F(j, s+T[i][j], R+[j])
+        F(j, s+T[i][j])
         V[j] = 0
 
 
-F(K, 0, [K])
+F(K, 0)
 print(A)
