@@ -29,4 +29,4 @@ while G:
     A += D[0][s][e]
     B += D[1][s][e]
     s = e
-print('YES'if A > B else 'NO')
+print('Yes'if A > B else 'No')
