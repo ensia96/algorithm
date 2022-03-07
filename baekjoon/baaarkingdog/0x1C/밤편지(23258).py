@@ -1,4 +1,6 @@
-L, M = lambda: map(int, input().split()), 8**8
+import sys
+I = sys.stdin.readline
+L, M = lambda: map(int, I().split()), 8**8
 n, q = L()
 N = range(1, n+1)
 D = [[[0]*-~n for _ in ' '*-~n]for _ in ' '*-~n]
