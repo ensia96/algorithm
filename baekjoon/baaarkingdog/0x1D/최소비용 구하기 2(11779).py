@@ -1,12 +1,12 @@
 import heapq as h
 L, M = lambda: map(int, input().split()), 8**8
 n = next(L())+1
-D, R, E = [M]*n, [M]*n, [[]for _ in ' '*n]
+D, E = [M]*n, [[]for _ in ' '*n]
 for _ in ' '*next(L()):
     s, e, d = L()
     E[s] += (d, e),
 s, e = L()
-D[s], Q = 0, [(0, s)]
+R, D[s], Q = [s]*n, 0, [(0, s)]
 while Q:
     x, y = h.heappop(Q)
     if D[y] != x:
