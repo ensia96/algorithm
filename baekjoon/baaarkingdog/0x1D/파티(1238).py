@@ -23,7 +23,4 @@ def F(t):
     return D
 
 
-E, R = F(E), F(R)
-for i in range(n):
-    E[i] += R[i]
-print(max(E[1:]))
+print(max(*map(sum, [*zip(F(E), F(R))][1:])))
