@@ -1,5 +1,5 @@
 import heapq as h
-L, M = lambda: map(int, input().split()), 8**8
+L, M = lambda: map(int, input().split()), 2**31
 n, e = L()
 n += 1
 E = [[]for _ in ' '*n]
