@@ -25,4 +25,5 @@ def F(s):
 
 
 A, B = F(1), F(n-1)
-print(F(u)[v]+min(A[u]+B[v], A[v], B[u]))
+t = F(u)[v]+min(A[u]+B[v], A[v], B[u])
+print(-1 if t > M else t)
