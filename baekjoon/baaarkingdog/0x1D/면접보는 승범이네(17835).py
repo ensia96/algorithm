@@ -3,24 +3,24 @@ import heapq as h
 L, M = lambda: map(int, sys.stdin.readline().split()), 2**34
 n, m, k = L()
 n += 1
-t = [L()for _ in ' '*m]
-T = {i: n for i in L()}
-E = [[]for _ in ' '*-~n]
-for u, v, c in t:
-    E[T.get(v, v)] += (c, u),
-D, Q = [M]*-~n, [(0, n)]
-D[n] = 0
+D, E, Q = [M]*n, [[]for _ in ' '*n], []
+for _ in ' '*m:
+    u, v, c = L()
+    E[v] += (c, u),
+for i in L():
+    h.heappush(Q, (0, i))
+    D[i] = 0
 while Q:
     x, y = h.heappop(Q)
-    if D[y]-x or T.get(y):
+    if D[y]-x:
         continue
     for i, j in E[y]:
         if D[j] > D[y]+i:
             D[j] = D[y]+i
             h.heappush(Q, (D[j], j))
-a = n
-for i in range(1, n+1):
-    if not T.get(i) and D[i] > D[a]:
+a = 1
+for i in range(2, n):
+    if D[i] > D[a]:
         a = i
 print(a)
 print(D[a])
