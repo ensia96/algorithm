@@ -1,5 +1,6 @@
+import sys
 import heapq as h
-L, M = lambda: map(int, input().split()), 10**15
+L, M = lambda: map(int, sys.stdin.readline().split()), 10**15
 n, m, a, b, c = L()
 n += 1
 E = [[]for _ in ' '*n]
