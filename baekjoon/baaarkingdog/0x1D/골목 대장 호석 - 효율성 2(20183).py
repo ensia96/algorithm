@@ -4,10 +4,12 @@ L, M = lambda: map(int, sys.stdin.readline().split()), 10**15
 n, m, a, b, c = L()
 n += 1
 E = [[]for _ in ' '*n]
+A, l, r = -1, 0, 0
 for _ in ' '*m:
     u, v, d = L()
     E[u] += (d, v),
     E[v] += (d, u),
+    r = max(r, d)
 
 
 def F(X):
@@ -24,8 +26,6 @@ def F(X):
     return D[b] <= c
 
 
-A = -1
-l, r = 0, M
 while l <= r:
     m = (l+r)//2
     if F(m):
