@@ -15,7 +15,7 @@ while Q:
     if D[y]-x:
         continue
     for i, j in E[y]:
-        t = x-x % m+m*(j < x % m)+j+1
+        t = x-x % m+m*(i < x % m)+i+1
         if D[j] > t:
             D[j] = t
             h.heappush(Q, (t, j))
