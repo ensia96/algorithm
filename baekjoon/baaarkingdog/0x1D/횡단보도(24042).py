@@ -6,8 +6,8 @@ n += 1
 E = [[]for _ in ' '*n]
 for i in range(m):
     a, b = L()
-    E[a] += (i, b),
-    E[b] += (i, a),
+    E[a] += (i+1, b),
+    E[b] += (i+1, a),
 D, Q = [M]*n, [(0, 1)]
 D[1] = 0
 while Q:
