@@ -6,8 +6,8 @@ n += 1
 E = [[]for _ in ' '*n]
 for i in range(m):
     a, b = L()
-    E[a] += (i+1, b),
-    E[b] += (i+1, a),
+    E[a] += (i, b),
+    E[b] += (i, a),
 D, Q = [M]*n, [(0, 1)]
 D[1] = 0
 while Q:
@@ -15,9 +15,7 @@ while Q:
     if D[y]-x:
         continue
     for i, j in E[y]:
-        t = i+m*(x//m)
-        while t <= x:
-            t += m
+        t = x-x % m+m*(j < x % m)+j+1
         if D[j] > t:
             D[j] = t
             h.heappush(Q, (t, j))
