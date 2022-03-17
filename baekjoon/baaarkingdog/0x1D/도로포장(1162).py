@@ -21,4 +21,4 @@ while Q:
         if x < k and D[j][x+1] > t:
             D[j][x+1] = t
             h.heappush(Q, (x+1, D[j][x+1], j))
-print(D[n-1][k])
+print(min(D[n-1]))
