@@ -14,7 +14,7 @@ while Q:
         if len(D[j]) < k or D[j][0] < -x-i:
             h.heappush(D[j], -x-i)
             h.heappush(Q, (x+i, j))
-            if len(D[k]) == k:
-                h.heappop(Q)
+            if len(D[k]) > k:
+                h.heappop(D[j])
 for d in D[1:]:
     print(-1 if len(d) != k else -d[0])
