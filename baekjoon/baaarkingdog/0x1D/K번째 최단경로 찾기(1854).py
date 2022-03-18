@@ -7,13 +7,14 @@ E = [[]for _ in ' '*n]
 for _ in ' '*m:
     a, b, c = L()
     E[a] += (c, b),
-D, Q = [[-M]*k for _ in ' '*n], [(0, 1)]
+D, Q = [[] for _ in ' '*n], [(0, 1)]
 while Q:
     x, y = h.heappop(Q)
     for i, j in E[y]:
-        if D[j][0] < -x-i:
+        if len(D[j]) < k or D[j][0] < -x-i:
             h.heappush(D[j], -x-i)
-            h.heappop(D[j])
             h.heappush(Q, (x+i, j))
+            if len(D[k]) == k:
+                h.heappop(Q)
 for d in D[1:]:
-    print(-1 if -d[0] == M else -d[0])
+    print(-1 if len(d) != k else -d[0])
