@@ -1,6 +1,6 @@
 import sys
 import heapq as h
-L, M = lambda: map(int, input().split()), 11**9
+L, M = lambda: map(int, input().split()), 20**9
 n, m, k = L()
 n += 1
 E = [[]for _ in ' '*n]
