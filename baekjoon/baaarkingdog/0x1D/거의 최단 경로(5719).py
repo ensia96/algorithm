@@ -21,7 +21,7 @@ def X():
         if a == s:
             continue
         for b in R[a]:
-            if not D[b]+E[b][a]-D[a] and E[b][a]:
+            if not D[b]+E[b][a]-D[a] and E[b].get(a):
                 del E[b][a]
                 Q += b,
 
