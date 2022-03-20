@@ -1,5 +1,6 @@
+import sys
 import heapq as h
-L, M = lambda: map(int, input().split()), 8**8
+L, M = lambda: map(int, sys.stdin.readline().split()), 8**8
 n, m, k = L()
 s, d = L()
 n += 1
