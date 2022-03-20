@@ -13,7 +13,7 @@ D, Q = [[M]*n for _ in ' '*n], [(0, 0, s)]
 D[s][0] = 0
 while Q:
     x, y, z = h.heappop(Q)
-    if D[z][y]-x or y > n-2:
+    if D[z][y]-x or y > n-2 or z == d:
         continue
     for i, j in E[z]:
         if D[j][y+1] > D[z][y]+i:
