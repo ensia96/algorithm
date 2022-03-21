@@ -13,7 +13,7 @@ for e in E:
 s, e = L()
 
 
-def F():
+def F(s, e):
     D, Q = [M]*n, [(0, s)]
     D[s] = 0
     while Q:
@@ -24,24 +24,18 @@ def F():
             if D[i] > D[y]+j and N[i]:
                 D[i] = D[y]+j
                 h.heappush(Q, (D[i], i))
-    return D[e]
+    return D
 
 
-def D(x, y):
-    if x == e or y > A:
-        return y == A
-    for i, j in E[x]:
-        if N[i]:
-            N[i] = 0
-            if D(i, y+j):
-                return 1
-            N[i] = 1
-
-
-A = F()
-D(s, 0)
-N[e] = 1
-print(A+F())
+T = F(e, s)
+c, d = s, 0
+while c-e:
+    for i, j in E[c]:
+        if not d+j+T[i]-T[s]:
+            N[i] = i == e
+            c, d = i, d+j
+            break
+print(F(s, e)[e]+T[s])
 
 # (시간 초과 해결 방법이 안 떠올라서, 아래 블로그 참조 + 코드 다듬어서 제출...)
 # https://ongveloper.tistory.com/236
