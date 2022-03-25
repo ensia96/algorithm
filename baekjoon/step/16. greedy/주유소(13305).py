@@ -1,9 +1,8 @@
-L, A = lambda: map(int, input().split()), input()
-R, P = [*L()], [*L()][:-1]
-y = R.pop()
-A = y*P.pop()
-while R:
-    x, s = R.pop(), P.pop()
-    y += x
-    A = min(A+s*x, s*y)
+L, A = lambda: map(int, input().split()), 0
+n = next(L())
+R, P = [*L()], [*L()]
+x = P[0]
+for i in range(n-1):
+    A += R[i]*x
+    x = min(x, P[i+1])
 print(A)
