@@ -1,5 +1,4 @@
-while 1:
+a = 1
+while a:
     a, b = map(int, input().split())
-    if not a+b:
-        break
-    print(('neither'if a % b else'multiple')if b % a else'factor')
+    a and print(('neither'if a % b else'multiple')if b % a else'factor')
