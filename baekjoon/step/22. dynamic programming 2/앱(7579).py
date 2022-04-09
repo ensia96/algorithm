@@ -3,10 +3,10 @@ n, m = l()
 A = [*l()]
 C = [*l()]
 k = sum(C)+1
-D = [[0]*k for _ in ' '*n]
+D = [0]*k
 for i in r(n):
-    for j in r(k):
-        D[i][j] = max(D[i-1][j], (D[i-1][j-C[i]]+A[i])*(j-C[i] >= 0))
+    for j in r(k-1, C[i]-1, -1):
+        D[j] = max(D[j], D[j-C[i]]+A[i])
 for j in r(k):
-    if D[n-1][j] >= m:
+    if D[j] >= m:
         exit(print(j))
