@@ -8,8 +8,8 @@ M = 0
 
 for i in range(1, n+1):
     if C[-1] < A[i]:
+        M = D[i] = len(C)
         C += A[i],
-        M = D[i] = len(C) - 1
         continue
     D[i] = B.bisect_left(C, A[i])
     C[D[i]] = A[i]
