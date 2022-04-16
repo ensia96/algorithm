@@ -19,4 +19,4 @@ while i > 0 and j > 0:
     else:
         R += A[i-1]
         i, j = i-1, j-1
-print(R)
+print(R[::-1])
