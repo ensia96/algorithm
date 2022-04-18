@@ -1,7 +1,20 @@
 import collections as C
-S = str
 d, s = lambda n: n*2 % 10000, lambda n: (n-1) % 10000
-l, r = lambda n: int(S(n)[1:]+S(n)[:1]), lambda n: int(S(n)[-1:]+S(n)[:-1])
+
+
+def l(n):
+    s = str(n)
+    while len(s) < 4:
+        s = '0'+s
+    return int(s[1:]+s[:1])
+
+
+def r(n):
+    s = str(n)
+    while len(s) < 4:
+        s = '0'+s
+    return int(s[-1:]+s[:-1])
+
 
 for _ in ' '*int(input()):
     a, b = map(int, input().split())
