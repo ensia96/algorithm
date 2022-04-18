@@ -1,35 +1,16 @@
 import collections as C
-d, s = lambda n: n*2 % 10000, lambda n: (n-1) % 10000
-
-
-def l(n):
-    s = str(n)
-    while len(s) < 4:
-        s = '0'+s
-    return int(s[1:]+s[:1])
-
-
-def r(n):
-    s = str(n)
-    while len(s) < 4:
-        s = '0'+s
-    return int(s[-1:]+s[:-1])
-
-
+M, m = 10000, 1000
 for _ in ' '*int(input()):
     a, b = map(int, input().split())
     D = [0]*10000
-    D[a] = 'x'
+    D[a] = ''
     Q = C.deque([a])
-    while not D[b]:
+    while D[b] == 0:
         p = Q.popleft()
-        q = [d(p), s(p), l(p), r(p)]
+        q = [p*2 % M, (p-1) % M, p % m*10+p//m, p % 10*m+p//10]
         for i in range(4):
             x = q[i]
-            if D[x]:
-                continue
-            D[x] = D[p]+'DSLR'[i]
-            if x == b:
-                break
-            Q += x,
-    print(D[b][1:])
+            if D[x] == 0:
+                D[x] = D[p]+'DSLR'[i]
+                Q += x,
+    print(D[b])
