@@ -19,7 +19,7 @@ def r(n):
 for _ in ' '*int(input()):
     a, b = map(int, input().split())
     D = [0]*10000
-    D[a] = ''
+    D[a] = 'x'
     Q = C.deque([a])
     while not D[b]:
         p = Q.popleft()
@@ -32,4 +32,4 @@ for _ in ' '*int(input()):
             if x == b:
                 break
             Q += x,
-    print(D[b])
+    print(D[b][1:])
