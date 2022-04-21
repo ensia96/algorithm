@@ -4,4 +4,4 @@ N = range(n+1)
 for i in range(1, k):
     for j in N:
         D[i][j] = sum(D[i-1][j-k]for k in N if j >= k) % 1000000000
-print(D[i][j])
+print(D[k-1][n])
