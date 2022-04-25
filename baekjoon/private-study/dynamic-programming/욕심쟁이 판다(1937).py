@@ -4,6 +4,7 @@ n = int(input())
 A = [[*map(int, input().split())]for _ in ' '*n]
 D = [[0]*n for _ in ' '*n]
 N = range(n)
+R = 0
 
 
 def f(i, j):
@@ -16,4 +17,7 @@ def f(i, j):
     return D[i][j]
 
 
-print(max(f(i, j)for i in N for j in N))
+for i in N:
+    for j in N:
+        R = max(R, f(i, j))
+print(R)
