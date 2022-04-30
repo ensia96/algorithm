@@ -19,5 +19,5 @@ while Q:
         R[e] = max(R[e], R[c])
         if not I[e]:
             Q += e,
-for r in R:
+for r in R[1:]:
     print(r)
