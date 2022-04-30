@@ -5,6 +5,7 @@ for i in N:
     c, *A = map(int, input().split())
     D[i] = c
     E += A,
-for i in N:
+for i in N[::-1]:
     D[i] += max(D[e]for e in E[i])
+for i in N:
     print(D[i])
