@@ -1,8 +1,10 @@
+import collections as C
 n, s, m = map(int, input().split())
 V = [*map(int, input().split())]
-Q = [(0, s)]
+Q = C.deque([(0, s)])
 M = -1
-for i, v in Q:
+while Q:
+    i, v = Q.popleft()
     if i == n:
         M = max(M, v)
         continue
