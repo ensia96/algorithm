@@ -1,16 +1,12 @@
 n, s, m = map(int, input().split())
 V = [*map(int, input().split())]
-D = [0]*-~m
-Q = [(0, s)]
-M = -1
-for i, v in Q:
-    if i == n:
-        M = max(M, v)
-        continue
-    if v-V[i] >= 0 and D[v] == i:
-        D[v-V[i]] = i+1
-        Q += (i+1, v-V[i]),
-    if v+V[i] <= m and D[v] == i:
-        D[v+V[i]] = i+1
-        Q += (i+1, v+V[i]),
-print(M)
+D = [[0]*-~m for _ in ' '*-~n]
+D[0][s] = 1
+for i in range(n):
+    for j in range(m+1):
+        if D[i][j]:
+            if j+V[i] <= m:
+                D[i+1][j+V[i]] = 1
+            if j-V[i] >= 0:
+                D[i+1][j-V[i]] = 1
+print(max([i for i in range(m+1)if D[n][i]]+[-1]))
