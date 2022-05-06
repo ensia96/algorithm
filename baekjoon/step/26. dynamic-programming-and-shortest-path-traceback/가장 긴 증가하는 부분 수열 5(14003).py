@@ -1,7 +1,7 @@
 import bisect as B
 n = int(input())
 A = [*map(int, input().split())]
-D, T, P, I = [], [], [], []
+T, P, I = [], [], []
 for i in range(n):
     a = A[i]
     t = B.bisect_left(T, a)
