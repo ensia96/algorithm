@@ -1,16 +1,15 @@
 import bisect as B
 n = int(input())
 A = [*map(int, input().split())]
-T, P, I = [], [], []
+T, P = [], []
 for i in range(n):
     a = A[i]
-    t = B.bisect_left(T, a)
+    t = B.bisect_left(T, (a, 0))
     if t == len(T):
-        T += a,
-        I += i,
-    T[t], I[t] = a, i
-    P += [I[t-1], i][not t],
-T, x = [], I[-1]
+        T += (a, i),
+    T[t] = (a, i)
+    P += [T[t-1][1], i][not t],
+T, x = [], T[-1][1]
 while P[x] != x:
     T += A[x],
     x = P[x]
