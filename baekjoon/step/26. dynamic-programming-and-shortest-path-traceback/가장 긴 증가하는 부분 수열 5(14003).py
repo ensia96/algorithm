@@ -1,24 +1,19 @@
-import sys
-from bisect import bisect_left
-
-n = int(sys.stdin.readline())
-a = list(map(int, sys.stdin.readline().split()))
-
-q = []
-temp = []
-for x in a:
-    if not q or x > q[-1]:
-        q.append(x)
-        temp.append((len(q)-1, x))
-    else:
-        q[bisect_left(q, x)] = x
-        temp.append((bisect_left(q, x), x))
-
-ans = []
-last_idx = len(q)-1
-for i in range(len(temp)-1, -1, -1):
-    if temp[i][0] == last_idx:
-        ans.append(temp[i][1])
-        last_idx -= 1
-print(len(ans))
-print(*reversed(ans))
+import bisect as B
+n = int(input())
+A = [*map(int, input().split())]
+D, T, P, I = [], [], [], []
+for i in range(n):
+    a = A[i]
+    t = B.bisect_left(T, a)
+    if t == len(T):
+        T += a,
+        I += i,
+    T[t], I[t] = a, i
+    P += [I[t-1], i][not t],
+T, x = [], I[-1]
+while P[x] != x:
+    T += A[x],
+    x = P[x]
+T += A[x],
+print(len(T))
+print(*T[::-1])
