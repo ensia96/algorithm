@@ -10,4 +10,4 @@ for i in range(4, n+1):
     D[i][2] = (D[i-2][1]+D[i-2][3]) % M
     D[i][3] = (D[i-3][1]+D[i-3][2]) % M
 for a in A:
-    print(sum(D[a]))
+    print(sum(D[a]) % M)
