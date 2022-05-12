@@ -2,7 +2,7 @@ A = input()
 B = input()
 n = len(A)
 m = len(B)
-D = [[0]*m for _ in ' '*n]
+D = [[0]*-~m for _ in ' '*n]
 for i in range(n):
     for j in range(m):
         if A[i] == B[j]:
