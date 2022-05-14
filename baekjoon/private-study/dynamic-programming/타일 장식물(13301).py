@@ -1,5 +1,5 @@
 n = int(input())
-a = b = 1
-for _ in ' '*n:
+a, b = 4, 6
+for _ in ' '*~-n:
     a, b = b, a+b
-print(b*2)
+print(a)
