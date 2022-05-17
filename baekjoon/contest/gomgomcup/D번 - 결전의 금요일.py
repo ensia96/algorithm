@@ -1,9 +1,9 @@
 n = int(input())
 A = [*map(int, input().split())]
-D = [0]
-for i in range(n):
-    D += D[i]+A[i],
-for i in range(n+1):
-    for j in range(i):
-        (1+D[i]-D[j]) % 7 == 5 and exit(print('YES'))
-print('NO')
+C = [0]*7
+for a in A:
+    for i in range(7):
+        if C[i]:
+            C[(i+a) % 7] = 1
+    C[a % 7] = 1
+print(['NO', 'YES'][C[4]])
