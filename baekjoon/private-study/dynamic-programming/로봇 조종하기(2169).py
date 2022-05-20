@@ -1,6 +1,6 @@
 n, m = map(int, input().split())
 D = [*map(int, input().split())]
-for i in range(1, n):
+for i in range(1, m):
     D[i] += D[i-1]
 for _ in ' '*~-n:
     t, l, r = [*map(int, input().split())], [D[0]], [D[-1]]
