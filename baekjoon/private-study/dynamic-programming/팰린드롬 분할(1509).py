@@ -9,7 +9,7 @@ for j in range(n):
 E = {i: [j+1 for j in range(i, n)if C[i][j]]for i in range(n)}
 Q = [(0, 0)]
 m = 8**8
-D = [0]+[m]*-~n
+D = [0]+[m]*n
 while Q:
     x, y = H.heappop(Q)
     if D[y]-x:
