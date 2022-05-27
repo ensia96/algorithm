@@ -1,11 +1,11 @@
 n = int(input())
-L = [*map(int, input().split())]
-H = [*map(int, input().split())]
-D = [[0]*100 for _ in ' '*n]
-for i in range(n):
-    for j in range(100):
-        if j < L[i-1]:
-            D[i][j] = D[i-1][j]
+L = [0]+[*map(int, input().split())]
+J = [0]+[*map(int, input().split())]
+D = [[0]*101 for _ in range(n+1)]
+for i in range(1, n+1):
+    for j in range(1, 101):
+        if L[i] <= j:
+            D[i][j] = max(D[i-1][j], D[i-1][j-L[i]] + J[i])
         else:
-            D[i][j] = max(D[i-1][j], D[i-1][j-L[i-1]]+H[i-1])
-print(D[-1][99])
+            D[i][j] = D[i-1][j]
+print(D[n][99])
