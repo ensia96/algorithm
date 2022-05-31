@@ -11,7 +11,7 @@ def f(i, j):
         return 0
     if D[i][j]+1:
         return D[i][j]
-    D[i][j] = max(f(i+1, j+1), f(i+1, j), (L[i] > R[j]) and (f(i, j+1)+R[j]))
+    D[i][j] = f(i, j+1)+R[j]if L[i] > R[j]else max(f(i+1, j+1), f(i+1, j))
     return D[i][j]
 
 
