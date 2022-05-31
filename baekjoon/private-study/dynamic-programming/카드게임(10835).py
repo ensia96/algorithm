@@ -1,3 +1,5 @@
+import sys
+sys.setrecursionlimit(10**6)
 n = int(input())
 L = [*map(int, input().split())]
 R = [*map(int, input().split())]
