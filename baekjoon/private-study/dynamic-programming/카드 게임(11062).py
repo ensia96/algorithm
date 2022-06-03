@@ -1,13 +1,11 @@
-def f(x, y, z):
-    if x <= y and not D[x][y]:
-        Z = not z
-        T, t = f(x+1, y, Z), f(x, y-1, Z)
-        D[x][y] = min(T, t) if z else max(T+A[x], t+A[y])
-    return D[x][y]
-
-
 for _ in ' '*int(input()):
     n = int(input())
     A = [*map(int, input().split())]
-    D = [[0]*-~n for _ in ' '*-~n]
-    print(f(0, n-1, 0))
+    D = [[0]*n for _ in ' '*n]
+    f = n % 2
+    for s in range(n):
+        for i in range(n-s):
+            j, F = i+s, [min, max][f]
+            D[i][j] = F(D[i+1][j]+A[i]*f, D[i][j-1]+A[j]*f)if s else A[i]*f
+        f = not f
+    print(D[0][-1])
