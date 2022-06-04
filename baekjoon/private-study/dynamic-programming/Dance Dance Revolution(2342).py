@@ -1,12 +1,13 @@
-M, N = 8**8, range(5)
-D = [[M]*5 for _ in N]
-D[0][0], f = 0, lambda x, y: not x and 2 or 3-(x == y)*2+(abs(x-y) == 2)
-for a in map(int, input().split()):
-    if not a:
-        exit(print(min(map(min, D))))
-    d = [[M]*5 for _ in N]
-    for i in N:
-        for j in N:
-            d[a][j] = min(d[a][j], D[i][j]+f(i, a))
-            d[i][a] = min(d[i][a], D[i][j]+f(j, a))
+n = range(5)
+m, f = min, lambda: [5*[8**8]for i in n]
+D = f()
+D[0][0] = 0
+for p in map(int, input().split()[:-1]):
+    d = f()
+    for i in n:
+        for j in n:
+            t = i and [1, 3, 4, 3][(p-i) % 4] or 2
+            d[p][j] = m(d[p][j], D[i][j]+t)
+            d[j][p] = m(d[j][p], D[j][i]+t)
     D = d
+print(m(map(m, D)))
