@@ -11,7 +11,7 @@ for i in input()[::-1]:
 p = int(input())
 
 
-def f(a, v, c):
+def f(v, c):
     if c >= p:
         V[v] = 0
     elif not V[v]-M:
@@ -23,5 +23,5 @@ def f(a, v, c):
     return V[v]
 
 
-f(0, b, c)
+f(b, c)
 print(-(V[b] == M) or V[b])
