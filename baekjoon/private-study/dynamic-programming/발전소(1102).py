@@ -20,7 +20,7 @@ def f(a, v, c):
                 for j in range(n):
                     if not v & 1 << j:
                         V[v] = min(V[v], f(a, v | 1 << j, c+1)+E[i][j])
-                return V[v]
+    return V[v]
 
 
 f(0, b, c)
