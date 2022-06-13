@@ -7,6 +7,7 @@ for _ in ' '*~-n:
     E[b-1] += a-1,
 D = [[0]*2 for _ in ' '*n]
 V = [0]*n
+P = []
 
 
 def f(x):
@@ -15,9 +16,19 @@ def f(x):
         if not D[i][1]:
             D[x][0] += f(i)
             D[x][1] += D[i][0]
-    V[x] = D[x][1] > D[x][0]
     return max(D[x])
 
 
+def g(x, y):
+    p = []
+    if D[x][1] > D[x][0] and not V[y]:
+        p += x+1,
+        V[x] = 1
+    for i in E[x]:
+        if i != y:
+            p += g(i, x)
+    return p
+
+
 print(f(0))
-print(*[1+i for i in range(n)if V[i]])
+print(*sorted(g(0, 0)))
