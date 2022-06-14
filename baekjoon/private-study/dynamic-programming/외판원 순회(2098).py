@@ -2,14 +2,15 @@ n = int(input())
 N = 1 << n
 G = [[*map(int, input().split())]for _ in ' '*n]
 M = 9**11
-D = [[M]*N for _ in ' '*n]
+D = [[0]*N for _ in ' '*n]
 
 
 def f(x, v):
     if v == N-1:
         return G[x][0] or M
-    if D[x][v] != M:
+    if D[x][v]:
         return D[x][v]
+    D[x][v] = M
     for i in range(1, n):
         if not G[x][i] or v & (1 << i):
             continue
