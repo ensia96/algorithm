@@ -6,9 +6,9 @@ for l in sys.stdin:
     x, y = c[2], 1 << int(*A)
     if'd' == x:
         S |= y
-    if'r' == x:
+    if'm' == x:
         S &= ~y
-    if'c' == x:
+    if'e' == x:
         print(+(S & y > 0))
     if'g' == x:
         S ^= y
