@@ -1,8 +1,8 @@
 import sys
 i = sys.stdin.readline
 S = 0
-for _ in ' '*int(input()):
-    c, *A = input().split()
+for _ in ' '*int(i()):
+    c, *A = i().split()
     x, y = c[2], A and 1 << int(A[0])
     if x == 'd':
         S |= y
