@@ -1,16 +1,18 @@
 import sys
-i = sys.stdin.readline
 S = 0
-for _ in range(int(i())):
-    c, *A = i().split()
-    x, y = c[2], A and 1 << int(A[0])
-    if x == 'd':
+input()
+for l in sys.stdin:
+    c, *A = l.split()
+    x, y = c[2], 1 << int(*A)
+    if'd' == x:
         S |= y
-    elif x == 'm':
+    if'r' == x:
         S &= ~y
-    elif x == 'e':
-        print(+bool(S & y))
-    elif x == 'g':
+    if'c' == x:
+        print(+(S & y > 0))
+    if'g' == x:
         S ^= y
-    else:
-        S = ((1 << 21)-1)*(x == 'l')
+    if'l' == x:
+        S = (1 << 21)-1
+    if'p' == x:
+        S = 0
