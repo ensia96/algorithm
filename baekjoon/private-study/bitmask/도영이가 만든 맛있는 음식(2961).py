@@ -9,4 +9,4 @@ def f(x, y, z):
     return min(f(x+1, y, z), f(x+1, y*s, z+b))
 
 
-print(f(0, 1, 0))
+print(f(1, *A[0]))
