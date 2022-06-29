@@ -1,12 +1,6 @@
 n = int(input())
-A = [[*map(int, input().split())]for _ in ' '*n]
-
-
-def f(x, y, z):
-    if x == n:
-        return abs(y-z)
-    s, b = A[x]
-    return min(f(x+1, y, z), f(x+1, y*s, z+b))
-
-
-print(f(1, *A[0]))
+A = [(1, 0)]
+for _ in ' '*n:
+    s, b = map(int, input().split())
+    A += [(x*s, b-y)for x, y in A]
+print(min(abs(x-y)for x, y in A))
