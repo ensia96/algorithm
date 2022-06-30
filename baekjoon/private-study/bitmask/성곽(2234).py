@@ -6,17 +6,20 @@ a = b = c = 0
 for i in M:
     for j in N:
         if not B[i][j]:
-            Q, a = [(i, j)], a+1
+            Q, a, t = [(i, j)], a+1, 0
             for x, y in Q:
-                B[x][y], D = a, [(x, y-1), (x-1, y), (x, y+1), (x+1, y)]
+                if B[x][y]:
+                    continue
+                B[x][y], t, D = a, t + \
+                    1, [(x, y-1), (x-1, y), (x, y+1), (x+1, y)]
                 for k in range(4):
                     if not A[x][y] & 1 << k:
                         p, q = D[k]
                         if (0 <= p < m)*(0 <= q < n) and not B[p][q]:
                             Q += (p, q),
-            b = max(b, len(Q))
+            b = max(b, t)
             for x, y in Q:
-                C[x][y] = len(Q)
+                C[x][y] = t
 for i in M:
     for j in N:
         for x, y in [(i-1, j), (i+1, j), (i, j-1), (i, j+1)]:
