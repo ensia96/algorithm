@@ -5,16 +5,18 @@ for _ in ' '*m:
     E[a] += (b, c),
     E[b] += (a, c),
 a, b = map(int, input().split())
-S, V = [(a, 10**9)], [0]*-~n
-A = V[a] = 0
-while S:
-    x, y = S.pop()
-    if x == b:
-        A = max(A, y)
-        continue
-    for i, j in E[x]:
-        t = min(y, j)
-        if V[i] < t:
-            V[i] = t
-            S += (i, t),
+A = 0
+l, r = 0, 10**9
+while l <= r:
+    m, Q, V = (l+r)//2, [a], [1]*-~n
+    V[a] = 0
+    for x in Q:
+        for i, j in E[x]:
+            if V[i] and j >= m:
+                V[i] = 0
+                Q += i,
+    if V[b]:
+        r = m-1
+    else:
+        l, A = m+1, m
 print(A)
