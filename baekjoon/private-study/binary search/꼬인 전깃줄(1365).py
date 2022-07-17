@@ -1,8 +1,7 @@
 import bisect
 n = int(input())
-A = [*map(int, input().split())]
 D = []
-for a in A:
+for a in map(int, input().split()):
     t = bisect.bisect_left(D, a)
     if t == len(D):
         D += a,
