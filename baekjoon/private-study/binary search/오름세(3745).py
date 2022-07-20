@@ -1,19 +1,7 @@
-while 1:
-    try:
-        n = int(input())
-    except:
-        exit()
-    A = [*map(int, input().split())]
+import bisect
+for l in [*open(0)][1::2]:
     D = []
-    for a in A:
-        l, r = 0, len(D)-1
-        while l <= r:
-            m = (l+r)//2
-            if D[m] < a:
-                l = m+1
-            else:
-                r = m-1
-        if l == len(D):
-            D += a,
-        D[l] = a
+    for a in map(int, l.split()):
+        t = bisect.bisect_left(D, a)
+        D[t:t+1] = a
     print(len(D))
