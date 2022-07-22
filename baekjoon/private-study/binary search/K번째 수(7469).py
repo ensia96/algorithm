@@ -35,6 +35,7 @@ def Q(i, j, k):
             l = m+1
         else:
             r = m-1
+    print(r)
 
 
 for i in range(n):
