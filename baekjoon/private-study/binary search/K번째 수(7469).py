@@ -1,53 +1,87 @@
-import bisect as B
-n, m = map(int, input().split())
-S, M = 1, 10**9
-while S < n:
-    S *= 2
-T = [[]for _ in ' '*2*S]
-A = [*map(int, input().split())]
+from math import ceil, log2
+import sys
+rl = sys.stdin.readline
+n, m = map(int, rl().split())
+An = list(map(int, rl().split()))
+leafLevel = int(log2(n))+1
 
 
-def U(h, i, j, k, l):
-    if l > 2*S:
-        return
-    T[l] += h,
-    t, l = (i+j)//2, l*2
-    if k < t:
-        U(h, i, t, k, l)
-    else:
-        U(h, t+1, j, k, l+1)
-
-
-def F(h, i, j, k, l, v):
-    if l < i or j < k:
-        return[]
-    if k <= i and j <= l:
-        return[h]
-    m = (i+j)//2
-    return v+F(h*2, i, m, k, l, v)+F(h*2+1, m+1, j, k, l, v)
-
-
-def Q(i, j, k):
-    v = F(1, 1, n, i, j, [])
-    l, r = -M, M
-    while l <= r:
-        m = (l+r)//2
-        a = b = 0
-        for i in v:
-            a += B.bisect_left(T[i], m)
-            b += B.bisect_right(T[i], m)
-        if a < k <= b:
-            print(m)
-            return
-        if a < k:
-            l = m+1
+def merge(leftList: list, rightList: list):
+    rtnList = []
+    leftIter = 0
+    rightIter = 0
+    while leftIter < len(leftList) and rightIter < len(rightList):
+        if leftList[leftIter] < rightList[rightIter]:
+            rtnList.append(leftList[leftIter])
+            leftIter += 1
         else:
-            r = m-1
+            rtnList.append(rightList[rightIter])
+            rightIter += 1
+    rtnList += leftList[leftIter:]
+    rtnList += rightList[rightIter:]
+    return rtnList
 
 
-for i in range(n):
-    U(A[i], 0, S, i, 1)
-for i in range(2*S):
-    T[i].sort()
-for _ in ' '*m:
-    Q(*map(int, input().split()))
+def init():
+    for i in range(2**leafLevel):
+        MST[(2**leafLevel)+i][0] = MST[(2**leafLevel)+i][1] = i+1
+    for i in range(n):
+        MST[(2**leafLevel)+i][2].append(An[i])
+    level = leafLevel-1
+    while level >= 0:
+        for i in range(2**level, 2**(level+1)):
+            MST[i][0] = MST[i*2][0]
+            MST[i][1] = MST[i*2+1][1]
+            MST[i][2] = merge(MST[i*2][2], MST[i*2+1][2])
+        level -= 1
+
+
+MST = [[0, 0, []] for _ in range(2**(leafLevel+1))]
+MST[0] = None
+init()
+
+
+def upperBound(x, nodeIndex):
+    left = 0
+    right = len(MST[nodeIndex][2])-1
+    mid = 0
+    while left < right:
+        if MST[nodeIndex][2][mid] <= x:
+            left = mid + 1
+        else:
+            right = mid
+        mid = (left+right)//2
+        if mid == right:
+            if MST[nodeIndex][2][mid] <= x:
+                return len(MST[nodeIndex][2])
+            else:
+                return right
+    if MST[nodeIndex][2][left] > x:
+        return 0
+    return left + 1
+
+
+def query(x, start, end, nodeIndex):
+    left = MST[nodeIndex][0]
+    right = MST[nodeIndex][1]
+    if left > end or right < start:
+        return 0
+    elif start <= left and right <= end:
+        return upperBound(x, nodeIndex)
+    return query(x, start, end, nodeIndex*2)+query(x, start, end, nodeIndex*2+1)
+
+
+for _ in range(m):
+    i, j, k = map(int, rl().split())
+    start = -(10**9)
+    end = 10**9
+    while start <= end:
+        mid = (start+end)//2
+        result = query(mid, i, j, 1)
+        if result < k:
+            start = mid + 1
+        else:
+            end = mid - 1
+    print(start)
+
+# 출처 : https://velog.io/@bbbjihan/BOJ-%EB%B0%B1%EC%A4%80-7469-K%EB%B2%88%EC%A7%B8-%EC%88%98-python
