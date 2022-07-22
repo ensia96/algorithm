@@ -1,6 +1,6 @@
 import bisect as B
 n, m = map(int, input().split())
-S = 1
+S, M = 1, 10**9
 while S < n:
     S *= 2
 T = [[]for _ in ' '*2*S]
@@ -15,7 +15,7 @@ def U(h, i, j, k, l):
     if k < t:
         U(h, i, t, k, l)
     else:
-        U(h, t, j, k, l+1)
+        U(h, t+1, j, k, l+1)
 
 
 def F(h, i, j, k, l, v):
@@ -29,7 +29,7 @@ def F(h, i, j, k, l, v):
 
 def Q(i, j, k):
     v = F(1, 1, n, i, j, [])
-    l, r = x, y
+    l, r = -M, M
     while l <= r:
         m = (l+r)//2
         a = b = 0
@@ -49,6 +49,5 @@ for i in range(n):
     U(A[i], 0, S, i, 1)
 for i in range(2*S):
     T[i].sort()
-x, y = T[1][0], T[1][-1]
 for _ in ' '*m:
     Q(*map(int, input().split()))
