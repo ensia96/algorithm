@@ -1,5 +1,7 @@
 n, k = map(int, input().split())
-A = [0]+[*map(int, input().split())]
-for i in range(n):
-    A[i+1] += A[i]
-print(max(A[i+k]-A[i]for i in range(n-k+1))if n-k else A[-1])
+A = [*map(int, input().split())]
+r = s = sum(A[:k])
+for i in range(k, n):
+    s += A[i]-A[i-k]
+    r = max(s, r)
+print(r)
