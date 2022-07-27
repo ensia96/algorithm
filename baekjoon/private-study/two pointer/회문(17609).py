@@ -1,3 +1,7 @@
+import sys
+sys.setrecursionlimit(10**6)
+
+
 def f(l, r, c):
     if l >= r or c > 1:
         return c
