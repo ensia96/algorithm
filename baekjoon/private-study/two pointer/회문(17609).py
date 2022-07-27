@@ -1,15 +1,12 @@
-import sys
-sys.setrecursionlimit(10**6)
-
-
 def f(l, r, c):
-    if l >= r or c > 1:
+    if l >= r:
         return c
-    if A[l] != A[r]:
-        c += min(f(l+1, r, c), f(l, r-1, c), 1)+1
+    if A[l] == A[r]:
+        return f(l+1, r-1, c)
+    elif not c:
+        return min(f(l+1, r, 1), f(l, r-1, 1))
     else:
-        c += f(l+1, r-1, c)
-    return c
+        return 2
 
 
 for _ in ' '*int(input()):
