@@ -1,16 +1,13 @@
+def f(l, r, c):
+    if l >= r or c > 1:
+        return c
+    if A[l] != A[r]:
+        c += min(f(l+1, r, c), f(l, r-1, c), 1)+1
+    else:
+        c += f(l+1, r-1, c)
+    return c
+
+
 for _ in ' '*int(input()):
     A = input()
-    c, l, r = 0, 0, len(A)-1
-    while l < r and c < 2:
-        if A[l] != A[r]:
-            c += 1
-            if A[l+1] == A[r]:
-                l += 1
-            elif A[l] == A[r-1]:
-                r -= 1
-            else:
-                c = 2
-                break
-        l += 1
-        r -= 1
-    print(c)
+    print(f(0, len(A)-1, 0))
