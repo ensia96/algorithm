@@ -1,9 +1,12 @@
 n = int(input())
-c = l = r = S = 1
-while l*2 <= n:
-    if S >= n:
+c = l = r = 1
+S = 0
+while l <= r <= n:
+    if S < n:
+        S += r
+        r += 1
+    else:
         c += S == n
-        l = r = S = l+1
-    r += 1
-    S += r
+        S -= l
+        l += 1
 print(c)
