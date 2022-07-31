@@ -1,6 +1,6 @@
 n, k = map(int, input().split())
 A = [*map(int, input().split())]
-l = r = 0
+f = l = r = 0
 c, s = A[0] < 2, n-1
 while l < n:
     if c < k and r < n-1:
@@ -9,5 +9,7 @@ while l < n:
     else:
         c -= A[l] < 2
         l += 1
-        s = min(s, r-l+1+s*(c != k))
-print(s)
+    if c == k:
+        f = 1
+        s = min(s, r-l+1)
+print(s if f else -1)
