@@ -15,9 +15,6 @@ for _ in ' '*int(input()):
         X[b] += 1*(2*t-1)
     Q = [i for i in N if not X[i]]
     A = []
-    if not Q:
-        print("IMPOSSIBLE")
-        continue
     while Q:
         if len(Q) > 1:
             A = ['?']
@@ -27,4 +24,7 @@ for _ in ' '*int(input()):
             X[i] -= 1
             if X[i] == 0:
                 Q += i,
-    print(*A)
+    if len(A)-n:
+        print('IMPOSSIBLE')
+    else:
+        print(*A)
