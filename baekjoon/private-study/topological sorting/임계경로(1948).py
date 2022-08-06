@@ -7,11 +7,11 @@ for _ in ' '*m:
     R[b] += (a, c),
     I[b] += 1
 s, e = map(int, input().split())
-Q = [(s, 0)]
+Q = [s]
 while Q:
-    x, y = Q.pop()
+    x = Q.pop()
     for a, b in E[x]:
-        C[a] = max(C[a], b+y)
+        C[a] = max(C[a], C[x]+b)
         I[a] -= 1
         if not I[a]:
             Q += (a, C[a]),
