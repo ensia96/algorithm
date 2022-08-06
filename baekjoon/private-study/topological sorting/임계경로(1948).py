@@ -13,13 +13,14 @@ while Q:
     for a, b in E[x]:
         Q += (a, b+y),
         C[a] = max(C[a], b+y)
-Q, D, V = [(e, C[e])], 0, [0]*-~n
+Q, D, V = [(e, C[e])], 0, [1]*-~n
 while Q:
     x, y = Q.pop()
     for a, b in R[x]:
         if y-b == C[a]:
-            Q += (a, y-b+V[a]),
-            V[a] += 1
+            if V[a]:
+                V[a] = 0
+                Q += (a, y-b+V[a]),
             D += 1
 print(C[e])
 print(D)
