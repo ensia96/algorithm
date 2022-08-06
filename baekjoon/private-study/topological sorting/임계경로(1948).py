@@ -14,7 +14,7 @@ while Q:
         C[a] = max(C[a], C[x]+b)
         I[a] -= 1
         if not I[a]:
-            Q += (a, C[a]),
+            Q += a,
 Q, D = [e], 0
 while Q:
     x = Q.pop()
