@@ -9,16 +9,17 @@ for _ in ' '*m:
 s, e = map(int, input().split())
 Q, C = [(s, 0)], [0]*-~n
 while Q:
-    q = [(a, b+y)for x, y in Q for a, b in E[x]]
-    for x, y in q:
-        C[x] = max(C[x], y)
-    Q = q
-Q, q = [(e, C[e])], set()
+    x, y = Q.pop()
+    for a, b in E[x]:
+        Q += (a, b+y),
+        C[a] = max(C[a], b+y)
+Q, D, V = [(e, C[e])], 0, [0]*-~n
 while Q:
     x, y = Q.pop()
     for a, b in R[x]:
         if y-b == C[a]:
-            Q += (a, y-b),
-            q.add((a, b))
+            Q += (a, y-b+V[a]),
+            V[a] += 1
+            D += 1
 print(C[e])
-print(len(q))
+print(D)
