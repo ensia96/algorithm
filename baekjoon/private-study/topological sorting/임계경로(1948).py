@@ -1,26 +1,28 @@
-n = int(input())
-m = int(input())
-E = [[]for _ in ' '*-~n]
-R = [[]for _ in ' '*-~n]
+n, m = int(input()), int(input())
+E, R = [[]for _ in ' '*-~n], [[]for _ in ' '*-~n]
+I, C, V = [0]*-~n, [0]*-~n, [0]*-~n
 for _ in ' '*m:
     a, b, c = map(int, input().split())
     E[a] += (b, c),
     R[b] += (a, c),
+    I[b] += 1
 s, e = map(int, input().split())
-Q, C = [(s, 0)], [0]*-~n
+Q = [(s, 0)]
 while Q:
     x, y = Q.pop()
     for a, b in E[x]:
-        Q += (a, b+y),
         C[a] = max(C[a], b+y)
-Q, D, V = [(e, C[e])], 0, [1]*-~n
+        I[a] -= 1
+        if not I[a]:
+            Q += (a, b+y),
+Q, D = [e], 0
 while Q:
-    x, y = Q.pop()
+    x = Q.pop()
     for a, b in R[x]:
-        if y-b == C[a]:
-            if V[a]:
-                V[a] = 0
-                Q += (a, y-b+V[a]),
+        if C[x]-C[a] == b:
+            if not V[a]:
+                V[a] = 1
+                Q += a,
             D += 1
 print(C[e])
 print(D)
