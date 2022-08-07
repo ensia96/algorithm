@@ -12,6 +12,6 @@ while Q:
         if I[e]:
             I[e] -= 1
             if not I[e]:
-                A[e] = A[x]+1
+                A[e] = max(A[e], A[x]+1)
                 Q += e,
 print(*A[1:])
