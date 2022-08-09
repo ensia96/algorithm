@@ -1,3 +1,5 @@
+import sys
+sys.setrecursionlimit(500001)
 n, m = map(int, input().split())
 E = [[]for _ in ' '*-~n]
 F = [[]for _ in ' '*-~n]
