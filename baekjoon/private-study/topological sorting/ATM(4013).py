@@ -1,6 +1,8 @@
+from collections import deque
 import sys
-import collections as C
 sys.setrecursionlimit(650001)
+I = sys.stdin.readline
+L, S = lambda: map(int, I().split()), []
 
 
 def f(x):
@@ -20,20 +22,19 @@ def r(x, y):
             G[H[a]].append(H[x])
 
 
-n, m = map(int, input().split())
-N = range(n)
-E = [[]for i in N]
-R = [[]for i in N]
+n, m = L()
+E = [[]for i in range(n)]
+R = [[]for i in range(n)]
 V = [0]*n
 S = []
 H = [-1]*n
 G = []
 for i in range(m):
-    a, b = map(int, input().split())
+    a, b = L()
     E[a-1].append(b-1)
     R[b-1].append(a-1)
-W = [int(input())for i in N]
-for i in N:
+W = [int(I())for i in range(n)]
+for i in range(n):
     V[i] or f(i)
 M = []
 k = 0
@@ -44,10 +45,10 @@ while S:
         M.append(0)
         r(x, k)
         k += 1
-s, p = map(int, input().split())
+s, p = L()
 s -= 1
 del E, R
-Q = C.deque([H[s]])
+Q = deque([H[s]])
 D = [0]*k
 D[H[s]] = M[H[s]]
 while Q:
@@ -56,4 +57,4 @@ while Q:
         if D[n] < D[x]+M[n]:
             D[n] = D[x]+M[n]
             Q.append(n)
-print(max(D[H[r-1]]for r in map(int, input().split())))
+print(max(D[H[r-1]]for r in L()))
