@@ -57,4 +57,7 @@ while Q:
         if D[n] < D[x]+M[n]:
             D[n] = D[x]+M[n]
             Q.append(n)
-print(max(D[H[r-1]]for r in L()))
+A = 0
+for r in L():
+    A = max(A, D[H[r-1]])
+print(A)
