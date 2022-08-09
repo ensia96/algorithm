@@ -1,74 +1,59 @@
 import sys
-sys.setrecursionlimit(500001)
-n, m = map(int, input().split())
-E = [[]for _ in ' '*-~n]
-F = [[]for _ in ' '*-~n]
-for _ in ' '*m:
-    a, b = map(int, input().split())
-    E[a] += b,
-W = [0]+[int(input())for _ in ' '*n]
-s, p = map(int, input().split())
-R = {*map(int, input().split())}
-
-y = 0
-S = []
-P = []
-Q = []
-A = [0]*-~n
-B = [-1]*-~n
-C = [1]*-~n
-M = [0]*-~n
-N = [0]*-~n
-O = [0]*-~n
-U = [0]*-~n
-I = [0]*-~n
+import collections as C
+sys.setrecursionlimit(650001)
 
 
 def f(x):
-    global y, S, P
-    X = B[x] = y
-    y += 1
-    S += x,
-    for e in E[x]:
-        if B[e] == -1:
-            X = min(X, f(e))
-        elif C[e]:
-            X = min(X, B[e])
-    if X == B[x]:
-        T = []
-        while 1:
-            t = S.pop()
-            T += t,
-            C[t], N[t] = 0, len(P)
-            if t == x:
-                break
-        P += T,
-    return X
+    V[x] = 1
+    for a in E[x]:
+        V[a] or f(a)
+    S.append(x)
 
 
-for i in range(1, n+1):
-    1+B[i] or f(i)
-for i in range(1, n+1):
-    O[N[i]] += W[i]
-    if i in R:
-        U[N[i]] = 1
-    for j in E[i]:
-        if N[i]-N[j]:
-            F[N[i]] += N[j],
-            I[N[j]] += 1
-for i in range(len(P)):
-    M[i] = O[i]
-    if I[i] == 0:
-        Q += i,
-A[N[s]] = 1
+def r(x, y):
+    H[x] = y
+    M[y] += W[x]
+    for a in R[x]:
+        if H[a] == -1:
+            r(a, y)
+        elif H[x]-H[a]:
+            G[H[a]].append(H[x])
+
+
+n, m = map(int, input().split())
+N = range(n)
+E = [[]for i in N]
+R = [[]for i in N]
+V = [0]*n
+S = []
+H = [-1]*n
+G = []
+for i in range(m):
+    a, b = map(int, input().split())
+    E[a-1].append(b-1)
+    R[b-1].append(a-1)
+W = [int(input())for i in N]
+for i in N:
+    V[i] or f(i)
+M = []
+k = 0
+while S:
+    x = S.pop()
+    if H[x] == -1:
+        G.append([])
+        M.append(0)
+        r(x, k)
+        k += 1
+s, p = map(int, input().split())
+s -= 1
+del E, R
+Q = C.deque([H[s]])
+D = [0]*k
+D[H[s]] = M[H[s]]
 while Q:
-    q = []
-    for x in Q:
-        for a in F[x]:
-            I[a] -= 1
-            if A[x]:
-                M[a], A[a] = max(M[a], M[x]+O[a]), 1
-            if I[a] == 0:
-                q += a,
-    Q = q
-print(max(M[i]for i in range(len(P))if A[i]*U[i]))
+    x = Q.popleft()
+    for n in G[x]:
+        if D[n] < D[x]+M[n]:
+            D[n] = D[x]+M[n]
+            Q.append(n)
+print(max(D[H[r-1]]for r in map(int, input().split())))
