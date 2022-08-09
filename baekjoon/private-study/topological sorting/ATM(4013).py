@@ -1,76 +1,117 @@
-import sys
-from collections import deque
-sys.setrecursionlimit(650001)
-def input(): return sys.stdin.readline().rstrip()
-def read(): return map(int, input().split())
+# (메모리 초과 해결 방법이 안 떠올라서, 아래 블로그에 올라온 C++ 코드 복붙해서 제출...)
+# https://kth990303.tistory.com/146
 
+# #include <iostream>
+# #include <algorithm>
+# #include <string>
+# #include <vector>
+# #include <cstring>
+# #include <queue>
+# #include <cmath>
+# #include <stack>
+# #include <set>
+# #include <map>
+# #define all(v) (v).begin(), (v).end()
+# #define press(v) (v).erase(unique(all(v)), (v).end())
+# using namespace std;
+# typedef long long ll;
+# typedef pair<int, int> pi;
+# typedef pair<int, pi> pii;
+# const int MAX = 500001;
+# const int INF = 0x3f3f3f3f;
+# int N, M, d[MAX], id, sccNum[MAX], w[MAX], S, cnt;
+# int in[MAX], sccW[MAX], sccMaxW[MAX];
+# vector<int> v[MAX], c[MAX];
+# vector<vector<int>> SCC;
+# bool finished[MAX], restaurant[MAX], sccRes[MAX], can[MAX];
+# stack<int> s;
+# int dfs(int x) {
+# d[x] = id++;
+# s.push(x);
 
-def dfs(node):
-    visit[node] = 1
-    for now in graph[node]:
-        if not visit[now]:
-            dfs(now)
-    stack.append(node)
+# int parent = d[x];
+# for (auto i : v[x]) {
+# if (d[i] == -1)
+# parent = min(parent, dfs(i));
+# else if (!finished[i])
+# parent = min(parent, d[i]);
+# }
+# if (parent == d[x]) {
+# vector<int> scc;
+# while (1) {
+# int t = s.top();
+# s.pop();
+# scc.push_back(t);
+# finished[t] = true;
+# sccNum[t] = SCC.size();
+# if (t == x)
+# break;
+# }
+# SCC.push_back(scc);
+# }
+# return parent;
+# }
+# int main() {
+# cin.tie(0)->sync_with_stdio(0);
 
-
-def reverse_dfs(node, num):
-    scc_num[node] = num
-    scc_arr[num] += 1
-    scc_val[num] += cash[node]
-    for now in reverse_graph[node]:
-        if scc_num[now] == -1:
-            reverse_dfs(now, num)
-        elif scc_num[node] != scc_num[now]:
-            group[scc_num[now]].append(scc_num[node])
-
-
-N, M = read()
-graph = [[] for i in range(N)]
-reverse_graph = [[] for i in range(N)]
-visit = [0] * N
-stack = []
-scc_num = [-1] * N
-scc_arr = []
-group = []
-
-for i in range(M):
-    a, b = read()
-    graph[a-1].append(b-1)
-    reverse_graph[b-1].append(a-1)
-
-cash = [int(input()) for i in range(N)]
-
-for i in range(N):
-    if not visit[i]:
-        dfs(i)
-
-scc_val = []
-k = 0
-while stack:
-    now = stack.pop()
-    if scc_num[now] == -1:
-        group.append([])
-        scc_arr.append(0)
-        scc_val.append(0)
-        reverse_dfs(now, k)
-        k += 1
-
-S, P = read()
-S -= 1
-result = list(read())
-
-del graph, reverse_graph
-
-que = deque([scc_num[S]])
-dp = [0] * k
-dp[scc_num[S]] = scc_val[scc_num[S]]
-while que:
-    now = que.popleft()
-    for n in group[now]:
-        if dp[n] < dp[now] + scc_val[n]:
-            dp[n] = dp[now] + scc_val[n]
-            que.append(n)
-answer = 0
-for r in result:
-    answer = max(answer, dp[scc_num[r-1]])
-print(answer)
+# cin >> N >> M;
+# for (int i = 0; i < M; i++) {
+# int a, b;
+# cin >> a >> b;
+# a--; b--;
+# v[a].push_back(b);
+# }
+# fill(d, d + N, -1);
+# for (int i = 0; i < N; i++) {
+# if (d[i] == -1)
+# dfs(i);
+# }
+# for (int i = 0; i < N; i++) {
+# cin >> w[i];
+# }
+# cin >> S >> cnt;
+# S--;
+# S = sccNum[S];
+# for (int i = 0; i < cnt; i++) {
+# int n;
+# cin >> n;
+# restaurant[--n] = true;
+# }
+# for (int i = 0; i < N; i++) {
+# sccW[sccNum[i]] += w[i];
+# if (restaurant[i])
+# sccRes[sccNum[i]] = true;
+# for (auto j : v[i]) {
+# if (sccNum[j] != sccNum[i]) {
+# c[sccNum[i]].push_back(sccNum[j]);
+# in[sccNum[j]]++;
+# }
+# }
+# }
+# queue<int> q;
+# for (int i = 0; i < SCC.size(); i++) {
+# sccMaxW[i] = sccW[i];
+# if (!in[i])
+# q.push(i);
+# }
+# can[S] = true;
+# int ans = 0;
+# while (!q.empty()) {
+# int cur = q.front();
+# q.pop();
+# for (auto i : c[cur]) {
+# if (can[cur]) {
+# sccMaxW[i] = max(sccMaxW[i], sccMaxW[cur] + sccW[i]);
+# can[i] = true;
+# }
+# if (--in[i]==0) {
+# q.push(i);
+# }
+# }
+# }
+# for (int i = 0; i < SCC.size(); i++) {
+# if (can[i] && sccRes[i])
+# ans = max(ans, sccMaxW[i]);
+# }
+# cout << ans << "\n";
+# }
