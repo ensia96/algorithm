@@ -9,5 +9,5 @@ D = [-~l*[0]for _ in ' '*n]
 for i in range(n):
     x, y = H.heappop(Q)
     for j in range(x):
-        D[i][j] = max(D[i-1][j], D[i-1][j-1]-y)
+        D[i][j] = max(D[i][j-1], D[i-1][j], D[i-1][j-1]-y)
 print(max(D[-1]))
