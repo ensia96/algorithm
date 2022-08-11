@@ -1,13 +1,18 @@
 import heapq as H
 n = int(input())
-Q, l = [], 0
+Q = []
+l = p = 0
 for _ in ' '*n:
     d, w = map(int, input().split())
-    H.heappush(Q, (d, -w))
-    l = max(l, d)
-D = [-~l*[0]for _ in ' '*n]
-for i in range(n):
+    H.heappush(Q, (-w, -d))
+    l = max(l, d+1)
+C = [1]*l
+while Q:
     x, y = H.heappop(Q)
-    for j in range(x):
-        D[i][j] = max(D[i][j-1], D[i-1][j], D[i-1][j-1]-y)
-print(max(D[-1]))
+    while y:
+        y += 1
+        if C[y]:
+            p -= x
+            C[y] = 0
+            break
+print(p)
