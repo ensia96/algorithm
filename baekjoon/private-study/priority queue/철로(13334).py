@@ -1,21 +1,15 @@
 import heapq as H
 n = int(input())
-A = [sorted(map(int, input().split()))for _ in ' '*n]
+A = sorted((sorted(map(int, input().split()))
+           for _ in ' '*n), key=lambda x: x[::-1])
 d = int(input())
-Q, S, T, R = [], [], [], 0
-while A:
-    x, y = A.pop()
-    y <= x+d and H.heappush(Q, (x, y))
-while Q:
-    x, y = H.heappop(Q)
-    H.heappush(S, (x, y))
-    while Q:
-        a, b = H.heappop(Q)
-        H.heappush(S, (a, b))if b <= x+d else H.heappush(T, (a, b))
-    R = max(R, len(S))
-    for x, y in T:
-        H.heappush(Q, (x, y))
-    T = []
-    while S and Q and S[0][0] < Q[0][0]:
-        H.heappop(S)
+Q, R = [], 0
+for x, y in A:
+    if y <= x+d:
+        H.heappush(Q, x)
+        while Q:
+            if y-Q[0] <= d:
+                break
+            H.heappop(Q)
+        R = max(R, len(Q))
 print(R)
