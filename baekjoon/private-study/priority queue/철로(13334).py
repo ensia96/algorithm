@@ -1,15 +1,10 @@
 import heapq as H
 n = int(input())
-A = sorted((sorted(map(int, input().split()))
-           for _ in ' '*n), key=lambda x: x[::-1])
+A = sorted(sorted(map(int, input().split()))[::-1]for _ in ' '*n)
 d = int(input())
 Q, R = [], 0
-for x, y in A:
-    if y <= x+d:
-        H.heappush(Q, x)
-        while Q:
-            if y-Q[0] <= d:
-                break
-            H.heappop(Q)
-        R = max(R, len(Q))
+for y, x in A:
+    H.heappush(Q, x)
+    Q and y-d > Q[0] and H.heappop(Q)
+    R = max(R, len(Q))
 print(R)
