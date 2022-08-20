@@ -4,7 +4,7 @@ Q = []
 for _ in ' '*n:
     a, *A = map(int, input().split())
     if a:
-        Q += [-a for a in A]
-        H.heapify(Q)
+        for a in A:
+            H.heappush(Q, -a)
     else:
         print(-H.heappop(Q)if Q else -1)
