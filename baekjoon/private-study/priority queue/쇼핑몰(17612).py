@@ -1,16 +1,16 @@
-import heapq as H
+from heapq import *
 n, k = map(int, input().split())
-Q, A, C, x = [], [], [*range(k)], 0
-H.heapify(C)
+Q, A, C, x = [], [0], [*range(k)], 0
+heapify(C)
 for _ in ' '*n:
     i, w = map(int, input().split())
     if len(Q) == k:
-        x, y, z = Q[0]
+        x = Q[0][0]
         while Q and Q[0][0] == x:
-            a, b, c = H.heappop(Q)
-            H.heappush(C, -b)
-            A += c,
-    H.heappush(Q, (x+w, -H.heappop(C), i))
+            a, b, c = heappop(Q)
+            heappush(C, -b)
+            A += c*len(A),
+    heappush(Q, (x+w, -heappop(C), i))
 while Q:
-    A += H.heappop(Q)[2],
-print(sum(-~i*A[i]for i in range(n)))
+    A += heappop(Q)[2]*len(A),
+print(sum(A))
