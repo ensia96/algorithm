@@ -15,19 +15,19 @@ def f(x):
 
 T = [[]for _ in ' '*-~n]
 for x, y, z in sorted(E):
-    y, z = f(y), f(z)
-    if y-z:
-        G[max(y, z)] = min(y, z)
+    a, b = f(y), f(z)
+    if a-b:
+        G[max(a, b)] = min(a, b)
         T[y] += (z, -x),
         T[z] += (y, -x),
 Q, A, V, C = [s], 0, [1]*-~n, [0]*-~n
-V[s] = 0
+V[s], C[s] = 0, 8**8
 while Q:
     q = []
     for c in Q:
         for x, y in T[c]:
             if V[x]:
-                V[x], C[x] = 0, C[c]+y
+                V[x], C[x] = 0, min(C[c], y)
                 q += x,
     Q = q
 print(C[e])
