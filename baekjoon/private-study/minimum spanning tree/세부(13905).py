@@ -17,5 +17,5 @@ for x, y, z in sorted(E):
     y, z = f(y), f(z)
     if y-z:
         G[max(y, z)] = min(y, z)
-        G[s]-G[e] or exit(print(-x))
+    G[s]-G[e] or exit(print(-x))
 print(0)
