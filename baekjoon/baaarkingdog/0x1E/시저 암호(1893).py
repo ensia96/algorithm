@@ -22,4 +22,12 @@ for _ in ' '*int(input()):
             R += i,
         S = ''.join(D[s]for s in S)
     r = len(R)
-    print('ambiguous:'if r > 1 else'unique:'if r > 0 else'no solution', *R)
+    if r == 0:
+        print('no solution')
+    elif r == 1:
+        print('unique:', R[0])
+    else:
+        print('ambiguous:', end='')
+        for r in R:
+            print('', r, end='')
+        print()
