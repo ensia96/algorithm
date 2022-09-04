@@ -1,15 +1,15 @@
 for _ in ' '*int(input()):
     A, W, S = input(), input(), input()
     n, m = len(A), len(W)
-    D, R = {A[i]: A[i-1]for i in range(n)}, []
-    f, j = [0]*m, 0
-    for i in range(1, m):
-        while j and W[i] != W[j]:
-            j = f[j-1]
-        if W[i] == W[j]:
-            j += 1
-            f[i] = j
+    D, R = {A[i-1]: A[i]for i in range(n)}, []
     for i in range(n):
+        f, j = [0]*m, 0
+        for k in range(1, m):
+            while j and W[k] != W[j]:
+                j = f[j-1]
+            if W[k] == W[j]:
+                j += 1
+                f[k] = j
         c = 0
         for k in range(len(S)):
             while j and S[k] != W[j]:
@@ -20,7 +20,7 @@ for _ in ' '*int(input()):
                 c += 1
         if c == 1:
             R += i,
-        S = ''.join(D[s]for s in S)
+        W = ''.join(D[w]for w in W)
     r = len(R)
     if r == 0:
         print('no solution')
