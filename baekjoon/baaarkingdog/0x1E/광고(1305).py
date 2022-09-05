@@ -7,4 +7,4 @@ for i in range(1, L):
     if A[i] == A[j]:
         j += 1
         f[i] = j
-print(L-max(f))
+print(L-f[-1])
