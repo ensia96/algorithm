@@ -3,23 +3,33 @@ M = 500*n+1
 C = [0]*M
 N = [26*[-1]for _ in range(M)]
 U = 1
-A = 0
-for _ in ' '*n:
+
+
+def T(c): return ord(c)-ord('a')
+
+
+def I():
+    global U
     c = 0
     for s in input():
-        t = ord(s)-97
+        t = T(s)
         if N[c][t] == -1:
             N[c][t] = U
             U += 1
         c = N[c][t]
     C[c] = 1
-for _ in ' '*m:
+
+
+def F():
     c = 0
     for s in input():
-        t = ord(s)-97
+        t = T(s)
         if N[c][t] == -1:
-            break
+            return 0
         c = N[c][t]
-    else:
-        A += C[c]
-print(A)
+    return C[c]
+
+
+for _ in ' '*n:
+    I()
+print(sum(F()for _ in ' '*m))
