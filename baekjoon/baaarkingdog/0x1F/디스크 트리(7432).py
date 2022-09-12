@@ -1,7 +1,7 @@
 S = "\\ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%&'()-@^_`{}~"
 D = {S[i]: i for i in range(53)}
 n = int(input())
-M = 53*n+1
+M = 80*n+1
 C = [0]*M
 N = [53*[-1]for _ in ' '*M]
 U = 1
