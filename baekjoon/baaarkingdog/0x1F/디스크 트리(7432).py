@@ -1,4 +1,4 @@
-S = "\\ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%&'()-@^_`{}~"
+S = "\\!#$%&'()-0123456789@ABCDEFGHIJKLMNOPQRSTUVWXYZ^_`{}~"
 D = {S[i]: i for i in range(53)}
 n = int(input())
 M = 80*n+1
