@@ -6,7 +6,7 @@ U = 1
 for _ in ' '*n:
     c, f, A = 0, 1, ''
     for s in input():
-        t = ord(s)-ord('a')
+        t = ord(s)-97
         A += s*f
         if N[c][t] == -1:
             N[c][t], f = U, 0
