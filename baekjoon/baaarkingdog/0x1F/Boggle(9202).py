@@ -39,6 +39,6 @@ while b:
             if D.get(B[i][j]):
                 V = [4*[1]for _ in R]
                 F(i, j, B[i][j])
-    print(A[0], sorted(A[1], key=lambda x: -L(x))[0], len(A[1]))
+    print(A[0], sorted(sorted(A[1]), key=lambda x: -L(x))[0], len(A[1]))
     b -= 1
     b and I()
