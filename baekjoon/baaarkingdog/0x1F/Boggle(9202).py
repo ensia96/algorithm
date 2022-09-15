@@ -1,9 +1,9 @@
 I, R, L = input, range(4), len
 w = int(I())
 M = 8*w+1
-C, N = [0]*M, [26*[-1]for _ in ' '*M]
+C, N = [0]*M, [26*[-1]for _ in range(M)]
 f, U, S = lambda x: ord(x)-65, 1, [0, 0, 0, 1, 1, 2, 3, 5, 11]
-for _ in ' '*-~w:
+for _ in range(-~w):
     c = 0
     for s in I():
         t = f(s)
