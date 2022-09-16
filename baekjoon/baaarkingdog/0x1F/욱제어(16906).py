@@ -27,6 +27,6 @@ def e(x, y):
             return 1
 
 
-for i in map(int, input().split()):
+for i in sorted(map(int, input().split())):
     e('', i) or exit(print(-1))
 print(1, *A, sep='\n')
