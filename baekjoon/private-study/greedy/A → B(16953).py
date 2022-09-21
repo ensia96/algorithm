@@ -5,5 +5,7 @@ while a < b:
         b //= 2
     elif b % 10 == 1:
         b //= 10
+    else:
+        break
     c += 1
 print(-1 if a-b else c)
