@@ -1,5 +1,6 @@
 import sys
 sys.setrecursionlimit(10**6)
+I = sys.stdin.readline
 
 
 def f(x):
@@ -8,8 +9,8 @@ def f(x):
     return G[x]
 
 
-g, p = int(input()), int(input())
-G, P = [*range(g+1)], [int(input())for _ in ' '*p]
+g, p = int(I()), int(I())
+G, P = [*range(g+1)], [int(I())for _ in ' '*p]
 for i in range(p):
     y = f(P[i])
     if y == 0:
