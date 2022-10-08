@@ -1,8 +1,9 @@
+import collections as C
 n, m = map(int, input().split())
-C = [{}for _ in ' '*m]
-for _ in ' '*n:
-    d = input()
-    for i in range(m):
-        C[i][d[i]] = C[i].get(d[i], 0)-1
-print(''.join(sorted(C[i].items(), key=lambda x: (
-    x[1], x[0]))[0][0]for i in range(m)))
+R, c = '', 0
+for a in [*zip(*[input()for _ in ' '*n])]:
+    a, *b = C.Counter(a).most_common()
+    R += a[0]
+    c += sum([c for _, c in b]+[0])
+print(R)
+print(c)
