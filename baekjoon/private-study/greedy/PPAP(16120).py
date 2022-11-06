@@ -5,4 +5,4 @@ for a in input():
         s.pop()
         s.pop()
         s.pop()
-print('NP'if'A' in s else'PPAP')
+print('PPAP'if s in [['P'], p]else'NP')
