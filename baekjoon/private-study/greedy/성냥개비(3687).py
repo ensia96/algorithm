@@ -4,4 +4,4 @@ for i in range(9, 101):
     D += min(D[i-j]*10+d[j]for j in range(2, 8)),
 for _ in ' '*int(input()):
     n = int(input())
-    print(D[n], '17'[n % 2]+~-n//2*'1')
+    print(D[n], '17'[n % 2]+(~-n//2-n % 2)*'1')
