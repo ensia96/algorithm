@@ -1,4 +1,4 @@
-n = int(input())
+input()
 H = 2**20*[0]
 for h in map(int, input().split()):
     if H[h+1]:
