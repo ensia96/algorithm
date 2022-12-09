@@ -1,1 +1,2 @@
-print(*open(0), sep='\n')
+for l in open(0):
+    print(l)
