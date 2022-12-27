@@ -1,1 +1,1 @@
-print(sorted(int(input()), int(input()), int(input()))[1])
+print(sorted([int(input()), int(input()), int(input())])[1])
