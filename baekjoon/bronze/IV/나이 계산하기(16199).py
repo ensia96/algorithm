@@ -1,0 +1,5 @@
+a, b, c = map(int, input().split())
+x, y, z = map(int, input().split())
+print(x-a-((b > y) or ((b == y) and (c > z))))
+print(x-a+1)
+print(x-a)
