@@ -1,3 +1,2 @@
 x, k = map(int, input().split())
-a, b, c, d = k//4, k//2, k*2, k*4
-print(max(0, a+b+k*(a+b+k < x), b+k+c*(b+k+c < x), k+c+d*(k+c+d < x))*1000)
+print(k*(7000 if k*7 <= x else 3500 if k*3.5 <= x else 1750 if k*1.75 <= x else 0))
