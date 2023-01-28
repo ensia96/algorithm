@@ -1,2 +1,2 @@
 a, b, c, d = map(int, input().split())
-print(+(a-c > 2 and b-d > 2))
+print(+(a-c > 1 and b-d > 1))
