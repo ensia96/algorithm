@@ -1,1 +1,1 @@
-print(float(input())*3.785411784/1.609344)
+print(float(input())/1.609344*3.785411784)
