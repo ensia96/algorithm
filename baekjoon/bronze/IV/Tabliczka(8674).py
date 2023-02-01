@@ -1,2 +1,2 @@
 a, b = map(int, input().split())
-print(max(a, b) % 2*min(a, b))
+print((a % 2)*(b % 2) and min(a, b))
