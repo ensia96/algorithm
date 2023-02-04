@@ -1,2 +1,2 @@
 a, b, c, d = map(int, input().split())
-print(-~-bool(a*c/b/d % 1))
+print(-~-bool(a*c/b/d/2 % 1))
