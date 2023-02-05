@@ -1,9 +1,7 @@
-import sys
-m, n = map(int, input().split())
 D = {}
-for _ in ' '*m:
-    *l, = map(int, sys.stdin.readline().split())
+for l in [*open(0)][1:]:
+    *l, = map(int, l.split())
     d = {j: i for i, j in enumerate(sorted([*set(l)]))}
-    k = (*(d[i]for i in l),)
+    k = *(d[e]for e in a),
     D[k] = D.get(k, 0)+1
-print(sum(i*~-i//2 for i in D.values()))
+print(sum(v*~-v//2for v in D.values()))
