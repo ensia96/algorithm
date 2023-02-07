@@ -1,2 +1,4 @@
-for _ in ' '*int(input()):
-    print(int(input())**2)
+import sys
+i = sys.stdin.readline
+for _ in ' '*int(i()):
+    print(int(i())**2)
