@@ -1,1 +1,2 @@
-print('\n'.join([*open(0)]))
+for l in open(0):
+    print(l)
