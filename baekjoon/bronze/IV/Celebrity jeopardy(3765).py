@@ -1,2 +1,5 @@
-import sys
-print(*sys.stdin)
+while 1:
+    try:
+        print(input())
+    except EOFError:
+        break
