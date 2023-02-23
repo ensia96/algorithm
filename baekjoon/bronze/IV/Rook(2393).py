@@ -1,8 +1,6 @@
 # IDENTIFICATION DIVISION.
 # PROGRAM-ID. X.
-#
 # PROCEDURE DIVISION.
-#
 # DISPLAY "  ___  ___  ___".
 # DISPLAY "  | |__| |__| |".
 # DISPLAY "  |           |".
@@ -16,5 +14,4 @@
 # DISPLAY "  __/       \__".
 # DISPLAY " /             \".
 # DISPLAY "/_______________\".
-#
 # STOP RUN.
