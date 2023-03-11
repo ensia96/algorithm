@@ -1,2 +1,2 @@
 a, b, c, d = input().split()
-print(int(a+b)+int(c+d))
+print(100*(a+c)+b+d)
