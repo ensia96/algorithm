@@ -1,8 +1,7 @@
 n, m, k = map(int, input().split())
-while k:
-    if n-1 > m*2:
-        n -= 1
-    else:
+for _ in ' '*k:
+    if n-1 < m*2:
         m -= 1
-    k -= 1
+    else:
+        n -= 1
 print(min(n//2, m))
