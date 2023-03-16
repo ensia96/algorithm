@@ -5,10 +5,10 @@ for _ in ' '*int(input()):
     for i in range(6):
         A += i+1
         B += 2**i
-        if A > a:
-            C += [50, 30, 20, 5, 3, 1][i]*x
+        if A >= a:
+            C += [50, 30, 20, 5, 3, 1][i]*x*bool(a)
             x = 0
-        if B > b:
-            C += [512, 256, 128, 64, 32, 0][i]*y
+        if B >= b:
+            C += [512, 256, 128, 64, 32, 0][i]*y*bool(b)
             y = 0
     print(C*10000)
