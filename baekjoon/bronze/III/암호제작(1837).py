@@ -6,5 +6,5 @@ for i in range(2, int(k**.5)+1):
         for j in range(2*i, k, i):
             A[j] = 0
 for i in range(2, k):
-    p % i or exit(print('BAD', i))
+    A[i] and p % i or exit(print('BAD', i))
 print('GOOD')
