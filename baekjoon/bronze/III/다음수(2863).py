@@ -1,5 +1,4 @@
-for l in open(0):
+for l in [*open(0)][:-1]:
     a, b, c = map(int, l.split())
-    if a+b+c:
-        x = (c == 2*b-a)+2*(c == b**2//a)
-        print(' AG'[x]+'P', [0, 2*c-b, c**2//b][x])
+    x = (b-a and b-a == c-b)+2*(b*a and (b/a == c/b))
+    print('GA'[-x]+'P', [b and c**2//b, 2*c-b][-x])
