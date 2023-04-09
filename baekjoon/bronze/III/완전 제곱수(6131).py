@@ -1,2 +1,3 @@
 n = int(input())
-print(sum(b*b+n == a*a for b in range(501)for a in range(b, 501)))
+A = {-~i**2 for i in range(500)}
+print(sum(-~i**2-n in A for i in range(500)))
