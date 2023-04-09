@@ -1,5 +1,5 @@
 R = range
-for i in R(100):
+for i in R(101):
     for j in R(2, i):
         for k in R(j, i):
             for l in R(k, i):
