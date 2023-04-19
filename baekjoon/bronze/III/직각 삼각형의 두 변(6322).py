@@ -7,3 +7,4 @@ for l in [*open(0)][:-1]:
     b < 0 and print(['Impossible.', f'b = {B**.5:.3f}'][B > 0])
     c < 0 and print(['Impossible.', f'c = {C**.5:.3f}'][C > 0])
     i += 1
+    print()
