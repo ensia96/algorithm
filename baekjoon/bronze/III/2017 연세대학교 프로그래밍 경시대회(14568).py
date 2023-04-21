@@ -1,8 +1,2 @@
 n = int(input())
-x = y = i = 2
-j = 0
-while i < n and x > 0:
-    j += x*(not y)
-    x, y = divmod(n-2*i, 2)
-    i += 2
-print(j)
+print(sum((n-i-2)//2 for i in range(2, n-1, 2)))
