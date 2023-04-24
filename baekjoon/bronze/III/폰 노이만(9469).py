@@ -1,4 +1,4 @@
 for l in [*open(0)][1:]:
     n, *A = l.split()
     d, a, b, f = map(float, A)
-    print(f'{d/(a+b)*f:.6f}')
+    print(n, f'{d/(a+b)*f:.6f}')
