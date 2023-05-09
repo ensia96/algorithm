@@ -1,7 +1,7 @@
 a, x, b, y, c = input().split()
 
 
-def f(x, y, z): str(
+def f(x, y, z): return str(
     eval([f"abs({x}){y}abs({z})*(1-2*({x}*{z}<0))", x+y+z][y in '+-*']))
 
 
