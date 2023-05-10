@@ -1,2 +1,1 @@
-a, b = map(int, input().split())
-print(int(bin(a ^ b)[2:], 2))
+print(int(bin(eval(input().replace(*' ^')))[2:], 2))
