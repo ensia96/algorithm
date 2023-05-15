@@ -1,4 +1,4 @@
-_, X, *L = open(0)
+_, a, *L = open(0)
 L += a,
 a, b = map(int, a.split())
 A = 0
