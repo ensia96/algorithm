@@ -1,2 +1,2 @@
-h, w = map(int, input().split())
-print(min(max(h/2, w/3), max(h/3, w/2)))
+a, b = sorted(map(int, input().split()))
+print(max(min(a/3, b), b/2))
