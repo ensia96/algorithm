@@ -6,4 +6,4 @@ while 1:
         s, t = map(int, input().split())
         x += s*(t-y)
         y = t
-    print(x)
+    print(x, 'miles')
