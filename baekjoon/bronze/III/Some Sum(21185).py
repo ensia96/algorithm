@@ -1,2 +1,2 @@
 n = int(input())
-print([['Even', 'Either'][n % 2], 'Odd'][n == 2])
+print([['Even', 'Odd'][n//2 % 2], 'Either'][n % 2])
