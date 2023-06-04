@@ -1,1 +1,1 @@
-print(1, input())
+print(1, input().replace(' ', ''))
