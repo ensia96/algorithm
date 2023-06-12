@@ -1,3 +1,5 @@
-for l in [*open(0)][1:]:
-    a, b, c, x, y, z = map(int, l.split())
-    print(c+abs(a-x)+abs(b-y)+z)
+from sys import stdin
+input = stdin.readline
+for _ in range(int(input())):
+    a, b, c, x, y, z = map(int, input().split())
+    print(c+z+abs(x-a)+abs(y-b))
