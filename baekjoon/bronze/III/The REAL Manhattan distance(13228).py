@@ -1,5 +1,4 @@
-from sys import stdin
-input = stdin.readline
-for _ in range(int(input())):
-    a, b, c, x, y, z = map(int, input().split())
-    print(c+z+abs(x-a)+abs(y-b))
+n, *A = map(int, open(0).read().split())
+for i in range(n):
+    a, b, c, x, y, z = A[i*6:-~i*6]
+    print(c+abs(a-x)+abs(b-y)+z)
