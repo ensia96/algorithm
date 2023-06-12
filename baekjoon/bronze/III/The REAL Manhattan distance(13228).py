@@ -1,4 +1,3 @@
-n, *A = map(int, open(0).read().split())
-for i in range(n):
-    a, b, c, x, y, z = A[i*6:-~i*6]
+for _ in ' '*int(input()):
+    a, b, c, x, y, z = map(int, input().split())
     print(c+abs(a-x)+abs(b-y)+z)
