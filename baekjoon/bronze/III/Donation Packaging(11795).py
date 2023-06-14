@@ -1,6 +1,6 @@
 A = B = C = 0
-for l in [*open(0)][1:]:
-    a, b, c = map(int, l.split())
+for _ in ' '*int(input()):
+    a, b, c = map(int, input().split())
     A += a
     B += b
     C += c
