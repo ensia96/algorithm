@@ -1,2 +1,3 @@
-a, b, c = open(0).read().split()
-print(sum(x != y for x, y in zip(b, c)))
+n = int(input())
+a, b = input(), input()
+print(sum(a[i] != b[i]for i in range(n)))
