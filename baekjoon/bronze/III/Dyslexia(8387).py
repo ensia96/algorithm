@@ -1,3 +1,6 @@
 n = int(input())
 a, b = input(), input()
-print(sum(a[i] != b[i]for i in range(n)))
+x = 0
+for i in range(n):
+    x += a[i] != b[i]
+print(x)
