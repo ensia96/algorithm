@@ -1,4 +1,4 @@
-t = 0
+t = 1
 for l in [*open(0)][1:]:
     n, *A = map(int, l.split())
     B = []
