@@ -1,5 +1,5 @@
 n = int(input())
 x = 0
 for i in input().split():
-    x += [1, x+1 == int(i)][i.isdigit()]
+    x += x+1 == int(i)if i.isdigit()else 1
 print(['something is fishy', 'makes sense'][x == n])
