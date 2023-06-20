@@ -1,4 +1,6 @@
 k = int(input())
 n = int(input())
-for _ in ' '*n:
-    print(k//n)
+for i in range(1, n):
+    print(i)
+    k -= i
+print(k)
