@@ -1,0 +1,5 @@
+A = open(0).read().split()
+*B, = map(int, A[2::2])
+print(sum(B))
+print(sum(B[i]*(a == 'bedroom')for i, a in enumerate(A[3::2])))
+print(int(A[1])*sum(B[i]/(1+(a == 'balcony'))for i, a in enumerate(A[3::2])))
