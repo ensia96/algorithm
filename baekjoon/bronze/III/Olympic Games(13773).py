@@ -1,8 +1,8 @@
 for l in [*open(0)][:-1]:
     n = int(l)
-    if 1914 <= n <= 1918 or 1939 <= n <= 1945:
+    if 1915 < n < 1919 or 1938 < n < 1946:
         print(n, 'Games cancelled')
-    elif n > 2016:
+    elif n > 2020:
         print(n, 'No city yet chosen')
     elif n % 4 == 0:
         print(n, 'Summer Olympics')
