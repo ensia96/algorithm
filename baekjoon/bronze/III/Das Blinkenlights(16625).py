@@ -1,2 +1,3 @@
-x, y, z, f = *map(int, input().split()), lambda a, b: b*(a == 0) or f(b % a, a)
-print('yneos'[x*y//f(x, y) >= z::2])
+import math
+x, y, z = map(int, input().split())
+print('yneos'[x*y//math.gcd(x, y) >= z::2])
