@@ -1,2 +1,2 @@
 for l in [*open(0)][1:]:
-    print('ABCDCB'[~-int(l) % 6])
+    print("BCBCDCDADABA"[(int(l)-2) % 12])
