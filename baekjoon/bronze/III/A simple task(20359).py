@@ -1,5 +1,9 @@
 n = int(input())
-for i in range(7):
-    x, y = divmod(n, 2**i)
-    y or (x % 2 and exit(print(x, i)))
-print(1, i)
+o, p = 1, 0
+while 2**p < n:
+    x, y = divmod(n, 2**p)
+    if not y and x % 2:
+        o = x
+        break
+    p += 1
+print(o, p)
