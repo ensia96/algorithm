@@ -1,4 +1,5 @@
 x, y = map(float, input().split())
 for _ in ' '*int(input()):
     n, N = input().split()
-    print(eval(f'{n}/'+'y*x'[::1-2*(N == 'A')]))
+    n = float(n)
+    print(n/x*y if N == 'A'else n/y*x)
