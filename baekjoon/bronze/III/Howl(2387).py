@@ -1,11 +1,1 @@
-print('''                     .
-                    / V\\
-                  / `  /
-                 <<   |
-                 /    |
-               /      |
-             /        |
-           /    \  \ /
-          (      ) | |
-  ________|   _/_  | |
-<__________\______)\__)''')
+# print(("                     .",newline,"                    / V\",newline,"                  / `  /",newline,"                 <<   |",newline,"                 /    |",newline,"               /      |",newline,"             /        |",newline,"           /    \  \ /",newline,"          (      ) | |",newline,"  ________|   _/_  | |",newline,"<__________\______)\__)",newline))
