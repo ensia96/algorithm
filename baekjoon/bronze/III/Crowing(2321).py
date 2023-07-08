@@ -11,5 +11,5 @@
 #  write(*,'(A)')c
 #  write(*,'(A)')d
 #  write(*,'(A)')e
-#  write(*,'(A)')f
+#  write(*,'(A)',advance='no')f
 # end program t
