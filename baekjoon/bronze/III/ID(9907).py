@@ -1,3 +1,2 @@
-A = input()
-print(A+'JABCDEFGHIZ'[sum(x*y for x,
-      y in zip(map(int, A), (2, 7, 6, 5, 4, 3, 2))) % 11])
+print('JABCDEFGHIZ'[
+      sum(x*y for x, y in zip(map(int, input()), (2, 7, 6, 5, 4, 3, 2))) % 11])
