@@ -1,2 +1,3 @@
 for l in [*open(0)][1:]:
-    print('TNAIKE'[eval('%'.join(l.split()[::-1])) > 0::2])
+    a, b = map(int, l.split())
+    print('tnaike'[b % a > 0::2])
