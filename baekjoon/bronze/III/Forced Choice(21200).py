@@ -1,5 +1,4 @@
-_, p, _, *A = map(int, open(0).read().split())
-while A:
-    m, *A = A
-    T, A = A[:m], A[m:]
-    print(['REMOVE', 'KEEP'][p in T])
+I, *L = open(0)
+_, p, _ = I.split()
+for l in L:
+    print(['REMOVE', 'KEEP'][p in l.split()[1:]])
