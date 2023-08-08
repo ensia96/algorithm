@@ -1,1 +1,1 @@
-print(int(input())//3*2)
+print(int(input())//6*4)
