@@ -1,2 +1,4 @@
-for l in [*open(0)][1:]:
-    print(f'{l}{+(len(l)-1<sum(map(l.count,"aeiou"))*2)}')
+for _ in ' '*int(input()):
+    A = input()
+    print(A)
+    print(+(len(A) < sum(map(A.count, "aeiou"))*2))
