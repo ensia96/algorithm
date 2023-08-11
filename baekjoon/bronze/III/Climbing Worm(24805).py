@@ -1,2 +1,5 @@
 a, b, h = map(int, input().split())
-print(-((h-a)//(b-a))+1)
+x = 1
+while a*x-b*~-x < h:
+    x += 1
+print(x)
