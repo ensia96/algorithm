@@ -1,3 +1,3 @@
 for _ in ' '*int(input()):
     a, b = map(int, input().split())
-    print(f'{a*b/(a+b):.1f}')
+    print(f'f = {a*b/(a+b):.1f}')
