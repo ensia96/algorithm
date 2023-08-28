@@ -1,5 +1,5 @@
-x = y = 100
+x = y = 0
 for l in [*open(0)][1:]:
-    x = max(0, x+int(l))
+    x += int(l)
     y = max(y, x)
-print(y)
+print(100+y)
