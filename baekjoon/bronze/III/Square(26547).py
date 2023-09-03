@@ -5,4 +5,4 @@ for l in [*open(0)][1:]:
     p(''.join(A))
     for i in range(n):
         p((' '*n).join([A[i+1], A[-i-2]]))
-    p(''.join(A)[::-1])
+    n > -1 and p(''.join(A)[::-1])
