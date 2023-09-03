@@ -1,4 +1,4 @@
-p = print()
+p = print
 for l in [*open(0)][1:]:
     *A, _ = l
     n = len(A)-2
