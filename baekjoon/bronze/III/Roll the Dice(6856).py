@@ -1,3 +1,3 @@
 x, y = int(input()), int(input())
-print(
-    f'There are {sum(8-i<x for i in range(min(10,y)))} ways to get the sum 10.')
+z = sum(8-i < x for i in range(min(10, y)))
+print('There', 'airse'[z < 2::2], z, 'ways to get the sum 10.')
