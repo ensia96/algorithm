@@ -1,4 +1,4 @@
 x = 1.61803399
 y = 0.01*x
-for l in [*open(0)][1:]:
-    print(['not', 'golden'][x-y <= eval(l.replace(*' /')) <= x+y])
+for _ in ' '*int(input()):
+    print(['not', 'golden'][x-y <= eval(input().replace(*' /')) <= x+y])
