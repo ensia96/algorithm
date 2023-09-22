@@ -1,5 +1,5 @@
 t = []
 for l in open(0):
-    a, *_, b = sorted(map(int, l.split()[1:]+t))
-    t = [a, b]
-print(a, b)
+    t += l.split()[1:]
+*t, = map(int, t)
+print(min(t), max(t))
