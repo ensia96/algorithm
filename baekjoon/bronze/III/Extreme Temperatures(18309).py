@@ -1,2 +1,5 @@
-A = [int(i)for i in open(0).read().split()if '-'not in i]
-print(min(A), max(A))
+t = []
+for l in open(0):
+    a, *_, b = sorted(map(int, l.split()[1:]+t))
+    t = [a, b]
+print(a, b)
