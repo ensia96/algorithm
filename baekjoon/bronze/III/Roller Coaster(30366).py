@@ -1,5 +1,8 @@
 n, m, *A = map(int, open(0).read().split()+[0])
-x = 0
+x = y = 0
 for i in range(n):
-    x += A[i]+A[i-1] > m
+    y += A[i]
+    if y > m:
+        x += 1
+        y = 0
     print(x)
