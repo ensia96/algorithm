@@ -1,2 +1,2 @@
 a, b, *A = input()
-print(['Inc', 'C'][a+b == 'io' and all(map(str.isnumeric, A))]+'orrect')
+print(['Inc', 'C'][a+b == 'io' and all(map(str.isnumeric, A)) and len(A) > 1]+'orrect')
