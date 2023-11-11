@@ -1,2 +1,2 @@
-a, *A, b = input()
-print('LWoisne'[a != b::2])
+a = input()
+print('LWoisne'[a[0] != a[-1]::2])
