@@ -1,17 +1,15 @@
 n, *A = map(int, open(0).read().split())
-t = []
-for i in range(n):
-    for j in range(n):
-        a = A[i*n+j]
-        if i == j:
-            if a:
-                t += 1,
-        else:
-            if a < 1:
-                t += 2,
-            if a != A[j*n+i]:
-                t += 3,
-            for k in range(n):
-                if a+A[j*n+k] < A[i*n+k]:
-                    t += 4,
-print(t, min(t or [0]))
+N = range(n)
+for i in N:
+    A[i*n+i] and exit(print(0))
+for i in N:
+    for j in N:
+        i != j and A[i*n+j] < 1 and exit(print(2))
+for i in N:
+    for j in N:
+        A[i*n+j] != A[j*n+i] and exit(print(3))
+for i in N:
+    for j in N:
+        for k in N:
+            A[i*n+j]+A[j*n+k] < A[i*n+k] and exit(print(4))
+print(0)
