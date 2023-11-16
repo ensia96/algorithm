@@ -1,7 +1,7 @@
 n, *A = map(int, open(0).read().split())
 N = range(n)
 for i in N:
-    A[i*n+i] and exit(print(0))
+    A[i*n+i] and exit(print(1))
 for i in N:
     for j in N:
         i != j and A[i*n+j] < 1 and exit(print(2))
