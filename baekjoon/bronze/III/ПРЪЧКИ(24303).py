@@ -5,5 +5,5 @@ for i in sorted(D)[::-1]:
     for j in range(D[i]):
         a += i
         b += 1
-        a >= i and exit(print(b))
+        a >= x and exit(print(b))
 print(0)
