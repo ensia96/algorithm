@@ -4,4 +4,5 @@ for i, j in sorted(zip(A[:3], A[3:]))[::-1]:
     y = min(x//i, j)
     x -= i*y
     a += y
-print((not x)*a)
+    x < 1 and exit(print(a))
+print(0)
