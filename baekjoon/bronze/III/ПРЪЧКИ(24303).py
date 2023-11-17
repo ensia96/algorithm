@@ -1,8 +1,8 @@
-*A, x = map(int, input().split())
+a, b, c, d, e, f, x = map(int, input().split())
+D = {a: d, b: e, c: f}
 a = 0
-for i, j in sorted(zip(A[:3], A[3:]))[::-1]:
-    y = min(x//i, j)
+for i in sorted(D)[::-1]:
+    y = min(x//i, D[i])
     x -= i*y
     a += y
-    x < 1 and exit(print(a))
-print(0)
+print(a*(x < 1))
