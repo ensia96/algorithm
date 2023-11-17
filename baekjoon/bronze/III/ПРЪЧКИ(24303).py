@@ -1,8 +1,7 @@
-a, b, c, d, e, f, x = map(int, input().split())
-D = {a: d, b: e, c: f}
+*A, x = map(int, input().split())
 a = b = 0
-for i in sorted(D)[::-1]:
-    for j in range(D[i]):
+for i, j in sorted(zip(A[:3], A[3:]))[::-1]:
+    for _ in range(j):
         a += i
         b += 1
         a >= x and exit(print(b))
