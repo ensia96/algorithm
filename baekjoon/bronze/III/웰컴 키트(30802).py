@@ -1,3 +1,7 @@
 n, *A, t, p = map(int, open(0).read().split())
-print(sum(int(a/t+.9)for a in A))
+z = 0
+for a in A:
+    x, y = divmod(a, t)
+    z += x+bool(y)
+print(z)
 print(*divmod(n, p))
