@@ -1,3 +1,4 @@
 n = int(input())
-A = sorted(map(int, input().split()))
-print(max(s//2*-~-(s % 2)for s in [sum(A[i:])for i in range(n)]))
+*A, = map(int, input().split())
+s = sum(A)
+print((max(s-a for a in A)if s % 2 else s)//2)
