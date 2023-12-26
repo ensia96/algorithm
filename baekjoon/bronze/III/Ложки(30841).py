@@ -1,2 +1,2 @@
 a, b = map(int, input().split())
-print(a+b or a*b//(a+b))
+print(a+b and a*b//(a+b))
