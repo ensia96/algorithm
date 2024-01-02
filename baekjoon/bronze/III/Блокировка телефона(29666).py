@@ -1,2 +1,2 @@
-a, b, c = sorted(map(int, input()))
-print(('un'*(c-b == b-a)*(c-b in [1, 3])+'locked').capitalize())
+print(('un'*(''.join(sorted(input()))
+      in ['123', '456', '789', '147', '258', '369', '025', '058'])+'locked').capitalize())
