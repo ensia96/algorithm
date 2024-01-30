@@ -1,4 +1,4 @@
-*A, = map(int, open(0))
+_, *A = map(int, open(0))
 x = y = 0
 while A:
     a = A.pop()
