@@ -1,1 +1,1 @@
-print(sum(map(str.isdigit, input().split(','))))
+print(-~input().count(','))
