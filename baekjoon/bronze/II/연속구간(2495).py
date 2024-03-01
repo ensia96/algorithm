@@ -1,4 +1,5 @@
-for l in open(0):
+for _ in '   ':
+    l = input()
     x = y = 1
     for i in range(7):
         if l[i] == l[i+1]:
