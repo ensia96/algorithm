@@ -1,5 +1,5 @@
-t = []
 for i in range(1000, 10000):
+    t = []
     for j in [10, 12, 16]:
         t += 0,
         x = i
