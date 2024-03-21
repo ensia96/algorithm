@@ -1,18 +1,2 @@
-P, X = print, 0
-for l in [*open(0)][1:]:
-    *A, = map(int, l.split())
-    T = sorted({t: A.count(t)
-               for t in {*A}}.items(), key=lambda t: t[::-1])[::-1]
-    l = len(T)
-    x = T[0][0]
-    if l == 3:
-        x = 10+x
-    if l == 2:
-        if T[0][1] > 2:
-            x = 100+x*10
-        else:
-            x = 20+(x+T[1][0])*5
-    if l == 1:
-        x = 500+x*50
-    X = max(X, x)
-print(X*100)
+print(max([d, 10+[c, b][c < d], 5*[20+b*2, 4+a+c][b < c], 500+a*50]
+      [-len({a, b, c, d})]for i in [*open(0)][1:]for a, b, c, d in sorted(map(int, i.split())))*100)
