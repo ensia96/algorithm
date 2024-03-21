@@ -7,12 +7,12 @@ for l in [*open(0)][1:]:
     x = T[0][0]
     if l == 3:
         x = 10+x
-    elif l > 1:
+    if l == 2:
         if T[0][1] > 2:
             x = 100+x*10
         else:
             x = 20+(x+T[1][0])*5
-    else:
+    if l == 1:
         x = 500+x*50
     X = max(X, x)
 print(X*100)
