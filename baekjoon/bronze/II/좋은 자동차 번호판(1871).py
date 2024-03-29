@@ -3,4 +3,4 @@ for l in [*open(0)][1:]:
     s = 0
     for i in x:
         s = (s+ord(i)-65)*26
-    print(*[['not'], []][s-int(y) > 100], 'nice')
+    print(*[['not'], []][ord(s-int(y)) > 100], 'nice')
