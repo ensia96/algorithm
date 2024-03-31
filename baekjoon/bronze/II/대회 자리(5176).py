@@ -1,7 +1,2 @@
-f, _ = lambda: map(int, input().split()), ' '
-for _ in _*[*f()][0]:
-    p, m = f()
-    A = [0]*m
-    for _ in _*p:
-        A[[*f()][0]-1] |= 1
-    print(p-sum(A))
+i = input
+exec('p=int(i().split()[0]);print(p-len({*map(i," "*p)}));'*int(i()))
