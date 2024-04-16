@@ -1,5 +1,5 @@
 for l in [*open(0)][1:]:
-    i, I = int(l), 0
+    i = I = int(l)
     while i != 1:
         if i % 2:
             i = i*3+1
