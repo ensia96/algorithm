@@ -3,6 +3,6 @@ t = 0
 for i in range(n):
     t += l
     for j in range(5):
+        t % d == 0 and exit(print(t))
         t += 1
-        t % d < 1 or exit(print(t))
 print(t)
