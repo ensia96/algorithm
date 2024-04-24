@@ -1,1 +1,2 @@
-print(bin(sum(range(2**int(input()))))[2:])
+x = 2**int(input())
+print(bin(x*(x-1)//2)[2:])
