@@ -1,2 +1,2 @@
-x = 2**int(input())
-print(bin(x*(x-1)//2)[2:])
+x = int(input())
+print('1'*x+'0'*~-x)
