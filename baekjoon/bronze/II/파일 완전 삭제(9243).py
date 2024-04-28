@@ -1,2 +1,3 @@
-n, a, b = map(int, open(0).read().split())
-print('Deletion', ['failed', 'succeeded'][[a == b, not (a & b)][n % 2]])
+n, a, b = open(0).read().split()
+a, b = int(a, 2), int(b, 2)
+print('Deletion', ['failed', 'succeeded'][[a == b, not (a & b)][int(n) % 2]])
