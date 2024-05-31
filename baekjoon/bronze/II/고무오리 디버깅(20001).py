@@ -1,3 +1,7 @@
-_, *L, _ = open(0)
-x, y = map(lambda x: sum(x in l for l in L), '고문')
-print(['힝구', '고무오리야 사랑해'][not (x-y) % 3])
+x = 0
+for l in [*open(0)][1:-1]:
+    if '고' in l:
+        x += 2-3*(x != 0)
+    else:
+        x += 1
+print(['힝구', '고무오리야 사랑해'][x == 0])
