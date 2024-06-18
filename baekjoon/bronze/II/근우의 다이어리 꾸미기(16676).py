@@ -1,2 +1,2 @@
 *A, i = input()
-print(len(A)+(int(i) > 0))
+print(max(1, len(A)+(int(i) > 0)))
