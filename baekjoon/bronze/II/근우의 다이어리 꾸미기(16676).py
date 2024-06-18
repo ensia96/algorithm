@@ -1,5 +1,5 @@
 n = int(input())
 i = 0
-while n > i:
+while n >= i:
     i = i*10+1
-print(len(str(i))-1)
+print(max(1, len(str(i))-1))
