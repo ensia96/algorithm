@@ -3,4 +3,4 @@ s = ''
 while a:
     a, r = divmod(a, b)
     s = '0123456789ABCDEF'[r]+s
-print(s)
+print(s or 0)
