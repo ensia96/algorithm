@@ -12,5 +12,5 @@ for i in range(n + 1):
             i == n
         ],
         t.lower(),
-        s + ".",
+        s + "." + "\n" * (i != n),
     )
