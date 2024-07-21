@@ -1,4 +1,8 @@
 f = lambda: map(int, input().split())
 n, q = f()
-A = [[*f()] for _ in " " * q]
-print([any(-~i % b == a for a, b in A) for i in range(n)].count(0))
+T = [0] * n
+for _ in " " * q:
+    a, b = f()
+    for i in range(a - 1, n, b):
+        T[i] = 1
+print(T.count(0))
