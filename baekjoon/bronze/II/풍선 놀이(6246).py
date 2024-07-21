@@ -1,4 +1,4 @@
-n, q, *A = map(int, open(0).read().split())
-print(
-    [any(-~i % A[2 * j + 1] == A[2 * j] for j in range(q)) for i in range(n)].count(0)
-)
+f = lambda: map(int, input().split())
+n, q = f()
+A = [[*f()] for _ in " " * q]
+print([any(-~i % b == a for a, b in A) for i in range(n)].count(0))
