@@ -1,4 +1,5 @@
 n = int(input())
+n < 2 and exit(print("*"))
 N = range(n)
 for i in N:
     print(
