@@ -4,4 +4,4 @@ for l in [*open(0)][1:]:
     while n:
         n, r = divmod(n, b)
         s += "0123456789ABCDEF"[r]
-    print(s == s[::-1])
+    print(+(s == s[::-1]))
