@@ -1,3 +1,4 @@
-A = "".join(i[0] for i in input().split("|"))
-A = (A + A[-1]).count
-print("CA--mmaijnoorr"[sum(map(A, "ADE")) > sum(map(A, "CFG")) :: 2])
+A = input()
+l, A = A[-1], str(i[0] for i in A.split("|")).count
+x, y = sum(map(A, "CFG")), sum(map(A, "ADE"))
+print("CA--mmaijnoorr"[x < y + (l in "ADE") :: 2])
