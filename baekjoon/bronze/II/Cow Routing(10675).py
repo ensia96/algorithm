@@ -9,4 +9,4 @@ for _ in " " * n:
         if x > 1:
             y = min(y, c)
             break
-print(y)
+print(-(y == 1000) or y)
