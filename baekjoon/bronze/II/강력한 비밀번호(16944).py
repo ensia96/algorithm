@@ -7,4 +7,4 @@ t = (
     - any(map(str.isdigit, A))
     - any(map(lambda x: x in "!@#$%^&*()-+", A))
 )
-print([t + 6 - n, t][n + t > 6])
+print([t + 6 - n, t][n + t > 5])
