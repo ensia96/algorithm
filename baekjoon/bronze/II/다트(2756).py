@@ -1,7 +1,7 @@
 for l in [*open(0)][1:]:
     (*A,) = map(float, l.split())
     A = [
-        int(max(6 + min(((i * i + j * j) / 9) ** 0.5 // -1, -1), 0) * 20)
+        sum(20 * (-~k) ** 2 * 9 >= (i * i + j * j) for k in range(5))
         for i, j in zip(A[::2], A[1::2])
     ]
     x, y = sum(A[:3]), sum(A[3:])
