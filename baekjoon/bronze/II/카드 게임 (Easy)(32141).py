@@ -1,2 +1,8 @@
 n, h, *A = map(int, open(0).read().split())
-print(min([i + 1 for i in range(n) if (x := sum(A[: i + 1])) >= h] or [-1]))
+x, y = 0, -1
+for i in range(n):
+    x += A[i]
+    if x >= h:
+        y = i + 1
+        break
+print(y)
