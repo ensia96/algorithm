@@ -1,10 +1,11 @@
-j, *A = open(0)
+j, n = map(int, input().split())
 print(
     sum(
-        int(j[0])
+        j
         >= sum(
-            i.isupper() * 4 + (i.islower() + i.isdigit()) * 2 + (i == " ") for i in a
+            i.isupper() * 4 + (i.islower() + i.isdigit()) * 2 + (i == " ")
+            for i in input()
         )
-        for a in A
+        for _ in " " * n
     )
 )
