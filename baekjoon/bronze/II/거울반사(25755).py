@@ -1,6 +1,6 @@
 d, n, *A = open(0).read().split()
 n = int(n)
-D = "015??2??8?"
+D = "?15??2??8?"
 for i in range(n):
     print(
         *[
