@@ -4,7 +4,7 @@ M = m = 0
 for i in range(n):
     if A[i] > 0:
         m += 1
-    elif f < i - 2:
+    elif f < i - 1:
         f = i
     else:
         m = 0
