@@ -1,8 +1,8 @@
-f = lambda: [*map(int, input().split())]
-n, q = f()
+l, *L = open(0)
+n, q = map(int, l.split())
 C = [0] * -~n
-for _ in " " * q:
-    a, *A = f()
+for l in L:
+    a, *A = map(int, l.split())
     if len(A):
         C[A[0]] = a < 2
     else:
