@@ -1,11 +1,9 @@
-import sys
-
-f = lambda: [*map(int, sys.stdin.readline().split())]
-n, q = f()
+l, *L = open(0)
+n, q = map(int, l.split())
 C = [0] * -~n
 s = n
-for _ in " " * q:
-    a, *A = f()
+for l in L:
+    a, *A = map(int, l.split())
     if len(A):
         s += C[A[0]] - (a < 2)
         C[A[0]] = a < 2
