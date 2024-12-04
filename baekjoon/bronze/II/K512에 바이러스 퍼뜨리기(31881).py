@@ -1,8 +1,10 @@
-l, *L = open(0)
-n, q = map(int, l.split())
+import sys
+
+f = lambda: [*map(int, sys.stdin.readline().split())]
+n, q = f()
 C = [0] * -~n
-for l in L:
-    a, *A = map(int, l.split())
+for _ in " " * q:
+    a, *A = f()
     if len(A):
         C[A[0]] = a < 2
     else:
