@@ -1,8 +1,8 @@
-M = 1e6
+M = 1e9
 L = D = M
 R = U = -M
-for _ in " " * int(input()):
-    x, y, d = input().split()
+for l in [*open(0)][1:]:
+    x, y, d = l.split()
     if d == "L":
         L = min(L, int(x))
     if d == "R":
@@ -11,4 +11,4 @@ for _ in " " * int(input()):
         U = max(U, int(y))
     if d == "D":
         D = min(D, int(y))
-print([(L - R - 1) * (D - U - 1), "Infinity"][L == M or D == M or R == -M or U == -M])
+print([(L - R - 1) * (D - U - 1), "Infinity"][any([L == M, D == M, R == -M, U == -M])])
