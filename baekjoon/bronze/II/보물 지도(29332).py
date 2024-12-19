@@ -1,14 +1,14 @@
-i = int(1e6)
-n = p = i
-m = q = -i
-for _ in " " * int(input()):
-    x, y, d = input().split()
+M = int(1e6)
+L = D = M
+R = U = -M
+for l in [*open(0)][1:]:
+    x, y, d = l.split()
     if d == "L":
-        n = min(n, int(x))
+        L = min(L, int(x))
     if d == "R":
-        m = max(m, int(x))
+        R = max(R, int(x))
     if d == "U":
-        q = max(q, int(y))
+        U = max(U, int(y))
     if d == "D":
-        p = min(p, int(y))
-print([(n - m - 1) * (p - q - 1), "Infinity"][n == p == i or m == q == -i])
+        D = min(D, int(y))
+print([(L - R - 1) * (D - U - 1), "Infinity"][any([L == M, D == M, R == -M, U == -M])])
