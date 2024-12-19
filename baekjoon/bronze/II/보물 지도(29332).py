@@ -1,4 +1,4 @@
-M = 1e9
+M = int(1e9)
 L = D = M
 R = U = -M
 for l in [*open(0)][1:]:
