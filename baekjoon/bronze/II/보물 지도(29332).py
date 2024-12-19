@@ -1,8 +1,8 @@
 i = int(1e6)
 n = p = i
 m = q = -i
-for l in [*open(0)][1:]:
-    x, y, d = l.split()
+for _ in " " * int(input()):
+    x, y, d = input().split()
     if d == "L":
         n = min(n, int(x))
     if d == "R":
