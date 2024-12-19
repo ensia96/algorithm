@@ -1,4 +1,4 @@
-i = 1e5
+i = 1e6
 n = p = i
 m = q = -i
 for l in [*open(0)][1:]:
