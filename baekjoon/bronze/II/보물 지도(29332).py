@@ -1,8 +1,8 @@
 M = 1e6
 L = D = M
 R = U = -M
-for l in [*open(0)][1:]:
-    x, y, d = l.split()
+for _ in " " * int(input()):
+    x, y, d = input().split()
     if d == "L":
         L = min(L, int(x))
     if d == "R":
