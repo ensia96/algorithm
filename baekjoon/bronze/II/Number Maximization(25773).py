@@ -1,1 +1,1 @@
-print(sorted(input())[::-1])
+print(*sorted(input())[::-1], sep="")
