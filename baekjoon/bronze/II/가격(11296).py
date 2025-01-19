@@ -1,5 +1,29 @@
-H = 100
-for l in [*open(0)][1:]:
-    a, b, c, d = l.split()
-    x = float(a) * (H - 5 * (" WOYB G  R".index(b))) * (H - 5 * (c == "C"))
-    print(f"${(x+.5)//(H*(t:=10**(d=='C')))/H*t:.2f}")
+for _ in range(int(input())):
+    a, b, c, d = input().split()
+    a = float(a)
+    if b == "R":
+        a *= 0.55
+    elif b == "G":
+        a *= 0.7
+    elif b == "B":
+        a *= 0.8
+    elif b == "Y":
+        a *= 0.85
+    elif b == "O":
+        a *= 0.9
+    elif b == "W":
+        a *= 0.95
+
+    if c == "C":
+        a *= 0.95
+
+    if d == "P":
+        print("$%.2f" % a)
+    else:
+        a *= 100
+        int(a)
+        if a % 10 > 5:
+            a = a + 10 - a % 10
+        else:
+            a -= a % 10
+        print("$%.2f" % (a / 100))
