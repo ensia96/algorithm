@@ -1,1 +1,2 @@
-print(max(0, len({*input()}) - 2))
+A = input()
+print(sum(sorted(map(A.count, {*A}))[:-2]))
