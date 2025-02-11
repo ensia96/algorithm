@@ -1,6 +1,6 @@
 import math
 
-for l in [*open(0)][1:]:
-    a, _, b = l.split()
+for _ in " " * int(input()):
+    a, _, b = input().split()
     x = a != "H"
     print(14 * x + (2 * x - 1) * math.log10(float(b)))
