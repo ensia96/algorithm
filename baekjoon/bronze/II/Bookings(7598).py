@@ -1,12 +1,14 @@
-A, B = "", 0
-for l in open(0):
-    a, b = l.split()
+a = ""
+while "#" != a:
+    a, b = input().split()
     b = int(b)
-    if a in "X#":
+    if a == "#":
+        exit(print(A, B))
+    elif a == "X":
         print(A, B)
-    elif a in "B":
+    elif a == "B":
         B += b * (B + b < 68)
     elif a == "C":
         B -= b * (B >= b)
     else:
-        A, B = a, int(b)
+        A, B = a, b
