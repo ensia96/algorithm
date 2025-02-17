@@ -5,7 +5,7 @@ while "#" != a:
     if a in "X#":
         print(A, B)
     elif "B" == a:
-        B += b * (B + b < 68)
+        B += b * (B + b < 69)
     elif "C" == a:
         B -= b * (B >= b)
     else:
