@@ -1,12 +1,17 @@
-a = ""
-while "#" != a:
-    a, b = input().split()
-    b = int(b)
-    if a in "X#":
-        print(A, B)
-    elif "B" == a:
-        B += b * (B + b < 69)
-    elif "C" == a:
-        B -= b * (B >= b)
-    else:
-        A, B = a, b
+while 1:
+    p, n = input().split()
+    if p == "#":
+        break
+    n = int(n)
+    while 1:
+        c, a = input().split()
+        if c == "X":
+            break
+        a = int(a)
+        if a > 68:
+            continue
+        if c == "B" and n + a <= 68:
+            n += a
+        elif c == "C" and n - a >= 0:
+            n -= a
+    print(p, n)
