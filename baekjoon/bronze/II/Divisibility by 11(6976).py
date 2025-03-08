@@ -7,3 +7,4 @@ for l in [*open(0)][1:]:
         t -= x
         print(t)
     print("The number", i, "is" + " not" * bool(t % 11), "divisible by 11.")
+    print()
