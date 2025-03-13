@@ -1,4 +1,4 @@
-for l in [*open(0)][::2]:
+for l in open(0):
     print()
     if "I quacked the code!\n" == l:
         exit()
