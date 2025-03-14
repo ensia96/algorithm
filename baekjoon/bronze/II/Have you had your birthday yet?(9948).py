@@ -1,13 +1,11 @@
-M = "January February March April May June July August September October November December".split()
-while (l := input()) != "0 #":
-    d, m = l.split()
-    m = M.index(m)
-    d = int(d)
+for i in open(0):
+    d = int(i[:2])
+    if d == 0:
+        break
+    t = "Au" in i
     print(
         [
-            ["YNeos"[7 < m or m == 7 and m > 4 :: 2], "Happy birthday"][
-                m == 7 and d == 4
-            ],
+            [["Yes", "Happy birthday"][t and d == 4], "No"]["er" in i or t and d > 4],
             "Unlucky",
-        ][m == 1 and d == 29]
+        ]["29 F" in i]
     )
