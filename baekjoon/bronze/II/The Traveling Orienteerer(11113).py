@@ -8,7 +8,7 @@ while B:
     for t in T:
         a, b = A[2 * x : 2 * x + 2]
         c, d = A[2 * t : 2 * t + 2]
-        S += int((abs(c - a) ** 2 + abs(d - b) ** 2) ** 0.5)
+        S += int(((c - a) ** 2 + (d - b) ** 2) ** 0.5 + 0.5)
         x = t
     print(S)
     B = B[m:]
