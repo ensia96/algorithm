@@ -1,10 +1,9 @@
 n, d, k, *A = map(int, open(0).read().split())
-T = [0] * n
-x = 0
-for _ in " " * (d - 2):
-    for i in range(n):
-        T[i] += A[i]
-        if T[i] > k:
-            T[i] = 0
-            x += 1
-print(x)
+a = c = 0
+t = max(A)
+for _ in " " * d:
+    c += t
+    if c > k:
+        c = t
+        a += 1
+print(a)
