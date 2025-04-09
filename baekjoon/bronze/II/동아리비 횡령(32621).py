@@ -1,0 +1,2 @@
+A = input().split("+")
+print(["No Money", "CUTE"][2 == len(A) and A[0] == A[1]])
