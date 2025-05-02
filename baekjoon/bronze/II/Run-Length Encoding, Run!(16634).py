@@ -1,6 +1,6 @@
 t, M = input().split()
 if 'D' < t:
-    l, c = M[0], 0
+    l, c = M[0], 1
     for m in M[1:]:
         if l[-1] != m:
             l += str(c)+m
