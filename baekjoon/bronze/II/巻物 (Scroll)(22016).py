@@ -1,3 +1,3 @@
-n, k = map(int, input().split())
+_, k = map(int, input().split())
 A = input()
-print(''.join([A[i].swapcase(), A[i]][i < k-1]for i in range(n)))
+print(A[:k-1]+A[k-1:].swapcase())
