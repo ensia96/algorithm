@@ -3,9 +3,12 @@ for A, B in zip(A[1::3], A[2::3]):
     x = y = 0
     for a, b in zip(A.split(), B.split()):
         a, b = int(a), int(b)
-        s, u = a+b, abs(a-b) == 1
-        a, b = [[max(a, b)*(a != b), s*(1+(s == 3))]
-                [u], 0][::1-(2*(u or a < b))]
-        x += a
-        y += b
+        if a-b == 1:
+            y += (a+b)*(1+(a == 2))
+        elif b-a == 1:
+            x += (a+b)*(1+(b == 2))
+        elif a > b:
+            x += a
+        else:
+            y += b
     print("A has", x, "points. B has", y, "points.")
