@@ -1,4 +1,5 @@
 *A, _ = open(0)
+t = []
 for A, B in zip(A[1::3], A[2::3]):
     x = y = 0
     for a, b in zip(A.split(), B.split()):
@@ -11,4 +12,5 @@ for A, B in zip(A[1::3], A[2::3]):
             x += a
         elif b > a:
             y += b
-    print("A has", x, "points. B has", y, "points.")
+    t += f"A has {x} points. B has {y} points.",
+print('\n\n'.join(t))
