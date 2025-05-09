@@ -9,6 +9,6 @@ for A, B in zip(A[1::3], A[2::3]):
             x += (a+b)*(1+(b == 2))
         elif a > b:
             x += a
-        else:
+        elif b < a:
             y += b
     print("A has", x, "points. B has", y, "points.")
