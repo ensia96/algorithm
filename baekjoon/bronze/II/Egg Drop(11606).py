@@ -1,5 +1,5 @@
 n, k = map(int, input().split())
-x = 0
+x = 1
 for _ in ' '*n:
     f, s = input().split()
     f = int(f)
