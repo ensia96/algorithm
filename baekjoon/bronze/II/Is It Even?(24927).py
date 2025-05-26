@@ -1,5 +1,6 @@
 n, k, *A = map(int, open(0).read().split())
-x = 1
 for a in A:
-    x *= a
-print(1 ^ bool(x % 2**k))
+    while a & 1 ^ 1:
+        k -= 1
+        a //= 2
+print(1 ^ (k > 0))
