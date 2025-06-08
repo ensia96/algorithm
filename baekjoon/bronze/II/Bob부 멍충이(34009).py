@@ -8,6 +8,6 @@ for a in A:
     else:
         x += a
     t -= 1
-    if y < x:
+    if x < y:
         z = 1
 print(['Alice', 'Bob'][z or y == x])
