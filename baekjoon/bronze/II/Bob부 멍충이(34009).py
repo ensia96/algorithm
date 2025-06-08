@@ -1,5 +1,5 @@
 input()
-A = sorted(map(int, input().split()))
+A = sorted(map(int, input().split()))[::-1]
 t = len(A)
 x = y = z = 0
 for a in A:
