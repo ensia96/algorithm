@@ -1,8 +1,8 @@
-A = input().translate(str.maketrans('RBL', 'SKH'))
-i = 0
+A = input()
+i = len(A)
 t = ''
-while i < len(A):
-    x = A[i:i+3] in ["SKH", "SHK", "KSH", "KHS", "HSK", "HKS"]
-    t += [A[i], 'C'][x]
-    i += 1+2*x
+while i > 0:
+    x = i > 2 and A[-i] != A[-i+1] != A[-i+2]
+    t += ['SKH'['RBL'.index(A[-i])], 'C'][x]
+    i -= 1+2*x
 print(t)
