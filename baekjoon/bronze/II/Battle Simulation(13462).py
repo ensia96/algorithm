@@ -1,2 +1,6 @@
-print(input().translate(str.maketrans('RBL', 'SKH')).replace('SKH', 'C').replace(
-    'SHK', 'C').replace('KSH', 'C').replace('KHS', 'C').replace('HKS', 'C').replace('HSK', 'C'))
+t = ''
+for a in input():
+    t += 'SKH'['RBL'.find(a)]
+    if t[-3:] in ["SKH", "SHK", "KSH", "KHS", "HSK", "HKS"]:
+        t = t[:-3]+'C'
+print(t)
