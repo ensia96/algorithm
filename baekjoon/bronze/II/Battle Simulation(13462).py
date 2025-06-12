@@ -1,4 +1,6 @@
-A = input().translate(str.maketrans('RBL', 'SKH'))
-for t in ["SKH", "SHK", "KSH", "KHS", "HSK", "HKS"]:
-    A = A.replace(t, 'C')
-print(A)
+t = ''
+for a in input():
+    t += 'SKH'['RBL'.index(a)]
+    if t[-3:] in ["SKH", "SHK", "KSH", "KHS", "HSK", "HKS"]:
+        t = t[:-3]+'C'
+print(t)
