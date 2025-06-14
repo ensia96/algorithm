@@ -1,6 +1,8 @@
 for l in [*open(0)][:-1]:
-    _, *A = map(int, l.split())
-    t, *x = [0]
-    for a, b in zip([0, *A], A):
-        x += [t := t+1]*(b-a)
-    print(*x)
+    x = y = 0
+    z = []
+    for a in [*map(int, l.split())][1:]:
+        x += 1
+        z += [x]*(a-y)
+        y = a
+    print(*z)
