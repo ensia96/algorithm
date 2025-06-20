@@ -1,1 +1,1 @@
-print('NS'[(A := ''.join(filter(lambda x:x in 'aeiou', input()))) == A[::-1]])
+print('NS'[(A := [i for i in input()if i in 'aeiou']) == A[::-1]])
