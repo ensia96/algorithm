@@ -1,8 +1,3 @@
 n, m, *A = map(int, open(0).read().split())
-x = y = 0
-for a, b in zip(A, A[1:]):
-    if b-a > m:
-        x, y = 0, max(y, x)
-    else:
-        x += 1
-print(max(x, y)+1)
+s = 1
+print(max(s := s*(b-a <= m)+1for a, b in zip(A, A[1:])))
