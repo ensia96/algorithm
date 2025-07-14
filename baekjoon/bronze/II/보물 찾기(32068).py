@@ -1,4 +1,3 @@
-for _ in ' '*int(input()):
-    l, r, s = map(int, input().split())
-    x, y = s-l, r-s
-    print([y*2, x*2+1][x < y])
+for l in [*open(0)][1:]:
+    l, r, s = map(int, l.split())
+    print(min(r-s << 1, s-l << 1 | 1))
