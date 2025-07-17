@@ -1,2 +1,2 @@
-n, m, *A = map(int, open(0).read().split())
-print(sum(a in A[n:]for a in A[:n]))
+_, A, B = map(str.split, open(0))
+print(sum(a in B for a in A))
