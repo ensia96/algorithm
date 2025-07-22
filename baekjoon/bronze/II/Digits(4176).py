@@ -1,5 +1,6 @@
 while (l := input()) != 'END':
-    t = ['1', l]
-    while t[-1] != t[-2]:
-        t += str(len(t[-1])),
-    print(len(t)-1-(t[0] != t[1]))
+    L = 1
+    while '1' != l:
+        l = str(len(l))
+        L += 1
+    print(L)
