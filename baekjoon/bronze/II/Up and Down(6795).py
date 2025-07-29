@@ -23,4 +23,4 @@ while e:
         if y == 0:
             y = c
     e -= 1
-print(['NBiykrkoyn'[N < B::2], 'Tie'][N == B])
+print(['NBiykrkoyn'[N < B::2], 'Tied'][N == B])
