@@ -1,6 +1,18 @@
 a, b, c, d, e = map(int, open(0))
-x, y = divmod(e, a+b)
-n = (a-b)*x+[y, a-y][y > a]
-x, y = divmod(e, c+d)
-b = (c-d)*x+[y, c-y][y > c]
-print(['NBiykrkoyn'[n < b::2], 'Tie'][n == b])
+N = B = 0
+x, y = a, c
+while e:
+    if x > 0:
+        N += 1
+        x = [x-1, -b][x == 1]
+    else:
+        N -= 1
+        x = [x+1, a][x == -1]
+    if y > 0:
+        B += 1
+        y = [y-1, -d][y == 1]
+    else:
+        B -= 1
+        y = [y+1, c][y == -1]
+    e -= 1
+print(['NBiykrkoyn'[N < B::2], 'Tie'][N == B])
