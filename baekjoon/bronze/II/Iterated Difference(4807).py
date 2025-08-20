@@ -1,9 +1,8 @@
-*L, = open(i := 0)
-for l in L[1::2]:
-    *A, = map(int, l.split())
-    n, c = len(A), 0
-    while 1 < len({*A}) and c < 1001:
-        A = [abs(A[i]-A[-~i % n])for i in range(n)]
+for l in [*open(i := 0)][1::2]:
+    *l, = map(int, l.split())
+    c = 0
+    while c < 1e3 > 1 < len({*l}):
+        l = [abs(i-j)for i, j in zip(l, (2*l)[1:])]
         c += 1
     i += 1
-    print(f'Case {i}:', [f"{c} iterations", 'not attained'][c > 1000])
+    print(f'Case {i}:', ['not attained', f"{c} iterations"][c < 1000])
