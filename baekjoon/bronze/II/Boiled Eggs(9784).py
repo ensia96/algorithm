@@ -1,7 +1,6 @@
-_, *A = map(int, open(i := 0).read().split())
-while A:
-    n, p, q, *A = A
+f, i = lambda: map(int, input().split()), 0
+for _ in ' '*int(*f()):
+    n, p, q = f()
     w = 0
-    print(f"Case {i}:", min(p, sum([q >= (w := w+a)for a in sorted(A[:n])])))
     i += 1
-    A = A[n:]
+    print(f"Case {i}:", min(p, sum([q >= (w := w+a)for a in sorted(f())])))
