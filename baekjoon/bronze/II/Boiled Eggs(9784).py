@@ -2,7 +2,7 @@ _, *A = map(int, open(i := 0).read().split())
 while A:
     n, p, q, *A = A
     c = w = 0
-    for a in A[:n]:
+    for a in sorted(A[:n]):
         if c < p and w+a < q:
             c += 1
             w += a
