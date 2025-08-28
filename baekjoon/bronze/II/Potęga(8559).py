@@ -1,4 +1,2 @@
-i = 1
-for _ in " " * int(input()):
-    i = i * 2 % 10
-print(i)
+n = int(input())
+print(+(n < 1) or [6, 2, 4, 8][n % 4])
