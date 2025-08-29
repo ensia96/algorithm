@@ -1,1 +1,1 @@
-print(len({*[*map(int, open(0).read().split())][2::2]}))
+print(len({*open(0).read().split()[2::2]}))
