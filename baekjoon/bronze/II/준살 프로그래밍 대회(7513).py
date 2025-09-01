@@ -1,9 +1,7 @@
 I = input
 P = print
-T = []
-for i in range(int(I())):
-    P(f"Scenario #{i + 1}:")
-    A = [*map(I, ' ' * int(I()))]
-    for _ in ' ' * int(I()):
-        P(''.join(A[int(i)]for i in I().split()[1:]))
+for T in range(int(I())):
+    P(f'Scenario #{T + 1}:')
+    l = eval('I(),' * int(I()))
+    exec("P(''.join(l[int(i)]for i in I().split()[1:]));" * int(I()))
     P()
