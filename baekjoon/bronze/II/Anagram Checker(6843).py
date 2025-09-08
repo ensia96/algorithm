@@ -1,3 +1,3 @@
 A, B = open(0)
 print('Is', ['not ', ''][all(a == ' ' or B.count(a) == A.count(a)
-      for a in A[:-1])] + 'an anagram')
+      for a in A)] + 'an anagram.')
