@@ -9,6 +9,7 @@ for t in range(*f()):
             x, y, z = A[j]
             T += (((a - x)**2 + (b - y)**2 + (c - z)**2), i + 1, j + 1),
     print(f"Data Set {t + 1}:")
+    T = sorted(T)
     for t in T:
-        if t[0] == max(T)[0]:
+        if t[0] == T[-1][0]:
             print(*t[1:])
