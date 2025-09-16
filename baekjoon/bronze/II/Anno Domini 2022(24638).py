@@ -1,0 +1,5 @@
+a, b, c, d = open(0).read().split()
+x, y = a.isdigit(), c.isdigit()
+a = int([b, a][x]) * (1 - 2 * x)
+b = int([d, c][y]) * (1 - 2 * y)
+print(max(a, b) - min(a, b) - (x != y))
