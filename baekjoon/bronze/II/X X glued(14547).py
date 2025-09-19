@@ -1,4 +1,5 @@
-for l in [*open(0)][:-1]:
-    _, N, _ = l.split()
-    len(T := {i for i, j in zip(N, N[1:])if i == j}) and print(
-        ' and '.join(f'{t} {t} glued'for t in sorted(T)))
+while '#' < (l := input()):
+    t = 1
+    for i in {i for i, j in zip(l, l[1:])if i == j}:
+        print(*['and', i, i, 'glued'][i:])
+        t = 0
