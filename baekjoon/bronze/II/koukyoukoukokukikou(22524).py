@@ -1,10 +1,3 @@
-R = 'yuiophjklnm'
-for l in [*open(0)][:-1]:
-    t, *l, _ = l
-    t = t in R
-    c = 0
-    for i in l:
-        if (x := i in R) != t:
-            t = x
-            c += 1
-    print(c)
+while '#' < (l := input()):
+    l = [i in 'yuiophjklnm'for i in l]
+    print(sum(i != j for i, j in zip(l, l[1:])))
