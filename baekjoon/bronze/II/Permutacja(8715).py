@@ -1,2 +1,2 @@
-n, *A = map(int, open(0).read().split())
-print('TNAIKE'[len({*range(1, n + 1)} - {*A}) > 0::2])
+I = input
+print('NTIAEK'[not {*range(1, int(I()) + 1)} - {*map(int, I().split())}::2])
