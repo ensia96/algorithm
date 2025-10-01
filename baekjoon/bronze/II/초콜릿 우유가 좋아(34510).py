@@ -1,2 +1,3 @@
 a, b, c = map(int, input().split())
-print(sum(c + [a + b, -a][i % 2]for i in range(int(input()))))
+n = int(input())
+print(c * n + b * (-~n // 2) + a * (n % 2))
