@@ -1,3 +1,2 @@
-a, b, c = map(int, input().split())
-n = int(input())
-print(c * n + b * (-~n // 2) + a * (n % 2))
+a, b, c, n = map(int, open(0).read().split())
+print(n * c + n // 2 * b + n % 2 * (a + b))
