@@ -4,4 +4,4 @@ for l in [*open(0)][1:]:
     while l:
         t = str(l % 3) + t
         l //= 3
-    print(t)
+    print(t or 0)
