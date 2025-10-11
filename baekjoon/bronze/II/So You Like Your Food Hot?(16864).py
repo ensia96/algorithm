@@ -1,5 +1,6 @@
 a, b, c = map(float, input().split())
-i = 0
+i = j = 0
 while (x := b * i) <= a:
-    (y := int((a - x) // c)) * c == (a - x) and print(i, y)
+    (y := int((a - x) // c)) * c == (a - x) and (j := 1) and print(i, y)
     i += 1
+j or print('none')
