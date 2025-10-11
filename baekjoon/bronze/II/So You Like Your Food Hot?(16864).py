@@ -1,10 +1,6 @@
-a, b, c = map(float, input().split())
-i = j = 0
-while b * i <= a:
-    x = (a - (b * i))
-    t = int(x // c)
-    if x == t * c:
-        j = 1
-        print(i, t)
-    i += 1
-j or print('none')
+a, b, c, *T = map(lambda x: int((float(x) + 0.005) * 100), input().split())
+for i in range(0, a + 1, b):
+    if not (a - i) % c:
+        T += (i // b, (a - i) // c),
+for t in T or [('none')]:
+    print(*t)
