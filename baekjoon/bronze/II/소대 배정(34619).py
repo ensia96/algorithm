@@ -1,2 +1,3 @@
 a, b, n, k = map(int, input().split())
-print(1 + ~-k // n // b, 1 + ~-k // n % b)
+x = ~-k // n
+print(1 + x // b, 1 + x % b)
