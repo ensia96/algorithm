@@ -1,1 +1,1 @@
-print(len({*input()}) - 26 or 'impossible')
+print(26 - len({*input()}) or 'impossible')
