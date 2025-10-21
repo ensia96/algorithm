@@ -1,1 +1,1 @@
-print(len(input()) * "A" + "WHO")
+print(input() + 'O')
