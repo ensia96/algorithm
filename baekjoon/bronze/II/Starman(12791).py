@@ -24,7 +24,7 @@ T = """1967 DavidBowie
 2013 TheNextDay
 2016 BlackStar""".split("\n")
 for l in [*open(0)][1:]:
-    s, e = l.split()
-    p = [t for t in T if s <= t[:4] <= e]
+    s, e = map(int, l.split())
+    p = [t for t in T if s <= int(t[:4]) <= e]
     print(len(p))
     *map(print, p),
