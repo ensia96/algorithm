@@ -1,4 +1,2 @@
-I = input
-I()
-while n := int(I()):
-    print(n)
+for _ in ' ' * int(input()):
+    print(int(input()))
