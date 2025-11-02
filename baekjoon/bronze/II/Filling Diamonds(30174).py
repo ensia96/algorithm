@@ -1,2 +1,1 @@
-for _ in ' ' * int(input()):
-    print(int(input()))
+print(*[*open(0)][1:], sep='')
