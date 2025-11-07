@@ -1,2 +1,2 @@
-I = input
-print(I()[0] + I())
+I = input()
+print(I[0] + I)
