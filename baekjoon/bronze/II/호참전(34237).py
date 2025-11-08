@@ -1,7 +1,9 @@
-f, r = lambda: [*map(int, input().split())], range
+f = lambda: [*map(int, input().split())]
 n, m = f()
-T = [f()for _ in ' ' * n]
+D = {}
+for _ in ' ' * n:
+    a, b = f()
+    D[a] = D.get(a, []) + [b]
 for _ in ' ' * m:
     g, x, y = f()
-    print(sum((x + i, y + j) in T for i in r(g + 1)
-          for j in r(g + 1 - i)if x + i + y + j <= g))
+    print(sum(sum(y <= d <= g - i for d in D[i])for i in D if i >= x))
