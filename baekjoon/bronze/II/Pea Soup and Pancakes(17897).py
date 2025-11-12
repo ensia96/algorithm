@@ -1,10 +1,8 @@
-I = input
-R = []
-n = int(I())
-for _ in ' ' * n:
-    k = int(I())
-    r = I()
-    M = [I()for _ in ' ' * k]
-    if any(m == 'pancakes'for m in M) * any(m == 'pea soup'for m in M):
-        R += r,
-print((R + ['Anywhere is fine I guess'])[0])
+P = print
+_, *L = open(0)
+while L:
+    k, R, *L = L
+    k = int(k)
+    {"pea soup\n", "pancakes\n"} <= {*L[:k]} < exit(P(R))
+    L = L[k:]
+P("Anywhere is fine I guess")
