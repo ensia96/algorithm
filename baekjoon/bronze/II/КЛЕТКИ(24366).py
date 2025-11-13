@@ -1,2 +1,2 @@
 n, k = map(int, input().split())
-print(~-k - (n - k) % ~-k)
+print(~-k - ~-n % ~-k)
