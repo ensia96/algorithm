@@ -1,1 +1,1 @@
-print(max(*map(len, open(0))) - 1)
+print(max(len({*l})for l in open(0)) - 1)
