@@ -1,7 +1,6 @@
-I = input
-n = m = x = y = 0
-for _ in ' ' * int(I()):
-    t, a, b = map(int, I().split())
-    z = 100 + 50 * (x == a and y + 10 >= t)
-    n, m, x, y = n + z * (a < 5), m + z * (a > 4), a, t
-print(n, m)
+G = [[]for _ in range(8)]
+for l in [*open(0)][1:]:
+    t, a, b = map(int, l.split())
+    G[a - 1] += t,
+G = [100 * len(g) + 50 * sum(j - i <= 10 for i, j in zip(g, g[1:]))for g in G]
+print(sum(G[:4]), sum(G[4:]))
