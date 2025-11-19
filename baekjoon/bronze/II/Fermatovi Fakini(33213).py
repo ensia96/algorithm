@@ -1,9 +1,7 @@
 I = input
-I()
-G = [set()] * 2
-for a in map(int, I().split()):
-    G[a % 2].add(a)
-G = max(G, key=len)
-t = max(G) % 2
-for i in range(1, 10**6):
-    i not in G and i % 2 == t and exit(print(i))
+n = int(I())
+A = {*map(int, I().split())}
+t = [2, 1][sum(a % 2 for a in A) * 2 > n]
+while t in A:
+    t += 2
+print(t)
