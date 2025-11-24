@@ -1,5 +1,3 @@
 input()
-a, b, c = input()
-n = int(a + b + c)
-print(1 + sum(n > int(i)
-      for i in [a + c + b, b + a + c, b + c + a, c + a + b, c + b + a]))
+a, b, c = map(int, input())
+print(2 * ((a > b) + (a > c)) + (b > c) + 1)
