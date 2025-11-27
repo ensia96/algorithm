@@ -1,10 +1,9 @@
 I = input
 c, n = map(int, I().split())
-T = {}
+C = [[]for _ in ' ' * c]
 for _ in ' ' * n:
-    _, a, h, m = I().split()
-    T[_] = T.get(_, []) + [int(h) * 60 + int(m)]
-for t in sorted(T):
-    w = T[t] + len(T[t]) % 2 * [1440]
-    w = sum(e - s for s, e in zip(w[::2], w[1::2]))
+    c, a, h, m = I().split()
+    C[int(c)] += int(h) * 60 + int(m),
+for c in C:
+    w = sum(e - s for s, e in zip(c[::2], c[1::2] + [1440]))
     print(w // 60, w % 60)
