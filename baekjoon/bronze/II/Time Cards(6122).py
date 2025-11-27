@@ -1,9 +1,14 @@
+i = int
 I = input
-c, n = map(int, I().split())
-C = [[]for _ in ' ' * c]
+c, n = map(i, I().split())
+T = {}
+C = [0] * c
 for _ in ' ' * n:
-    c, a, h, m = I().split()
-    C[int(c) - 1] += int(h) * 60 + int(m),
+    c, o, h, n = I().split()
+    t = i(h) * 60 + i(n)
+    if 'A' == o[2]:
+        T[c] = t
+    else:
+        C[i(c) - 1] += t - T[c]
 for c in C:
-    w = sum(e - s for s, e in zip(c[::2], c[1::2] + [1440]))
-    print(w // 60, w % 60)
+    print(c // 60, c % 60)
