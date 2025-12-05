@@ -1,5 +1,1 @@
-A = ''
-for i in open(0).read():
-    if i.isalpha() and i not in A:
-        A += i
-print(A)
+print(*sorted(map(chr, range(65, 91)), key=open(0).read().find), sep='')
