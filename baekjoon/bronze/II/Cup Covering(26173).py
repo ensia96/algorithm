@@ -1,2 +1,1 @@
-import math
-print((int(input()) / math.pi)**.5 * 2)
+print(int(input())**.5 / .886226925)
