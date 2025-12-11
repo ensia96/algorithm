@@ -1,4 +1,3 @@
-O = '+-*/'
-a, b, c = input().split()
-print(min(int(A)for i in O for j in O if (
-    A := eval("(" + a + i + b + ")" + j + c)) % 1 == 0 and A >= 0))
+a, b, c = map(int, input().split())
+print(min(j for x in [a + b, a - b, a * b, a / b]if x % 1 ==
+      0 for j in [x + c, x - c, x * c, x / c]if j % 1 == 0 and j >= 0))
