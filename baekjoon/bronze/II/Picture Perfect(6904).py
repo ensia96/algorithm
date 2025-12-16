@@ -1,4 +1,4 @@
 while (n := int(input())):
-    p, x, y = min((2 * (i + n // i), i, n // i)
-                  for i in range(1, n + 1)if 1 > n % i)
-    print("Minimum perimeter is", p, "with dimensions", x, "x", y)
+    i = max(i * (1 > n % i)for i in range(1, n + 1))
+    print('Minimum perimeter is', 2 * (i // n + n),
+          'with dimensions', n, 'x', i // n)
