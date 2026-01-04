@@ -1,2 +1,2 @@
-i = 0
-print(*[(i := a)for a in map(int, [*open(0).read().split()][1:])if i <= a])
+_, i, *L = map(int, open(0).read().split())
+print(i, *[(c := l)for l in L if i <= l])
