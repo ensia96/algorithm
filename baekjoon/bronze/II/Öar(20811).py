@@ -1,7 +1,7 @@
 n = int(input())
-a = b = c = x = 1
-while c <= n:
+a = b = x = 1
+while n > 0:
     x += 1
-    c += a
+    n -= a
     a, b = b, a + b
 print(x - 1)
