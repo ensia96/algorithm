@@ -1,2 +1,1 @@
-_, A = open(0)
-print("%.2f" % min(map(int, A.split())))
+print(min([*open(0)][1].split(), key=int) + '.00')
