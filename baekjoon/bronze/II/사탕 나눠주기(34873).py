@@ -1,1 +1,3 @@
-print('YNeos'[max(map((A := [*open(0)][1].split()).count, {*A})) > 2::2])
+from collections import Counter
+n, A = open(0)
+print('YNeos'[max(Counter(A.split()).values()) > 2::2])
