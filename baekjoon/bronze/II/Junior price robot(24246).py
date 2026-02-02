@@ -1,2 +1,2 @@
-_,t,*A=map(int,open(0).read().split())
-print(next((i+1for i,a in enumerate(A)if a<=t),'infinity'))
+n, *l = map(int, [*open(0)][1].split())
+print('infinity' * min(t := [n < i for i in l]) or -~t.index(0))
