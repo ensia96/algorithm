@@ -1,2 +1,2 @@
-n, *A = map(int, open(x := 0).read().split())
-print(max([x := (x + j - i) * (j > i)for i, j in zip(A, A[1:])]))
+a, *A = map(int, [*open(0)][1].split())
+print(max(j - (a := [j, a][i < j])for i, j in zip([a, *A], A)))
