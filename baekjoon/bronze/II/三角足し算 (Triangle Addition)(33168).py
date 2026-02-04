@@ -1,2 +1,3 @@
-n, *A = map(int, open(0).read().split())
-exec("A=[*map(sum,zip(A,A[1:]))];print(*A);" * ~-n)
+l = [*open(0)][1].split()
+while l := [int(i) + int(j)for i, j in zip(l, l[1:])]:
+    print(*l)
