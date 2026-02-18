@@ -1,8 +1,9 @@
-n, m, *T = map(int, open(i := 0).read().split())
-R = [0] * m
-while (n - sum(R)) * sum(T):
-    x = T[i] > 0
-    R[i] += x
-    T[i] -= x
+n, m, *A = map(int, open(0).read().split())
+M = [i := 0] * m
+while n * sum(A):
+    t = A[i] > 0
+    M[i] += t
+    A[i] -= t
+    n -= t
     i = -~i % m
-print(*R, sep='\n')
+print(*M)
