@@ -1,2 +1,4 @@
-import re
-print(re.sub(r'(.)(?!\1)', '', input()))
+p = 0
+for i in input():
+    i == p != print(end=i)
+    p = i
