@@ -1,5 +1,6 @@
-f = lambda: map(int, input().split())
-n, H = f()
-W = 0
-exec("s=sorted(f());s[0]>H>exit(print('impossible'));W+=s[s[1]>H];" * n)
+_, H, *L = map(int, open(W := 0).read().split())
+for l in zip(*[iter(L)] * 3):
+    a, b, c = sorted(l)
+    a > H and exit(print('impossible'))
+    W += [a, b][b > H]
 print(W)
