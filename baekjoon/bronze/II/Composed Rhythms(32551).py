@@ -1,3 +1,2 @@
 n = int(input())
-print(d := n // 2)
-print(n % 2 + 2, *[2] * ~-d)
+print(d := n // 2, *[2] * ~-d, 2 + n % 2)
