@@ -1,3 +1,2 @@
-r = str.replace
-input()
-print(r(r(r(input(), "\../", "v"), "vv", "w"), ".", ""))
+x = '\\../'
+print([*open(0)][1].replace(x * 2, 'w').replace(x, 'v')[::2])
