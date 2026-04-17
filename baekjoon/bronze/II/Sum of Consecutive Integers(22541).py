@@ -1,1 +1,7 @@
-while(n:=int(input())):print(sum((n-k*~-k//2)%k<1for k in range(2,n+2)if k*~-k<n*2))
+while n := int(input()):
+    a, s, i = 0, 3, 2
+    while n >= s:
+        a += (n - s) % i < 1
+        i += 1
+        s += i
+    print(a)
