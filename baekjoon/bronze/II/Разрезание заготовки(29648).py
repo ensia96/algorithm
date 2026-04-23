@@ -1,4 +1,4 @@
-a, b, s = map(int, input().split())
-D = (a - b)**2 + 4 * s
-r = round(D**.5)
-print([-1, a + b + r >> 1][r * r == D])
+a, b, S = map(int, input().split())
+l = (a + b + ((a - b)**2 + 4 * S)**.5) / 2
+M = int(l)
+print(-(M == l) or M)
