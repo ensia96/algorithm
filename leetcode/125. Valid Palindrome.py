@@ -1,3 +1,3 @@
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        return (i := ''.join(i.lower() for i in s if i.isalnum())) == i[::-1]
+        return (i := ''.join(filter(str.isalnum, s)).lower()) == i[::-1]
