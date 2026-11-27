@@ -1,0 +1,2 @@
+from hashlib import *
+print(new('sha', input().encode()).hexdigest())
